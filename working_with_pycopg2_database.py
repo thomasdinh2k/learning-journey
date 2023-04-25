@@ -5,6 +5,11 @@ global table_name
 table_name = ''
 
 
+def separator():
+    print("*" * 50)
+    print('\n' * 1)
+
+
 def choosing_table():       # Choose which table to execute actions
     connection = psycopg2.connect("dbname='database1' user='postgres' password='1820' host='localhost' port='5432'")
     cursor = connection.cursor()
@@ -39,10 +44,11 @@ def ask_for_insert():       # Ask user to enough input to make a table in databa
     return final_result_text
 
 
-def view():
-    global table_name
-    if table_name == '':
+def view(table_name=None):
+    if table_name == 'None':
         table_name = choosing_table()
+    else:
+        pass
     connection = psycopg2.connect("dbname='database1' user='postgres' password='1820' host='localhost' port='5432'")
     cursor = connection.cursor()
     cursor.execute(f"SELECT * FROM {table_name}")   # Obtain Data from the database
@@ -51,6 +57,7 @@ def view():
     print(f"\nTable {table_name.upper()} contains:\n ")
     for row in rows:
         print(row, end="\n")
+    separator()
     return table_name
 
 
@@ -68,22 +75,46 @@ def create_table():
 
 
 def insert_item():
+    table_name = choosing_table()
     connection = psycopg2.connect("dbname='database1' user='postgres' password='1820' host='localhost' port='5432'")
     cursor = connection.cursor()
-    global table_name
-    if table_name == '':
-        table_name = choosing_table()
-    if table_name == "store":
-        item = pa.inputStr(prompt="Which item is this? ")
-        quantity = pa.inputInt(prompt="How many item? ")
-        price = pa.inputInt(prompt="What's the price then? ")
-    cursor.execute(f"INSERT INTO {table_name} VALUES (%s,%s,%s)", (item, quantity, price))
-    print("ITEM ({}) INSERTED SUCCESSFULLY".format(item.upper()))
-    view()
-    return table_name
+    cursor.execute(f'''
+        SELECT column_name, data_type
+        FROM information_schema.columns
+        WHERE table_name = '{table_name}' 
+    ''')
+    table_property = cursor.fetchall()
+    # return table_column
+    print(table_property)
+    table_column_name = []
+    adding_value = []
+
+    for i in range(len(table_property)):
+        table_column_name.append(table_property[i][0])
+        adding_value_text = input((f"Type input for column [{table_property[i][0]}]:\n"))
+        if adding_value_text.isalpha():
+            adding_value_text = f"\'{adding_value_text}\'"
+            adding_value.append(adding_value_text)
+        else:
+            adding_value.append(adding_value_text)
+    for value in table_column_name, adding_value:
+        column_name_string = ', '.join(table_column_name)
+        # adding_value_string = ', '.join(adding_value)
+        adding_value_string = ', '.join(adding_value)
+
+    print(f"INSERT INTO {table_name} ({column_name_string}) VALUES ({adding_value_string})")
+    cursor.execute(f"INSERT INTO {table_name} ({column_name_string}) VALUES ({adding_value_string})")
+    connection.commit()
+    print(f"Value {adding_value} added into {table_name} successfully!")
+
+    view(table_name)
 
 
-def delete_item(item):
+    cursor.close()
+    connection.close()
+
+# TODO: Fix Delete_item
+def delete_item():
     connection = psycopg2.connect("dbname='database1' user='postgres' password='1820' host='localhost' port='5432'")
     cursor = connection.cursor()
     table_name = choosing_table()
@@ -92,7 +123,7 @@ def delete_item(item):
     connection.close()
     print("ITEM ({}) DELETED SUCCESSFULLY".format(item.upper()))
 
-
+# TODO: Fix update_item
 def update_item():
     connection = psycopg2.connect("dbname='database1' user='postgres' password='1820' host='localhost' port='5432'")
     cursor = connection.cursor()
@@ -111,5 +142,18 @@ def update_item():
     connection.close()
     return table_name
 
-
-view()
+print("Welcome to Database Pycopg2 Tool")
+database_action = ['View', 'Insert', 'Update', 'Delete', 'Quit']
+while True:
+    user_choice = pa.inputMenu(database_action, prompt="What do you want to do?\n", numbered=True)
+    if user_choice == 'View':
+        view()
+    elif user_choice == 'Insert':
+        insert_item()
+    elif user_choice == 'Update':
+        update_item()
+    elif user_choice == 'Delete':
+        delete_item()
+    else:
+        break
+print("Goodbye")

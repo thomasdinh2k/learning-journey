@@ -45,8 +45,8 @@ def ask_for_insert():       # Ask user for data to store in table
 
 
 def view(table_name=None):
-    if table_name == None:
-        table_name = choosing_table()
+    if table_name == 'None':
+      table_name = choosing_table()
     else:
         pass
     connection = psycopg2.connect("dbname='database1' user='postgres' password='1820' host='localhost' port='5432'")
@@ -81,11 +81,13 @@ def insert_item():
         SELECT column_name, data_type
         FROM information_schema.columns
         WHERE table_name = '{table_name}' 
+
     ''')        # Get column_name and column_type data
     table_property = cursor.fetchall()
     print(table_property)
     table_column_name = []
     adding_value = []
+
     for i in range(len(table_property)):
         table_column_name.append(table_property[i][0])
         adding_value_text = input((f"Type input for column [{table_property[i][0]}]:\n"))
@@ -103,6 +105,7 @@ def insert_item():
     cursor.execute(f"INSERT INTO {table_name} ({column_name_string}) VALUES ({adding_value_string})")
     connection.commit()
     print(f"Value {adding_value} added into {table_name} successfully!")
+
     view(table_name)
     cursor.close()
     connection.close()
@@ -110,6 +113,7 @@ def insert_item():
 
 def delete_item():
     # DELETE FROM links WHERE id = 8
+
     connection = psycopg2.connect("dbname='database1' user='postgres' password='1820' host='localhost' port='5432'")
     cursor = connection.cursor()
     flag = True
@@ -154,7 +158,7 @@ def delete_item():
         else:
             flag = False
 
-
+# TODO: Fix update_item
 def update_item():
     # UPDATE {table_name} SET {table_column_name} = {new_input} WHERE {table_property} = {} AND {} = {}
     connection = psycopg2.connect("dbname='database1' user='postgres' password='1820' host='localhost' port='5432'")

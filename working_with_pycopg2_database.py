@@ -21,7 +21,7 @@ def choosing_table():       # Choose which table to execute actions
     return table_option
 
 
-def ask_for_insert():       # Ask user to enough input to make a table in database
+def ask_for_insert():       # Ask user for data to store in table
     var_num = pa.inputInt(prompt="How many variable do you want? ", min=1)
     column_names = []
     result_string = {}
@@ -46,7 +46,7 @@ def ask_for_insert():       # Ask user to enough input to make a table in databa
 
 def view(table_name=None):
     if table_name == 'None':
-        table_name = choosing_table()
+      table_name = choosing_table()
     else:
         pass
     connection = psycopg2.connect("dbname='database1' user='postgres' password='1820' host='localhost' port='5432'")
@@ -66,12 +66,11 @@ def create_table():
     cursor = connection.cursor()
     table_name = pa.inputStr(prompt="What is the name of this new table?\n")
     execute_line = ask_for_insert()
-    print(f"CREATE TABLE IF NOT EXISTS {table_name} ({execute_line})")
     cursor.execute(f"CREATE TABLE IF NOT EXISTS {table_name} ({execute_line})")
     connection.commit()
     cursor.close()
     connection.close()
-    print(f"TABLE {table_name} HAS BEEN CREATED SUCCESSFULLY")
+    print(f"TABLE [{table_name}] HAS BEEN CREATED SUCCESSFULLY")
 
 
 def insert_item():
@@ -82,9 +81,9 @@ def insert_item():
         SELECT column_name, data_type
         FROM information_schema.columns
         WHERE table_name = '{table_name}' 
-    ''')
+
+    ''')        # Get column_name and column_type data
     table_property = cursor.fetchall()
-    # return table_column
     print(table_property)
     table_column_name = []
     adding_value = []
@@ -108,23 +107,60 @@ def insert_item():
     print(f"Value {adding_value} added into {table_name} successfully!")
 
     view(table_name)
-
-
     cursor.close()
     connection.close()
 
-# TODO: Fix Delete_item
+
 def delete_item():
+    # DELETE FROM links WHERE id = 8
+
     connection = psycopg2.connect("dbname='database1' user='postgres' password='1820' host='localhost' port='5432'")
     cursor = connection.cursor()
-    table_name = choosing_table()
-    cursor.execute(f"DELETE FROM {table_name} WHERE item=%s", (item,))       # Must have "," after item if this have one item only
-    connection.commit()
-    connection.close()
-    print("ITEM ({}) DELETED SUCCESSFULLY".format(item.upper()))
+    flag = True
+    while flag:
+        table_name = choosing_table()
+        cursor.execute(f'''
+                SELECT column_name, data_type
+                FROM information_schema.columns
+                WHERE table_name = '{table_name}' 
+            ''')  # Get column_name and column_type data
+        table_property = cursor.fetchall()
+        print(table_property)
+        table_column_name = []      # An empty string to pass data in
+        table_column_value = []
+        for i in range(len(table_property)):
+            table_column_name.append(table_property[i][0])
+            table_column_value.append(table_property[i][1])
+        column_selection = pa.inputMenu(table_column_name, prompt='Which column?\n', numbered=True)
+        print(table_column_name)
+
+        # View all data in "{column_selection} column
+        cursor.execute(f"SELECT {column_selection} FROM {table_name}")
+        result = cursor.fetchall()
+        # Test print the result
+        data_bank = []
+        for data_row in result:
+            if data_row[0] not in data_bank:
+                data_bank.append(data_row[0])
+            else:
+                pass
+        data_bank_fix = [str(item) for item in data_bank]
+        # Test if result aligned
+        print(data_bank)
+        data_selection = pa.inputMenu(data_bank_fix, numbered=True)
+        confirm = f"DELETE FROM {table_name} WHERE {column_selection}={data_selection}"
+        print(confirm)
+        if pa.inputMenu(['yes', 'no'], prompt='Are you sure you want to delete\n', numbered=True) == 'yes':
+            cursor.execute(confirm)
+            connection.commit()
+            connection.close()
+            cursor.close()
+        else:
+            flag = False
 
 # TODO: Fix update_item
 def update_item():
+    # UPDATE {table_name} SET {table_column_name} = {new_input} WHERE {table_property} = {} AND {} = {}
     connection = psycopg2.connect("dbname='database1' user='postgres' password='1820' host='localhost' port='5432'")
     cursor = connection.cursor()
     global table_name
@@ -137,7 +173,8 @@ def update_item():
         cursor.execute(f"UPDATE {table_name} SET quantity=%s, price=%s WHERE item=%s", (quantity, price, item))       # Must have , after item
         print("ITEM ({}) UPDATED SUCCESSFULLY".format(item.upper()))
     else:
-        print('THIS FUNCTION IS CURRENTLY UNDER DEVELOPMENT')
+        set = input("SET? ")
+        cursor.execute(f"Update {table_name} SET {set}")
     connection.commit()
     connection.close()
     return table_name

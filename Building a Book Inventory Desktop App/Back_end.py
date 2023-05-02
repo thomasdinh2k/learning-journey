@@ -1,5 +1,8 @@
 import sqlite3
+import os
 
+db_filename = os.path.join(os.getcwd(), 'book.db')
+print(db_filename)
 
 def connect_to_database():
     connect = sqlite3.connect("book.db")

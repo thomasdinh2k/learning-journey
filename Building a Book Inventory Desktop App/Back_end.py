@@ -10,7 +10,7 @@ def connect_to_database():
     connect.close()
 
 
-def insert(title, author, year, isbn):
+def insert(title, author, year='2023', isbn='N/A'):
     connect = sqlite3.connect("book.db")
     cursor = connect.cursor()
     cursor.execute("INSERT INTO book VALUES (NULL,?,?,?,?)", (title, author, year, isbn))
@@ -58,3 +58,5 @@ def update(id, title, author, year, isbn):
     cursor.execute("UPDATE book SET title=?, author=?, year=?, isbn=? WHERE id=?", (title, author, year, isbn, id))
     connect.commit()
     connect.close()
+
+print(search())

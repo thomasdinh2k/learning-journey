@@ -21,8 +21,8 @@ option.add_experimental_option("prefs", {
 driver = webdriver.Chrome(options=option, executable_path='/usr/local/bin/chromedriver')
 
 url = "https://www.facebook.com/"
-user_name = 'iloveopno1@yahoo.com.vn'
-password = 'Dinhngocchimai306'
+user_name = 
+password = 
 
 driver.get(url)
 

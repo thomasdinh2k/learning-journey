@@ -1,7 +1,9 @@
 import tkinter
-
-import Back_end
 from tkinter import *
+from Back_end import Database
+
+
+database = Database("/Users/thomas/PycharmProjects/learning_project/journey/book.db")
 
 # Create Tk object
 window = Tk()
@@ -11,14 +13,14 @@ window.title("Book Inventory Program")
 def view_command():
     lb1.delete(0, END)
     print("Viewing the book list")
-    for row in Back_end.view():
+    for row in database.view():
         # print(row)
         lb1.insert(END, row)  # The new row will append at the end
 
 
 def search_command():
     lb1.delete(0, END)
-    for row in Back_end.search(Title_text.get(), Author_text.get(), Year_text.get(), ISBN_text.get()):
+    for row in database.search(Title_text.get(), Author_text.get(), Year_text.get(), ISBN_text.get()):
         if row == []:
             lb1.insert(END, 'Search something?')
             print(row)
@@ -51,16 +53,16 @@ def get_selected_row(event):
     e4.delete(0, END)
     e4.insert(0, selected_tuple[4])
 def delete_command():
-    Back_end.delete(selected_tuple[0])
+    database.delete(selected_tuple[0])
 
 def update_command():
-    Back_end.update(selected_tuple[0], Title_text.get(), Author_text.get(), Year_text.get(), ISBN_text.get())
+    database.update(selected_tuple[0], Title_text.get(), Author_text.get(), Year_text.get(), ISBN_text.get())
     print(selected_tuple[0], Title_text.get(), Author_text.get(), Year_text.get(), ISBN_text.get())
     lb1.insert(0, f"Updated item {Title_text.get()}")
     lb1.insert(1, selected_tuple[0], Title_text.get(), Author_text.get(), Year_text.get(), ISBN_text.get())
 
 def add_command():
-    Back_end.insert(Title_text.get(), Author_text.get(), Year_text.get(), ISBN_text.get())
+    database.insert(Title_text.get(), Author_text.get(), Year_text.get(), ISBN_text.get())
     lb1.delete(0, END)
     lb1.insert(END, "Book inserted:...")
     lb1.insert(END, '***\n\n\n')

@@ -1,65 +1,48 @@
 import sqlite3
 import os
 
-db_filename = os.path.join(os.getcwd(), 'book.db')
-print(db_filename)
 
-def connect_to_database():
-    connect = sqlite3.connect("book.db")
-    cursor = connect.cursor()
-    cursor.execute(
-        "CREATE TABLE IF NOT EXISTS book (id INTEGER PRIMARY KEY, title TEXT, author TEXT, year INTEGER, isbn INTEGER)")
-    connect.commit()
-    connect.close()
+class Database:
+    db_filename = "/Users/thomas/PycharmProjects/learning_project/journey/book.db"
 
+    def __init__(self, db):
+        self.connect = sqlite3.connect(Database.db_filename)
+        self.cursor = self.connect.cursor()
+        self.cursor.execute(
+            "CREATE TABLE IF NOT EXISTS book (id INTEGER PRIMARY KEY, title TEXT, author TEXT, year INTEGER, isbn INTEGER)")
+        self.connect.commit()
 
-def insert(title, author, year='2023', isbn='N/A'):
-    connect = sqlite3.connect("book.db")
-    cursor = connect.cursor()
-    cursor.execute("INSERT INTO book VALUES (NULL,?,?,?,?)", (title, author, year, isbn))
-    connect.commit()
-    connect.close()
+    def insert(self, title, author, year='2023', isbn='N/A'):
+        self.cursor.execute("INSERT INTO book VALUES (NULL,?,?,?,?)", (title, author, year, isbn))
+        self.connect.commit()
 
+    def view(self):
+        self.cursor.execute("SELECT * FROM book")
+        rows = self.cursor.fetchall()
+        return rows
 
-def view():
-    connect = sqlite3.connect("book.db")
-    cursor = connect.cursor()
-    cursor.execute("SELECT * FROM book")
-    rows = cursor.fetchall()
-    connect.close()
-    return rows
+    def search(self, title=None, author=None, year=None, isbn=None):
+        self.cursor.execute("SELECT * FROM book WHERE title=? OR author=? OR year=? or isbn=?",
+                            (title, author, year, isbn))
+        rows = self.cursor.fetchall()
+        # self.connect.close()
+        return rows
 
+    def delete(self, id):
+        self.cursor.execute("DELETE FROM book WHERE id=?", (id,))
+        self.connect.commit()
+        # self.connect.close()
 
-def search(title=None, author=None, year=None, isbn=None):
-    connect = sqlite3.connect("book.db")
-    cursor = connect.cursor()
-    cursor.execute("SELECT * FROM book WHERE title=? OR author=? OR year=? or isbn=?", (title, author, year, isbn))
-    rows = cursor.fetchall()
-    connect.close()
-    return rows
+    def delete_all(self):
+        self.cursor.execute("DELETE FROM book")
+        self.connect.commit()
+        # self.connect.close()
 
+    def update(self, id, title, author, year, isbn):
+        self.cursor.execute("UPDATE book SET title=?, author=?, year=?, isbn=? WHERE id=?",
+                            (title, author, year, isbn, id))
+        self.connect.commit()
+        # self.connect.close()
 
-def delete(id):
-    connect = sqlite3.connect("book.db")
-    cursor = connect.cursor()
-    cursor.execute("DELETE FROM book WHERE id=?", (id,))
-    connect.commit()
-    connect.close()
-
-
-def delete_all():
-    connect = sqlite3.connect("book.db")
-    cursor = connect.cursor()
-    cursor.execute("DELETE FROM book")
-    connect.commit()
-    connect.close()
-
-
-def update(id, title, author, year, isbn):
-    connect = sqlite3.connect("book.db")
-    cursor = connect.cursor()
-    cursor.execute("UPDATE book SET title=?, author=?, year=?, isbn=? WHERE id=?", (title, author, year, isbn, id))
-    connect.commit()
-    connect.close()
-
-print(search())
+    def __del__(self):
+        self.connect.close()

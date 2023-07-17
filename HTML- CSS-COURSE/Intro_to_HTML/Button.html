@@ -1,0 +1,259 @@
+ <style>
+    button {
+        margin: 0 8px 15px 8px;
+        cursor: pointer;
+        transition: opacity 0.15s;
+    }
+    
+    button:active{
+        opacity: 1;
+    }
+    
+    .subs {
+        background-color: rgb(200, 00, 20);
+        color: white;
+        border: none;
+        height: 35px;
+        width: 105px;
+        border-radius: 7px;
+        padding: 1px 6px 1px 6px;
+    }
+
+    .join {
+        background-color: white;
+        color: rgb(44, 118, 211);
+        height: 35px;
+        width: 60px;
+        border-radius: 4px;
+        cursor: pointer;
+        border-color: rgb(41,118,211);
+        border-style: solid;
+        border-width: 2px;
+    }
+
+    .join:hover{
+        background-color: rgb(41,118,211);
+        opacity: 1;
+        border:none;
+        color: white;
+        transition: background-color 0.25s,
+        color 0.25s;
+    }
+
+    .Tweet {
+        background-color: rgb(26, 146, 221);
+        color: rgb(
+            245,
+            248,
+            250
+        );
+        border-radius: 25px;
+        border: none;
+        font-weight: 600;
+        font-size: 95%;
+        padding: 10px 20px;
+    }
+
+    .Request {
+        background-color: black;
+        color: white;
+        height: 40px;
+        width: 100;
+        font-size: 11.5;
+    }
+
+    .Request:hover{
+        opacity: 0.83;
+        box-shadow: none;
+        transition: opacity 0.15s;
+    }
+
+    .Cart {
+        width: 125px;
+        height: 32px;
+        border-radius: 25px;
+        border:none;
+        background-color: rgb(255, 216, 20)
+    }
+    
+    .Cart:hover{
+        background-color: rgb(246, 205, 5);
+        transition: background-color 0.15s;
+    }
+
+    .sign_up{
+        background-color: rgb(46,164,79);
+        width: 70px;
+        height: 32px;
+        border-radius: 5px;
+        border: none;
+        font-weight: bold;
+        color: white;
+    }
+    .sign_up:hover {
+        box-shadow: 1px 3.5px 0 0 rgba(0,0,0,0.25);
+        transition: box-shadow 0.125s;
+
+    }
+    .get_started{
+        height: 35px;
+        width: 100;
+        background-color: rgb(121, 82, 179);
+        color: white;
+        border:none;
+        border-radius: 4px;
+    }
+
+    .get_started:hover{
+        background-color: rgb(96, 41, 180);
+        transition: background-color 0.15s;
+    }
+    
+    .download {
+        height: 35px;
+        width: 100;
+        border-width: 1.2px;
+        border-radius: 3px;
+        font-weight: bold;
+    }
+    .download:hover {
+        height: 35px;
+        width: 100;
+        background-color: #6D747D;
+        color: white;
+        border: none;
+        border-radius: 3px;
+        font-weight: bold;
+    }
+
+
+    .Apply {
+        height: 45px;
+        width: 200;
+        border-radius: 20px;
+        background-color: rgb(10, 102, 194);
+        color: white;
+        border: none;
+        font-weight: bold;  
+    }
+    
+    .Apply:hover{
+        background-color: #014084;
+        transition: all 0.15s;
+    }
+
+    .Save {
+        height: 45px;
+        width: 90;
+        border-radius: 20px;
+        color: rgb(10, 102, 194);
+        border: 100;
+        border-color: rgb(10, 102, 194);
+        border-style: solid;
+        background-color: white;
+        font-weight: bolder;
+    }
+
+    .Save:hover{
+        background-color: #E2EEFF;
+        border-width: 3px;
+        transition: all 0.15s;
+    }
+    /* pagination */
+    .pagination {
+        margin-top: 10px;
+        margin-bottom: 20px;
+    }
+    .number {
+        background-color: white;
+        border: none;
+        padding: 0;
+    }
+    .number:hover{
+        color: orange;
+    }
+    .number:active {
+        color: #543777;
+        text-decoration: underline;
+    }
+
+    .direction {
+        padding: 8px;
+        cursor: pointer;
+    }
+
+    .stretch-button{
+        background-color: #008013;
+        color: white;
+        border: none;
+        padding: 10px 21px;
+    }
+
+    .stretch-button:hover{
+        padding: 18px 41px;
+        transition: padding 1s;
+    }
+
+    .shadow-button{
+        padding: 8px 16.5px;
+        background-color: #008013;
+        color: white;
+        box-shadow: 2px 3px rgba(0,0,0,0.25);
+        border: thin;
+    }
+
+    .shadow-button:active{
+        box-shadow: none;
+    }
+
+    .one-button,.two-button,.three-button{
+        background-color: #008013;
+        color: white;
+        border:none;
+        padding: 8px 13px;
+        margin-block: 2px;
+        display: inline-block;
+    }
+
+    .one-button:hover, .two-button:hover, .three-button:hover {
+        padding: 8px 20px;
+        transition: padding 0.15s;
+    }
+ </style>
+
+ <button class="Subs">SUBSCRIBE</button>
+ <button class="JOIN">JOIN</button>
+ <button class="Tweet">Tweet</button>
+ <br>
+
+ <button class="Request">Request now</button>
+ <button class="Cart">Add to Cart</button>
+ <button class="sign_up">Sign Up</button>
+ <br>
+ <button class="get_started">Get started</button>
+ <button class="download">Download</button>
+ <br>
+ <button class="Apply">Apply on company wesite</button>
+ <button class="Save">Save</button>
+ <br>
+ <br>
+ <div class="pagination"></div>
+    <button class="back-button direction">Back</button>
+    <button class="number">1</button>
+    <button class="number">2</button>
+    <button class="number">3</button>
+    <button class="number">4</button>
+    <button class="number">5</button>
+    <button class="next-button direction">Next</button>
+</div>
+<div class="stretch">
+    <button class="stretch-button">Stretch</button>
+</div>
+<div class="4k">
+    <button class="shadow-button">Shadow</button>
+</div>
+<div class="onetwothree">
+    <button class="one-button">One</button>
+    <button class="two-button">Two</button>
+    <button class="three-button">Three</button>
+</div>

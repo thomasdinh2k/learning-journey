@@ -1,0 +1,21 @@
+h1 {
+    margin-bottom: 0;
+    
+}
+
+p {
+    letter-spacing: 1px;
+}
+
+a {
+    color: black;
+}
+
+a:hover{
+    color: blueviolet;
+}
+
+* {
+    font-family: Montserrat;
+    text-align: center;
+}

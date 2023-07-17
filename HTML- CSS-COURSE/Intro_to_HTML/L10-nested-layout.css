@@ -1,0 +1,82 @@
+.e9f {
+    margin: 25px 10px;
+    box-shadow: 0 0px 7px rgba(0,0,0,0.4);
+    width: 200px;
+    font-family: 'Arial';
+    display: inline-block;
+}
+
+.e9f p{
+    padding-left: 10px;
+}
+
+.e9f .cat-name{
+    font-weight: bold;
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+.e9f .friend-count{
+    display: inline-block;
+    font-size: 80%;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding-left: 11px;
+    opacity: .6;
+}
+
+.friend-count p {
+    padding-top: 0;
+    margin: 0 0;
+    
+}
+
+.e9f img{
+    width: 200px;
+    height: 260px;
+}
+
+.e9f button {
+    margin-top: 16px;
+    margin-left: 10px;
+    background-color: #3875EA;
+    color: white;
+    font-weight:lighter;
+    border-radius: 3px;
+    border: none;
+    width: 120px;
+    height: 35px;
+    margin-bottom: 15px;
+    cursor: pointer;
+}
+
+.e9f button:hover{
+    background-color: #22488f;
+    transition: background-color 0.15s;
+}
+
+.e9f .friend-icon {
+    display: inline-block;
+}
+
+.e9f .friend-icon img {
+    height: 30px;
+    width: 30px;
+    border-radius: 50px
+}
+
+.mutual-friend-status{
+    background-color: red;
+    align-items: center;
+}
+
+.friend-icon{
+    margin-top: 6px;
+    margin-left: 6px;
+    margin-right: 0px;
+}
+
+.friend-count {
+    justify-content: center;
+    align-items: center;
+}

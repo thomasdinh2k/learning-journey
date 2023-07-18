@@ -1,0 +1,102 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Grid</title>
+    <link rel="stylesheet" href="L11-css-grid.css">
+</head>
+<body>
+    <div style="
+        display: grid;
+        grid-template-columns: 100px 100px;
+        ">
+        <div style="background-color: lightblue;">div1</div>
+        <div style="background-color: lightcoral;">div2<p>thomas-dinh</p></div>
+    </div>
+
+    <div style="
+        margin-top: 30px;
+        display: grid;
+        grid-template-columns: 100px 100px 250px;
+        ">
+        <div style="background-color: lightblue;">100px</div>
+        <div style="background-color: lightcoral;">100px<p>thomas-dinh</p></div>
+        <div style="background-color: lightgreen;">250px</div>
+        <div style="background-color: lightgreen;">o-250px</div>
+
+    </div>
+    
+    <div style="
+        margin-top: 30px;
+        display: grid;
+        grid-template-columns: 100px 1fr;
+        ">
+        <div style="background-color: lightblue;">100px</div>
+        <div style="background-color: lightcoral;">1fr</div>
+    </div>
+    
+    <div style="
+        margin-top: 30px;
+        display: grid;
+        grid-template-columns: 100px 1fr 1fr;
+        ">
+        <div style="background-color: lightblue;">100px</div>
+        <div style="background-color: lightcoral;">1fr</div>
+        <div style="background-color: lightblue;">100px</div>
+    </div>
+    
+    <div style="
+        margin-top: 30px;
+        display: grid;
+        grid-template-columns: 200px 75px;
+    ">
+        <div style="background-color: blue;">200px</div>
+        <div style="background-color: pink;">75px</div>
+    </div>
+
+    <div style="
+        margin-top: 30px;
+        display: grid;
+        grid-template-columns: 50px 1fr 75px;
+    ">
+        <div style="background-color: pink;">50px</div>
+        <div style="background-color: blue;">remainning space</div>
+        <div style="background-color: pink;">75px</div>
+    </div>
+    <h1 style="color: white; text-align:left">11c</h1>
+    
+    <div style="
+        margin-top: 10px;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        ">
+        <div style="background-color: pink; margin-right: 10px; margin-bottom: 10px;">col1</div>
+        <div style="background-color: pink; margin-right: 10px; margin-bottom: 10px;">col2</div>
+        <div style="background-color: pink; margin-right: 10px; margin-bottom: 10px;">col3</div>
+        <div style="background-color: pink; margin-right: 10px; margin-bottom: 10px;">col4</div>
+        
+        <div style="background-color: pink; margin-right: 10px;">col1</div>
+        <div style="background-color: pink; margin-right: 10px;">col2</div>
+        <div style="background-color: pink; margin-right: 10px;">col3</div>
+        <div style="background-color: pink; margin-right: 10px;">col4</div>
+    </div>
+    
+    <h1 style="color: white; text-align:left">11d</h1>
+    <div class="frame" style="
+        display: grid;
+        grid-template-columns: 200px 200px 200px;
+    ">
+        <div class="profile-picture" style="background-color: greenyellow;">Profile-picture</div>
+        <div class="profile-picture" style="background-color: greenyellow;">Profile-picture</div>
+        <div class="profile-picture" style="background-color: greenyellow;">Profile-picture</div>
+
+        
+    </div>
+    
+    <div class="below-part">
+        <div style="background-color: aqua;">below-part</div>
+        <div style="background-color: aqua;">below-part</div>
+        <div style="background-color: aqua;">below-part</div>
+    </div>
+</body>
+</html>

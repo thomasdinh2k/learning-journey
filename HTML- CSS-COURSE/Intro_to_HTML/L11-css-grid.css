@@ -1,0 +1,23 @@
+html {
+    background-color: black;
+    /* color: white; */
+}
+
+*{
+    text-align: center;
+
+}
+
+.profile-picture{
+    margin-right: 20px;
+    height: 150px;
+}
+
+.frame{
+    column-gap:20px;
+}
+
+.below-part {
+    display: grid;
+    grid-template-columns: 35px 1fr;
+}

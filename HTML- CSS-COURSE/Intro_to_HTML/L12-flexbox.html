@@ -1,0 +1,154 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flexbox Practice</title>
+    <link rel="stylesheet" href="L12-flexbox.css">
+</head>
+<body>
+    <div style="
+        display: flex;
+        flex-direction: row;
+        ">
+        <div style="background-color: lightblue;">div1</div>
+        <div style="background-color: lightpink;">div2</div>
+    </div>
+
+    <div style="
+        margin-top: 30px;
+        display: flex;
+        flex-direction: row;
+        ">
+        <div style="background-color: lightblue; width: 100px;">100px</div>
+        <div style="background-color: lightpink; flex: 1">flex: 1</div>
+    </div>
+    <h1>Justify: Center</h1>
+    <div class="header" style="
+        margin-top: 30px;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        ">
+        <div style="background-color: lightgreen; width: 100px;">100px</div>
+        <div style="background-color: lightblue; width: 100px;">100px</div>
+        <div style="background-color: lightpink; width: 100px;">100px</div>
+    </div>
+    
+    <h1>Space between</h1>
+    <div class="header" style="
+        margin-top: 30px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        ">
+        <div style="background-color: lightgreen; width: 100px;">100px</div>
+        <div style="background-color: lightblue; width: 100px;">100px</div>
+        <div style="background-color: lightpink; width: 100px;">100px</div>
+    </div>
+    
+    <h1>Align-item</h1>
+    <div class="header" style="
+        margin-top: 30px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        ">
+        <div style="background-color: lightgreen; width: 100px;">100px</div>
+        <div style="background-color: lightblue; width: 100px;">100px</div>
+        <div style="background-color: lightpink; width: 100px;">100px</div>
+    </div>
+    <h1>Extra Exercises (.aka homework)</h1>
+    <h2>12a. Create a flex-box with 2 items. Widths = 200px | 75px</h2>
+    <div class="12a" style="display: flex;">
+        <div style="background-color: lightblue; width: 200px;">200px</div>
+        <div style="background-color: lightcoral; width: 75px">75px</div>
+    </div>
+    <h2>12b. A flex-box with 3 items. Widths = 50px | remaining space | 75px</h2>
+    <div class="12b" style="display: flex;">
+        <div style="background-color: lightblue; width: 50px;">50px</div>
+        <div style="background-color: lightcoral; flex: 1;text-align: center;font-weight: bold;">Remaining Space</div>
+        <div style="background-color: lightblue; width: 75px;">75px</div>
+    </div>
+    <h2>12c. A flex-box with 4 items, spread evenly across the page</h2>
+    <div class="12c" style="display: flex; background-color: white; justify-content: space-between;">
+        <div style="background-color: lightsalmon; width: 50px;">Item 1</div>
+        <div style="background-color: lightsalmon; width: 50px;">Item 2</div>
+        <div style="background-color: lightsalmon; width: 50px;">Item 3</div>
+        <div style="background-color: lightsalmon; width: 50px;">Item 4</div>
+    </div>
+    <h2>12d. Create the flex-box with height = 50px and a red border</h2>
+    <div class="12a" style="display: flex; 
+        background-color: white; 
+        height: 50px; 
+        border-color:red;
+        border-style:solid;
+        border-width: 3px;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        ">
+        <div style="background-color: lightsalmon; width: 50px;">Item 1</div>
+        <div style="background-color: lightsalmon; width: 50px;">Item 2</div>
+    </div>
+    <h1 style="color:brown; border-bottom-style: solid;;">Challenge Exercises!</h1>
+    <h2>12e. Create this design</h2>
+    <div class="container">
+        <div class="flexbox">
+            <div>Home</div>
+            <div class="notifications">14</div>
+        </div>
+        <div class="flexbox">
+            <div>Notifications</div>
+            <div class="notifications">3</div>
+        </div>
+        <div class="flexbox">
+            <div>Messages</div>
+            <div class="notifications">5</div>
+        </div>
+    </div>
+
+    <h2>12g. Create this design</h2>
+    <div class="g-container">
+        <img class="profile-icon" src="https://pbs.twimg.com/media/Ez7bfwWWQAkgo2u.jpg">
+        <div class="champ-information">
+            <p class="champ-name">Brimstone</p>
+            <p class="champ-style">Controller</p>
+            <p class="champ-category">Also work @McDonnals</p>
+        </div>
+        <button class="follow-button">Play</button>
+    </div>
+    <div class="g-container">
+        <img class="profile-icon" src="https://valorantinfo.com/images/us/reyna_valorant_icon_3602.webp">
+        <div class="champ-information">
+            <p class="champ-name">Reyna</p>
+            <p class="champ-style">Duelist</p>
+            <p class="champ-category">Popular</p>
+        </div>
+        <button class="follow-button">Play</button>
+    </div>
+    <div class="g-container">
+        <img class="profile-icon" src="https://titles.trackercdn.com/valorant-api/agents/5f8d3a7f-467b-97f3-062c-13acf203c006/displayicon.png">
+        <div class="champ-information">
+            <p class="champ-name">Breach</p>
+            <p class="champ-style">Initiator</p>
+            <p class="champ-category">Popular</p>
+        </div>
+        <button class="follow-button">Play</button>
+    </div>
+    <h2>12f. Create this design</h2>
+    <div class="header">
+        <div class="left-section">
+            <button class="home-button">Home</button>
+        </div>
+        <div class="mid-section">
+            <input class="search-bar" placeholder="Search"></input>
+        </div>
+        <div class="right-section">
+            <button class="download-button">Download</button>
+        </div>
+    </div>
+
+
+</body>
+</html>

@@ -1,0 +1,226 @@
+html {
+    background-color: black;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0 0;
+    padding: 0 0;
+
+}
+
+h1 {
+    text-decoration: underline;
+    text-decoration-style: solid;
+    text-underline-offset: 8.5px;
+    /* border-bottom-style: solid;
+    border-bottom-color: white; */
+}
+
+h2 {
+    margin-bottom: 5px;
+    font-size: 20px;
+    font-weight: thin;
+}
+
+.flexbox-13a {
+    display: flex;
+    flex-direction: row;
+}
+
+.item1{
+    background-color: black;
+    
+}
+
+.column1{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    vertical-align: middle;
+    background-color: lightpink;
+    width: 100px;
+    height: 60px;
+}
+
+.column2{
+    background-color: lightblue;
+    width: 200px;
+    height: 60px;
+}
+
+/* Exercise 13b */
+
+.flexbox-13b{
+    display: flex;
+}
+
+.column2 > .row1{
+    color: black;
+}
+
+.row2-items{
+    background-color: black;
+}
+
+.flexbox-13b > .column2 > .row2 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;   
+}
+
+/* Exercise 13c */
+
+.container13c{
+    background-color: rgb(242, 242, 242);
+    color: black;
+    display: flex;
+    flex-direction: column;
+    font-family: Arial, Helvetica, sans-serif;
+    width: 400px;
+    border: none;
+    box-shadow: rgba(255, 255, 255, 0.761) 0px 2px 8px 0px;
+    border-radius: 5px;
+    padding: 10 15;
+    margin-top: 20;
+    margin-left: 20;
+}
+
+.inbox-label{
+    font-size: 14;
+    color: rgb(120, 120, 120);
+    margin-bottom: 20px;
+}
+
+.email{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.sender-picture-container {
+    margin-right: 10px;
+}
+
+
+.email-header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 3px;
+}
+
+.email-content{
+    flex: 1;
+}
+
+.profile-logo {
+    width: 50;
+    height: 50;
+    object-fit: cover;
+    border-radius: 25px;
+}
+
+.sender-name {
+    font-weight: bolder;
+    font-size: larger;
+    padding-bottom: 0;
+}
+
+.send-time{
+    font-size: 14px;
+    color:rgb(120, 120, 120);
+}
+
+.subject {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.message{
+    color: rgb(120, 120, 120)
+}
+
+body {
+    padding-bottom: 1000px;
+}
+
+.container13e {
+    display: flex;
+    flex-direction: row;
+    width: 420px;
+    margin-top: 10;
+    margin-left: 20;
+    background-color: white;
+    color: black;
+    box-shadow: rgba(255, 255, 255, 0.761) 0px 2px 8px 0px;
+    border-radius: 5px;
+    padding: 10 8;
+}
+
+.profile-picture-column{
+    margin-right: 10px;
+}
+
+.profile-picture{
+    width: 60;
+    height: 60;
+    border-radius: 30px;
+    object-fit: cover;
+}
+
+.tweet-column {
+    flex: 1;
+}
+
+.tweet-header{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 5px;
+}
+
+.tweet-author {
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+.tweet-author-handle{
+    color: rgb(111,111,111);
+}
+
+.tweet-content{
+    line-height: 20px;
+    margin-bottom: 15px;
+}
+
+.video-preview{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(200, 200, 200);
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.thumbnail-column {
+    width: 100px;
+    height: 100px;
+    background-color: rgb(220, 220, 220);
+    margin-right: 10px;
+}
+
+.video-info-column{
+    flex: 1;
+}
+
+.video-website{
+    color: rgb(111,111,111);
+    margin-bottom: 3px;
+}
+
+.video-title {
+    line-height: 22px;
+}

@@ -4,15 +4,16 @@ html {
     font-family: Arial, Helvetica, sans-serif;
     margin: 0 0;
     padding: 0 0;
-
 }
+
 
 h1 {
     text-decoration: underline;
     text-decoration-style: solid;
     text-underline-offset: 8.5px;
-    /* border-bottom-style: solid;
-    border-bottom-color: white; */
+    background-color: black;
+    position: fixed;
+    top: 0;
 }
 
 h2 {
@@ -22,7 +23,9 @@ h2 {
 }
 
 body {
-    height: 300px;
+    height: 3000px;
+    margin-top: 115px;
+    padding-left: 80px;
 }
 
 .container14a{

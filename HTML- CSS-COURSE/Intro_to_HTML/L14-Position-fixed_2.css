@@ -1,0 +1,31 @@
+body {
+    height: 3000px;
+}
+
+.right-sidebar {
+    background-color: green;
+    color: white;
+    position: fixed;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 100px;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.pop-up{
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    vertical-align: center;
+    width: 380px;
+}
+

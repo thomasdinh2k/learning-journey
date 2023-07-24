@@ -13,19 +13,48 @@ body {
 }
 
 .overlay {
+    background-color: rgba(0, 0, 0, 0.5);
     position: fixed;
     top: 0;
     bottom: 0;
     left: 0;
     right: 0;
-    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
+ 
 .pop-up{
+    background-color: white;
     display: flex;
     flex-direction: column;
-    background-color: white;
-    vertical-align: center;
-    width: 380px;
+    width: 360px;
+    height: 130px;
+    padding: 0 20;
+    margin-bottom: 0px;
+    border-radius: 8px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.pop-up {
+    padding-top: 20px;
+    
+}
+.pop-up > div, button{
+    font-family: Arial, Helvetica, sans-serif;
+    margin-bottom: 15px;
+}
+
+.pop-up > .modal-title {
+    font-size: 30;
+    font-weight: bolder;
+}
+
+.pop-up > button {
+    cursor: pointer;
+    padding-bottom: 0;
+    margin-bottom: 0;
+    width: 50px;
 }
 

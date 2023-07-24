@@ -1,0 +1,69 @@
+body {
+    height: 3000px;
+    background-color: gainsboro;
+    font-family: Arial;
+}
+
+.header, .left-part, .right-part {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-left: 20px;
+    margin-right: 20px;
+    
+}
+
+.left-part, .right-part {
+    align-items: center;
+}
+
+.profile-picture {
+    height: 40px;
+    width: 40px;
+    border-radius: 20px;
+    object-fit: cover;
+}
+
+.profile-name {
+    margin-left: 9;
+    font-weight: bold;
+    font-size: 15.5;
+}
+
+.profile-name-hastag{
+    font-size: 11px;
+    padding-left: 10px;
+    color:rgb(177, 173, 173);
+    font-style: italic;
+}
+
+.right-part > button {
+    width: 90px;
+    height: 35px;
+    /* font-size: 14; */
+    border-radius: 6px;
+    border: none;
+    font-weight: bold;
+    
+}
+
+.add-friend-button { 
+    margin-right: 5px;
+    background-color: rgb(24, 119, 242);
+    color: white;
+}
+
+.message-button {
+    padding: 8 12;
+    background-color: rgb(230, 230, 230);
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: white;
+    margin: 0;
+    height: 55px;
+}

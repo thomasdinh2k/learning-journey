@@ -3,7 +3,9 @@ body {
     margin: 0;
     height: 3000px;
     padding-top: 80px;
-    padding-left: 80px;
+    padding-left: 96px;
+    padding-right: 24px;
+    background-color: rgb(248,248,248);
 }
 p {
     margin-top: 0;
@@ -22,6 +24,7 @@ p {
     border-bottom-width: 1px;
     border-bottom-style: solid;
     border-bottom-color: rgb(228, 228, 228);
+    z-index: 1;
 }   
 
 .left-section{
@@ -95,6 +98,7 @@ p {
 }
 
 .search-button {
+    position: relative;
     margin-right: 10px;
     width: 66px;
     height: 40px;
@@ -103,6 +107,15 @@ p {
     border-style: solid;
     border-color:rgb(192, 192, 192);
     margin-left: -1px;
+}
+
+.search-button .tooltip{
+    position: absolute;
+    background-color: gray;
+    color: white;
+    padding: 4px;
+    border-radius: 2px;
+    font-size: 12px;
 }
 
 .upload-icon, .youtube-app-icon, .notification-icon {

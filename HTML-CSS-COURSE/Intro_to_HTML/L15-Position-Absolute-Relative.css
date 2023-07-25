@@ -166,5 +166,6 @@ h2 {
     padding: 10 15;
     background-color: white;
     font-weight: bold;
+    cursor: pointer;
 }
 

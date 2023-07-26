@@ -12,21 +12,39 @@
     <body>
         <div class="header">    
             <div class="left-section">
-                <img class="hamburger-menu" src="icons/hamburger-menu.svg">
+                <div class="hamburger-container">
+                    <img class="hamburger-menu" src="icons/hamburger-menu.svg">
+                    <div class="tooltip">Expand</div>
+                </div>
                 <img class="youtube-logo" src="icons/youtube-logo.svg" alt="youtube-logo">
             </div>
             <div class="middle-section">
-                <input type="text" class="search-bar" placeholder="Search">
+                <input type="text" class="search-bar" placeholder="Thomas Dinh - Basic HTML/CSS practice">
                 <button class="search-button"><img class="search-icon" src="icons/search.svg">
                     <div class="tooltip">Search</div>
                 </button>
-                <button class="voice-search-button"><img class="voice-search-icon" src="icons/voice-search-icon.svg"></button>
+                <button class="voice-search-button"><img class="voice-search-icon" src="icons/voice-search-icon.svg">
+                    <div class="tooltip">Search with your voice</div>
+                </button>
             </div>
             <div class="right-section">
-                <img src="icons/upload.svg" class="upload-icon">
-                <img src="icons/youtube-apps.svg" class="youtube-app-icon">
-                <img src="icons/notifications.svg" class="notification-icon">
-                <img src="https://yt3.ggpht.com/yti/AOXPAcUcQecODINVCVgZDzIM_-nf2Ndj_jmD_W_JFHk_9aY=s88-c-k-c0x00ffffff-no-rj-mo" alt="profile-icon" class="current-user-picture">
+                <div class="upload-icon-container">
+                    <img src="icons/upload.svg" class="upload-icon">
+                    <div class="tooltip">Create</div>
+                </div>
+                <div class="youtube-app-container">
+                    <img src="icons/youtube-apps.svg" class="youtube-app-icon">
+                    <div class="tooltip">More apps</div>
+                </div>
+                <div class="notification-icon-container">
+                    <img src="icons/notifications.svg" class="notification-icon">
+                    <button class="notifcations-number">69</button>
+                    <div class="tooltip">Notifications</div>
+                </div>
+                <div class="user-container">
+                    <img src="https://yt3.ggpht.com/yti/AOXPAcUcQecODINVCVgZDzIM_-nf2Ndj_jmD_W_JFHk_9aY=s88-c-k-c0x00ffffff-no-rj-mo" alt="profile-icon" class="current-user-picture">
+                    <div class="tooltip">Hello, Thomas Dinh!</div>
+                </div>
             </div>
         </div>
         
@@ -70,7 +88,19 @@
 
                 <div class="info-container">
                     <div class="channel-logo">
-                        <img src="https://media.istockphoto.com/id/1454186568/vector/photo-coming-soon-no-photo-symbol-no-thumbnail-available-default-thumbnail-available-photo.jpg?s=612x612&w=0&k=20&c=StTpRk4EcrWT2Wf1WdFVsvtw-BoegbQ6KyvixJfBwr0=">
+                        <div class="channel-logo-container">
+                            <img src="https://yt3.ggpht.com/ytc/AOPolaRu3zcJ4_fybe-8GJUmrGzc2S6xYsxw0HgMnfnI=s48-c-k-c0x00ffffff-no-rj">
+                            <div class="channel-info-popup">
+                                <div class="pop-up-left">
+                                    <img src="https://yt3.ggpht.com/ytc/AOPolaRu3zcJ4_fybe-8GJUmrGzc2S6xYsxw0HgMnfnI=s48-c-k-c0x00ffffff-no-rj" alt="">    
+                                </div>
+                                <div class="pop-up-right">
+                                    <div class="pop-up-channel-name">SuperSimpleDev</div>
+                                    <div class="pop-up-channel-stats">15M subscriber</div>
+                                    <button>Subscribe</button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="video-information">
                         <p class="video-title">How to put an HTML Website online (on the internet)</p>
@@ -88,7 +118,19 @@
 
                 <div class="info-container">
                     <div class="channel-logo">
-                        <img src="https://yt3.ggpht.com/ytc/AOPolaQXm08zjvxHI9Xy5N-1FdojUReYtmN5kX6y0wxRRw=s68-c-k-c0x00ffffff-no-rj">
+                        <div class="channel-logo-container">
+                            <img src="https://yt3.ggpht.com/ytc/AOPolaQXm08zjvxHI9Xy5N-1FdojUReYtmN5kX6y0wxRRw=s68-c-k-c0x00ffffff-no-rj">
+                            <div class="channel-info-popup">
+                                <div class="pop-up-left">
+                                    <img src="https://yt3.ggpht.com/ytc/AOPolaQXm08zjvxHI9Xy5N-1FdojUReYtmN5kX6y0wxRRw=s68-c-k-c0x00ffffff-no-rj" alt="">    
+                                </div>
+                                <div class="pop-up-right">
+                                    <div class="pop-up-channel-name">asmr zeitgeist</div>
+                                    <div class="pop-up-channel-stats">1M subscriber</div>
+                                    <button>Subscribe</button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="video-information">
                         <p class="video-title">ASMR ICE TRIGGERS to Cool You Down! Chill Sounds for Relaxation, Sleep and Tingles (No Talking)</p>
@@ -106,12 +148,24 @@
 
                 <div class="info-container">
                     <div class="channel-logo">
-                        <img src="https://yt3.ggpht.com/ytc/AOPolaQDgLKM_5Yd0zVWk92Mg_SgOVxFB1FEvGYAs2CFHQ=s68-c-k-c0x00ffffff-no-rj">
+                        <div class="channel-logo-container">
+                            <img src="https://yt3.ggpht.com/ytc/AOPolaQDgLKM_5Yd0zVWk92Mg_SgOVxFB1FEvGYAs2CFHQ=s68-c-k-c0x00ffffff-no-rj">
+                            <div class="channel-info-popup">
+                                <div class="pop-up-left">
+                                    <img src="https://yt3.ggpht.com/ytc/AOPolaQDgLKM_5Yd0zVWk92Mg_SgOVxFB1FEvGYAs2CFHQ=s68-c-k-c0x00ffffff-no-rj" alt="">    
+                                </div>
+                                <div class="pop-up-right">
+                                    <div class="pop-up-channel-name">[ASMR]nara_나라</div>
+                                    <div class="pop-up-channel-stats">650K subscriber</div>
+                                    <button>Subscribe</button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="video-information">
-                        <p class="video-title">ASMR Deep and stimulating competition to clean ears of twins. (Choose your preference) by [ASMR]nara_나라</p>
-                        <p class="channel-name">SuperSimpleDev</p>
-                        <p class="view-count">726 views • 1 year ago</p>
+                        <p class="video-title">ASMR Deep and stimulating competition to clean ears of twins. (Choose your preference)</p>
+                        <p class="channel-name">[ASMR]nara_나라</p>
+                        <p class="view-count">750K views • 2 weeks ago</p>
                     </div>
                 </div>
             </div>

@@ -3,55 +3,127 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Boolean</title>
+    <link rel="stylesheet" href="06-boolean.css">
     <script>
-        let result = '#NA';
-
-        function updateResult() {
-            document.querySelector('.result-display').innerHTML = result;
+        function updateResult(value, containerID) {
+            document.getElementById(containerID).innerHTML = value;
         }
     </script>
 </head>
-<body>
+<body style="background-color: rgb(30, 30, 30); color: white;">
     <div class="screen">
-        <h1>Number display machine</h1>
-        <div style="
-            font-size: 45px;
-            font-family: Arial, Helvetica, sans-serif;
-            font-weight: 900;
-            margin-bottom: 20px;
-            border: 2.5px solid black;
-            padding: 10px 10px;
-            width: 250px;
-        " class="result-display">
+        <h1>Exercise 6b</h1>
+        <div class="result-screen" id="6b">
             <script type="text/javascript">document.write(result);</script>
         </div>
     </div>
-    <div class="keyboard">
-        <button class="b1" onclick="
-            result += '1';
-            console.log(result);
-            updateResult();
-            ">1</button>
-        <button onclick="
-            result += '2';
-            console.log(result);
-            updateResult();
-        ">2</button>
-        <button onclick="
-            result += '3';
-            console.log(result);
-            updateResult();
-        ">3</button>
-        <button onclick="
-            result += '4';
-            console.log(result);
-            updateResult();
-        ">4</button>
-        
-        <button onclick="
-            result = '  ';
-            updateResult();
-        ">AC</button>
+    <script>
+        let name = "Thomas";
+        let hour = 15;
+        if (hour > 6 && hour < 12) {
+            updateResult(`Good morning ${name}`,'6b');
+        } else if (13 < hour && hour < 17) {
+            updateResult(`Good afternoon, ${name}`,'6b');
+        } else if (hour == 0 || hour == "") {
+            updateResult("Updating!",'6b');
+        } else {
+            updateResult(`Goodnight! ${name}`)
+        }
+        </script>
+    <h1>Exercise 6d</h1>
+    <div class="result-screen" id="6d">
+        <script type="text/javascript">document.write(result);</script>
     </div>
+    <script>
+        let age = 5;
+        const isHoliday = true;
+        if (((age <= 6 && age > 0) || age >= 65) && isHoliday == false){
+            updateResult("Eligible", '6d');
+        } else {
+            updateResult("Non discount eligible", '6d')
+        }
+    </script>
+    <h1>Exercise 6f - Coin Flip Display</h1>
+    <div class="result-screen" id="6f">
+        <script type="text/javascript">document.write(result);</script>
+    </div>
+    <script>
+        function getRandomNumber(){
+            return Math.floor(Math.random() * 10);
+        }
+        x = getRandomNumber();
+        // const result = x > 5 ? `${x} - true` : `${x} - false`
+        // updateResult(result, '6f')
+        if (x > 5) {
+            updateResult(`${x} - tails`,'6f');
+        } else if (x == 0) {
+            updateResult("Even","6f");
+        } else {
+            updateResult(`${x} - heads`, '6f');
+        }
+    </script>
+
+    <!-- Rock // Paper // Scissors -->
+    <h1>Exercise 0 - Rock // Paper // Scissors </h1>
+    <div class="result-screen" id="playerChoiceResult">
+        <script type="text/javascript">document.write(result);</script>
+    </div>
+    <div class="Buttons">
+        <button id="playerChoice" class="rock" onclick="
+                handlePlayerChoice('Rock');
+                handleComputerChoice();
+            ">Rock</button>
+        <button class="paper" onclick="
+                handlePlayerChoice('Paper');
+                handleComputerChoice();
+                ">Paper</button>
+        <button class="scissors" onclick="
+                handlePlayerChoice('Scissors')
+                handleComputerChoice();
+                ">Scissors</button>
+        <div id="computerChoiceResult" class="result-screen">
+            <script type="text/javascript">document.write(result);</script>
+        </div>
+        <div class="result-container">
+            <div class="result-bar">RESULT</div>
+            <div class="info-container">
+                <div class="left-part">
+                    <div class="player-score">
+                        <div class="name">PLAYER</div>
+                        <div class="score">0</div>
+                    </div>
+                    <div class="computer-score">
+                        <div class="name">COMPUTER</div>
+                        <div class="score">0</div>
+                    </div>
+                </div>
+                <div class="right-part">
+                    <div class="player-won">PLAYER WON</div>
+                    <div class="computer-won">COMPUTER WON</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        function handleComputerChoice(){
+            let computerChoice
+            x = Math.floor(Math.random() * 3 + 1);
+            if (x == 1) {
+                updateResult(`Computer choice: Rock`, "computerChoiceResult");
+                computerChoice = 'Rock';
+            } else if (x == 2) {
+                updateResult(`Computer choice: Paper`, "computerChoiceResult");
+                computerChoice = 'Paper';
+            } else {
+                computerChoice = 'Scissors';
+                updateResult(`Computer choice: Scissors`, "computerChoiceResult");
+            }
+        }
+        function handlePlayerChoice(choice) {
+            playerChoice = choice;
+            updateResult(`Player choice: ${playerChoice}`, "playerChoiceResult" )
+        }
+        
+    </script>
 </body>
 </html>

@@ -70,43 +70,57 @@
     </div>
     <div class="Buttons">
         <button id="playerChoice" class="rock" onclick="
-                handlePlayerChoice('Rock');
                 handleComputerChoice();
+                handlePlayerChoice('Rock');
+                handleResult();
             ">Rock</button>
         <button class="paper" onclick="
-                handlePlayerChoice('Paper');
                 handleComputerChoice();
+                handlePlayerChoice('Paper');
+                handleResult();
                 ">Paper</button>
         <button class="scissors" onclick="
-                handlePlayerChoice('Scissors')
                 handleComputerChoice();
+                handlePlayerChoice('Scissors');
+                handleResult();
                 ">Scissors</button>
         <div id="computerChoiceResult" class="result-screen">
             <script type="text/javascript">document.write(result);</script>
         </div>
         <div class="result-container">
-            <div class="result-bar">RESULT</div>
+            <div class="result-bar">
+                <div class="result-bar-left">RESULT</div>
+                <div class="result-bar-right" onclick="
+                    reset();
+                    updateResult(`RESET`, 'announcement');
+                ">RESET</div>
+            </div>
             <div class="info-container">
                 <div class="left-part">
                     <div class="player-score">
                         <div class="name">PLAYER</div>
-                        <div class="score">0</div>
+                        <div class="score" id="playerScore">
+                            <script type="text/javascript">document.write(result);</script>
+                        </div>
                     </div>
                     <div class="computer-score">
                         <div class="name">COMPUTER</div>
-                        <div class="score">0</div>
+                        <div class="score" id="computerScore">
+
+                        </div>
                     </div>
                 </div>
                 <div class="right-part">
-                    <div class="player-won">PLAYER WON</div>
-                    <div class="computer-won">COMPUTER WON</div>
+                    <div class="announcement" id="announcement">
+                        <script type="text/javascript">document.write(result);</script>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
     <script>
+        let computerChoice;
         function handleComputerChoice(){
-            let computerChoice
             x = Math.floor(Math.random() * 3 + 1);
             if (x == 1) {
                 updateResult(`Computer choice: Rock`, "computerChoiceResult");
@@ -122,6 +136,35 @@
         function handlePlayerChoice(choice) {
             playerChoice = choice;
             updateResult(`Player choice: ${playerChoice}`, "playerChoiceResult" )
+        }
+        let playerScore = 0;
+        let computerScore = 0;
+        
+        function handleResult() {
+            if ((playerChoice == 'Rock' && computerChoice == 'Scissors' ) ||
+             (playerChoice == 'Paper' && computerChoice == 'Scissors') || 
+             (playerChoice == 'Scissors' && computerChoice == 'Paper')) {
+                console.log("Player wins!");
+                updateResult("PLAYER WON", "announcement");
+                playerScore ++;
+                updateResult(playerScore, 'playerScore');
+                updateResult(computerScore, 'computerScore');
+            } else if (playerChoice == computerChoice) {
+                updateResult("DRAW", "announcement");
+            } else {
+                console.log("Computer wins!");
+                updateResult("COMPUTER WON", "announcement");
+                computerScore ++;
+                updateResult(computerScore, 'computerScore');
+                updateResult(playerScore, 'playerScore');
+            }
+        }
+        
+        function reset(){
+            playerScore = 0;
+            computerScore = 0;
+            updateResult(computerScore, 'computerScore');
+            updateResult(playerScore, 'playerScore');
         }
         
     </script>

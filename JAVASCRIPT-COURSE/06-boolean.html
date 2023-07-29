@@ -166,7 +166,69 @@
             updateResult(computerScore, 'computerScore');
             updateResult(playerScore, 'playerScore');
         }
-        
+    </script>
+
+    <h1>Challenge Exercise</h1>
+    <div class="result-screen" id="cartResult">
+        <script type="text/javascript">document.write(result);</script>
+    </div>
+    <button onclick="
+      updateResult(`Cart quantity: ${cartQuantity}`, 'cartResult');
+    ">Show Quantity</button>
+
+    <button onclick="
+      updateCart(1);
+    ">Add to Cart</button>
+
+    <button onclick="
+      updateCart(2);
+    ">+2</button>
+
+    <button onclick="
+      updateCart(3);
+    ">+3</button>
+
+    <button onclick="
+      updateCart(4);
+      
+    ">+4</button>
+
+    <button onclick="
+      updateCart(5);
+    ">+5</button>
+
+    <!-- vvv This code was changed. vvv -->
+    <button onclick="
+      updateCart(-1)
+      ">Remove from cart</button>
+
+    <button onclick="
+      updateCart(-2);
+    ">-2</button>
+
+    <button onclick="
+      updateCart(-3);
+    ">-3</button>
+    <!-- ^^^ This code was changed. ^^^ -->
+
+    <button onclick="
+      cartQuantity = 0;
+      console.log('Cart was reset.');
+      updateResult(`CART RESET`, 'cartResult');
+    ">Reset Cart</button>
+
+    <script>
+      let cartQuantity = 0;
+      function updateCart(number) {
+        if ((cartQuantity + number) < 0) {
+            updateResult(`NOT ENOUGH ITEM IN THE CART`, 'cartResult');
+        } else if ((cartQuantity + number) > 10){
+            updateResult(`CAN'T PERFORM ACTION! CART IS FULL`, 'cartResult');
+        } else {
+            cartQuantity += number;
+            updateResult(`CART: ${cartQuantity}`, 'cartResult');
+        }
+      }
     </script>
 </body>
 </html>

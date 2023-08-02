@@ -11,7 +11,24 @@
         <div class="result-screen" id="demo">
             <script type="text/javascript">document.write(result);</script>
         </div>
-        
+        <h2>Instrument</h2>
+        <div class="prompt">Please choose an instrument</div>
+        <div class="instrument-container">
+            <button onclick="play_sound(trumpet);">Trumpet 🎺</button>
+            <button onclick="play_sound(saxophone)">Saxophone 🎷</button>
+            <button onclick="play_sound(trombone)">Trombone 🎶</button>
+            <button onclick="play_sound(violin);">Violin 🎻 </button>
+            <button onclick="play_sound(clarinet);">Clarinet 🎼</button>
+            <button onclick="play_sound(guitar);">Guitar 🎸</button>
+            <button onclick="play_sound(drum);">Drum 🥁</button>
+            <button onclick="play_sound(piano);">Piano 🎹</button>
+        </div>
+        <div>
+            <button class="Reset-button" onclick="updateResult(``,'Instrument')">Reset</button>
+        </div>
+        <div class="result-screen" id="Instrument">
+            <script type="text/javascript">document.write(result);</script>
+        </div>
     </div>
     <script src="08-object.js"></script>
 </body>

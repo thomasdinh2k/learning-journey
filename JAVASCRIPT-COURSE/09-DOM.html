@@ -4,13 +4,246 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dom</title>
     <link rel="stylesheet" href="06-boolean.css">
+    
 </head>
 <body style="background-color: rgb(30, 30, 30); color: white;">
-    <p>Youtube Subscribe Button</p>
-    <button class="js-subscribe-button" onclick="subscribe();">Subscribe</button>
+    <h1>Lesson 9 Exercises - Document Object Model (DOM)</h1>
+    <h2>Exercise 9a</h2>
+    <button class="button-9a" onclick="console.log(document.querySelector('.button-9a').innerHTML);">9a</button>
+    <button class="button-9b">9b</button>
+    <h2>Exercise 9b</h2>
+    <button class="button-head" onclick="headAndTail('Head');">Head</button>
+    <button class="button-tail" onclick="headAndTail('Tails')">Tails</button>
+    <p class="result-9b"></p>
+    <h2>Exercise 9c</h2>
+    <input class="name-input" placeholder="Enter your name...">
+    <button class="js-submit-button" onclick="sayYourName();">Submit</button>
+    <p class="result-9c"></p>
+    <table style=" border: 1px solid #333;    
+    ">
+        <thead style="background-color: #333; color: #fff">
+            <tr>
+                <th colspan="2">Amazon Shipping Calculator</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Item < $40</td>
+                <td>+ $10 shipping</td>
+            </tr>
+            <tr>
+                <td>Item > $40</td>
+                <td>FREE Shipping</td>
+            </tr>
+        </tbody>
+    </table>
+    <input placeholder="Enter Item Price..." style="margin-top: 3px;" class="js-input-field" onkeyup="handleCostKeydown();">
+    <button onclick="calculateTotal();">Calculate</button>
+    <button onclick="resetTotal();">Reset</button>
+    <p class="js-total"></p>
+
     <script>
-        
+        // const inputValue = document.querySelector(".js-input-field").innerHTML;
+        function calculateTotal(){
+            let inputValue = Number(document.querySelector(".js-input-field").value);
+            if (inputValue > 40){
+                document.querySelector(".js-total")
+                .innerHTML = `$${(inputValue)} | FREE SHIPPING`;
+            } else if ((inputValue < 40) && (inputValue > 0)) {
+                console.log(inputValue);
+                console.log(typeof(inputValue));
+                inputValue += 10;
+                console.log(inputValue);
+                console.log(typeof(inputValue))
+                document.querySelector(".js-total")
+                .innerHTML = `$${String(parseFloat(inputValue).toPrecision(4))}`;
+            } else {
+                document.querySelector(".js-total").innerHTML = ' ';
+            }
+        }
+        function handleCostKeydown() {
+                console.log(event.key);
+            if (event.key == 'Enter') {
+                calculateTotal();
+            }
+        }
+        function resetTotal(){
+            document.querySelector(".js-total").innerHTML = 'RESET';
+        }
+
+        window.console.log('Hello World')
     </script>
+    <h2>Exercise 9h</h2>
+    <input class="word-input" onkeyup="
+       repeat();
+    ">
+    <p style="color: white;" class="result-9h"></p>
+
+    <h2>Exercise 9i</h2>
+    <button onclick="
+      console.log(`Cart quantity: ${cartQuantity}`);
+    ">Show Quantity</button>
+
+    <button onclick="
+      updateCartQuantity(1);
+    ">Add to Cart</button>
+
+    <button onclick="
+      updateCartQuantity(2);
+    ">+2</button>
+
+    <button onclick="
+      updateCartQuantity(3);
+    ">+3</button>
+
+    <button onclick="
+      updateCartQuantity(4);
+    ">+4</button>
+
+    <button onclick="
+      updateCartQuantity(5);
+    ">+5</button>
+
+    <button onclick="
+      updateCartQuantity(-1);
+    ">Remove from cart</button>
+
+    <button onclick="
+      updateCartQuantity(-2);
+    ">-2</button>
+
+    <button onclick="
+      updateCartQuantity(-3);
+    ">-3</button>
+
+    <button onclick="
+      cartQuantity = 0;
+      console.log('Cart was reset.');
+      console.log(`Cart quantity: ${cartQuantity}`);
+      showCartQuantity(cartQuantity);
+    ">Reset Cart</button>
+
+    <p class="result-9i"></p>
+    <script>
+      let cartQuantity = 0;
+
+      function updateCartQuantity(change) {
+        cartQuantity += change;
+        console.log(`Cart quantity: ${cartQuantity}`);
+        showCartQuantity(cartQuantity);
+        
+      }
+    </script>
+
+    <h2>Exercise 9j</h2>
+    <p class="result-9j"></p>
+    <p>
+        <button onclick="
+          updateCalculation('1');
+        ">1</button>
+  
+        <button onclick="
+          updateCalculation('2');
+        ">2</button>
+  
+        <button onclick="
+          updateCalculation('3');
+        ">3</button>
+  
+        <button onclick="
+          updateCalculation(' + ');
+        ">+</button>
+      </p>
+  
+      <p>
+        <button onclick="
+          updateCalculation('4');
+        ">4</button>
+  
+        <button onclick="
+          updateCalculation('5');
+        ">5</button>
+  
+        <button onclick="
+          updateCalculation('6');
+        ">6</button>
+  
+        <button onclick="
+          updateCalculation(' - ');
+        ">-</button>
+      </p>
+  
+      <p>
+        <button onclick="
+          updateCalculation('7');
+        ">7</button>
+  
+        <button onclick="
+          updateCalculation('8');
+        ">8</button>
+  
+        <button onclick="
+          updateCalculation('9');
+        ">9</button>
+  
+        <button onclick="
+          updateCalculation(' * ');
+        ">*</button>
+      </p>
+  
+      <p>
+        <button onclick="
+          updateCalculation('0');
+        ">0</button>
+  
+        <button onclick="
+          updateCalculation('.');
+        ">.</button>
+  
+        <button onclick="
+          calculation = eval(calculation);
+          console.log(calculation);
+          showResult(calculation);
+          // Remember to save the calculation here.
+          localStorage.setItem('calculation', calculation);
+        ">=</button>
+  
+        <button onclick="
+          updateCalculation(' / ');
+        ">/</button>
+      </p>
+  
+      <p>
+        <button onclick="
+          calculation = '';
+          console.log(calculation);
+  
+          // Remember to save the calculation here.
+          localStorage.setItem('calculation', calculation);
+          showResult(`AC`);
+        ">Clear</button>
+      </p>
+  
+      <script>
+        let calculation = localStorage.getItem('calculation') || '';
+  
+        function updateCalculation(value) {
+          calculation += value;
+          console.log(calculation);
+          localStorage.setItem('calculation', calculation);
+          showResult(calculation);
+
+        }
+  
+        // Optional: you can also create a function in order
+        // to reuse this code.
+        function saveCalculation() {
+          localStorage.setItem('calculation', calculation);
+          showResult(calculation);
+        }
+      </script>
+
+
     <script src="09-DOM.js"></script>
 </body>
 </html>

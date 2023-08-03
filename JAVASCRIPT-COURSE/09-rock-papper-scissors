@@ -47,8 +47,9 @@
             </tr>
         </tbody>
     </table>
-    <input placeholder="Enter Item Price..." style="margin-top: 3px;" class="js-input-field" onkeydown="calculateTotal();">
+    <input placeholder="Enter Item Price..." style="margin-top: 3px;" class="js-input-field" onkeyup="handleCostKeydown();">
     <button onclick="calculateTotal();">Calculate</button>
+    <button onclick="resetTotal();">Reset</button>
     <p class="js-total"></p>
 
     <script>
@@ -58,12 +59,25 @@
             if (inputValue > 40){
                 document.querySelector(".js-total")
                 .innerHTML = `$${inputValue} | FREE SHIPPING`;
-            } else if (inputValue < 40) {
+            } else if ((inputValue < 40) && (inputValue > 0)) {
                 inputValue += 10;
                 document.querySelector(".js-total")
                 .innerHTML = `$${inputValue}`;
+            } else {
+                document.querySelector(".js-total").innerHTML = ' ';
             }
         }
+        function handleCostKeydown() {
+                console.log(event.key);
+            if (event.key == 'Enter') {
+                calculateTotal();
+            }
+        }
+        function resetTotal(){
+            document.querySelector(".js-total").innerHTML = 'RESET';
+        }
+
+        window.console.log('Hello World')
     </script>
 
     <script>

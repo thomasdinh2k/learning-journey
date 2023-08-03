@@ -2,20 +2,21 @@
 <html>
   <head>
     <title>Rock Paper Scissors</title>
+    <link rel="stylesheet" href="09-rock-papper-scissors.css">
   </head>
   <body>
-    <p>Rock Paper Scissors</p>
-    <button onclick="
+    <h1>Rock Paper Scissors</h1>
+    <button class="rock-button" onclick="
       playGame('rock');
-    ">Rock</button>
+    "><img src="Image/rock-emoji.png"></button>
 
-    <button onclick="
+    <button class="paper-button" onclick="
       playGame('paper');
-    ">Paper</button>
+    "><img src="Image/paper-emoji.png"></button>
 
-    <button onclick="
+    <button class="scissors-button" onclick="
       playGame('scissors');
-    ">Scissors</button>
+    "><img src="Image/scissors-emoji.png"></button>
 
     <p class="js-result"></p>
     <p class="js-move"></p>
@@ -29,56 +30,6 @@
       updateScoreElement();
     " style="margin-bottom: 20px;">Reset Score</button>
 
-    <table style=" border: 1px solid #333;    
-    ">
-        <thead style="background-color: #333; color: #fff">
-            <tr>
-                <th colspan="2">Amazon Shipping Calculator</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Item < $40</td>
-                <td>+ $10 shipping</td>
-            </tr>
-            <tr>
-                <td>Item > $40</td>
-                <td>FREE Shipping</td>
-            </tr>
-        </tbody>
-    </table>
-    <input placeholder="Enter Item Price..." style="margin-top: 3px;" class="js-input-field" onkeyup="handleCostKeydown();">
-    <button onclick="calculateTotal();">Calculate</button>
-    <button onclick="resetTotal();">Reset</button>
-    <p class="js-total"></p>
-
-    <script>
-        // const inputValue = document.querySelector(".js-input-field").innerHTML;
-        function calculateTotal(){
-            let inputValue = Number(document.querySelector(".js-input-field").value);
-            if (inputValue > 40){
-                document.querySelector(".js-total")
-                .innerHTML = `$${inputValue} | FREE SHIPPING`;
-            } else if ((inputValue < 40) && (inputValue > 0)) {
-                inputValue += 10;
-                document.querySelector(".js-total")
-                .innerHTML = `$${inputValue}`;
-            } else {
-                document.querySelector(".js-total").innerHTML = ' ';
-            }
-        }
-        function handleCostKeydown() {
-                console.log(event.key);
-            if (event.key == 'Enter') {
-                calculateTotal();
-            }
-        }
-        function resetTotal(){
-            document.querySelector(".js-total").innerHTML = 'RESET';
-        }
-
-        window.console.log('Hello World')
-    </script>
 
     <script>
       let score = JSON.parse(localStorage.getItem('score')) || {

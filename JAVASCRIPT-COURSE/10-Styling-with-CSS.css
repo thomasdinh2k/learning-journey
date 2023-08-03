@@ -1,3 +1,8 @@
+.caution {
+    color: red;
+}
+
+
 .gaming-button {
     background-color: rgb(236, 234, 234);
     color: rgb(101, 99, 99);
@@ -23,6 +28,23 @@ button {
     margin-bottom: 10px;
 }
 
-/* .active {
-    background-color: brown;
-} */
+.calculator-button{
+    width: 60px;
+    height: 60px;
+    border-radius: 60px;
+    background-color: rgb(51,51,51);
+    color: white;
+    border: none;
+    margin-right: 5px;
+    font-size: 26px;
+}
+
+.clear-button {
+    font-size: 17px;
+    padding: 10px;
+}
+
+.orange-button {
+    background-color: rgb(254, 160, 10);
+    color: white;
+}

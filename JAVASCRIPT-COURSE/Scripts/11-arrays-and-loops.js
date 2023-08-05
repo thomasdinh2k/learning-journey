@@ -156,17 +156,18 @@ function findIndex(array, word) {
     for (let index = 0; index < array.length; index++) {
         if (array[index] == word) {
             wordIndex = index;
+            flag = 1;
         }
     }
-    if (wordIndex == 0) {
+    if (flag == 0) {
         console.log(-1);
-        flag = -1
-        return flag
+        return -1
     } else {
         console.log(wordIndex)
+        return wordIndex
     }
 }
-
+console.log("11q")
 findIndex(['green', 'red', 'blue', 'red'], 'red');
 findIndex(['green', 'red', 'blue', 'red'], 'yellow');
 
@@ -248,15 +249,24 @@ addLog(resultFizz)
 // 11w
 
 function findUnique(array) {
-    let returnArr = []
-    addLog(findIndex(['green', 'red', 'blue', 'red'],'red'))
+    let returnArr = [];
+    addLog('11w');
     for (let i = 0; i < array.length; i++) {
-        if (!(findIndex(array, array[i]) == -1)) {
-            returnArr.push(array[i])
+        console.log(`Working on ${array[i]}`)
+        if (findIndex(returnArr, array[i]) == -1 ) {
+            console.log(`Can't find ${array[i]}`);
+            returnArr.push(array[i]);
+        } else {
+            console.log(`Already found ${array[i]} at ${findIndex(returnArr,array[i])}, skip!`);
+            
         }
+        console.log(returnArr)
     }
-    addLog(returnArr)
+addLog(returnArr)
 }
 
+console.log('11w');
 
 findUnique(['green', 'red', 'blue', 'red']);
+findUnique(['red', 'green', 'green', 'red']);
+findUnique(['red', 'red', 'red', 'blue', 'green', 'green', 'blue'])

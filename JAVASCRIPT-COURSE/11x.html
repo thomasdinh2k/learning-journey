@@ -4,14 +4,73 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Todo List</title>
     <link rel="stylesheet" href="Style/11x.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 </head>
 <body>
-    <h2>Todo List Practice 1</h2>
-    <input type="text" placeholder="Todo name" class="input-field" onkeydown="handleKeyDown(event)">
-    <input type="date" placeholder="dd-mm-yyyy">
-    <button class="add-button" onclick="todoAction();">Add</button>
-    <button class="view-all" onclick="viewALL();">View All</button>
-    <div class="listOfTodo"></div>
+    <h2 class="Good-morning">Good morning, Thomas<span class="dot">!</span></h2>
+    <h2 class="Quote">Be so good so no one can ignore you</h2>
+    <div class="today-bar">
+        <div class="left-part">
+            <div class="weekday">WED</div>
+            <div class="date">16</div>
+            <div class="month">November</div>
+        </div>
+        <div class="right-part">
+            <div class="today-task">
+                <img src="https://img.icons8.com/?size=512&id=86524&format=png">
+                <div class="today-task-time">08:30 AM - 6:45 PM</div>
+                <div class="today-task-name">Brush Teeth</div>
+            </div>
+            <div class="today-task">
+                <img src="https://img.icons8.com/?size=512&id=86524&format=png">
+                <div class="today-task-time">08:30 AM - 6:45 PM</div>
+                <div class="today-task-name">Wash Face</div>
+            </div>
+            <div class="today-task">
+                <img src="https://img.icons8.com/?size=512&id=86524&format=png">
+                <div class="today-task-time">08:30 AM - 6:45 PM</div>
+                <div class="today-task-name">Have Fun</div>
+            </div>
+            
+        </div>
+    </div>
+    <!-- Input -->
+    <div class="input-container">
+        <div class="input-boxes">
+            <input type="text" placeholder="Todo name" class="input-field" onkeydown="handleKeyDown(event)">
+            <input type="date" placeholder="mm-dd-yyyy" class="input-date">
+        </div>
+        <div class="buttons-container">
+            <div class="add-button-container">
+                <button class="add-button" onclick="todoAction();">
+                    <img src="https://img.icons8.com/?size=512&id=QADawoQS3Rcg&format=png" class="icon">
+                    <div>
+                        <div class="text">Add</div>
+                    </div>
+                </button>
+            </div>
+            <div class="view-all-button-container">
+                <button class="view-all" onclick="viewALL();">
+                    <img src="https://img.icons8.com/?size=512&id=8136&format=png" class="icon" alt="">
+                    <div>
+                        <div class="text">View All</div>
+                    </div>
+                </button>
+            </div>
+            <div class="delete-all-button-container">
+                <button class="delete-all" onclick="deleteALL();">
+                <img src="https://img.icons8.com/?size=512&id=GzcCz09Hkfp9&format=png" class="icon" alt="">
+                <div>
+                    <div class="text">Delete All</div>
+                </div>
+                </button>
+            </div>
+        </div>
+    </div>
+    <!-- List of todo -->
+    <div class="listOfTodo todo-grid"></div>
 
 
     <script src="Scripts/11x.js"></script>

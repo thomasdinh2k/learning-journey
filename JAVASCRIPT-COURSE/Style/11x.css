@@ -1,0 +1,151 @@
+body {
+    background-color: rgb(235, 226, 226);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h2 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 30px;
+    margin-bottom: -10px;
+}
+
+.dot {
+    color: #d35400;
+}
+
+.quote{
+    margin-top:0;
+    font-size: 28px;
+    opacity: .35;
+    margin-bottom: 15px;
+}
+
+.left-part {
+    /* background-color: lightblue; */
+}
+
+.right-part {
+    /* background-color: lightpink; */
+}
+
+.today-bar {
+    height: 100px;
+    width: 500px;
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    margin-bottom: 20px;
+    align-items: center;
+    
+}
+
+.left-part{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+}
+
+.weekday {
+    font-size: 17px;
+    font-weight: bolder;
+    margin-top: 0;
+    margin-bottom: -10;
+}
+
+.date {
+    font-size: 50px;
+    font-weight: 900;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.month {
+    opacity: .45;
+    font-weight: 500;
+}
+
+.right-part {
+    display: flex;
+    flex-direction: column;
+    height: 100px;
+    /* align-items: center; */
+    justify-content: center;
+}
+
+.today-task {
+    display: flex;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    margin-left: 20px;
+    align-items: center;
+}
+
+.today-task > img {
+    width: 17px;
+    height: 17px;
+    margin-right: 2px;
+}
+
+.today-task-time {
+    color: rgb(58, 58, 58);
+    font-size: 15px;
+}
+
+.today-task-name {
+    color: rgb(0, 0, 0);
+    font-size: 16px;
+    margin-left: 15px;
+    font-weight: 600;
+}
+
+.todo-grid {
+    margin-top: 19px;
+    display: grid;
+    grid-template-columns: 200px 150px 100px;
+    row-gap: 5px;
+    align-items:  center;
+}
+
+.icon { 
+    width: 20px;
+    height: 20px;
+}
+
+.input-container > div > button, .todo-grid > button {
+    cursor: pointer;
+    color: transparent;
+    border: none;
+    background-color: transparent;
+}
+
+.input-field, .input-date {
+    height: 35px;
+}
+
+.input-container {
+    display: flex;
+    vertical-align: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.input-field, .input-date {
+    font-size: 15px;
+    padding: 6px;
+    font-family: 'Arial';
+}
+
+.buttons-container {
+    display: flex;
+    flex-direction: row;
+    vertical-align: center;
+    align-items: center;
+}
+
+.buttons-container > div > button {
+    width: 70px;
+    margin-left: 4px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}

@@ -16,6 +16,31 @@ let score = JSON.parse(localStorage.getItem('score')) || {
   }
   */
   
+  let isAutoPlaying = false;
+  let intervalID; // Leave it undefined 
+
+  function autoPlay() {
+    const autoPlayButton = document.querySelector('.auto-play-button');
+    
+    if (!isAutoPlaying) {
+      intervalID = setInterval(function() {
+        const playerMove = pickComputerMove();
+        playGame(playerMove);
+      }, 1000);
+      isAutoPlaying = true;
+      console.log(`intervalID is ${intervalID}`)
+      //Change the button
+      autoPlayButton.innerHTML = 'Stop';
+      autoPlayButton.classList.add('is-playing');
+    } else {
+      clearInterval(intervalID);
+      isAutoPlaying = false;
+      //Change the button
+      autoPlayButton.innerHTML = 'Auto Play';
+      autoPlayButton.classList.remove('is-playing');
+    }
+  }
+
   function playGame(playerMove) {
     const computerMove = pickComputerMove();
   
@@ -64,11 +89,11 @@ let score = JSON.parse(localStorage.getItem('score')) || {
     document.querySelector('.js-result').innerHTML = result;
   
     document.querySelector('.js-moves').innerHTML = `You
-  <img src="Images/${playerMove}-emoji.png" class="move-icon">
-  <img src="Images/${computerMove}-emoji.png" class="move-icon">
-  Computer`;
+    <img src="Image/${playerMove}-emoji.png" class="move-icon">
+    <img src="Image/${computerMove}-emoji.png" class="move-icon">
+    Computer`;
   }
-  
+  JAVASCRIPT-COURSE/Image/paper-emoji.png
   function updateScoreElement() {
     document.querySelector('.js-score')
       .innerHTML = `Wins: ${score.wins}, Losses: ${score.losses}, Ties: ${score.ties}`;

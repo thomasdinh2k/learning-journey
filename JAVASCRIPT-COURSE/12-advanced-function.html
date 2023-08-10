@@ -2,14 +2,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Advanced Function</title>
+    <title>Advanced Function Exercise</title>
     <link rel="stylesheet" href="Style/12.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 </head>
-<body>
+<div>
     <h1>Advanced Function</h1>
+    <h2>12a</h2>
+    <div class="E12a"></div>
+    <h2>12b</h2>
+    <div class="E12b"></div>
+    <h2>12c</h2>
+    <button class="E12c" onclick="
+        setTimeout(function() {
+            finishButton('Click to Run', 'Finished!')
+        }
+        , 1000);
+    ">Click to Run</button>
+    <h2>12d</h2>
+    <button class="E12d" onclick="
+        E12d();
+    ">Click to Run E12d</button>
+    <h2>12e</h2>
+    <button class="E12e" onclick="E12e();">Add to Cart</button>
+    <div style="
+        display: flex;
+        column-gap: 23px;
+        align-items: center;
+    ">
+        <div class="E12e-log" style="color:orange; font-weight: 500;"></div>
+        <div class="E12e-log-seconds" style="color:rgb(29, 27, 27); font-weight: 500; border: none; font-size: 13px; margin-top:0.75px"></div>
+    </div>
+    <h2>12g</h2>
+    <button class="E12g" onclick="E12g();">Change Title Now!</button>
+
+
     <script src="Scripts/12.js"></script>
 </body>
 </html>

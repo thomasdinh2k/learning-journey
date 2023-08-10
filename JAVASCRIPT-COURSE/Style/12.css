@@ -1,3 +1,17 @@
 body {
     font-family: 'Poppins';
 }
+
+.active {
+    font-weight: bold;
+    padding: 10px 10px;
+    background-color: rgb(245, 96, 10);
+    border: none;
+    color: white;
+    border-radius: 8px;
+    transition: all 1s;
+}
+
+* {
+    transition: all 2.5s;
+}

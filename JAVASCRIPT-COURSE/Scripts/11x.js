@@ -1,29 +1,25 @@
 let todoList = JSON.parse(localStorage.getItem("todoList"));
 
-console.log(todoList);
-
 function renderHTML(list) {
     let todoListHTML = '';
-    for (let i = 0; i < list.length ; i ++) {
-        const todoObject = list[i].name;
-        if (todoObject !== '') {
-            console.log(todoObject);
-            const HTML = 
-            `
-            <div>
-                ${todoObject}
-            </div>
-            <div>
-                ${list[i].date}
-            </div>
-            <button onclick="
-                deleteTodo(${i});
-            "><img src="https://img.icons8.com/?size=512&id=8112&format=png" class="icon" alt=""></button>
-            `
+    list.forEach(function(value, index){
+        
+        if (!value.name == '' ) {
+            const HTML = `
+                <div>
+                    ${value.name}
+                </div>
+                <div>
+                    ${value.date}
+                </div>
+                <button onclick="deleteTodo(${index});">
+                    <img src="https://img.icons8.com/?size=512&id=8112&format=png" class="icon" alt="">
+                </button> 
+            `;
             todoListHTML += HTML;
         }
-        document.querySelector('.listOfTodo').innerHTML = todoListHTML;
-    }
+    })
+    document.querySelector('.listOfTodo').innerHTML = todoListHTML;
 }
 
 function deleteTodo(index) {

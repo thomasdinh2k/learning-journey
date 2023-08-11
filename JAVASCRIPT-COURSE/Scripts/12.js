@@ -1,5 +1,5 @@
-let listHTML = ``
 function addLog(message, selector) {
+    let listHTML = ``
     const HTML = `<p>${message}</p>`;
     listHTML += HTML
     document.querySelector(`.${selector}`).innerHTML = listHTML;
@@ -21,7 +21,7 @@ function addLog(message, selector) {
 // 12a
 let add = function(selector) {
     addLog(2 + 3, selector)
-    console.log(2+3)
+    // console.log(2+3)
 }
 add('E12a');
 add('E12a');
@@ -38,7 +38,6 @@ function runTwice(fun) {
 
 function finishButton(defaultState, activeState) {
     finishButtonElement = document.querySelector('.E12c');
-    console.log(finishButtonElement.innerHTML);
     if (finishButtonElement.innerHTML === defaultState) {
         finishButtonElement.innerHTML = activeState;
     } else {
@@ -90,7 +89,6 @@ function E12g() {
     countInterval = setInterval(function() {
         if (count > 0) {
             document.title = `(${count}) New messages`
-            console.log(document.title)
             count --;
         } else {
             document.title = 'App';
@@ -98,3 +96,60 @@ function E12g() {
         }
     }, 500)
 }
+
+// 12j
+// function multiply(a, b) {
+//     return a * b;
+// }
+
+const multiply = (a, b) => {
+    return a * b
+}
+
+const multiply2 = (a,b) => a * b;
+
+addLog(multiply(2, 3),'E12j');
+addLog(multiply2(7, 11), 'E12j');
+
+// 12l
+const countPositive = array => {
+    let count = 0;
+    array.forEach(element => {
+        if (element > 0) {
+            count ++;
+        };
+    });
+    return count;
+}
+
+addLog(countPositive([1, 3, -5, -3, 4, 5]) ,'E12l');
+
+
+function removeEggFunction(foodArray) {
+    const removedEggArray =  foodArray.filter(function(element) {
+        return element != 'egg'
+    })
+
+    return removedEggArray
+}
+
+addLog((removeEggFunction(['egg', 'apple', 'egg', 'egg', 'ham', 'sandwich', 'egg'])),"E12n");
+
+
+// 12o
+// Remove the first two egg only
+function removeEggFunction2(foodArray) {
+    let eggCount = 0;
+    const removedEggArray =  foodArray.filter(function(element) {
+        if (element === 'egg' && eggCount < 2) {
+            eggCount ++;
+            return false;
+        } else {
+            return true;
+        }
+    })
+
+    return removedEggArray;
+}
+
+addLog(removeEggFunction2(['egg', 'apple','egg', 'egg', 'ham']),"E12o");

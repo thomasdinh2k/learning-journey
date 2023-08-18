@@ -153,3 +153,42 @@ function removeEggFunction2(foodArray) {
 }
 
 addLog(removeEggFunction2(['egg', 'apple','egg', 'egg', 'ham']),"E12o");
+
+const arrowFunction = () => {
+    console.log('Hello');
+}
+
+arrowFunction();
+
+const oneParam = (param) => {
+    console.log(param + 1);
+
+}
+
+oneParam(3);
+
+const oneLine = () => 2 + 3;
+
+console.log(oneLine());
+
+
+const object2 = {
+    method: () => {
+
+    }
+
+};
+
+const buttonElement = document.querySelector('.js-button');
+
+const eventListener = () => {
+    console.log('click');
+
+
+buttonElement.addEventListener('click', eventListener);
+
+buttonElement.removeEventListener('click', eventListener);
+
+buttonElement.addEventListener('click', () => {
+    console.log('click2');
+})

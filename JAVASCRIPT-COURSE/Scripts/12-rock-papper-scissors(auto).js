@@ -19,11 +19,23 @@ let score = JSON.parse(localStorage.getItem('score')) || {
   let isAutoPlaying = false;
   let intervalID; // Leave it undefined 
 
+// Arrow-function version 
+// const autoPlay = () => {
+  
+
+
+// };
+  
+  
   function autoPlay() {
     const autoPlayButton = document.querySelector('.auto-play-button');
     
     if (!isAutoPlaying) {
-      intervalID = setInterval(function() {
+      // intervalID = setInterval(function() {
+      //   const playerMove = pickComputerMove();
+      //   playGame(playerMove);
+      // }, 1000);
+      intervalID = setInterval(() => {
         const playerMove = pickComputerMove();
         playGame(playerMove);
       }, 1000);
@@ -40,6 +52,8 @@ let score = JSON.parse(localStorage.getItem('score')) || {
       autoPlayButton.classList.remove('is-playing');
     }
   }
+
+
 
   function playGame(playerMove) {
     const computerMove = pickComputerMove();
@@ -93,12 +107,44 @@ let score = JSON.parse(localStorage.getItem('score')) || {
     <img src="Image/${computerMove}-emoji.png" class="move-icon">
     Computer`;
   }
-  JAVASCRIPT-COURSE/Image/paper-emoji.png
+  // JAVASCRIPT-COURSE/Image/paper-emoji.png
   function updateScoreElement() {
     document.querySelector('.js-score')
       .innerHTML = `Wins: ${score.wins}, Losses: ${score.losses}, Ties: ${score.ties}`;
   }
   
+
+  document.querySelector('.js-rock-button').addEventListener('click', () => playGame('rock'));
+  document.querySelector('.js-paper-button').addEventListener('click', () => playGame('paper'));
+  document.querySelector('.js-scissors-button').addEventListener('click', () => playGame('scissors'));
+// Control with keystroke
+  document.addEventListener('keydown', (event) => {
+  console.log(event)
+  console.log(event.key);
+  if (event.key === 'z') {
+    playGame('rock');
+  } else if (event.key === 'x') {
+    playGame('paper');
+  } else if (event.key === 'c') {
+    playGame('scissors');
+  } else if (event.key === 'a') {
+    autoPlay();
+  } else if (event.key === 'r') {
+      score.wins = 0;
+      score.losses = 0;
+      score.ties = 0;
+      localStorage.removeItem('score');
+      updateScoreElement();
+      clearInterval(intervalID);
+      isAutoPlaying = false;
+      //Change the button
+      const autoPlayButton = document.querySelector('.auto-play-button');
+      autoPlayButton.innerHTML = 'Auto Play';
+      autoPlayButton.classList.remove('is-playing');
+  }
+});
+
+
   function pickComputerMove() {
     const randomNumber = Math.random();
   

@@ -189,6 +189,18 @@ buttonElement.addEventListener('click', eventListener);
 
 buttonElement.removeEventListener('click', eventListener);
 
-buttonElement.addEventListener('click', () => {
-    console.log('click2');
-})
+}
+
+let testFilterArray = [8,1, -3, -5].filter((value, index) => {
+    return value > 0;
+});
+
+// console.log(testArray);
+
+// let testMapArray = [1, 1, 3].map((value, index) => {
+//     return value * 2;
+// });
+
+let testMapArray = [1, 1, 3].map(value => value * 2);
+
+console.log(testMapArray);

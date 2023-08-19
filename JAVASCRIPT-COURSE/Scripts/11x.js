@@ -36,6 +36,26 @@ function todoAction() {
     const blankTODO = {};
     blankTODO.name = document.querySelector('.input-field').value;
     blankTODO.date = document.querySelector('.input-date').value;
+    console.log(blankTODO.date);
+    if (blankTODO.date === '') {
+        // Get the date
+        const date = new Date();
+        let day = date.getDate();
+        let month = date.getMonth() + 1;
+        let year = date.getFullYear();
+        currentDate = `${year}-${month}-${day}`;
+        console.log(currentDate);
+        blankTODO.date = currentDate;
+    } else {
+        console.log('No');
+    }
+    // blankTODO.date = () => {
+    //     if (document.querySelector('.input-date').value === '') {
+            
+    //     } else {
+    //         return document.querySelector('.input-date').value;
+    //     }
+    // };
     todoList.push(blankTODO);
     console.log(blankTODO)
     renderHTML(todoList);    

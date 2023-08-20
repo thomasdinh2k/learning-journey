@@ -1,7 +1,5 @@
 import { cart } from "../data/cart";
-import { test } from "../data/cart";
-
-console.log(test);
+import { products } from "../data/products";
 
 let productsHTML = '';
 

@@ -1,5 +1,5 @@
 import { products } from "../data/products.js";
-
+import { cart } from "../data/cart.js";
 let productsHTML = "";
 
 products.forEach((products) => {
@@ -48,7 +48,7 @@ products.forEach((products) => {
       Added
     </div>
 
-    <button class="add-to-cart-button button-primary js-add-to-cart">
+    <button class="add-to-cart-button button-primary js-add-to-cart" data-product-name="${products.name}">
       Add to Cart
     </button>
   </div>`;
@@ -59,6 +59,23 @@ document.querySelector(".js-products-grid").innerHTML = productsHTML;
 // Add Event Listener for the "Add to Cart button"
 document.querySelectorAll(".js-add-to-cart").forEach( (button) => {
     button.addEventListener("click", () => {
-        console.log(`Button Clicked`);
+        const productName = button.dataset.productName;
+        // Check if product is already in the cart (Combine Quantity Together)
+        let matchingItem;
+        cart.forEach( (item) => {
+            if(productName === item.productName) {
+                matchingItem = item; // Matching item will now have 2 value (name, quantity)
+            }
+        });
+        
+        if (matchingItem) // A truthy object (If we find a matchingItem)
+        {
+            matchingItem.quantity += 1
+        } else {     
+        cart.push({
+            productName: productName,
+            quantity: 1
+        })};
+    console.log(cart);
     })
 });

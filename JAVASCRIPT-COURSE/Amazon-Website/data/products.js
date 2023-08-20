@@ -3,6 +3,7 @@
 
 export const products = [
   {
+    id: "e43638ce-6aa0-4b85-b27f-e1d07eb678c6231",
     image: "https://m.media-amazon.com/images/I/61770RcPg9L._AC_SL1500_.jpg",
     name: "JBL Flip 5: Portable Wireless Bluetooth Speaker, IPX7 Waterproof - Teal",
     rating: {
@@ -12,6 +13,7 @@ export const products = [
     priceCents: 8995,
   },
   {
+    id: "e43638ce-6aa0-4b85-b27f-e1d07eb678c6232",
     image: "https://m.media-amazon.com/images/I/61Sl+xoVHoL._AC_SL1500_.jpg",
     name: "SAMSUNG Galaxy Watch 5 Pro 45mm Bluetooth Smartwatch w/ Body, Health, Fitness and Sleep Tracker, Improved Battery, Sapphire Crystal Glass, GPS Route Tracking, Titanium Frame, US Version, Black",
     rating: {
@@ -21,6 +23,7 @@ export const products = [
     priceCents: 37999,
   },
   {
+    id: "e43638ce-6aa0-4b85-b27f-e1d07eb678c6233",
     image: "https://m.media-amazon.com/images/I/71Sa3dqTqzL._AC_SL1500_.jpg",
     name: "SAMSUNG Galaxy S23 Ultra Cell Phone, Factory Unlocked Android Smartphone, 512GB, 200MP Camera, Night Mode, Long Battery Life, S Pen, US Version, 2023 Phantom Black",
     rating: {

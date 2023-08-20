@@ -1,34 +1,4 @@
-// Array represents a list
-// Object represents each product (Group multiple values together)
-const products = [
-  {
-    image: "images/products/athletic-cotton-socks-6-pairs.jpg",
-    name: "Black and Gray Athletic Cotton Socks - 6 Pairs",
-    rating: {
-      star: 1,
-      count: 87,
-    },
-    priceCents: 1090,
-  },
-  {
-    image: "images/products/intermediate-composite-basketball.jpg",
-    name: " Intermediate Size Basketball",
-    rating: {
-      star: 4,
-      count: 127,
-    },
-    priceCents: 2095,
-  },
-  {
-    image: "https://m.media-amazon.com/images/I/61770RcPg9L._AC_SL1500_.jpg",
-    name: "JBL Flip 5: Portable Wireless Bluetooth Speaker, IPX7 Waterproof - Teal",
-    rating: {
-      star: 5,
-      count: 2657,
-    },
-    priceCents: 8995,
-  },
-];
+import { products } from "../data/products.js";
 
 let productsHTML = "";
 
@@ -46,9 +16,9 @@ products.forEach((products) => {
 
     <div class="product-rating-container">
       <img class="product-rating-stars"
-        src="images/ratings/rating-${products.rating.star * 10}.png">
+        src="images/ratings/rating-${products.rating.stars * 10}.png">
       <div class="product-rating-count link-primary">
-        ${products.rating.count}
+        ${(products.rating.count).toLocaleString()}
       </div>
     </div>
 
@@ -78,10 +48,17 @@ products.forEach((products) => {
       Added
     </div>
 
-    <button class="add-to-cart-button button-primary">
+    <button class="add-to-cart-button button-primary js-add-to-cart">
       Add to Cart
     </button>
   </div>`;
 });
 
 document.querySelector(".js-products-grid").innerHTML = productsHTML;
+
+// Add Event Listener for the "Add to Cart button"
+document.querySelectorAll(".js-add-to-cart").forEach( (button) => {
+    button.addEventListener("click", () => {
+        console.log(`Button Clicked`);
+    })
+});

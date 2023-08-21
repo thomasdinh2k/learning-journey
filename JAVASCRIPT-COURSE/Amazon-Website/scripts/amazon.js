@@ -18,7 +18,7 @@ products.forEach((products) => {
       <img class="product-rating-stars"
         src="images/ratings/rating-${products.rating.stars * 10}.png">
       <div class="product-rating-count link-primary">
-        ${(products.rating.count).toLocaleString()}
+        ${products.rating.count.toLocaleString()}
       </div>
     </div>
 
@@ -48,7 +48,9 @@ products.forEach((products) => {
       Added
     </div>
 
-    <button class="add-to-cart-button button-primary js-add-to-cart" data-product-id="${products.id}" data-product-name="${products.name}">
+    <button class="add-to-cart-button button-primary js-add-to-cart" data-product-id="${
+      products.id
+    }" data-product-name="${products.name}">
       Add to Cart
     </button>
   </div>`;
@@ -56,31 +58,45 @@ products.forEach((products) => {
 
 document.querySelector(".js-products-grid").innerHTML = productsHTML;
 
+// Calculate + Update total quantity
+function updateQuantity() {
+  let quantity = 0;
+  cart.forEach((cartItem) => {
+    quantity += cartItem.quantity;
+  });
+  console.log(quantity);
+  console.log(`Total quantity = ${quantity} `);
+  document.querySelector(".cart-quantity").innerHTML = quantity;
+}
+
 // Add Event Listener for the "Add to Cart button"
-document.querySelectorAll(".js-add-to-cart").forEach( (button) => {
-    button.addEventListener("click", () => {
-        console.log(button.dataset)
-        const productID = button.dataset.productId;
-        const productName = button.dataset.productName;
-        // Check if product is already in the cart (Combine Quantity Together)
-        let matchingItem;
-        cart.forEach( (item) => {
-            if(productID === item.productID) {
-                matchingItem = item; // Matching item will now have 3 value (id, name, quantity)
-                console.log("Matching Item = ")
-                console.log(matchingItem.productName);
-            }
-        });
-        
-        if (matchingItem) // A truthy object (If we find a matchingItem)
-        {
-            matchingItem.quantity += 1
-        } else {     
-        cart.push({
-            productID: productID,
-            productName: productName,            
-            quantity: 1
-        })};
-    console.log(cart);
-    })
+document.querySelectorAll(".js-add-to-cart").forEach((button) => {
+  button.addEventListener("click", () => {
+    console.log(button.dataset);
+    const productID = button.dataset.productId;
+    const productName = button.dataset.productName;
+    // Check if product is already in the cart (Combine Quantity Together)
+    let matchingItem;
+    cart.forEach((item) => {
+      if (productID === item.productID) {
+        matchingItem = item; // Matching item will now have 3 value (id, name, quantity)
+        console.log("Matching Item = ");
+        console.log(matchingItem.productName);
+      }
+    });
+
+    if (matchingItem) {
+      // A truthy object (If we find a matchingItem)
+      matchingItem.quantity += 1;
+    } else {
+      cart.push({
+        productID: productID,
+        productName: productName,
+        quantity: 1,
+      });
+    }
+    updateQuantity();
+  });
 });
+
+

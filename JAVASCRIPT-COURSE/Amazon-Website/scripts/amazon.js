@@ -74,12 +74,6 @@ document.querySelectorAll(".js-add-to-cart").forEach((button) => {
     console.log(button.dataset);
     const productID = button.dataset.productId;
     const productName = button.dataset.productName;
-    console.log(productID);
-    console.log(productName);
-
-    // Take out quantity in each product selection
-    const productQuantity = parseInt(document.querySelector(`.js-quantity-selector-${productID}`).value);
-
     // Check if product is already in the cart (Combine Quantity Together)
     let matchingItem;
     cart.forEach((item) => {

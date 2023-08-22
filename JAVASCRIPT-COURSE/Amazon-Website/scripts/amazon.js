@@ -27,8 +27,8 @@ products.forEach((products) => {
     </div>
 
     <div class="product-quantity-container">
-      <select>
-        <option selected value="1">1</option>
+      <select class="js-quantity-selector-${products.id}">
+        <option value="1">1</option>
         <option value="2">2</option>
         <option value="3">3</option>
         <option value="4">4</option>
@@ -48,9 +48,9 @@ products.forEach((products) => {
       Added
     </div>
 
-    <button class="add-to-cart-button button-primary js-add-to-cart" data-product-id="${
-      products.id
-    }" data-product-name="${products.name}">
+    <button class="add-to-cart-button button-primary js-add-to-cart" data-product-id="${products.id}" data-product-name="${products.name}"
+    
+    ">
       Add to Cart
     </button>
   </div>`;
@@ -64,7 +64,6 @@ function updateQuantity() {
   cart.forEach((cartItem) => {
     quantity += cartItem.quantity;
   });
-  console.log(quantity);
   console.log(`Total quantity = ${quantity} `);
   document.querySelector(".cart-quantity").innerHTML = quantity;
 }
@@ -75,28 +74,32 @@ document.querySelectorAll(".js-add-to-cart").forEach((button) => {
     console.log(button.dataset);
     const productID = button.dataset.productId;
     const productName = button.dataset.productName;
+    // Take out quantity in each product selection
+    const productQuantity = parseInt(document.querySelector(`.js-quantity-selector-${productID}`).value);
+
     // Check if product is already in the cart (Combine Quantity Together)
     let matchingItem;
     cart.forEach((item) => {
       if (productID === item.productID) {
         matchingItem = item; // Matching item will now have 3 value (id, name, quantity)
-        console.log("Matching Item = ");
-        console.log(matchingItem.productName);
       }
     });
-
+    
     if (matchingItem) {
       // A truthy object (If we find a matchingItem)
-      matchingItem.quantity += 1;
+      matchingItem.quantity += productQuantity;
+      console.log("Matching Item");
     } else {
       cart.push({
         productID: productID,
         productName: productName,
-        quantity: 1,
+        quantity: productQuantity,
       });
     }
     updateQuantity();
   });
+  
+
 });
 
 

@@ -4,13 +4,13 @@
 export const products = [
   {
     id: "e43638ce-6aa0-4b85-b27f-e1d07eb678c6231",
-    image: "https://m.media-amazon.com/images/I/61770RcPg9L._AC_SL1500_.jpg",
-    name: "JBL Flip 5: Portable Wireless Bluetooth Speaker, IPX7 Waterproof - Teal",
+    image: "https://m.media-amazon.com/images/I/71f792LZY2L._AC_SL1500_.jpg",
+    name: "Apple MagSafe Charger - Wireless Charger with Fast Charging Capability, Type C Wall Charger, Compatible with iPhone and AirPods",
     rating: {
-      stars: 4,
-      count: 2657,
+      stars: 5,
+      count: 62644,
     },
-    priceCents: 8995,
+    priceCents: 3299,
   },
   {
     id: "e43638ce-6aa0-4b85-b27f-e1d07eb678c6232",

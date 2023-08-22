@@ -43,7 +43,7 @@ products.forEach((products) => {
 
     <div class="product-spacer"></div>
 
-    <div class="added-to-cart">
+    <div class="added-to-cart js-selector-${products.id}">
       <img src="images/icons/checkmark.png">
       Added
     </div>
@@ -74,6 +74,9 @@ document.querySelectorAll(".js-add-to-cart").forEach((button) => {
     console.log(button.dataset);
     const productID = button.dataset.productId;
     const productName = button.dataset.productName;
+    const productQuantity = parseInt(document.querySelector(`.js-quantity-selector-${productID}`).value);
+    
+    console.log(productQuantity);
     // Check if product is already in the cart (Combine Quantity Together)
     let matchingItem;
     cart.forEach((item) => {
@@ -94,6 +97,8 @@ document.querySelectorAll(".js-add-to-cart").forEach((button) => {
       });
     }
     updateQuantity();
+    // Added notification
+    // addedObject = document.querySelector('.added-to-cart ')
   });
   
 

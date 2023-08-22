@@ -48,7 +48,9 @@ products.forEach((products) => {
       Added
     </div>
 
-    <button class="add-to-cart-button button-primary js-add-to-cart" data-product-id="${products.id}" data-product-name="${products.name}"
+    <button class="add-to-cart-button button-primary js-add-to-cart" data-product-id="${
+      products.id
+    }" data-product-name="${products.name}"
     
     ">
       Add to Cart
@@ -74,8 +76,10 @@ document.querySelectorAll(".js-add-to-cart").forEach((button) => {
     console.log(button.dataset);
     const productID = button.dataset.productId;
     const productName = button.dataset.productName;
-    const productQuantity = parseInt(document.querySelector(`.js-quantity-selector-${productID}`).value);
-    
+    const productQuantity = parseInt(
+      document.querySelector(`.js-quantity-selector-${productID}`).value
+    );
+
     console.log(productQuantity);
     // Check if product is already in the cart (Combine Quantity Together)
     let matchingItem;
@@ -84,7 +88,7 @@ document.querySelectorAll(".js-add-to-cart").forEach((button) => {
         matchingItem = item; // Matching item will now have 3 value (id, name, quantity)
       }
     });
-    
+
     if (matchingItem) {
       // A truthy object (If we find a matchingItem)
       matchingItem.quantity += productQuantity;
@@ -97,11 +101,19 @@ document.querySelectorAll(".js-add-to-cart").forEach((button) => {
       });
     }
     updateQuantity();
-    // Added notification
-    // addedObject = document.querySelector('.added-to-cart ')
+    // Added-to-cart notification
+    let addedToCartObject = document.querySelector(`.added-to-cart.js-selector-${productID}`);
+    let timeoutID;
+    clearTimeout(timeoutID);
+    // Dismiss notifications after 2 seconds
+    if (addedToCartObject.style.opacity == ''  || addedToCartObject.style.opacity == "0") {
+      clearTimeout(timeoutID);
+      addedToCartObject.style.opacity = '1';
+      timeoutID = setTimeout(() => {
+        addedToCartObject.style.opacity = '0';
+      }, 1000);
+    };
+
+
   });
-  
-
 });
-
-

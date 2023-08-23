@@ -1,5 +1,5 @@
 import { products } from "../data/products.js";
-import { cart } from "../data/cart.js";
+import { cart, addToCart } from "../data/cart.js";
 let productsHTML = "";
 
 products.forEach((products) => {
@@ -66,54 +66,41 @@ function updateQuantity() {
   cart.forEach((cartItem) => {
     quantity += cartItem.quantity;
   });
-  console.log(`Total quantity = ${quantity} `);
+  console.log(`Updated quantity = ${quantity} `);
   document.querySelector(".cart-quantity").innerHTML = quantity;
 }
 
+function addedToCartNotification(productID) {
+  let addedToCartObject = document.querySelector(
+    `.added-to-cart.js-selector-${productID}`
+  );
+  let timeoutID;
+  clearTimeout(timeoutID);
+  // Dismiss notifications after 2 seconds
+  if (
+    addedToCartObject.style.opacity == "" ||
+    addedToCartObject.style.opacity == "0"
+  ) {
+    clearTimeout(timeoutID);
+    addedToCartObject.style.opacity = "1";
+    timeoutID = setTimeout(() => {
+      addedToCartObject.style.opacity = "0";
+    }, 1000);
+  }
+}
 // Add Event Listener for the "Add to Cart button"
 document.querySelectorAll(".js-add-to-cart").forEach((button) => {
   button.addEventListener("click", () => {
-    console.log(button.dataset);
+    // console.log(button.dataset);
     const productID = button.dataset.productId;
     const productName = button.dataset.productName;
     const productQuantity = parseInt(
       document.querySelector(`.js-quantity-selector-${productID}`).value
     );
 
-    console.log(productQuantity);
-    // Check if product is already in the cart (Combine Quantity Together)
-    let matchingItem;
-    cart.forEach((item) => {
-      if (productID === item.productID) {
-        matchingItem = item; // Matching item will now have 3 value (id, name, quantity)
-      }
-    });
-
-    if (matchingItem) {
-      // A truthy object (If we find a matchingItem)
-      matchingItem.quantity += productQuantity;
-      console.log("Matching Item");
-    } else {
-      cart.push({
-        productID: productID,
-        productName: productName,
-        quantity: productQuantity,
-      });
-    }
+    addToCart(productID, productName, productQuantity);
     updateQuantity();
     // Added-to-cart notification
-    let addedToCartObject = document.querySelector(`.added-to-cart.js-selector-${productID}`);
-    let timeoutID;
-    clearTimeout(timeoutID);
-    // Dismiss notifications after 2 seconds
-    if (addedToCartObject.style.opacity == ''  || addedToCartObject.style.opacity == "0") {
-      clearTimeout(timeoutID);
-      addedToCartObject.style.opacity = '1';
-      timeoutID = setTimeout(() => {
-        addedToCartObject.style.opacity = '0';
-      }, 1000);
-    };
-
-
+    addedToCartNotification(productID);
   });
 });

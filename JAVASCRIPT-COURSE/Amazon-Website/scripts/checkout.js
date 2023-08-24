@@ -18,7 +18,9 @@ cart.forEach((product) => {
 
   console.log(matchingItem);
 
-  cartSummaryHTML += `<div class="cart-item-container">
+  cartSummaryHTML += `<div class="cart-item-container js-cart-item-container-${
+    matchingItem.id
+  }">
             <div class="delivery-date">
               Delivery date: Tuesday, June 23th
             </div>
@@ -36,12 +38,14 @@ cart.forEach((product) => {
                 </div>
                 <div class="product-quantity">
                   <span>
-                    Quantity: <span class="quantity-label">${product.quantity}</span>
+                    Quantity: <span class="quantity-label">${
+                      product.quantity
+                    }</span>
                   </span>
                   <span class="update-quantity-link link-primary">
-                    Update
+                  Update
                   </span>
-                  <span class="delete-quantity-link link-primary">
+                  <span class="delete-quantity-link link-primary js-delete-button" data-product-id="${matchingItem.id}">
                     Delete
                   </span>
                 </div>
@@ -96,3 +100,17 @@ cart.forEach((product) => {
 });
 
 document.querySelector(".order-summary").innerHTML = cartSummaryHTML;
+
+// Add Event Listener for the "Delete" and "Update" buttons
+
+document.querySelectorAll(".js-delete-button").forEach((button) => {
+  button.addEventListener("click", () => {
+    const orderSummaryContainer = document.querySelector('.order-summary') ;
+    const productID = button.dataset.productId;
+    console.log(button.dataset);
+    
+    const itemContainer = document.querySelector(`.js-cart-item-container-${productID}`)
+    // itemContainer.innerHTML = "";
+    itemContainer.remove();
+  });
+});

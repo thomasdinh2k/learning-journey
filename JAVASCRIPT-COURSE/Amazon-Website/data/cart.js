@@ -1,4 +1,5 @@
 export const cart = [
+// TODO: Make this interactive instead of pseudo data
   {
     productID: "e43638ce-6aa0-4b85-b27f-e1d07eb678c6231",
     productName: "Apple MagSafe Charger - Wireless Charger with Fast Charging Capability, Type C Wall Charger, Compatible with iPhone and AirPods",

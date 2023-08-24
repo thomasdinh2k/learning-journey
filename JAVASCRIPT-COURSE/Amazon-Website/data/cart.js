@@ -8,7 +8,7 @@ export const cart = [
   {
     productID: "e43638ce-6aa0-4b85-b27f-e1d07eb678c6232",
     productName: "SAMSUNG Galaxy Watch 5 Pro 45mm Bluetooth Smartwatch w/ Body, Health, Fitness and Sleep Tracker, Improved Battery, Sapphire Crystal Glass, GPS Route Tracking, Titanium Frame, US Version, Black",
-    quantity: 11
+    quantity: 15
   },
 ];
 

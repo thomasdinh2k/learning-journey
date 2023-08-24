@@ -3,42 +3,25 @@ import { products } from "../data/products.js";
 import { formatCurrency } from "./utils/money.js";
 let cartSummaryHTML = "";
 
-
-cart.forEach((product) => {
-  //TODO: Find a way to retrieve other attribute (price, image) of item in a object of array products
-  // We will use "De-duplicating the data" || "Normalizing the data"
-
-  const productID = product.productID;
-  let matchingItem;  
-
-  products.forEach((item) => {
-    if (productID === item.id) {
-      matchingItem = item;
-    }
-  });
-
-  console.log(matchingItem);
-
-  cartSummaryHTML += `<div class="cart-item-container js-cart-item-container-${
-    matchingItem.id
-  }">
+function renderHTML(image, name, price, id) {
+  cartSummaryHTML += `<div class="cart-item-container js-cart-item-container-${id}">
             <div class="delivery-date">
               Delivery date: Tuesday, June 23th
             </div>
 
             <div class="cart-item-details-grid">
               <img class="product-image"
-                src="${matchingItem.image}">
+                src="${image}">
 
               <div class="cart-item-details">
                 <div class="product-name">
-                  ${matchingItem.name}
+                  ${name}
                 </div>
                 <div class="product-price">
-                  $${formatCurrency(matchingItem.priceCents)}
+                  $${price}
                 </div>
                 <div class="product-quantity">
-                <select class="js-checkout-quantity-selector-${matchingItem.id}">
+                <select class="js-checkout-quantity-selector-${id}">
                   <option value="0">0 (Delete)</option>
                   <option value="1">1</option>
                   <option value="2">2</option>
@@ -145,9 +128,7 @@ cart.forEach((product) => {
                   <span class="update-quantity-link link-primary">
                   Update
                   </span>
-                  <span class="delete-quantity-link link-primary js-delete-button" data-product-id="${
-                    matchingItem.id
-                  }">
+                  <span class="delete-quantity-link link-primary js-delete-button" data-product-id="${id}">
                     Delete
                   </span>
                 </div>
@@ -160,7 +141,7 @@ cart.forEach((product) => {
                 <div class="delivery-option">
                   <input type="radio" checked
                     class="delivery-option-input"
-                    name="delivery-option-${matchingItem.id}">
+                    name="delivery-option-${id}">
                   <div>
                     <div class="delivery-option-date">
                       Tuesday, June 21
@@ -173,7 +154,7 @@ cart.forEach((product) => {
                 <div class="delivery-option">
                   <input type="radio"
                     class="delivery-option-input"
-                    name="delivery-option-${matchingItem.id}">
+                    name="delivery-option-${id}">
                   <div>
                     <div class="delivery-option-date">
                       Wednesday, June 15
@@ -186,7 +167,7 @@ cart.forEach((product) => {
                 <div class="delivery-option">
                   <input type="radio"
                     class="delivery-option-input"
-                    name="delivery-option-${matchingItem.id}">
+                    name="delivery-option-${id}">
                   <div>
                     <div class="delivery-option-date">
                       Monday, June 13
@@ -199,29 +180,43 @@ cart.forEach((product) => {
               </div>
             </div>
           </div>`;
-        
-        console.log("Block")
-        console.log(matchingItem);
-        console.log(`.js-checkout-quantity-selector-${matchingItem.id}`);
-        
-        
-        // console.log(document.querySelector(`.js-checkout-quantity-selector-${matchingItem.id}`).value)
-        console.log("Here");
-        
-        // = matchingItem.quantity;
-        
-        });
 
-document.querySelector(".order-summary").innerHTML = cartSummaryHTML;
-console.log("End of block");
+  return cartSummaryHTML;
+}
 
-// Allow option object to display default value which comes from cart.quantity
-cart.forEach( product => {
-  let productQuantity = product.quantity;
-  let optionObject = document.querySelector(`.js-checkout-quantity-selector-${product.productID}`)
-  optionObject.value = productQuantity;
+cart.forEach((product) => {
+  //TODO: Find a way to retrieve other attribute (price, image) of item in a object of array products
+  // We will use "De-duplicating the data" || "Normalizing the data"
+
+  const productID = product.productID;
+  let matchingItem;
+
+  products.forEach((item) => {
+    if (productID === item.id) {
+      matchingItem = item;
+    }
+  });
+
+  console.log(matchingItem);
+
+  renderHTML(
+    matchingItem.image,
+    matchingItem.name,
+    formatCurrency(matchingItem.priceCents),
+    matchingItem.id
+  );
 });
 
+document.querySelector(".order-summary").innerHTML = cartSummaryHTML;
+
+// Allow option object to display default value which comes from cart.quantity
+cart.forEach((product) => {
+  let productQuantity = product.quantity;
+  let optionObject = document.querySelector(
+    `.js-checkout-quantity-selector-${product.productID}`
+  );
+  optionObject.value = productQuantity;
+});
 
 // Add Event Listener for the "Delete"
 document.querySelectorAll(".js-delete-button").forEach((button) => {
@@ -237,3 +232,5 @@ document.querySelectorAll(".js-delete-button").forEach((button) => {
     itemContainer.remove();
   });
 });
+
+// TODO: Update button allow selected quantity stored into quantity of the product in Cart

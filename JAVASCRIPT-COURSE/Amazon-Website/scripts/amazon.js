@@ -29,7 +29,7 @@ products.forEach((products) => {
 
     <div class="product-quantity-container">
       <select class="js-quantity-selector-${products.id}">
-        <option value="1">1</option>
+        <option value="1" selected>1</option>
         <option value="2">2</option>
         <option value="3">3</option>
         <option value="4">4</option>

@@ -1,14 +1,16 @@
 export const cart = [
 // TODO: Make this interactive instead of pseudo data
   {
-    productID: "e43638ce-6aa0-4b85-b27f-e1d07eb678c6231",
     productName: "Apple MagSafe Charger - Wireless Charger with Fast Charging Capability, Type C Wall Charger, Compatible with iPhone and AirPods",
-    quantity: 2
+    productID: "e43638ce-6aa0-4b85-b27f-e1d07eb678c6231",
+    quantity: 13,
+    priceCents: 3299
   },
   {
     productID: "e43638ce-6aa0-4b85-b27f-e1d07eb678c6232",
-    productName: "SAMSUNG Galaxy Watch 5 Pro 45mm Bluetooth Smartwatch w/ Body, Health, Fitness and Sleep Tracker, Improved Battery, Sapphire Crystal Glass, GPS Route Tracking, Titanium Frame, US Version, Black",
-    quantity: 15
+    quantity: 17,
+    productName:"SAMSUNG Galaxy Watch 5 Pro 45mm Bluetooth Smartwatch w/ Body, Health, Fitness and Sleep Tracker, Improved Battery, Sapphire Crystal Glass, GPS Route Tracking, Titanium Frame, US Version, Black",
+    priceCents: 37999
   },
 ];
 

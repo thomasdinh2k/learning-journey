@@ -132,6 +132,7 @@ function renderHTML(image, name, price, id) {
                     Delete
                   </span>
                 </div>
+                <div class="final-price final-price-${id}"></div>
               </div>
 
               <div class="delivery-options">
@@ -183,13 +184,13 @@ function renderHTML(image, name, price, id) {
 
   return cartSummaryHTML;
 }
+let matchingItem;
 
 cart.forEach((product) => {
   //TODO: Find a way to retrieve other attribute (price, image) of item in a object of array products
   // We will use "De-duplicating the data" || "Normalizing the data"
 
   const productID = product.productID;
-  let matchingItem;
 
   products.forEach((item) => {
     if (productID === item.id) {
@@ -205,20 +206,49 @@ cart.forEach((product) => {
     formatCurrency(matchingItem.priceCents),
     matchingItem.id
   );
+
+  return matchingItem;
 });
 
 document.querySelector(".order-summary").innerHTML = cartSummaryHTML;
 
-// Allow option object to display default value which comes from cart.quantity
+function renderQuantityAndPrice(product, quantity, price) {
+  let finalPriceObject = document.querySelector(
+    `.final-price-${product.productID}`
+  );
+  let newQuantityValue = quantity;
+
+  if (quantity === 1) {
+    finalPriceObject.innerHTML = `Subtotal (1 item): $${formatCurrency(
+      price
+    )}`;
+  } else
+    finalPriceObject.innerHTML = `Subtotal (${
+      quantity
+    } items): $${formatCurrency( price * quantity)}`;
+}
+
+// Update the quantity right after user choose a new option
 cart.forEach((product) => {
-  let productQuantity = product.quantity;
-  let optionObject = document.querySelector(
+  let quantitySelectorObject = document.querySelector(
     `.js-checkout-quantity-selector-${product.productID}`
   );
-  optionObject.value = productQuantity;
+  quantitySelectorObject.value = product.quantity
+  renderQuantityAndPrice(product, product.quantity, product.priceCents)
+
+
+  quantitySelectorObject.addEventListener("change", () => {
+    let newQuantityValue = event.target.value;
+
+    let finalPriceObject = document.querySelector(
+      `.final-price-${product.productID}`
+    );
+    renderQuantityAndPrice(product, newQuantityValue, product.priceCents);
+  });
 });
 
 // Add Event Listener for the "Delete"
+// TODO: Add event when user choose "0" then it delete the item in cart
 document.querySelectorAll(".js-delete-button").forEach((button) => {
   button.addEventListener("click", () => {
     const orderSummaryContainer = document.querySelector(".order-summary");
@@ -234,3 +264,11 @@ document.querySelectorAll(".js-delete-button").forEach((button) => {
 });
 
 // TODO: Update button allow selected quantity stored into quantity of the product in Cart
+console.log(cart);
+
+console.log(cart[0].quantity);
+
+cart[0].quantity = 3;
+console.log(cart);
+
+// TODO: Make the Order Summary interactive

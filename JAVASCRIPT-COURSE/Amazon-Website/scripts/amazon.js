@@ -98,7 +98,7 @@ document.querySelectorAll(".js-add-to-cart").forEach((button) => {
     const productQuantity = parseInt(
       document.querySelector(`.js-quantity-selector-${productID}`).value
     );
-
+    // TODO: Also add a price to the cart as well!
     addToCart(productID, productName, productQuantity);
     updateQuantity();
     // Added-to-cart notification

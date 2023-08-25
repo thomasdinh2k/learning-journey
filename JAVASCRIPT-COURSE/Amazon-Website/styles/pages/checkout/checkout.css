@@ -225,3 +225,12 @@
   margin-top: 11px;
   margin-bottom: 15px;
 }
+
+.product-price {
+  margin-bottom: 11px;
+}
+
+.js-quantity-selector {
+  width: 80px;
+  text-align: center;
+}

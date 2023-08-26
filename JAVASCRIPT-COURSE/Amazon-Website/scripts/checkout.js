@@ -114,7 +114,6 @@ cart.forEach((product) => {
     formatCurrency(matchingItem.priceCents),
     matchingItem.id
   );
-
   return matchingItem;
 });
 
@@ -127,16 +126,13 @@ function renderQuantityAndPrice(product, quantity, price) {
   let newQuantityValue = quantity;
 
   if (quantity === 1) {
-    finalPriceObject.innerHTML = `Subtotal (1 item): $${formatCurrency(
-      price
-    )}`;
+    finalPriceObject.innerHTML = `Subtotal (1 item): $${formatCurrency(price)}`;
   } else if (quantity == 0) {
     deleteItemInCart(product.productID);
-  }
-    else
-    finalPriceObject.innerHTML = `Subtotal (${
-      quantity
-    } items): $${formatCurrency( price * quantity)}`;
+  } else
+    finalPriceObject.innerHTML = `Subtotal (${quantity} items): $${formatCurrency(
+      price * quantity
+    )}`;
 }
 
 function deleteItemInCart(productID) {
@@ -145,17 +141,41 @@ function deleteItemInCart(productID) {
     `.js-cart-item-container-${productID}`
   );
   itemContainer.remove();
+}
 
+function createQuantityBox(previousSelector, currentQuantity, productId) {
+  const parent = previousSelector.parentNode;
+  const inputBox = document.createElement("input");
+  inputBox.type = "number";
+  inputBox.value = currentQuantity;
+  parent.replaceChild(inputBox, previousSelector);
+  inputBox.classList.add("dynamic-input");
+  inputBox.classList.add(`dynamic-input-box-${productId}`);
+  console.log("inputBox returned as parameter");
 
-};
-// Update the quantity right after user choose a new option
+  return inputBox;
+}
 cart.forEach((product) => {
+  // Update the quantity right after user choose a new option
   let quantitySelectorObject = document.querySelector(
     `.js-checkout-quantity-selector-${product.productID}`
   );
-  quantitySelectorObject.value = product.quantity
-  renderQuantityAndPrice(product, product.quantity, product.priceCents)
-  
+
+  quantitySelectorObject.value = product.quantity;
+  renderQuantityAndPrice(product, product.quantity, product.priceCents);
+
+  // Dynamic quantitySelector Enabler
+  if (product.quantity > 10) {
+    createQuantityBox(
+      quantitySelectorObject,
+      product.quantity,
+      product.productID
+    );
+    quantitySelectorObject = document.querySelector(
+      `.dynamic-input-box-${product.productID}`
+    );
+    // TODO: Add Class and styling the box
+  }
 
   quantitySelectorObject.addEventListener("change", () => {
     let newQuantityValue = event.target.value;
@@ -163,23 +183,7 @@ cart.forEach((product) => {
     let finalPriceObject = document.querySelector(
       `.final-price-${product.productID}`
     );
-
-    if (newQuantityValue <= 10) {
     renderQuantityAndPrice(product, newQuantityValue, product.priceCents);
-    } else if (newQuantityValue > 10) {
-      // Dynamically change selector to inputBox
-      // TODO: Add Class and styling the box
-      const parent = quantitySelectorObject.parentNode;
-      console.log("Initiating");
-      const inputBox = document.createElement("input")
-      inputBox.type = "number";
-      inputBox.value = product.quantity;
-      parent.replaceChild(inputBox, quantitySelectorObject);
-      inputBox.classList.add("dynamic-input-box");
-      inputBox.addEventListener( "change", () => {
-        renderQuantityAndPrice(product, inputBox.value, product.priceCents);
-      })
-    }
   });
 });
 

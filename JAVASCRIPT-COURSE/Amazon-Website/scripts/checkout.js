@@ -20,7 +20,7 @@ function renderHTML(image, name, price, id) {
                 <div class="product-price">
                   $${price}
                 </div>
-                <div class="product-quantity">
+                <div class="product-quantity-${id}">
                 <select class="js-quantity-selector js-checkout-quantity-selector-${id}">
                   <option value="0">0 (Delete)</option>
                   <option value="1">1</option>
@@ -174,7 +174,8 @@ cart.forEach((product) => {
     quantitySelectorObject = document.querySelector(
       `.dynamic-input-box-${product.productID}`
     );
-    // TODO: Add Class and styling the box
+    let productQuantityObject = document.querySelector(`.product-quantity-${product.productID}`)
+    
   }
 
   quantitySelectorObject.addEventListener("change", () => {

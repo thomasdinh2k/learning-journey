@@ -230,7 +230,30 @@
   margin-bottom: 11px;
 }
 
-.js-quantity-selector {
+/* .js-quantity-selector {
   width: 80px;
   text-align: center;
+}
+
+.dynamic-input {
+  width: 50px;
+  text-align: center;
+} */
+
+.js-quantity-selector,
+.dynamic-input {
+  width: 80px;
+  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 8px;
+  font-size: 15px;
+  transition: border-color 0.3s, box-shadow 0.3s;
+  
+}
+
+.dynamic-input {
+  width: 50px;
+  padding-right: 16px;
+  padding-left: 4px;
 }

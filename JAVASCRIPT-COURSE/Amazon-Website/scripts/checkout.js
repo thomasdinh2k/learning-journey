@@ -1,4 +1,4 @@
-import { cart } from "../data/cart.js";
+import { cart, addToCart, removeFromCart } from "../data/cart.js";
 import { products } from "../data/products.js";
 import { formatCurrency } from "./utils/money.js";
 let cartSummaryHTML = "";
@@ -128,20 +128,14 @@ function renderQuantityAndPrice(product, quantity, price) {
   if (quantity === 1) {
     finalPriceObject.innerHTML = `Subtotal (1 item): $${formatCurrency(price)}`;
   } else if (quantity == 0) {
-    deleteItemInCart(product.productID);
+    removeFromCart(product.productID);
   } else
     finalPriceObject.innerHTML = `Subtotal (${quantity} items): $${formatCurrency(
       price * quantity
     )}`;
 }
 
-function deleteItemInCart(productID) {
-  const orderSummaryContainer = document.querySelector(".order-summary");
-  const itemContainer = document.querySelector(
-    `.js-cart-item-container-${productID}`
-  );
-  itemContainer.remove();
-}
+
 
 function createQuantityBox(previousSelector, currentQuantity, productId) {
   const parent = previousSelector.parentNode;
@@ -193,7 +187,7 @@ cart.forEach((product) => {
 document.querySelectorAll(".js-delete-button").forEach((button) => {
   button.addEventListener("click", () => {
     // console.log(button.dataset.productId);
-    deleteItemInCart(button.dataset.productId);
+    removeFromCart(button.dataset.productId);
   });
 });
 

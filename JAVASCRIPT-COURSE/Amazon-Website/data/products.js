@@ -41,7 +41,7 @@ export const products = [
       stars: 2,
       count: 87,
     },
-    priceCents: 1090,
+    priceCents: 1000,
     keywords: ["socks", "sports", "apparel"],
   },
   {

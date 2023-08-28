@@ -1,4 +1,4 @@
-import { cart, addToCart, removeFromCart } from "../data/cart.js";
+import { cart, addToCart, removeFromCart, updateCartQuantity } from "../data/cart.js";
 import { products } from "../data/products.js";
 import { formatCurrency } from "./utils/money.js";
 let cartSummaryHTML = "";
@@ -95,7 +95,6 @@ function renderHTML(image, name, price, id) {
 let matchingItem;
 
 cart.forEach((product) => {
-  //TODO: Find a way to retrieve other attribute (price, image) of item in a object of array products
   // We will use "De-duplicating the data" || "Normalizing the data"
 
   const productID = product.productID;
@@ -106,20 +105,19 @@ cart.forEach((product) => {
     }
   });
 
-  console.log(matchingItem);
-
+  // Render items to web's placeholder
   renderHTML(
     matchingItem.image,
     matchingItem.name,
     formatCurrency(matchingItem.priceCents),
     matchingItem.id
   );
-  return matchingItem;
+  // return matchingItem;
 });
 
 document.querySelector(".order-summary").innerHTML = cartSummaryHTML;
 
-function renderQuantityAndPrice(product, quantity, price) {
+function renderSubtotal(product, quantity, price) {
   let finalPriceObject = document.querySelector(
     `.final-price-${product.productID}`
   );
@@ -135,7 +133,15 @@ function renderQuantityAndPrice(product, quantity, price) {
     )}`;
 }
 
-
+function extractPrice(productID) {
+  let extractedPrice;
+  products.forEach((productInProductJS) => {
+    if (productID === productInProductJS.id) {
+      extractedPrice = productInProductJS.priceCents;
+    }
+  });
+  return extractedPrice;
+}
 
 function createQuantityBox(previousSelector, currentQuantity, productId) {
   const parent = previousSelector.parentNode;
@@ -145,18 +151,19 @@ function createQuantityBox(previousSelector, currentQuantity, productId) {
   parent.replaceChild(inputBox, previousSelector);
   inputBox.classList.add("dynamic-input");
   inputBox.classList.add(`dynamic-input-box-${productId}`);
-  console.log("inputBox returned as parameter");
-
   return inputBox;
 }
+
 cart.forEach((product) => {
   // Update the quantity right after user choose a new option
   let quantitySelectorObject = document.querySelector(
     `.js-checkout-quantity-selector-${product.productID}`
   );
-
+  // Pull out the price value
+  let extractedPrice = extractPrice(product.productID);
   quantitySelectorObject.value = product.quantity;
-  renderQuantityAndPrice(product, product.quantity, product.priceCents);
+  renderSubtotal(product, product.quantity, extractedPrice);
+  updateOrderSummary();
 
   // Dynamic quantitySelector Enabler
   if (product.quantity > 10) {
@@ -168,8 +175,9 @@ cart.forEach((product) => {
     quantitySelectorObject = document.querySelector(
       `.dynamic-input-box-${product.productID}`
     );
-    let productQuantityObject = document.querySelector(`.product-quantity-${product.productID}`)
-    
+    let productQuantityObject = document.querySelector(
+      `.product-quantity-${product.productID}`
+    );
   }
 
   quantitySelectorObject.addEventListener("change", () => {
@@ -178,7 +186,9 @@ cart.forEach((product) => {
     let finalPriceObject = document.querySelector(
       `.final-price-${product.productID}`
     );
-    renderQuantityAndPrice(product, newQuantityValue, product.priceCents);
+    renderSubtotal(product, newQuantityValue, extractedPrice);
+    updateCartQuantity(product.productID, newQuantityValue)
+    updateOrderSummary();
   });
 });
 
@@ -186,17 +196,66 @@ cart.forEach((product) => {
 // TODO: Add event when user choose "0" then it delete the item in cart
 document.querySelectorAll(".js-delete-button").forEach((button) => {
   button.addEventListener("click", () => {
-    // console.log(button.dataset.productId);
     removeFromCart(button.dataset.productId);
+    updateOrderSummary();
   });
 });
 
-// TODO: Update button allow selected quantity stored into quantity of the product in Cart
-console.log(cart);
+// Make the Order Summary interactive
+function updateOrderSummary() {
+  let totalQuantity = 0;
+  // Calculate Items
+  cart.forEach( item => {
+    totalQuantity += item.quantity;
+  })
+  let Sum = calculateSum();
+  console.log(cart.length); // Need to recalculate this
 
-console.log(cart[0].quantity);
 
-cart[0].quantity = 3;
-console.log(cart);
+  const summaryRowHolder = document.querySelector(".payment-summary-row div");
+  if (totalQuantity > 1) {
+    summaryRowHolder.innerHTML = `Items (${totalQuantity}):`;
+  } else if (totalQuantity == 1) {
+    summaryRowHolder.innerHTML = `Item (1):`;
+  } else {
+    summaryRowHolder.innerHTML = `Item (0):`;
+  }
 
-// TODO: Make the Order Summary interactive
+  const itemPriceHolder = document.querySelector(
+    ".payment-summary-money.item-price"
+  );
+  itemPriceHolder.innerHTML = `$${formatCurrency(Sum)}`;
+
+  const totalBeforeTaxHolder = document.querySelector(
+    ".payment-summary-row.subtotal-row .payment-summary-money"
+  );
+  totalBeforeTaxHolder.innerHTML = `$${formatCurrency(Sum)}`;
+
+  const taxHolder = document.querySelector(".payment-summary-money.tax");
+  let tax = Sum / 100; 
+  console.log(tax);
+  taxHolder.innerHTML = `$${formatCurrency(tax)}`;
+
+  const grandTotalHolder = document.querySelector(".grand-total");
+  grandTotalHolder.innerHTML = `$${formatCurrency(Sum + tax)}`;
+}
+
+function calculateSum() {
+  let Sum = 0;
+  cart.forEach((item) => {
+    let itemQuantity = item.quantity;
+    let itemPrice = extractPrice(item.productID);
+    let itemTotal = itemQuantity * itemPrice;
+    console.log(
+      `Calculating this product ${
+        item.productName
+      } with quantity of ${itemQuantity}\nHence total will be ${itemPrice} which is formatted to $${formatCurrency(
+        itemTotal
+      )}`
+    );
+    Sum += itemTotal;
+  });
+  return Sum;
+}
+
+updateOrderSummary();

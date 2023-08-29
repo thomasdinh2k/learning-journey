@@ -117,18 +117,18 @@ cart.forEach((product) => {
 
 document.querySelector(".order-summary").innerHTML = cartSummaryHTML;
 
-function renderSubtotal(product, quantity, price) {
+function renderSubtotal(product, quantity, price, deliveryOption) {
   let finalPriceObject = document.querySelector(
     `.final-price-${product.productID}`
   );
   let newQuantityValue = quantity;
 
   if (quantity === 1) {
-    finalPriceObject.innerHTML = `Subtotal (1 item): $${formatCurrency(price)}`;
+    finalPriceObject.innerHTML = `Subtotal (1 item) + delivery: $${formatCurrency(price)}`;
   } else if (quantity == 0) {
     removeFromCart(product.productID);
   } else
-    finalPriceObject.innerHTML = `Subtotal (${quantity} items): $${formatCurrency(
+    finalPriceObject.innerHTML = `Subtotal (${quantity} items) + delivery: $${formatCurrency(
       price * quantity
     )}`;
 }

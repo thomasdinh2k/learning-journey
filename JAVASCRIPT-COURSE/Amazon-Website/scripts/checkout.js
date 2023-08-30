@@ -48,9 +48,9 @@ function renderHTML(image, name, price, id) {
                   Choose a delivery option:
                 </div>
                 <div class="delivery-option">
-                  <input type="radio" checked
+                  <input type="radio" 
                     class="delivery-option-input"
-                    name="delivery-option-${id}">
+                    name="delivery-option-${id}" value = "0">
                   <div>
                     <div class="delivery-option-date">
                       Tuesday, June 21
@@ -61,7 +61,7 @@ function renderHTML(image, name, price, id) {
                   </div>
                 </div>
                 <div class="delivery-option">
-                  <input type="radio"
+                  <input type="radio" checked value="499"
                     class="delivery-option-input"
                     name="delivery-option-${id}">
                   <div>
@@ -112,12 +112,27 @@ cart.forEach((product) => {
     formatCurrency(matchingItem.priceCents),
     matchingItem.id
   );
-  // return matchingItem;
+  
+  //TODO: Retrieve Usr's last value for shipping fee
+    
+  var lastShippingSelection = localStorage.getItem(`shipping-fee-${productID}`);
+    console.log(lastShippingSelection);
+    var shippingFeeObject = document.getElementsByName(`delivery-option-${productID}`);
+    console.log(shippingFeeObject);
+    console.log(shippingFeeObject);
+    shippingFeeObject.forEach((shippingFeeOption => {
+      console.log("Shipping Fee Option");
+      console.log(shippingFeeOption);
+      if (shippingFeeOption.value === lastShippingSelection) {
+        shippingFeeOption.checked = true;
+      }
+    }))
+
 });
 
 document.querySelector(".order-summary").innerHTML = cartSummaryHTML;
 
-function renderSubtotal(product, quantity, price, deliveryOption) {
+function renderSubtotal(product, quantity, price, shippingFee = 0) {
   let finalPriceObject = document.querySelector(
     `.final-price-${product.productID}`
   );
@@ -129,7 +144,7 @@ function renderSubtotal(product, quantity, price, deliveryOption) {
     removeFromCart(product.productID);
   } else
     finalPriceObject.innerHTML = `Subtotal (${quantity} items) + delivery: $${formatCurrency(
-      price * quantity
+      (price * quantity) + shippingFee
     )}`;
 }
 
@@ -143,6 +158,27 @@ function extractPrice(productID) {
   return extractedPrice;
 }
 
+function extractShippingFee(product){
+  var extractedFee = 0;
+  let deliveryOptionObject = document.getElementsByName(
+    `delivery-option-${product.productID}`
+  )
+  deliveryOptionObject.forEach ((item) => {
+    if (item.checked === true) {
+      extractedFee = item.value
+    }
+
+  })
+  extractedFee = parseInt(extractedFee, 10)
+  localStorage.setItem(`shipping-fee-${product.productID}`, extractedFee);
+  
+  console.log(typeof extractedFee);
+  console.log(extractedFee);
+
+  return extractedFee;
+
+}
+
 function createQuantityBox(previousSelector, currentQuantity, productId) {
   const parent = previousSelector.parentNode;
   const inputBox = document.createElement("input");
@@ -154,6 +190,9 @@ function createQuantityBox(previousSelector, currentQuantity, productId) {
   return inputBox;
 }
 
+
+
+
 cart.forEach((product) => {
   // Update the quantity right after user choose a new option
   let quantitySelectorObject = document.querySelector(
@@ -162,8 +201,11 @@ cart.forEach((product) => {
   // Pull out the price value
   let extractedPrice = extractPrice(product.productID);
   quantitySelectorObject.value = product.quantity;
-  renderSubtotal(product, product.quantity, extractedPrice);
-  updateOrderSummary();
+  // Pull out shipping fee
+  var extractedShippingFee = extractShippingFee(product);
+  
+  renderSubtotal(product, product.quantity, extractedPrice, extractedShippingFee);
+  updateOrderSummary();  
 
   // Dynamic quantitySelector Enabler
   if (product.quantity > 10) {
@@ -186,7 +228,8 @@ cart.forEach((product) => {
     let finalPriceObject = document.querySelector(
       `.final-price-${product.productID}`
     );
-    renderSubtotal(product, newQuantityValue, extractedPrice);
+    let extractedShippingFee = extractShippingFee(product.productID);
+    renderSubtotal(product, newQuantityValue, extractedPrice, extractShippingFee);
     updateCartQuantity(product.productID, newQuantityValue)
     updateOrderSummary();
   });

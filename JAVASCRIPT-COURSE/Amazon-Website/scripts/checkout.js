@@ -50,7 +50,7 @@ function renderHTML(image, name, price, id) {
                 <div class="delivery-option">
                   <input type="radio" 
                     class="delivery-option-input"
-                    name="delivery-option-${id}" value = "0">
+                    name="delivery-option-${id}" value = "0" checked>
                   <div>
                     <div class="delivery-option-date">
                       Tuesday, June 21
@@ -61,7 +61,7 @@ function renderHTML(image, name, price, id) {
                   </div>
                 </div>
                 <div class="delivery-option">
-                  <input type="radio" checked value="499"
+                  <input type="radio" value="499"
                     class="delivery-option-input"
                     name="delivery-option-${id}">
                   <div>
@@ -76,7 +76,7 @@ function renderHTML(image, name, price, id) {
                 <div class="delivery-option">
                   <input type="radio"
                     class="delivery-option-input"
-                    name="delivery-option-${id}">
+                    name="delivery-option-${id}" value = "999">
                   <div>
                     <div class="delivery-option-date">
                       Monday, June 13
@@ -93,6 +93,8 @@ function renderHTML(image, name, price, id) {
   return cartSummaryHTML;
 }
 let matchingItem;
+
+console.log(cart);
 
 cart.forEach((product) => {
   // We will use "De-duplicating the data" || "Normalizing the data"
@@ -115,18 +117,18 @@ cart.forEach((product) => {
   
   //TODO: Retrieve Usr's last value for shipping fee
     
-  var lastShippingSelection = localStorage.getItem(`shipping-fee-${productID}`);
-    console.log(lastShippingSelection);
-    var shippingFeeObject = document.getElementsByName(`delivery-option-${productID}`);
-    console.log(shippingFeeObject);
-    console.log(shippingFeeObject);
-    shippingFeeObject.forEach((shippingFeeOption => {
-      console.log("Shipping Fee Option");
-      console.log(shippingFeeOption);
-      if (shippingFeeOption.value === lastShippingSelection) {
-        shippingFeeOption.checked = true;
-      }
-    }))
+  // var lastShippingSelection = localStorage.getItem(`shipping-fee-${productID}`);
+  //   console.log(lastShippingSelection);
+  //   var shippingFeeObject = document.getElementsByName(`delivery-option-${productID}`);
+  //   console.log(shippingFeeObject);
+  //   console.log(shippingFeeObject);
+  //   shippingFeeObject.forEach((shippingFeeOption => {
+  //     console.log("Shipping Fee Option");
+  //     console.log(shippingFeeOption);
+  //     if (shippingFeeOption.value === lastShippingSelection) {
+  //       shippingFeeOption.checked = true;
+  //     }
+  //   }))
 
 });
 
@@ -136,16 +138,17 @@ function renderSubtotal(product, quantity, price, shippingFee = 0) {
   let finalPriceObject = document.querySelector(
     `.final-price-${product.productID}`
   );
-  let newQuantityValue = quantity;
 
   if (quantity === 1) {
-    finalPriceObject.innerHTML = `Subtotal (1 item) + delivery: $${formatCurrency(price)}`;
+    finalPriceObject.innerHTML = `Subtotal (1 item) + delivery: $${formatCurrency(price + shippingFee)}`;
   } else if (quantity == 0) {
     removeFromCart(product.productID);
-  } else
-    finalPriceObject.innerHTML = `Subtotal (${quantity} items) + delivery: $${formatCurrency(
-      (price * quantity) + shippingFee
-    )}`;
+  } else {
+    console.log(`current price = ${price/100}`);
+    console.log(`current quantity = ${quantity}`);
+    console.log(`current shipping fee = ${shippingFee}`);
+    finalPriceObject.innerHTML = `Subtotal (${quantity} items) + delivery: $${formatCurrency((price * quantity) + shippingFee)}`;
+  }
 }
 
 function extractPrice(productID) {
@@ -158,25 +161,24 @@ function extractPrice(productID) {
   return extractedPrice;
 }
 
-function extractShippingFee(product){
+function extractShippingFee(productID){
+  console.log("Troubleshooting Shipping Fee");
+  console.log(`Product ID is ${productID}`);
   var extractedFee = 0;
   let deliveryOptionObject = document.getElementsByName(
-    `delivery-option-${product.productID}`
+    `delivery-option-${productID}`
   )
+
+  console.log(deliveryOptionObject);
   deliveryOptionObject.forEach ((item) => {
     if (item.checked === true) {
-      extractedFee = item.value
+      extractedFee = item.value;
+      console.log(`extracted Fee ${extractedFee}`);
     }
-
   })
   extractedFee = parseInt(extractedFee, 10)
-  localStorage.setItem(`shipping-fee-${product.productID}`, extractedFee);
-  
-  console.log(typeof extractedFee);
-  console.log(extractedFee);
-
+  console.log("End of troubleshoot");
   return extractedFee;
-
 }
 
 function createQuantityBox(previousSelector, currentQuantity, productId) {
@@ -194,16 +196,35 @@ function createQuantityBox(previousSelector, currentQuantity, productId) {
 
 
 cart.forEach((product) => {
-  // Update the quantity right after user choose a new option
+  // Update the quantity right after user choose a new option of delivery
+  let productID = product.productID;
   let quantitySelectorObject = document.querySelector(
     `.js-checkout-quantity-selector-${product.productID}`
   );
+
+  let shippingFeeOptionObject =  document.getElementsByName(
+    `delivery-option-${product.productID}`
+  );
+  let productPriceCents = extractPrice (product.productID);
+  let shippingFee = 0;
+
+  shippingFeeOptionObject.forEach( radioSelector => {
+    radioSelector.addEventListener("change", () => {
+      shippingFee = extractShippingFee(productID);
+      console.log(typeof shippingFee);
+      console.log(`Shipping fee for product ${product.productID}: ${parseInt(shippingFee, 10)}`);
+      renderSubtotal(product, product.quantity, productPriceCents, shippingFee);
+      updateOrderSummary();
+    })
+  })
+
   // Pull out the price value
   let extractedPrice = extractPrice(product.productID);
   quantitySelectorObject.value = product.quantity;
   // Pull out shipping fee
-  var extractedShippingFee = extractShippingFee(product);
-  
+  let extractedShippingFee = extractShippingFee(product.productID);
+  console.log(`Extracted Shipping Fee is ${extractShippingFee}`);
+
   renderSubtotal(product, product.quantity, extractedPrice, extractedShippingFee);
   updateOrderSummary();  
 
@@ -221,22 +242,22 @@ cart.forEach((product) => {
       `.product-quantity-${product.productID}`
     );
   }
-
+  // Update when user choose the new quantity value
   quantitySelectorObject.addEventListener("change", () => {
     let newQuantityValue = event.target.value;
 
     let finalPriceObject = document.querySelector(
-      `.final-price-${product.productID}`
+      `.final-price-${productID}`
     );
-    let extractedShippingFee = extractShippingFee(product.productID);
-    renderSubtotal(product, newQuantityValue, extractedPrice, extractShippingFee);
+    let extractedShippingFee = extractShippingFee(productID);
+    renderSubtotal(product, newQuantityValue, extractedPrice, extractedShippingFee);
     updateCartQuantity(product.productID, newQuantityValue)
     updateOrderSummary();
   });
 });
 
 // Add Event Listener for the "Delete"
-// TODO: Add event when user choose "0" then it delete the item in cart
+// Add event when user choose "0" then it delete the item in cart
 document.querySelectorAll(".js-delete-button").forEach((button) => {
   button.addEventListener("click", () => {
     removeFromCart(button.dataset.productId);
@@ -254,6 +275,7 @@ function updateOrderSummary() {
   let Sum = calculateSum();
   console.log(cart.length); // Need to recalculate this
 
+  // TODO: Add Sum for shippingFee and re-calculate the total based on correct shipping value
 
   const summaryRowHolder = document.querySelector(".payment-summary-row div");
   if (totalQuantity > 1) {

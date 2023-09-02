@@ -1,4 +1,9 @@
-import { cart, addToCart, removeFromCart, updateCartQuantity } from "../data/cart.js";
+import {
+  cart,
+  addToCart,
+  removeFromCart,
+  updateCartQuantity,
+} from "../data/cart.js";
 import { products } from "../data/products.js";
 import { formatCurrency } from "./utils/money.js";
 let cartSummaryHTML = "";
@@ -94,8 +99,6 @@ function renderHTML(image, name, price, id) {
 }
 let matchingItem;
 
-console.log(cart);
-
 cart.forEach((product) => {
   // We will use "De-duplicating the data" || "Normalizing the data"
 
@@ -114,9 +117,9 @@ cart.forEach((product) => {
     formatCurrency(matchingItem.priceCents),
     matchingItem.id
   );
-  
+
   //TODO: Retrieve Usr's last value for shipping fee
-    
+
   // var lastShippingSelection = localStorage.getItem(`shipping-fee-${productID}`);
   //   console.log(lastShippingSelection);
   //   var shippingFeeObject = document.getElementsByName(`delivery-option-${productID}`);
@@ -129,25 +132,30 @@ cart.forEach((product) => {
   //       shippingFeeOption.checked = true;
   //     }
   //   }))
-
 });
 
 document.querySelector(".order-summary").innerHTML = cartSummaryHTML;
 
-function renderSubtotal(product, quantity, price, shippingFee = 0) {
+function renderSubtotal(product, quantity, price) {
   let finalPriceObject = document.querySelector(
     `.final-price-${product.productID}`
   );
 
+  let shippingFee = extractShippingFee(product.productID);
+
   if (quantity === 1) {
-    finalPriceObject.innerHTML = `Subtotal (1 item) + delivery: $${formatCurrency(price + shippingFee)}`;
+    finalPriceObject.innerHTML = `Subtotal (1 item) + delivery: $${formatCurrency(
+      price + shippingFee
+    )}`;
   } else if (quantity == 0) {
     removeFromCart(product.productID);
   } else {
-    console.log(`current price = ${price/100}`);
+    console.log(`current price = ${price / 100}`);
     console.log(`current quantity = ${quantity}`);
     console.log(`current shipping fee = ${shippingFee}`);
-    finalPriceObject.innerHTML = `Subtotal (${quantity} items) + delivery: $${formatCurrency((price * quantity) + shippingFee)}`;
+    finalPriceObject.innerHTML = `Subtotal (${quantity} items) + delivery: $${formatCurrency(
+      price * quantity + shippingFee
+    )}`;
   }
 }
 
@@ -161,23 +169,17 @@ function extractPrice(productID) {
   return extractedPrice;
 }
 
-function extractShippingFee(productID){
-  console.log("Troubleshooting Shipping Fee");
-  console.log(`Product ID is ${productID}`);
+function extractShippingFee(productID) {
   var extractedFee = 0;
   let deliveryOptionObject = document.getElementsByName(
     `delivery-option-${productID}`
-  )
-
-  console.log(deliveryOptionObject);
-  deliveryOptionObject.forEach ((item) => {
+  );
+  deliveryOptionObject.forEach((item) => {
     if (item.checked === true) {
       extractedFee = item.value;
-      console.log(`extracted Fee ${extractedFee}`);
     }
-  })
-  extractedFee = parseInt(extractedFee, 10)
-  console.log("End of troubleshoot");
+  });
+  extractedFee = parseInt(extractedFee, 10);
   return extractedFee;
 }
 
@@ -192,86 +194,15 @@ function createQuantityBox(previousSelector, currentQuantity, productId) {
   return inputBox;
 }
 
-
-
-
-cart.forEach((product) => {
-  // Update the quantity right after user choose a new option of delivery
-  let productID = product.productID;
-  let quantitySelectorObject = document.querySelector(
-    `.js-checkout-quantity-selector-${product.productID}`
-  );
-
-  let shippingFeeOptionObject =  document.getElementsByName(
-    `delivery-option-${product.productID}`
-  );
-  let productPriceCents = extractPrice (product.productID);
-  let shippingFee = 0;
-
-  shippingFeeOptionObject.forEach( radioSelector => {
-    radioSelector.addEventListener("change", () => {
-      shippingFee = extractShippingFee(productID);
-      console.log(typeof shippingFee);
-      console.log(`Shipping fee for product ${product.productID}: ${parseInt(shippingFee, 10)}`);
-      renderSubtotal(product, product.quantity, productPriceCents, shippingFee);
-      updateOrderSummary();
-    })
-  })
-
-  // Pull out the price value
-  let extractedPrice = extractPrice(product.productID);
-  quantitySelectorObject.value = product.quantity;
-  // Pull out shipping fee
-  let extractedShippingFee = extractShippingFee(product.productID);
-  console.log(`Extracted Shipping Fee is ${extractShippingFee}`);
-
-  renderSubtotal(product, product.quantity, extractedPrice, extractedShippingFee);
-  updateOrderSummary();  
-
-  // Dynamic quantitySelector Enabler
-  if (product.quantity > 10) {
-    createQuantityBox(
-      quantitySelectorObject,
-      product.quantity,
-      product.productID
-    );
-    quantitySelectorObject = document.querySelector(
-      `.dynamic-input-box-${product.productID}`
-    );
-    let productQuantityObject = document.querySelector(
-      `.product-quantity-${product.productID}`
-    );
-  }
-  // Update when user choose the new quantity value
-  quantitySelectorObject.addEventListener("change", () => {
-    let newQuantityValue = event.target.value;
-
-    let finalPriceObject = document.querySelector(
-      `.final-price-${productID}`
-    );
-    let extractedShippingFee = extractShippingFee(productID);
-    renderSubtotal(product, newQuantityValue, extractedPrice, extractedShippingFee);
-    updateCartQuantity(product.productID, newQuantityValue)
-    updateOrderSummary();
-  });
-});
-
-// Add Event Listener for the "Delete"
-// Add event when user choose "0" then it delete the item in cart
-document.querySelectorAll(".js-delete-button").forEach((button) => {
-  button.addEventListener("click", () => {
-    removeFromCart(button.dataset.productId);
-    updateOrderSummary();
-  });
-});
-
 // Make the Order Summary interactive
 function updateOrderSummary() {
   let totalQuantity = 0;
+  let totalShippingFee = 0; 
   // Calculate Items
-  cart.forEach( item => {
-    totalQuantity += item.quantity;
-  })
+  cart.forEach((item) => {
+    totalQuantity += parseInt(item.quantity, 10);
+    // totalShippingFee += 
+  });
   let Sum = calculateSum();
   console.log(cart.length); // Need to recalculate this
 
@@ -297,8 +228,7 @@ function updateOrderSummary() {
   totalBeforeTaxHolder.innerHTML = `$${formatCurrency(Sum)}`;
 
   const taxHolder = document.querySelector(".payment-summary-money.tax");
-  let tax = Sum / 100; 
-  console.log(tax);
+  let tax = Sum / 100;
   taxHolder.innerHTML = `$${formatCurrency(tax)}`;
 
   const grandTotalHolder = document.querySelector(".grand-total");
@@ -311,16 +241,81 @@ function calculateSum() {
     let itemQuantity = item.quantity;
     let itemPrice = extractPrice(item.productID);
     let itemTotal = itemQuantity * itemPrice;
-    console.log(
-      `Calculating this product ${
-        item.productName
-      } with quantity of ${itemQuantity}\nHence total will be ${itemPrice} which is formatted to $${formatCurrency(
-        itemTotal
-      )}`
-    );
     Sum += itemTotal;
   });
   return Sum;
 }
 
-updateOrderSummary();
+console.log(cart);
+
+cart.forEach((product) => {
+  // Update the quantity right after user choose a new option of delivery
+  let productID = product.productID;
+  let quantitySelectorObject = document.querySelector(
+    `.js-checkout-quantity-selector-${product.productID}`
+  );
+
+  let shippingFeeOptionObject = document.getElementsByName(
+    `delivery-option-${product.productID}`
+  );
+  product.productPriceCents = extractPrice(product.productID);
+
+  shippingFeeOptionObject.forEach((radioSelector) => {
+    radioSelector.addEventListener("change", () => {
+      renderSubtotal(product, product.quantity, productPriceCents);
+      updateOrderSummary();
+    });
+  });
+  
+
+  renderSubtotal(
+    product,
+    product.quantity,
+    product.productPriceCents
+  );
+  
+  updateOrderSummary();
+  
+  // Dynamic quantitySelector Enabler
+  function handleQuantityChange(productID = productID, newQuantityValue) {
+    let finalPriceObject = document.querySelector(`.final-price-${productID}`);
+    let extractedShippingFee = extractShippingFee(productID);
+    renderSubtotal(
+      product,
+      newQuantityValue,
+      product.priceCents
+      
+    );
+    updateCartQuantity(product.productID, newQuantityValue);
+    if (product.quantity > 10) {
+      createQuantityBox(quantitySelectorObject, product.quantity, product.productID);
+      
+      quantitySelectorObject = document.querySelector(
+        `.dynamic-input-box-${product.productID}`
+      );
+      quantitySelectorObject.addEventListener("change", (event) => {
+        newQuantityValue = parseInt(event.target.value, 10);
+        product.quantity = newQuantityValue;
+        console.log(`Current Shipping Fee ${extractShippingFee}`);
+        renderSubtotal(product, newQuantityValue, extractedPrice);
+      })
+    }
+    updateOrderSummary();
+  }
+
+ 
+  // Update when user choose the new quantity value
+  quantitySelectorObject.addEventListener("change", () => {
+    let newQuantityValue = event.target.value;
+    handleQuantityChange(productID, newQuantityValue);
+  });
+});
+
+// Add Event Listener for the "Delete"
+// Add event when user choose "0" then it delete the item in cart
+document.querySelectorAll(".js-delete-button").forEach((button) => {
+  button.addEventListener("click", () => {
+    removeFromCart(button.dataset.productId);
+    updateOrderSummary();
+  });
+});

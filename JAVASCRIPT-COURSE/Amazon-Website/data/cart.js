@@ -57,11 +57,12 @@ export function removeFromCart(productID) {
   itemContainer.remove();
 }
 
-export function updateCartQuantity(productID, newQuantity) {
+export function updateCartQuantity(productID, newQuantity) { // Done
   cart.forEach( item => {
     if (productID === item.productID) {
       item.quantity = newQuantity;
-      console.log(`Confirm updated new quantity to ${newQuantity}`);
+      console.log(`Confirm updated new quantity to ${newQuantity}, modified correct property`);
+      console.log(cart);
     }
   })
 };

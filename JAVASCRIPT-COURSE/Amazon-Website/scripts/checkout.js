@@ -109,7 +109,7 @@ cart.forEach((product) => {
       matchingItem = item;
     }
   });
-
+  console.log(cart);
   // Render items to web's placeholder
   renderHTML(
     matchingItem.image,
@@ -117,7 +117,6 @@ cart.forEach((product) => {
     formatCurrency(matchingItem.priceCents),
     matchingItem.id
   );
-
   //TODO: Retrieve Usr's last value for shipping fee
 
   // var lastShippingSelection = localStorage.getItem(`shipping-fee-${productID}`);
@@ -136,25 +135,22 @@ cart.forEach((product) => {
 
 document.querySelector(".order-summary").innerHTML = cartSummaryHTML;
 
-function renderSubtotal(product, quantity, price) {
-  let finalPriceObject = document.querySelector(
-    `.final-price-${product.productID}`
-  );
+function renderSubtotal(product, productID) {
+  console.log(productID);
+  let finalPriceObject = document.querySelector(`.final-price-${productID}`);
+  let currentPrice = product.productPriceCents;
+  let currentQuantity = product.quantity;
+  let currentShippingFee = product.productShippingFee;
 
-  let shippingFee = extractShippingFee(product.productID);
-
-  if (quantity === 1) {
+  if (currentQuantity == 1) {
     finalPriceObject.innerHTML = `Subtotal (1 item) + delivery: $${formatCurrency(
-      price + shippingFee
+      currentPrice + currentShippingFee
     )}`;
-  } else if (quantity == 0) {
-    removeFromCart(product.productID);
+  } else if (currentQuantity == 0) {
+    removeFromCart(productID);
   } else {
-    console.log(`current price = ${price / 100}`);
-    console.log(`current quantity = ${quantity}`);
-    console.log(`current shipping fee = ${shippingFee}`);
-    finalPriceObject.innerHTML = `Subtotal (${quantity} items) + delivery: $${formatCurrency(
-      price * quantity + shippingFee
+    finalPriceObject.innerHTML = `Subtotal (${currentQuantity} items) + delivery: $${formatCurrency(
+      currentPrice * currentQuantity + currentShippingFee
     )}`;
   }
 }
@@ -170,38 +166,41 @@ function extractPrice(productID) {
 }
 
 function extractShippingFee(productID) {
-  var extractedFee = 0;
+  var extractedShippingFee = 0;
   let deliveryOptionObject = document.getElementsByName(
     `delivery-option-${productID}`
   );
   deliveryOptionObject.forEach((item) => {
     if (item.checked === true) {
-      extractedFee = item.value;
+      extractedShippingFee = item.value;
     }
   });
-  extractedFee = parseInt(extractedFee, 10);
-  return extractedFee;
+  extractedShippingFee = parseInt(extractedShippingFee, 10);
+  return extractedShippingFee;
 }
+
+
+//TODO:  Hiện tại đang gặp vấn đề với createQuantityBox + handleQuantityChange không hoạt động với EventListener
 
 function createQuantityBox(previousSelector, currentQuantity, productId) {
   const parent = previousSelector.parentNode;
   const inputBox = document.createElement("input");
   inputBox.type = "number";
   inputBox.value = currentQuantity;
-  parent.replaceChild(inputBox, previousSelector);
   inputBox.classList.add("dynamic-input");
   inputBox.classList.add(`dynamic-input-box-${productId}`);
+  parent.replaceChild(inputBox, previousSelector);
   return inputBox;
 }
 
 // Make the Order Summary interactive
 function updateOrderSummary() {
   let totalQuantity = 0;
-  let totalShippingFee = 0; 
+  let totalShippingFee = 0;
   // Calculate Items
   cart.forEach((item) => {
     totalQuantity += parseInt(item.quantity, 10);
-    // totalShippingFee += 
+    // totalShippingFee +=
   });
   let Sum = calculateSum();
   console.log(cart.length); // Need to recalculate this
@@ -246,69 +245,75 @@ function calculateSum() {
   return Sum;
 }
 
-console.log(cart);
+// Dynamic quantitySelector Enabler
+function handleQuantityChange(product, productID, newQuantityValue) {
+  updateCartQuantity(productID, newQuantityValue);
+  if (product.quantity > 10) {
+    // let quantitySelectorObject = document.querySelector(
+    //   `.dynamic-input-box-${productID}`
+    // );
+    let quantitySelectorObject = document.querySelector(`.js-checkout-quantity-selector-${productID}`);
+    let dynamicQuantitySelectorObject = document.querySelector(`dynamic-input-box-${productID}`);
+    if (quantitySelectorObject) {
+      createQuantityBox(quantitySelectorObject, product.quantity, productID);
+    } else {
+      createQuantityBox(dynamicQuantitySelectorObject, product.quantity, productID);
+    }
+  }
+  renderSubtotal(product, productID);
+}
 
 cart.forEach((product) => {
-  // Update the quantity right after user choose a new option of delivery
   let productID = product.productID;
   let quantitySelectorObject = document.querySelector(
-    `.js-checkout-quantity-selector-${product.productID}`
+    `.js-checkout-quantity-selector-${productID}`
   );
-
   let shippingFeeOptionObject = document.getElementsByName(
     `delivery-option-${product.productID}`
   );
-  product.productPriceCents = extractPrice(product.productID);
 
-  shippingFeeOptionObject.forEach((radioSelector) => {
-    radioSelector.addEventListener("change", () => {
-      renderSubtotal(product, product.quantity, productPriceCents);
-      updateOrderSummary();
-    });
-  });
-  
-
-  renderSubtotal(
-    product,
-    product.quantity,
-    product.productPriceCents
-  );
-  
-  updateOrderSummary();
-  
-  // Dynamic quantitySelector Enabler
-  function handleQuantityChange(productID = productID, newQuantityValue) {
-    let finalPriceObject = document.querySelector(`.final-price-${productID}`);
-    let extractedShippingFee = extractShippingFee(productID);
-    renderSubtotal(
-      product,
-      newQuantityValue,
-      product.priceCents
-      
-    );
-    updateCartQuantity(product.productID, newQuantityValue);
-    if (product.quantity > 10) {
-      createQuantityBox(quantitySelectorObject, product.quantity, product.productID);
-      
-      quantitySelectorObject = document.querySelector(
-        `.dynamic-input-box-${product.productID}`
-      );
-      quantitySelectorObject.addEventListener("change", (event) => {
-        newQuantityValue = parseInt(event.target.value, 10);
-        product.quantity = newQuantityValue;
-        console.log(`Current Shipping Fee ${extractShippingFee}`);
-        renderSubtotal(product, newQuantityValue, extractedPrice);
-      })
-    }
-    updateOrderSummary();
+  if (product.quantity < 10) {
+    document.querySelector(
+      `.js-checkout-quantity-selector-${productID}`
+    ).value = product.quantity;
+  } else if (product.quantity >= 10) {
+    createQuantityBox(quantitySelectorObject, product.quantity, productID);
   }
 
- 
-  // Update when user choose the new quantity value
-  quantitySelectorObject.addEventListener("change", () => {
-    let newQuantityValue = event.target.value;
-    handleQuantityChange(productID, newQuantityValue);
+  // Update the quantity right after user choose a new option of delivery
+
+  // Binding properties to item arrays
+  handleQuantityChange(product, productID, product.quantity);
+  product.productPriceCents = extractPrice(product.productID);
+  product.productShippingFee = extractShippingFee(product.productID);
+
+  shippingFeeOptionObject.forEach((radioSelector) => {
+    radioSelector.addEventListener("change", (event) => {
+      product.productShippingFee = parseInt(event.target.value, 10);
+      console.log(cart);
+      renderSubtotal(product, productID);
+    });
   });
+
+  renderSubtotal(product, productID);
+
+  updateOrderSummary();
+
+  // Update when user choose the new quantity value
+  if (quantitySelectorObject) {
+  quantitySelectorObject.addEventListener("change", (event) => {
+    let newQuantityValue = event.target.value;
+    handleQuantityChange(product, productID, newQuantityValue);
+  });
+}
+  // Change the class to Dynamic ones
+  if (!quantitySelectorObject) {
+    let dynamicQuantitySelectorObject = document.querySelector(`dynamic-input-box-${productID}`);
+    dynamicQuantitySelectorObject.addEventListener("change", (event) => {
+      let newQuantityValue = event.target.value;
+      handleQuantityChange(product, productID, newQuantityValue);
+    })
+  }
 });
 
 // Add Event Listener for the "Delete"

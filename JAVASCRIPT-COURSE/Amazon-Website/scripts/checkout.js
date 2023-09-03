@@ -179,16 +179,21 @@ function extractShippingFee(productID) {
   return extractedShippingFee;
 }
 
-
-//TODO:  Hiện tại đang gặp vấn đề với createQuantityBox + handleQuantityChange không hoạt động với EventListener
-
-function createQuantityBox(previousSelector, currentQuantity, productId) {
+//DOING :  Hiện tại đang gặp vấn đề với createQuantityBox + handleQuantityChange không hoạt động với EventListener
+// Create inputBox which also attach an EventListener to it
+function createQuantityBox(currentProduct, previousSelector, currentQuantity) {
   const parent = previousSelector.parentNode;
   const inputBox = document.createElement("input");
   inputBox.type = "number";
   inputBox.value = currentQuantity;
   inputBox.classList.add("dynamic-input");
-  inputBox.classList.add(`dynamic-input-box-${productId}`);
+  inputBox.classList.add(`dynamic-input-box-${currentProduct.productID}`);
+  // Add Event Listener
+  inputBox.addEventListener("change", (event) => {
+    let newQuantityValue = event.target.value;
+    handleQuantityChange(currentProduct, currentProduct.productID, newQuantityValue);
+    console.log(`Value accepted to ${newQuantityValue}`);
+  })
   parent.replaceChild(inputBox, previousSelector);
   return inputBox;
 }
@@ -249,16 +254,12 @@ function calculateSum() {
 function handleQuantityChange(product, productID, newQuantityValue) {
   updateCartQuantity(productID, newQuantityValue);
   if (product.quantity > 10) {
-    // let quantitySelectorObject = document.querySelector(
-    //   `.dynamic-input-box-${productID}`
-    // );
-    let quantitySelectorObject = document.querySelector(`.js-checkout-quantity-selector-${productID}`);
-    let dynamicQuantitySelectorObject = document.querySelector(`dynamic-input-box-${productID}`);
-    if (quantitySelectorObject) {
-      createQuantityBox(quantitySelectorObject, product.quantity, productID);
-    } else {
-      createQuantityBox(dynamicQuantitySelectorObject, product.quantity, productID);
-    }
+    let quantitySelectorObject = document.querySelector(
+      `.js-checkout-quantity-selector-${productID}`
+    );
+    let dynamicQuantitySelectorObject = document.querySelector(
+      `dynamic-input-box-${productID}`
+    );
   }
   renderSubtotal(product, productID);
 }
@@ -277,7 +278,12 @@ cart.forEach((product) => {
       `.js-checkout-quantity-selector-${productID}`
     ).value = product.quantity;
   } else if (product.quantity >= 10) {
-    createQuantityBox(quantitySelectorObject, product.quantity, productID);
+    let dynamicQuantitySelectorObject = createQuantityBox(
+      product,
+      quantitySelectorObject,
+      product.quantity
+    ); // Test out "inputBox"
+    console.log(dynamicQuantitySelectorObject.value);
   }
 
   // Update the quantity right after user choose a new option of delivery
@@ -301,18 +307,10 @@ cart.forEach((product) => {
 
   // Update when user choose the new quantity value
   if (quantitySelectorObject) {
-  quantitySelectorObject.addEventListener("change", (event) => {
-    let newQuantityValue = event.target.value;
-    handleQuantityChange(product, productID, newQuantityValue);
-  });
-}
-  // Change the class to Dynamic ones
-  if (!quantitySelectorObject) {
-    let dynamicQuantitySelectorObject = document.querySelector(`dynamic-input-box-${productID}`);
-    dynamicQuantitySelectorObject.addEventListener("change", (event) => {
+    quantitySelectorObject.addEventListener("change", (event) => {
       let newQuantityValue = event.target.value;
       handleQuantityChange(product, productID, newQuantityValue);
-    })
+    });
   }
 });
 

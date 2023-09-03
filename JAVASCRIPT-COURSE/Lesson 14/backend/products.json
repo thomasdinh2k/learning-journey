@@ -1,5 +1,18 @@
 [
   {
+    "id": "e43638ce-6aa0-4b85-b27f-e1d07eb678c6223a",
+    "image": "images/products/athletic-cotton-socks-6-pairs.jpg",
+    "name": "Test Sample Product",
+    "rating": {
+      "stars": 1,
+      "count": 1
+    },
+    "priceCents": 10,
+    "keywords": [
+      "test"
+    ]
+  },
+  {
     "id": "e43638ce-6aa0-4b85-b27f-e1d07eb678c6",
     "image": "images/products/athletic-cotton-socks-6-pairs.jpg",
     "name": "Black and Gray Athletic Cotton Socks - 6 Pairs",
@@ -7,7 +20,7 @@
       "stars": 4.5,
       "count": 87
     },
-    "priceCents": 1090,
+    "priceCents": 1000,
     "keywords": [
       "socks",
       "sports",

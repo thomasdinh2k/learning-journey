@@ -1,6 +1,7 @@
 // Array represents a list
 // Object represents each product (Group multiple values together)
 
+// => Below is an array of object
 export const products = [
   {
     id: "e43638ce-6aa0-4b85-b27f-e1d07eb678c6231",
@@ -40,7 +41,7 @@ export const products = [
       stars: 2,
       count: 87,
     },
-    priceCents: 1090,
+    priceCents: 1000,
     keywords: ["socks", "sports", "apparel"],
   },
   {

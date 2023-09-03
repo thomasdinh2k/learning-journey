@@ -158,7 +158,6 @@ def delete_item():
         else:
             flag = False
 
-# TODO: Fix update_item
 def update_item():
     # UPDATE {table_name} SET {table_column_name} = {new_input} WHERE {table_property} = {} AND {} = {}
     connection = psycopg2.connect("dbname='database1' user='postgres' password='1820' host='localhost' port='5432'")

@@ -47,7 +47,7 @@ products.forEach((products) => {
 
     <div class="added-to-cart js-selector-${products.id}">
       <img src="images/icons/checkmark.png">
-      Added
+      <span class="added-${products.id}">Added</span>
     </div>
 
     <button class="add-to-cart-button button-primary js-add-to-cart" data-product-id="${
@@ -76,24 +76,46 @@ function updateQuantity() {
 
 updateQuantity();
 
+function findProperty(objArray, productID) {
+  console.log("Executing");
+  console.log(objArray);
+  let matchingItem = [];
+  
+  objArray.forEach(element => {
+    if (element.productID == productID) {
+      matchingItem = element;
+      console.log(`Found ${matchingItem}`);
+    };
+  });
+  return matchingItem;
+}
+
+let timeoutID;
 
 function addedToCartNotification(productID) {
+  console.log(cart);
   let addedToCartObject = document.querySelector(
     `.added-to-cart.js-selector-${productID}`
   );
-  let timeoutID;
+  
+  var matchingItem = findProperty(cart, productID);
+  
+  
+  let addedTextObject = document.querySelector(`.added-${productID}`);
+  addedTextObject.innerHTML = `Added! (${matchingItem.quantity} in cart)`;
+  
   clearTimeout(timeoutID);
   // Dismiss notifications after 2 seconds
   if (
     addedToCartObject.style.opacity == "" ||
     addedToCartObject.style.opacity == "0"
-  ) {
-    clearTimeout(timeoutID);
-    addedToCartObject.style.opacity = "1";
-    timeoutID = setTimeout(() => {
-      addedToCartObject.style.opacity = "0";
-    }, 1000);
-  }
+    ) {
+      clearTimeout(timeoutID);
+      addedToCartObject.style.opacity = "1";
+      timeoutID = setTimeout(() => {
+        addedToCartObject.style.opacity = "0";
+      }, 1550);
+    }
 }
 
 // Add Event Listener for the "Add to Cart button"

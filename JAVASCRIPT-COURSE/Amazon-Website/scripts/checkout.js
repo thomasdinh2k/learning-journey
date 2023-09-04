@@ -182,7 +182,6 @@ function createQuantityBox(currentProduct, previousSelector, currentQuantity) {
       currentProduct.productID,
       newQuantityValue
     );
-    console.log(`Value accepted to ${newQuantityValue}`);
   });
   parent.replaceChild(inputBox, previousSelector);
   return inputBox;
@@ -196,8 +195,6 @@ function createQuantityBoxTest(product, currentQuantity = 0) {
     currentSelectorHolder.innerHTML = `<input type="number" class="dynamic-input dynamic-input-box-${product.productID}" name="quantity" min="0" value="${currentQuantity}"><span class="delete-quantity-link link-primary js-delete-button-${product.productID}" >
                     Delete
                   </span>`;
-    console.log(currentSelectorHolder.innerHTML);
-    
     // Handle when user change the value
     const currentSelectorObject = document.querySelector(
       `.dynamic-input-box-${product.productID}`
@@ -214,8 +211,6 @@ function createQuantityBoxTest(product, currentQuantity = 0) {
     })
 
   } else {
-    console.log("Switching to regular quantity selector");
-    console.log(product.quantity);
     var currentSelectorObject = document.querySelector(
       `.js-checkout-quantity-selector-${product.productID}`
     );
@@ -286,7 +281,6 @@ function calculateSum() {
   });
   return Sum;
 }
-
 // Dynamic quantitySelector Enabler
 function handleQuantityChange(product, productID, newQuantityValue) {
   updateCartQuantity(productID, newQuantityValue);
@@ -302,16 +296,6 @@ cart.forEach((product) => {
     `delivery-option-${product.productID}`
   );
   createQuantityBoxTest(product, product.quantity);
-  // if (product.quantity < 10) {
-  //   document.querySelector(
-  //     `.js-checkout-quantity-selector-${productID}`
-  //   ).value = product.quantity;
-  // } else if (product.quantity > 10 || product.quantity === "11") {
-  //   console.log("Executing");
-  //   createQuantityBox(product, quantitySelectorObject, product.quantity);
-  // }
-
-  // Update the quantity right after user choose a new option of delivery
 
   // Binding properties to item arrays
   handleQuantityChange(product, productID, product.quantity);
@@ -336,4 +320,3 @@ document.querySelectorAll(".js-delete-button").forEach((button) => {
     updateOrderSummary();
   });
 });
-

@@ -1,22 +1,22 @@
 // Make this interactive instead of pseudo data (Instead of making a variable, we will use a JSON file created after user has addToCart and push product to it. After that, we will use localStorage to parse items)
 
-export let cart = JSON.parse(localStorage.getItem("cart"));
-
-if (!cart) {
-  cart = [
-    {
-      productName: "Apple MagSafe Charger - Wireless Charger with Fast Charging Capability, Type C Wall Charger, Compatible with iPhone and AirPods",
-      productID: "e43638ce-6aa0-4b85-b27f-e1d07eb678c6231",
-      quantity: 1,
-    },
-  ]
-}
-
-function saveToStorage() {
+export function saveToStorage() {
   localStorage.setItem('cart', JSON.stringify(cart));
+  console.log(cart);
+  console.log("Cart was saved successfully");
+  return cart
 }
 
 
+export function retrieveCartFromStorage() {
+  let cart = JSON.parse(localStorage.getItem("cart"));
+  console.log("Exported cart successfully");
+  console.log(cart);
+  return cart
+}
+
+export let cart = retrieveCartFromStorage();
+console.log(cart);
 
 // Move function addToCart to this file because it is cart related
 export function addToCart(productID, productName, productQuantity) {
@@ -67,3 +67,4 @@ export function updateCartQuantity(productID, newQuantity) { // Done
     }
   })
 };
+

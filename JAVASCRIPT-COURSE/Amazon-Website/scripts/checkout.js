@@ -3,6 +3,7 @@ import {
   addToCart,
   removeFromCart,
   updateCartQuantity,
+  saveToStorage
 } from "../data/cart.js";
 import { products } from "../data/products.js";
 import { formatCurrency } from "./utils/money.js";
@@ -130,15 +131,14 @@ function renderSubtotal(product, productID) {
     finalPriceObject.innerHTML = `Subtotal (1 item) + delivery: $${formatCurrency(
       currentPrice + currentShippingFee
     )}`;
-    NumOfItem = '1 item';
+    NumOfItem = "1 item";
   } else if (currentQuantity == 0) {
     removeFromCart(productID);
-    NumOfItem = 'Zero item';
+    NumOfItem = "Zero item";
   } else {
     finalPriceObject.innerHTML = `Subtotal (${currentQuantity} items) + delivery: $${formatCurrency(
       currentPrice * currentQuantity + currentShippingFee
     )}`;
-    
   }
   updateOrderSummary();
 }
@@ -204,12 +204,13 @@ function createQuantityBoxTest(product, currentQuantity = 0) {
     });
 
     // Handle when user try to delete the value
-    const deleteValueObject = document.querySelector(`.js-delete-button-${product.productID}`);
+    const deleteValueObject = document.querySelector(
+      `.js-delete-button-${product.productID}`
+    );
     deleteValueObject.addEventListener("click", (event) => {
       removeFromCart(product.productID); // Move the removal logic here
       updateOrderSummary();
-    })
-
+    });
   } else {
     var currentSelectorObject = document.querySelector(
       `.js-checkout-quantity-selector-${product.productID}`
@@ -240,10 +241,10 @@ function updateOrderSummary() {
   const summaryRowHolder = document.querySelector(".payment-summary-row div");
   if (cart.length > 1) {
     summaryRowHolder.innerHTML = `Items (${cart.length}):`;
-    NumOfItem.innerHTML = `${cart.length} items`
+    NumOfItem.innerHTML = `${cart.length} items`;
   } else if (cart.length == 1) {
     summaryRowHolder.innerHTML = `Item (1):`;
-    NumOfItem.innerHTML = `${cart.length} item`
+    NumOfItem.innerHTML = `${cart.length} item`;
   } else {
     summaryRowHolder.innerHTML = `No item in cart`;
     NumOfItem.innerHTML = `No item`;
@@ -285,6 +286,7 @@ function calculateSum() {
 function handleQuantityChange(product, productID, newQuantityValue) {
   updateCartQuantity(productID, newQuantityValue);
   renderSubtotal(product, productID);
+  saveToStorage();
 }
 
 cart.forEach((product) => {
@@ -320,3 +322,5 @@ document.querySelectorAll(".js-delete-button").forEach((button) => {
     updateOrderSummary();
   });
 });
+// Save changes to cart globally
+saveToStorage();

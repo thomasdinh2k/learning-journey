@@ -109,7 +109,6 @@ cart.forEach((product) => {
       matchingItem = item;
     }
   });
-  console.log(cart);
   // Render items to web's placeholder
   renderHTML(
     matchingItem.image,
@@ -136,7 +135,6 @@ cart.forEach((product) => {
 document.querySelector(".order-summary").innerHTML = cartSummaryHTML;
 
 function renderSubtotal(product, productID) {
-  console.log(productID);
   let finalPriceObject = document.querySelector(`.final-price-${productID}`);
   let currentPrice = product.productPriceCents;
   let currentQuantity = product.quantity;
@@ -153,6 +151,7 @@ function renderSubtotal(product, productID) {
       currentPrice * currentQuantity + currentShippingFee
     )}`;
   }
+  updateOrderSummary();
 }
 
 function extractPrice(productID) {
@@ -178,8 +177,6 @@ function extractShippingFee(productID) {
   extractedShippingFee = parseInt(extractedShippingFee, 10);
   return extractedShippingFee;
 }
-
-//DOING :  Hiện tại đang gặp vấn đề với createQuantityBox + handleQuantityChange không hoạt động với EventListener
 // Create inputBox which also attach an EventListener to it
 function createQuantityBox(currentProduct, previousSelector, currentQuantity) {
   const parent = previousSelector.parentNode;
@@ -200,45 +197,43 @@ function createQuantityBox(currentProduct, previousSelector, currentQuantity) {
 
 // Make the Order Summary interactive
 function updateOrderSummary() {
+  console.log("Executing");
+  console.log(cart);
   let totalQuantity = 0;
   let totalShippingFee = 0;
   // Calculate Items
   cart.forEach((item) => {
     totalQuantity += parseInt(item.quantity, 10);
-    // totalShippingFee +=
+    totalShippingFee += parseInt(item.productShippingFee, 10);
   });
-  let Sum = calculateSum();
-  console.log(cart.length); // Need to recalculate this
-
-  // TODO: Add Sum for shippingFee and re-calculate the total based on correct shipping value
-
+  let GrandTotal = calculateSum();
+  GrandTotal += totalShippingFee;
   const summaryRowHolder = document.querySelector(".payment-summary-row div");
-  if (totalQuantity > 1) {
-    summaryRowHolder.innerHTML = `Items (${totalQuantity}):`;
-  } else if (totalQuantity == 1) {
+  if (cart.length > 1) {
+    summaryRowHolder.innerHTML = `Items (${cart.length}):`;
+  } else if (cart.length == 1) {
     summaryRowHolder.innerHTML = `Item (1):`;
   } else {
     summaryRowHolder.innerHTML = `Item (0):`;
   }
-
   const itemPriceHolder = document.querySelector(
     ".payment-summary-money.item-price"
   );
-  itemPriceHolder.innerHTML = `$${formatCurrency(Sum)}`;
-
+  itemPriceHolder.innerHTML = `$${formatCurrency(GrandTotal)}`;
+  const shippingFeeHolder = document.querySelector(".shippingFee");
+  shippingFeeHolder.innerHTML = `$${formatCurrency(totalShippingFee)}`;
   const totalBeforeTaxHolder = document.querySelector(
     ".payment-summary-row.subtotal-row .payment-summary-money"
   );
-  totalBeforeTaxHolder.innerHTML = `$${formatCurrency(Sum)}`;
-
+  totalBeforeTaxHolder.innerHTML = `$${formatCurrency(GrandTotal)}`;
   const taxHolder = document.querySelector(".payment-summary-money.tax");
-  let tax = Sum / 100;
+  let tax = GrandTotal / 100;
   taxHolder.innerHTML = `$${formatCurrency(tax)}`;
-
   const grandTotalHolder = document.querySelector(".grand-total");
-  grandTotalHolder.innerHTML = `$${formatCurrency(Sum + tax)}`;
+  grandTotalHolder.innerHTML = `$${formatCurrency(GrandTotal + tax)}`;
+  const grandTotalVNDHolder = document.querySelector(".grand-total-vietnamdong");
+  grandTotalVNDHolder.innerHTML = `<span>🇻🇳  </span> ${(((GrandTotal + tax) * 24406)/100).toLocaleString("vi-VN", {style: "currency", currency: "VND"})} `
 }
-
 function calculateSum() {
   let Sum = 0;
   cart.forEach((item) => {
@@ -260,6 +255,9 @@ function handleQuantityChange(product, productID, newQuantityValue) {
     let dynamicQuantitySelectorObject = document.querySelector(
       `dynamic-input-box-${productID}`
     );
+    // createQuantityBox(product,
+    //   quantitySelectorObject,
+    //   product.quantity);
   }
   renderSubtotal(product, productID);
 }
@@ -296,7 +294,6 @@ cart.forEach((product) => {
   shippingFeeOptionObject.forEach((radioSelector) => {
     radioSelector.addEventListener("change", (event) => {
       product.productShippingFee = parseInt(event.target.value, 10);
-      console.log(cart);
       renderSubtotal(product, productID);
     });
   });

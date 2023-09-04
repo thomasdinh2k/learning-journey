@@ -49,6 +49,13 @@
   padding: 18px;
 }
 
+.grand-total-vietnamdong{
+  display: flex;
+  color: black;
+  font-size: 12.5px;
+  justify-content: flex-end;
+}
+
 .final-price {
   font-weight: bold;
   text-align: end;

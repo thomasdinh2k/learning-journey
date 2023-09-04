@@ -26,21 +26,20 @@ function renderHTML(image, name, price, id) {
                   $${price}
                 </div>
                 <div class="product-quantity-${id}">
-                <select class="js-quantity-selector js-checkout-quantity-selector-${id}">
-                  <option value="0">0 (Delete)</option>
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
-                  <option value="5">5</option>
-                  <option value="6">6</option>
-                  <option value="7">7</option>
-                  <option value="8">8</option>
-                  <option value="9">9</option>
-                  <option value="10">10</option>
-                  <option value="11">10+</option>
-                  
-            </select>
+                  <select class="js-quantity-selector js-checkout-quantity-selector-${id}">
+                    <option value="0">0 (Delete)</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">10+</option>
+                  </select>
                   <span class="delete-quantity-link link-primary js-delete-button" data-product-id="${id}">
                     Delete
                   </span>
@@ -117,19 +116,6 @@ cart.forEach((product) => {
     matchingItem.id
   );
   //TODO: Retrieve Usr's last value for shipping fee
-
-  // var lastShippingSelection = localStorage.getItem(`shipping-fee-${productID}`);
-  //   console.log(lastShippingSelection);
-  //   var shippingFeeObject = document.getElementsByName(`delivery-option-${productID}`);
-  //   console.log(shippingFeeObject);
-  //   console.log(shippingFeeObject);
-  //   shippingFeeObject.forEach((shippingFeeOption => {
-  //     console.log("Shipping Fee Option");
-  //     console.log(shippingFeeOption);
-  //     if (shippingFeeOption.value === lastShippingSelection) {
-  //       shippingFeeOption.checked = true;
-  //     }
-  //   }))
 });
 
 document.querySelector(".order-summary").innerHTML = cartSummaryHTML;
@@ -188,17 +174,47 @@ function createQuantityBox(currentProduct, previousSelector, currentQuantity) {
   // Add Event Listener
   inputBox.addEventListener("change", (event) => {
     let newQuantityValue = event.target.value;
-    handleQuantityChange(currentProduct, currentProduct.productID, newQuantityValue);
+    handleQuantityChange(
+      currentProduct,
+      currentProduct.productID,
+      newQuantityValue
+    );
     console.log(`Value accepted to ${newQuantityValue}`);
-  })
+  });
   parent.replaceChild(inputBox, previousSelector);
   return inputBox;
 }
 
+function createQuantityBoxTest(product, currentQuantity = 0) {
+  const currentSelectorHolder = document.querySelector(
+    `.product-quantity-${product.productID}`
+  );
+  if (currentQuantity >= 10) {
+    currentSelectorHolder.innerHTML = `<input type="number" class="dynamic-input dynamic-input-box-${product.productID}" name="quantity" min="1" value="${currentQuantity}"><span class="delete-quantity-link link-primary js-delete-button" data-product-id="${product.productID}">
+                    Delete
+                  </span>`;
+    console.log(currentSelectorHolder.innerHTML);
+    
+    const currentSelectorObject = document.querySelector(`.dynamic-input-box-${product.productID}`)
+    currentSelectorObject.addEventListener("change", (event) => {
+      handleQuantityChange(product, product.productID, event.target.value);
+    })
+  } else {
+    console.log("Switching to regular quantity selector");
+    console.log(product.quantity);
+    var currentSelectorObject = document.querySelector(`.js-checkout-quantity-selector-${product.productID}`);
+    currentSelectorObject.value = product.quantity;
+    currentSelectorObject.addEventListener("change", (event) =>{
+      if (event.target.value < 11) {
+        handleQuantityChange(product, product.productID, event.target.value);
+      } else {
+        createQuantityBoxTest(product, event.target.value);
+      }
+    })
+  }
+}
 // Make the Order Summary interactive
 function updateOrderSummary() {
-  console.log("Executing");
-  console.log(cart);
   let totalQuantity = 0;
   let totalShippingFee = 0;
   // Calculate Items
@@ -214,7 +230,7 @@ function updateOrderSummary() {
   } else if (cart.length == 1) {
     summaryRowHolder.innerHTML = `Item (1):`;
   } else {
-    summaryRowHolder.innerHTML = `Item (0):`;
+    summaryRowHolder.innerHTML = `No item in cart`;
   }
   const itemPriceHolder = document.querySelector(
     ".payment-summary-money.item-price"
@@ -231,8 +247,13 @@ function updateOrderSummary() {
   taxHolder.innerHTML = `$${formatCurrency(tax)}`;
   const grandTotalHolder = document.querySelector(".grand-total");
   grandTotalHolder.innerHTML = `$${formatCurrency(GrandTotal + tax)}`;
-  const grandTotalVNDHolder = document.querySelector(".grand-total-vietnamdong");
-  grandTotalVNDHolder.innerHTML = `<span>🇻🇳  </span> ${(((GrandTotal + tax) * 24406)/100).toLocaleString("vi-VN", {style: "currency", currency: "VND"})} `
+  const grandTotalVNDHolder = document.querySelector(
+    ".grand-total-vietnamdong"
+  );
+  grandTotalVNDHolder.innerHTML = `<span>🇻🇳  </span> ${(
+    ((GrandTotal + tax) * 24406) /
+    100
+  ).toLocaleString("vi-VN", { style: "currency", currency: "VND" })} `;
 }
 function calculateSum() {
   let Sum = 0;
@@ -248,17 +269,6 @@ function calculateSum() {
 // Dynamic quantitySelector Enabler
 function handleQuantityChange(product, productID, newQuantityValue) {
   updateCartQuantity(productID, newQuantityValue);
-  if (product.quantity > 10) {
-    let quantitySelectorObject = document.querySelector(
-      `.js-checkout-quantity-selector-${productID}`
-    );
-    let dynamicQuantitySelectorObject = document.querySelector(
-      `dynamic-input-box-${productID}`
-    );
-    // createQuantityBox(product,
-    //   quantitySelectorObject,
-    //   product.quantity);
-  }
   renderSubtotal(product, productID);
 }
 
@@ -270,19 +280,15 @@ cart.forEach((product) => {
   let shippingFeeOptionObject = document.getElementsByName(
     `delivery-option-${product.productID}`
   );
-
-  if (product.quantity < 10) {
-    document.querySelector(
-      `.js-checkout-quantity-selector-${productID}`
-    ).value = product.quantity;
-  } else if (product.quantity >= 10) {
-    let dynamicQuantitySelectorObject = createQuantityBox(
-      product,
-      quantitySelectorObject,
-      product.quantity
-    ); // Test out "inputBox"
-    console.log(dynamicQuantitySelectorObject.value);
-  }
+  createQuantityBoxTest(product, product.quantity);
+  // if (product.quantity < 10) {
+  //   document.querySelector(
+  //     `.js-checkout-quantity-selector-${productID}`
+  //   ).value = product.quantity;
+  // } else if (product.quantity > 10 || product.quantity === "11") {
+  //   console.log("Executing");
+  //   createQuantityBox(product, quantitySelectorObject, product.quantity);
+  // }
 
   // Update the quantity right after user choose a new option of delivery
 
@@ -301,14 +307,6 @@ cart.forEach((product) => {
   renderSubtotal(product, productID);
 
   updateOrderSummary();
-
-  // Update when user choose the new quantity value
-  if (quantitySelectorObject) {
-    quantitySelectorObject.addEventListener("change", (event) => {
-      let newQuantityValue = event.target.value;
-      handleQuantityChange(product, productID, newQuantityValue);
-    });
-  }
 });
 
 // Add Event Listener for the "Delete"
@@ -319,3 +317,4 @@ document.querySelectorAll(".js-delete-button").forEach((button) => {
     updateOrderSummary();
   });
 });
+

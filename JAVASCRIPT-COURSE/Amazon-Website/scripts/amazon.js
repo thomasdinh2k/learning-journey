@@ -1,8 +1,9 @@
 import { products } from "../data/products.js";
-import { cart, addToCart } from "../data/cart.js";
+import { cart, addToCart, saveToStorage } from "../data/cart.js";
 import { formatCurrency } from "./utils/money.js";
 let productsHTML = "";
 
+// Loop to create products to the page
 products.forEach((products) => {
   // Template String
   productsHTML += `<div class="product-container">
@@ -61,6 +62,8 @@ products.forEach((products) => {
 
 document.querySelector(".js-products-grid").innerHTML = productsHTML;
 
+
+
 // Calculate + Update total quantity
 function updateQuantity() {
   let quantity = 0;
@@ -68,8 +71,11 @@ function updateQuantity() {
     quantity += cartItem.quantity;
   });
   console.log(`Updated quantity = ${quantity} `);
-  document.querySelector(".cart-quantity").innerHTML = quantity;
+  document.querySelector(".cart-quantity").innerHTML = cart.length;
 }
+
+updateQuantity();
+
 
 function addedToCartNotification(productID) {
   let addedToCartObject = document.querySelector(
@@ -89,6 +95,7 @@ function addedToCartNotification(productID) {
     }, 1000);
   }
 }
+
 // Add Event Listener for the "Add to Cart button"
 document.querySelectorAll(".js-add-to-cart").forEach((button) => {
   button.addEventListener("click", () => {
@@ -102,5 +109,8 @@ document.querySelectorAll(".js-add-to-cart").forEach((button) => {
     updateQuantity();
     // Added-to-cart notification
     addedToCartNotification(productID);
+    // Save cart to storage
+    saveToStorage();
   });
 });
+

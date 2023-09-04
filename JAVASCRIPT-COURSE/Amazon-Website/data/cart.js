@@ -54,6 +54,8 @@ export function removeFromCart(productID) {
     `.js-cart-item-container-${productID}`
   );
   itemContainer.remove();
+  console.log(`Item Removed Successfully ${productID}`);
+  console.log(cart);
 }
 
 export function updateCartQuantity(productID, newQuantity) { // Done

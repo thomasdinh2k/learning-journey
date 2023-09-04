@@ -125,17 +125,20 @@ function renderSubtotal(product, productID) {
   let currentPrice = product.productPriceCents;
   let currentQuantity = product.quantity;
   let currentShippingFee = product.productShippingFee;
-
+  let NumOfItem = document.querySelector(`.return-to-home-link`).innerHTML;
   if (currentQuantity == 1) {
     finalPriceObject.innerHTML = `Subtotal (1 item) + delivery: $${formatCurrency(
       currentPrice + currentShippingFee
     )}`;
+    NumOfItem = '1 item';
   } else if (currentQuantity == 0) {
     removeFromCart(productID);
+    NumOfItem = 'Zero item';
   } else {
     finalPriceObject.innerHTML = `Subtotal (${currentQuantity} items) + delivery: $${formatCurrency(
       currentPrice * currentQuantity + currentShippingFee
     )}`;
+    
   }
   updateOrderSummary();
 }
@@ -190,33 +193,48 @@ function createQuantityBoxTest(product, currentQuantity = 0) {
     `.product-quantity-${product.productID}`
   );
   if (currentQuantity >= 10) {
-    currentSelectorHolder.innerHTML = `<input type="number" class="dynamic-input dynamic-input-box-${product.productID}" name="quantity" min="1" value="${currentQuantity}"><span class="delete-quantity-link link-primary js-delete-button" data-product-id="${product.productID}">
+    currentSelectorHolder.innerHTML = `<input type="number" class="dynamic-input dynamic-input-box-${product.productID}" name="quantity" min="0" value="${currentQuantity}"><span class="delete-quantity-link link-primary js-delete-button-${product.productID}" >
                     Delete
                   </span>`;
     console.log(currentSelectorHolder.innerHTML);
     
-    const currentSelectorObject = document.querySelector(`.dynamic-input-box-${product.productID}`)
+    // Handle when user change the value
+    const currentSelectorObject = document.querySelector(
+      `.dynamic-input-box-${product.productID}`
+    );
     currentSelectorObject.addEventListener("change", (event) => {
       handleQuantityChange(product, product.productID, event.target.value);
+    });
+
+    // Handle when user try to delete the value
+    const deleteValueObject = document.querySelector(`.js-delete-button-${product.productID}`);
+    deleteValueObject.addEventListener("click", (event) => {
+      removeFromCart(product.productID); // Move the removal logic here
+      updateOrderSummary();
     })
+
   } else {
     console.log("Switching to regular quantity selector");
     console.log(product.quantity);
-    var currentSelectorObject = document.querySelector(`.js-checkout-quantity-selector-${product.productID}`);
+    var currentSelectorObject = document.querySelector(
+      `.js-checkout-quantity-selector-${product.productID}`
+    );
     currentSelectorObject.value = product.quantity;
-    currentSelectorObject.addEventListener("change", (event) =>{
+    currentSelectorObject.addEventListener("change", (event) => {
       if (event.target.value < 11) {
         handleQuantityChange(product, product.productID, event.target.value);
       } else {
+        handleQuantityChange(product, product.productID, event.target.value);
         createQuantityBoxTest(product, event.target.value);
       }
-    })
+    });
   }
 }
 // Make the Order Summary interactive
 function updateOrderSummary() {
   let totalQuantity = 0;
   let totalShippingFee = 0;
+  let NumOfItem = document.querySelector(`.return-to-home-link`);
   // Calculate Items
   cart.forEach((item) => {
     totalQuantity += parseInt(item.quantity, 10);
@@ -227,10 +245,13 @@ function updateOrderSummary() {
   const summaryRowHolder = document.querySelector(".payment-summary-row div");
   if (cart.length > 1) {
     summaryRowHolder.innerHTML = `Items (${cart.length}):`;
+    NumOfItem.innerHTML = `${cart.length} items`
   } else if (cart.length == 1) {
     summaryRowHolder.innerHTML = `Item (1):`;
+    NumOfItem.innerHTML = `${cart.length} item`
   } else {
     summaryRowHolder.innerHTML = `No item in cart`;
+    NumOfItem.innerHTML = `No item`;
   }
   const itemPriceHolder = document.querySelector(
     ".payment-summary-money.item-price"
@@ -303,9 +324,7 @@ cart.forEach((product) => {
       renderSubtotal(product, productID);
     });
   });
-
   renderSubtotal(product, productID);
-
   updateOrderSummary();
 });
 

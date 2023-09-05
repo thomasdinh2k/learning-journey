@@ -62,8 +62,6 @@ products.forEach((products) => {
 
 document.querySelector(".js-products-grid").innerHTML = productsHTML;
 
-
-
 // Calculate + Update total quantity
 function updateQuantity() {
   let quantity = 0;
@@ -80,42 +78,39 @@ function findProperty(objArray, productID) {
   console.log("Executing");
   console.log(objArray);
   let matchingItem = [];
-  
-  objArray.forEach(element => {
+
+  objArray.forEach((element) => {
     if (element.productID == productID) {
       matchingItem = element;
       console.log(`Found ${matchingItem}`);
-    };
+    }
   });
   return matchingItem;
 }
 
-let timeoutID;
+let timeoutID; // Declare the timeoutID outside the function
 
 function addedToCartNotification(productID) {
   console.log(cart);
   let addedToCartObject = document.querySelector(
     `.added-to-cart.js-selector-${productID}`
   );
-  
   var matchingItem = findProperty(cart, productID);
-  
-  
   let addedTextObject = document.querySelector(`.added-${productID}`);
   addedTextObject.innerHTML = `Added! (${matchingItem.quantity} in cart)`;
-  
+
   clearTimeout(timeoutID);
   // Dismiss notifications after 2 seconds
   if (
     addedToCartObject.style.opacity == "" ||
     addedToCartObject.style.opacity == "0"
-    ) {
-      clearTimeout(timeoutID);
-      addedToCartObject.style.opacity = "1";
-      timeoutID = setTimeout(() => {
-        addedToCartObject.style.opacity = "0";
-      }, 1550);
-    }
+  ) {
+    clearTimeout(timeoutID);
+    addedToCartObject.style.opacity = "1";
+    timeoutID = setTimeout(() => {
+      addedToCartObject.style.opacity = "0";
+    }, 1550);
+  }
 }
 
 // Add Event Listener for the "Add to Cart button"
@@ -131,8 +126,8 @@ document.querySelectorAll(".js-add-to-cart").forEach((button) => {
     updateQuantity();
     // Added-to-cart notification
     addedToCartNotification(productID);
+    timeoutID = null; // Make sure the timeID is cleared after each runs to prevent users trigger multiple time
     // Save cart to storage
     saveToStorage();
   });
 });
-

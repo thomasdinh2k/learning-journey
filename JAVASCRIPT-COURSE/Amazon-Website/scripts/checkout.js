@@ -153,17 +153,22 @@ function extractPrice(productID) {
   return extractedPrice;
 }
 
+
+
 function extractShippingFee(productID) {
+
+  
+
   var extractedShippingFee = 0;
-  let deliveryOptionObject = document.getElementsByName(
-    `delivery-option-${productID}`
-  );
-  deliveryOptionObject.forEach((item) => {
-    if (item.checked === true) {
-      extractedShippingFee = item.value;
-    }
-  });
-  extractedShippingFee = parseInt(extractedShippingFee, 10);
+  // let deliveryOptionObject = document.getElementsByName(
+  //   `delivery-option-${productID}`
+  // );
+  // deliveryOptionObject.forEach((item) => {
+  //   if (item.checked === true) {
+  //     extractedShippingFee = item.value;
+  //   }
+  // });
+  // extractedShippingFee = parseInt(extractedShippingFee, 10);
   return extractedShippingFee;
 }
 // Create inputBox which also attach an EventListener to it
@@ -289,6 +294,18 @@ function handleQuantityChange(product, productID, newQuantityValue) {
   saveToStorage();
 }
 
+// Test putting shippingFeeObject outside
+// Parsing JSON DATA
+let shippingFeeObject;
+try {
+  shippingFeeObject = JSON.parse(localStorage.getItem("shippingFeeObject"));
+} catch (error) {
+  console.log(error);
+  let shippingFeeObject;
+}
+console.log("Get shippingFeeObject from JSON successfully!");
+console.log(shippingFeeObject);
+
 cart.forEach((product) => {
   let productID = product.productID;
   let quantitySelectorObject = document.querySelector(
@@ -307,7 +324,11 @@ cart.forEach((product) => {
   shippingFeeOptionObject.forEach((radioSelector) => {
     radioSelector.addEventListener("change", (event) => {
       product.productShippingFee = parseInt(event.target.value, 10);
+      // Add key-value pair to shippingObject
+      shippingFeeObject[productID] = product.productShippingFee;
       renderSubtotal(product, productID);
+      console.log(shippingFeeObject);
+      localStorage.setItem('shippingFeeObject', JSON.stringify(shippingFeeObject));
     });
   });
   renderSubtotal(product, productID);

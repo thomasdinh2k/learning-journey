@@ -3,7 +3,7 @@ import {
   addToCart,
   removeFromCart,
   updateCartQuantity,
-  saveToStorage
+  saveToStorage,
 } from "../data/cart.js";
 import { products } from "../data/products.js";
 import { formatCurrency } from "./utils/money.js";
@@ -54,7 +54,7 @@ function renderHTML(image, name, price, id) {
                 </div>
                 <div class="delivery-option">
                   <input type="radio" 
-                    class="delivery-option-input"
+                    class="delivery-option-input ${id}-value-0"
                     name="delivery-option-${id}" value = "0" checked>
                   <div>
                     <div class="delivery-option-date">
@@ -67,7 +67,7 @@ function renderHTML(image, name, price, id) {
                 </div>
                 <div class="delivery-option">
                   <input type="radio" value="499"
-                    class="delivery-option-input"
+                    class="delivery-option-input ${id}-value-499"
                     name="delivery-option-${id}">
                   <div>
                     <div class="delivery-option-date">
@@ -80,7 +80,7 @@ function renderHTML(image, name, price, id) {
                 </div>
                 <div class="delivery-option">
                   <input type="radio"
-                    class="delivery-option-input"
+                    class="delivery-option-input ${id}-value-999"
                     name="delivery-option-${id}" value = "999">
                   <div>
                     <div class="delivery-option-date">
@@ -153,24 +153,40 @@ function extractPrice(productID) {
   return extractedPrice;
 }
 
-
-
 function extractShippingFee(productID) {
+  let fee = shippingFeeObject[productID];
 
-  
-
-  var extractedShippingFee = 0;
-  // let deliveryOptionObject = document.getElementsByName(
-  //   `delivery-option-${productID}`
-  // );
-  // deliveryOptionObject.forEach((item) => {
-  //   if (item.checked === true) {
-  //     extractedShippingFee = item.value;
-  //   }
-  // });
-  // extractedShippingFee = parseInt(extractedShippingFee, 10);
-  return extractedShippingFee;
+  if (fee) {
+    return fee;
+  } else {
+    console.log(`Can't find the shipping fee for ${productID}`);
+    fee = 0;
+    return fee;
+  }
 }
+
+// Create a function that extract the previous shipping fee and select it
+function checkRadioShipping(product) {
+  console.log("Executing the function");
+  let id = product.productID;
+  let fee = 0;
+
+  try {
+    fee = extractShippingFee(id);
+  } catch (error) {
+    console.log("Cant find");
+    fee = 0;
+  }
+
+  console.log(`.value-${fee}`);
+
+  try {
+    let deliveryOptionObject = document.querySelector(`.${id}-value-${fee}`);
+    console.log(`Set item ${product.productName} shipping fee to ${fee}`);
+    deliveryOptionObject.checked = true;
+  } catch (error) {console.log(error);}
+}
+
 // Create inputBox which also attach an EventListener to it
 function createQuantityBox(currentProduct, previousSelector, currentQuantity) {
   const parent = previousSelector.parentNode;
@@ -296,17 +312,14 @@ function handleQuantityChange(product, productID, newQuantityValue) {
 
 // Test putting shippingFeeObject outside
 // Parsing JSON DATA
-let shippingFeeObject;
-try {
-  shippingFeeObject = JSON.parse(localStorage.getItem("shippingFeeObject"));
-} catch (error) {
-  console.log(error);
-  let shippingFeeObject;
-}
-console.log("Get shippingFeeObject from JSON successfully!");
-console.log(shippingFeeObject);
+let shippingFeeObject = JSON.parse(localStorage.getItem("shippingFeeObject"));
 
 cart.forEach((product) => {
+  checkRadioShipping(product);
+});
+
+cart.forEach((product) => {
+  // Pull out user last input
   let productID = product.productID;
   let quantitySelectorObject = document.querySelector(
     `.js-checkout-quantity-selector-${productID}`
@@ -315,7 +328,6 @@ cart.forEach((product) => {
     `delivery-option-${product.productID}`
   );
   createQuantityBoxTest(product, product.quantity);
-
   // Binding properties to item arrays
   handleQuantityChange(product, productID, product.quantity);
   product.productPriceCents = extractPrice(product.productID);
@@ -328,7 +340,10 @@ cart.forEach((product) => {
       shippingFeeObject[productID] = product.productShippingFee;
       renderSubtotal(product, productID);
       console.log(shippingFeeObject);
-      localStorage.setItem('shippingFeeObject', JSON.stringify(shippingFeeObject));
+      localStorage.setItem(
+        "shippingFeeObject",
+        JSON.stringify(shippingFeeObject)
+      );
     });
   });
   renderSubtotal(product, productID);

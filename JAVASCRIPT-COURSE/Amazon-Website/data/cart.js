@@ -2,16 +2,12 @@
 
 export function saveToStorage() {
   localStorage.setItem('cart', JSON.stringify(cart));
-  console.log(cart);
-  console.log("Cart was saved successfully");
   return cart
 }
 
 
 export function retrieveCartFromStorage() {
   let cart = JSON.parse(localStorage.getItem("cart"));
-  console.log("Exported cart successfully");
-  console.log(cart);
   return cart
 }
 
@@ -35,6 +31,7 @@ export function addToCart(productID, productName, productQuantity) {
       productID: productID,
       productName: productName,
       quantity: productQuantity,
+      productShippingFee: 0,
     });
   }
   saveToStorage();
@@ -55,7 +52,6 @@ export function removeFromCart(productID) {
   );
   itemContainer.remove();
   console.log(`Item Removed Successfully ${productID}`);
-  console.log(cart);
 }
 
 export function updateCartQuantity(productID, newQuantity) { // Done
@@ -63,7 +59,6 @@ export function updateCartQuantity(productID, newQuantity) { // Done
     if (productID === item.productID) {
       item.quantity = newQuantity;
       console.log(`Confirm updated new quantity to ${newQuantity}, modified correct property`);
-      console.log(cart);
     }
   })
 };

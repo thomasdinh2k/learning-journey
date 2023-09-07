@@ -69,7 +69,11 @@ function updateQuantity() {
     quantity += cartItem.quantity;
   });
   console.log(`Updated quantity = ${quantity} `);
-  document.querySelector(".cart-quantity").innerHTML = cart.length;
+  if (cart.length > 0) {
+    document.querySelector(".cart-quantity").innerHTML = cart.length;
+  } else {
+    document.querySelector(".cart-quantity").innerHTML = "";
+  }
 }
 
 updateQuantity();

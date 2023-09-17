@@ -32,14 +32,14 @@ import ExpenseItem from "./ExpenseItem";
 
 function Expenses(newProp) {
   return (
-    <div>
-      {newProp.expensesArray.map(function (expense) {
+    <div className="expenses">
+      {newProp.expensesArray.map(function (item) {
         return (
           <ExpenseItem
-            key={expense.id}
-            title={expense.title}
-            amount={expense.amount}
-            date={expense.date}
+            key={item.id}
+            title={item.title}
+            amount={item.amount}
+            date={item.date}
           />
         );
       })}
@@ -47,3 +47,4 @@ function Expenses(newProp) {
   );
 }
 export default Expenses;
+                        

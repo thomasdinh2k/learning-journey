@@ -1,6 +1,7 @@
 import "./Expenses.css";
 import "./ExpenseDate";
 import ExpenseItem from "./ExpenseItem";
+import Card from "./Card";
 // import "../App";
 
 // function Expenses(newProp) {
@@ -32,7 +33,7 @@ import ExpenseItem from "./ExpenseItem";
 
 function Expenses(newProp) {
   return (
-    <div className="expenses">
+    <Card className="expenses">
       {newProp.expensesArray.map(function (item) {
         return (
           <ExpenseItem
@@ -43,8 +44,7 @@ function Expenses(newProp) {
           />
         );
       })}
-    </div>
+    </Card>
   );
 }
 export default Expenses;
-                        

@@ -29,7 +29,7 @@ function App() {
       {/* // Example of imported components */}
       <div className="expenses">
         <Expenses
-          // Pass the expenses array as proof
+          // Pass the expenses array as prop
           expensesArray = {expenses}
         />
       </div>

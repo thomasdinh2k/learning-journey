@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Javascript 03</title>
+</head>
+
+<body>
+
+<script language="javascript">
+
+function mayTinh(value){
+	
+	var str = document.frm.ketqua.value;
+	
+	if(value == 'x'){
+		value = '*';
+	}
+	if(value == '='){
+		str = eval(str);
+	}
+	else if(value == 'AC'){
+		str = '';
+	}
+	else{
+		str += value;
+	}
+	document.frm.ketqua.value = str;
+}
+</script>
+
+<form name="frm" method="post">
+<table align="center" border="1" cellspacing="1" cellpadding="1">
+  <tr>
+    <td colspan="4"><textarea name="ketqua"></textarea></td>
+  </tr>
+  <tr>
+    <td><input onclick="mayTinh(this.value);" type="button" value="7" /></td>
+    <td><input onclick="mayTinh(this.value);" type="button" value="8" /></td>
+    <td><input onclick="mayTinh(this.value);" type="button" value="9" /></td>
+    <td><input onclick="mayTinh(this.value);" type="button" value="+" /></td>
+  </tr>
+  <tr>
+    <td><input onclick="mayTinh(this.value);" type="button" value="4" /></td>
+    <td><input onclick="mayTinh(this.value);" type="button" value="5" /></td>
+    <td><input onclick="mayTinh(this.value);" type="button" value="6" /></td>
+    <td><input onclick="mayTinh(this.value);" type="button" value="-" /></td>
+  </tr>
+  <tr>
+    <td><input onclick="mayTinh(this.value);" type="button" value="1" /></td>
+    <td><input onclick="mayTinh(this.value);" type="button" value="2" /></td>
+    <td><input onclick="mayTinh(this.value);" type="button" value="3" /></td>
+    <td><input onclick="mayTinh(this.value);" type="button" value="x" /></td>
+  </tr>
+  <tr>
+    <td><input onclick="mayTinh(this.value);" type="button" value="0" /></td>
+    <td><input onclick="mayTinh(this.value);" type="button" value="AC" /></td>
+    <td><input onclick="mayTinh(this.value);" type="button" value="=" /></td>
+    <td><input onclick="mayTinh(this.value);" type="button" value="/" /></td>
+  </tr>
+</table>
+</form>
+
+
+
+</body>
+</html>

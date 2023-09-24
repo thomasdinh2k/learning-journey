@@ -1,0 +1,33 @@
+html {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+a:hover {
+    color: red;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.container {
+    display: flex;
+    margin-bottom: 30px;
+}
+
+.text-container {
+    margin-left: 20px;
+}
+
+img{
+    margin-right: 10px;
+    object-fit: fill;
+    width:300px;
+    height:150px; 
+}
+
+p {
+    margin-top: 5px;
+}
+
+h2 {
+    margin-bottom: 0;
+}

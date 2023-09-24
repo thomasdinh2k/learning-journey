@@ -1,0 +1,30 @@
+#menu{
+    width: 300px;
+    height: auto;
+    font-family: arial;
+    background: #999;
+}
+#menu h3{
+    height: 40px;
+    line-height: 40px;
+    background: orange;
+    font-size: 14px;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    text-transform: uppercase;
+    text-decoration: overline;
+}
+.menu-item{
+    height: 30px;
+    line-height: 30px;
+}
+#blog{
+    color: yellow;
+    font-weight: bold;
+}
+.menu-item a{
+    text-decoration: none;
+    text-transform: capitalize;
+    color: #333;
+}

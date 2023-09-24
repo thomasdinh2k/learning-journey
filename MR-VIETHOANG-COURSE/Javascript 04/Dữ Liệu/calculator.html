@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript 04</title>
+    <style type="text/css">
+        table {
+            margin: 0px auto;
+        }
+
+        #menu {
+            font-family: arial;
+            font-size: 14px;
+            font-weight: bold;
+            color: #FFF;
+            text-transform: uppercase;
+            text-align: center;
+            background: #666;
+            padding: 5px 0;
+        }
+
+        .left {
+            font-family: arial;
+            font-size: 12px;
+            color: #FFF;
+            text-transform: capitalize;
+            text-align: left;
+            background: #999;
+        }
+    </style>
+</head>
+
+<body>
+    <form name="frm" method="post">
+        <table border="1" cellspacing="1" cellpadding="1">
+            <tr>
+                <td id="menu" colspan="2">ứng dụng máy tính đơn giản</td>
+            </tr>
+            <tr>
+                <td class="left">nhập số thứ nhất</td>
+                <td><input type="text" name="so1" /></td>
+            </tr>
+            <tr>
+                <td class="left">nhập số thứ hai</td>
+                <td><input type="text" name="so2" /></td>
+            </tr>
+            <tr>
+                <td class="left">lựa chọn phép toán</td>
+                <td align="center">
+                    <input type="button" value="+"/>
+                    <input type="button" value="-"/>
+                    <input type="button" value="x"/>
+                    <input type="button" value="/"/>
+                </td>
+            </tr>
+            <tr>
+                <td class="left">các phép toán khác</td>
+                <td align="center">
+                    <input type="button" value="Sqrt"/>
+                    <input type="button" value="Abs"/>
+                    <input type="button" value="Ceil"/>
+                </td>
+            </tr>
+            <tr>
+                <td class="left">kết quả</td>
+                <td><input type="text" name="ketqua" /></td>
+            </tr>
+        </table>
+    </form>
+</body>
+
+</html>

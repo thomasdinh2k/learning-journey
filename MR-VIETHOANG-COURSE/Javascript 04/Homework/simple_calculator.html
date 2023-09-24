@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Calculator</title>
+    <link rel="stylesheet" href="simple_calculator.css">
+</head>
+<body>
+    <div class="heading">ỨNG DỤNG MÁY TÍNH ĐƠN GIẢN</div>
+    <div class="row-container">
+        <div>Nhập số thứ nhất</div>
+        <input type="number" name="firstNum" id="firstNum">
+    </div>
+    <div class="row-container">
+        <div>Nhập số thứ hai</div>
+        <input type="number" name="secondNum" id="secondNum">
+    </div>
+    <div class="row-container">
+        <div>Lựa chọn phép toán</div>
+        <div class="calc-symbols">
+            <button class="plus">+</button>
+            <button class="minus">-</button>
+            <button class="mul">x</button>
+            <button class="div">%</button>
+        </div>
+    </div>
+    <div class="row-container">
+        <div>Các phép toán khác</div>
+        <div class="calc-symbols">
+            <button class="sqt">Sqt</button>
+            <button class="abs">Abs</button>
+            <button class="ceil">Ceil</button>
+        </div>
+    </div>
+    <div class="row-container">
+        <div>Kết quả</div>
+        <input type="number" id="result" class="result"/>
+    </div>
+    <script src="simple_calculator.js"></script>
+</body>
+</html>

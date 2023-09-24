@@ -1,0 +1,106 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>Javascript 02</title>
+  <style type="text/css">
+    table {
+      margin: 0px auto;
+    }
+
+    #menu {
+      font-family: arial;
+      font-size: 14px;
+      font-weight: bold;
+      color: #FFF;
+      text-transform: uppercase;
+      text-align: center;
+      background: #666;
+      padding: 5px 0;
+    }
+
+    .left {
+      font-family: arial;
+      font-size: 12px;
+      color: #FFF;
+      text-transform: capitalize;
+      text-align: left;
+      background: #999;
+    }
+  </style>
+</head>
+
+<body>
+
+  <script>
+    function mayTinh(pt){
+      var st1 = parseFloat(document.frm.so1.value);
+      var st2 = parseFloat(document.frm.so2.value);
+      var kq = document.frm.ketqua.value;
+
+      if(pt=="+"){
+        kq = st1 + st2;
+      }
+      else if(pt=="-"){
+        kq = st1 - st2;
+      }
+      else if(pt=="x"){
+        kq = st1 * st2;
+      }
+      else if(pt=="/"){
+        kq = st1 / st2;
+      }
+      else if(pt=="Sqrt"){
+        kq = Math.sqrt(kq);
+      }
+      else if(pt=="Abs"){
+        kq = Math.abs(kq);
+      }
+      else if(pt=="Ceil"){
+        kq = Math.ceil(kq);
+      }
+      document.frm.ketqua.value = kq;
+    }
+  </script>
+
+  <form name="frm" method="post">
+    <table border="1" cellspacing="1" cellpadding="1">
+      <tr>
+        <td id="menu" colspan="2">ứng dụng máy tính đơn giản</td>
+      </tr>
+      <tr>
+        <td class="left">nhập số thứ nhất</td>
+        <td><input type="text" name="so1" /></td>
+      </tr>
+      <tr>
+        <td class="left">nhập số thứ hai</td>
+        <td><input type="text" name="so2" /></td>
+      </tr>
+      <tr>
+        <td class="left">lựa chọn phép toán</td>
+        <td align="center">
+          <input type="button" value="+" onclick="mayTinh(this.value)"/>
+          <input type="button" value="-" onclick="mayTinh(this.value)"/>
+          <input type="button" value="x" onclick="mayTinh(this.value)"/>
+          <input type="button" value="/" onclick="mayTinh(this.value)"/>
+        </td>
+      </tr>
+      <tr>
+        <td class="left">các phép toán khác</td>
+        <td align="center">
+          <input type="button" value="Sqrt" onclick="mayTinh(this.value)"/>
+          <input type="button" value="Abs" onclick="mayTinh(this.value)"/>
+          <input type="button" value="Ceil" onclick="mayTinh(this.value)"/>
+        </td>
+      </tr>
+      <tr>
+        <td class="left">kết quả</td>
+        <td><input type="text" name="ketqua" /></td>
+      </tr>
+    </table>
+  </form>
+</body>
+
+</html>

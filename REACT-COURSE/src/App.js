@@ -1,11 +1,12 @@
-import ExpenseItem from "./components/ExpenseItem";
-import Expenses from "./components/Expenses";
+import React, { createElement } from "react";
+import ExpenseItem from "./components/Expenses/ExpenseItem";
+import Expenses from "./components/Expenses/Expenses";
 
-function App() {
+const App = () => {
   const expenses = [
     {
       id: "e1",
-      title: "Toilet Paper",
+      title: "Toilet Paper Please",
       amount: 94.12,
       date: new Date(2020, 11, 14),
     },
@@ -24,6 +25,13 @@ function App() {
     },
   ];
 
+  // React Create Element
+  return (
+    React.createElement("h2", {}, "Hello World"),
+    React.createElement(Expenses, { expensesArray: expenses })
+  );
+
+  // JSX regular element
   return (
     <div>
       {/* // Example of imported components */}

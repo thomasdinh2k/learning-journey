@@ -1,0 +1,12 @@
+body {
+    /* background-color: pink;
+    background-image: url("https://static.wikia.nocookie.net/9f316042-b44f-4020-9bc1-aa83ccf85816/scale-to-width/755");
+    background-repeat: no-repeat;
+    background-size: 20%;
+    background-position: 120 150; */
+
+    /* Short-hand property */
+    background: pink url("https://static.wikia.nocookie.net/9f316042-b44f-4020-9bc1-aa83ccf85816/scale-to-width/755") no-repeat fixed 167px 50px;
+
+    height: 3000px;
+}

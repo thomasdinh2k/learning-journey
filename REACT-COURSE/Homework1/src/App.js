@@ -1,8 +1,9 @@
+import React from 'react';
 import keyConceptsImage from './assets/images/key-concepts.png';
 import componentsImage from './assets/images/components.png';
 import stateImage from './assets/images/state.png';
 import eventsImage from './assets/images/events.png';
-
+import Concepts from './components/Concepts.js';
 const concepts = [
   {
     title: 'Components',
@@ -24,14 +25,24 @@ const concepts = [
   },
 ];
 
-function App() {
+const App = () => {
   return (
     <div>
       <header>
         <img src={keyConceptsImage} alt="Medal badge with a star" />
         <h1>Key React Concepts</h1>
         <p>Selected key React concepts you should know about</p>
+        <p>An Exercise accomplished by Thomas</p>
       </header>
+      <ul id="concepts">
+        <li className="concept">
+          <img src="TODO: IMAGE" alt="TODO: TITLE" />
+          <h2>TODO: TITLE</h2>
+          <p>TODO: DESCRIPTION</p>
+        </li>
+      </ul>
+      {/* Try to start with this */}
+      <Concepts/>
       <ul id="concepts">
         <li className="concept">
           <img src="TODO: IMAGE" alt="TODO: TITLE" />
@@ -42,5 +53,9 @@ function App() {
     </div>
   );
 }
+
+// const App = () => {
+//   return React.createElement("div", {}, "")
+// }
 
 export default App;

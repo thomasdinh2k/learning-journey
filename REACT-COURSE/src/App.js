@@ -27,8 +27,10 @@ const App = () => {
 
   // React Create Element
   return (
-    React.createElement("h2", {}, "Hello World"),
-    React.createElement(Expenses, { expensesArray: expenses })
+    <>
+    {React.createElement("h2", {}, "Hello World")}
+    {React.createElement(Expenses, { expensesArray: expenses })}
+    </>
   );
 
   // JSX regular element

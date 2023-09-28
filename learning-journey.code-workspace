@@ -5,6 +5,9 @@
 		}
 	],
 	"settings": {
-		"zenMode.hideLineNumbers": false
+		"zenMode.hideLineNumbers": false,
+		"cSpell.words": [
+			"OPPO"
+		]
 	}
 }

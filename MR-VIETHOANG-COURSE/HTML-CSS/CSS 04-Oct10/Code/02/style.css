@@ -1,0 +1,14 @@
+#block, img{
+    width: 300px;
+    height: 300px;
+    border-radius: 100%;
+}
+#block{
+    margin: 100px auto;
+    transition-property: transform;
+    transition-duration: 2s;
+}
+#block:hover{
+    transform: rotate(360deg);
+    cursor: pointer;
+}

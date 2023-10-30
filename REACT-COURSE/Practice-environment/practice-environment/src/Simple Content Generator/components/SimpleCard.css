@@ -1,0 +1,32 @@
+img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    float: left;
+    margin-left: 10px;  
+}
+
+h2 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bolder;
+    font-size: 35px;
+    color: rgb(217, 97, 17);
+    margin: 0;
+    margin-top: 10px;
+}
+
+.text-container {
+    margin-left: 175px;
+    margin-bottom: 15px;
+}
+
+p {
+    width: 350px;
+    margin: 0;
+    
+}
+
+p, h2 {
+    text-wrap:pretty ;
+}
+

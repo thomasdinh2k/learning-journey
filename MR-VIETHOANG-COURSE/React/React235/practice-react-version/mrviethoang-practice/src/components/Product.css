@@ -1,0 +1,44 @@
+/* Style for the entire information container */
+.information-container {
+    background-color: #f6f6f6;
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Style for the product name */
+  .product-name {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0;
+    color: #333;
+  }
+  
+  /* Style for the product detail */
+  .product-detail {
+    font-size: 16px;
+    margin: 10px 0;
+    color: #666;
+  }
+  
+  /* Style for the price and stock section */
+  .price-stock {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  /* Style for the price */
+  .price {
+    font-size: 18px;
+    color: #007bff;
+  }
+  
+  /* Style for the stock information */
+  .stock {
+    font-size: 14px;
+    color: #333;
+  }
+  
+

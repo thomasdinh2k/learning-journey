@@ -1,0 +1,29 @@
+body {
+    background-color: #ecf3ff;
+}
+
+.sidebar{
+    background-color: #fff;
+    min-height: 600px;
+    border-right: solid 5px #ddd;
+    border-left: solid 2px #ddd;
+}
+
+.marketplace {
+    letter-spacing: 1px;
+}
+
+.divider {
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+}
+
+.divider::before, .divider::after {
+    flex: 1;
+    content: '';
+    padding: .9px;
+    background-color: rgba(128, 128, 128, 0.102);
+    margin: 0 18px;
+}
+

@@ -1,46 +1,65 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-  <title>Project Bootstrap4 Basic</title>
-  <meta charset="utf-8" />
-  <link rel="stylesheet" href="css/bootstrap.css">
-  <link rel="stylesheet" href="css/index.css">
-  <script src="js/jquery-3.4.1.js"></script>
-  <script src="js/bootstrap.js"></script>
-</head>
+<title>Vietpro React</title>
+<meta charset="utf-8">
+<style>
+*{
+margin:0;
+padding:0;}
 
+body{
+font-family:arial;
+font-size:14px;
+color:#333;}
+
+#main{
+width:1140px;
+height:auto;
+margin:20px auto;}
+
+.content-item{
+overflow:hidden;
+border-bottom:1px solid #999;
+padding-bottom:20px;
+margin-bottom:20px;}
+
+.content-item img{
+float:left;
+border:1px solid #999;
+padding:5px;
+margin-right:20px;}
+
+.content-item h4, .content-item input{
+font-size:18px;
+margin-bottom:20px;}
+
+.content-item input{
+width:790px;
+font-size:14px;
+color:#333;
+padding:5px;}
+
+.content-item textarea{
+width:790px;
+height:158px;
+font-size:14px;
+color:#333;
+padding:5px;}
+
+.content-item h4 a{
+color:#333;
+text-decoration:none;}
+
+.content-item p, .content-item textarea{
+text-align:justify;
+line-height:30px;}
+</style>
+</head>
 <body>
 
-  <div id="root"></div>
-
-
-  <!--
-1. Dựng cấu trúc HTML
-2. CSS chung cho toàn bộ văn bản HTML 
-	-	Phông chữ, mầu chữ, kích cỡ chữ
-	-	Style chung của liên kết, heading
-3. Đặt ID
-	-	ID thông thường được đặt vào các khối cha ngoài cùng, khối chính lớn của trang web
-	-	Mỗi khối thông thường chỉ có 1 ID đặt ở cấp cha (rất hiếm khi đặt ID cho các khối con bên trong)
-4. Đặt Class
-	-	Sử dụng Class có 2 cách 
-		+	Những phần tử nào có từ 2 thuộc tính giống nhau trở lên thì nên style ra Class riêng
-		+	Những phần tử nào giống nhau chỉ với 1 thuộc tính thì có thể sử dụng Class có sẵn của Bootstrap
-	-	Thủ thuật tìm Class
-		+	B1. Lấy một cấu trúc bất kỳ để Style (thông thường hay lấy cấu trúc ngay đầu)
-		+	B2. Mỗi khi phân tích cấu trúc đó (cha-con) thì so sánh xem có những cấu trúc nào có Style giống nó nữa không
-		+	B3. Nếu giống tuyệt đối thì viết Class lớn, chung cho tất cả, nếu chỉ giống một phần thì tách Class lớn đó thành nhều Class con
-	-	Ví dụ cho tư duy trên:
-		+	Cấu trúc A có các thuộc tính (a b c d) giống tuyệt đối với cấu trúc B (a b c d) thì viết Class AB (a b c d)
-		+	Cấu trúc A có các thuộc tính (a b c d) giống một phần với cấu trúc B (a b) và C (c d) thì viết 2 Class AB (a b) và AC (c d)
-Chú ý:
-	-	Những trang web có giao diện đơn giản hoặc không có nhu cầu đa giao diện thì ó thể sử dụng triệt để các class của Bootstrap, thậm chí không cần CSS riêng
-	-	Những trang web lớn hoặc có nhu cầu đa giao diện thì hạn chế sử dụng các class của Bootstrap, thậm chí chỉ sử dụng mỗi hệ thống lưới trong Bootstrap
--->
-
-
+<div id="root"></div>
 
 </body>
-
 </html>
+

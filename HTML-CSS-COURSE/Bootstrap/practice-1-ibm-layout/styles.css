@@ -1,0 +1,15 @@
+.main-content {
+    background-color: #ffffff5e;
+}
+
+.side-bar{
+    background-color: #343a40;
+    max-height: 600px;
+    overflow-y: scroll ;
+}
+
+.list-group-item {
+    background-color: transparent;
+    color: #fff;
+    border-bottom: 1px solid #ffffff1d;
+}

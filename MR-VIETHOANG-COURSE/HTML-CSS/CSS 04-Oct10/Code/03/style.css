@@ -1,0 +1,39 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+#menu{
+    font-family: arial;
+    font-size: 14px;
+    width: 1140px;
+    height: auto;
+    background: #FF9600;
+    margin: 50px auto;
+    overflow: hidden;
+}
+.menu-item{
+    float: left;
+    list-style: none;
+    height: 40px;
+    line-height: 40px;
+    padding: 0 30px;
+    border-right: 1px solid orangered;
+}
+.menu-item:hover{
+    background: orangered;
+    cursor: pointer;
+}
+.menu-item:hover a{
+    color: #333;
+}
+.menu-item a{
+    color: white;
+    text-decoration: none;
+    text-transform: capitalize;
+}
+@media (max-width:768px){
+    .menu-item{
+        float: none;
+        border-bottom: 1px solid orangered;
+    }
+}

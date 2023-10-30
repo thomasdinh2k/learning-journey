@@ -1,0 +1,15 @@
+#block, img{
+    width: 300px;
+    height: 300px;
+    border-radius: 100%;
+}
+#block{
+    margin: 100px auto;
+    border: 10px solid #666;
+    transition-property: border-width;
+    transition-duration: 1s;
+}
+#block:hover{
+    border-width: 30px;
+    cursor: pointer;
+}

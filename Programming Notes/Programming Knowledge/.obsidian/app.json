@@ -1,0 +1,11 @@
+{
+  "promptDelete": false,
+  "attachmentFolderPath": "./attachments",
+  "livePreview": true,
+  "newFileLocation": "folder",
+  "alwaysUpdateLinks": true,
+  "newLinkFormat": "relative",
+  "tabSize": 8,
+  "showLineNumber": true,
+  "newFileFolderPath": "Javascript/Inherited Notes"
+}

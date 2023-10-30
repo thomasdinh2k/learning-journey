@@ -1,0 +1,256 @@
+{
+  "main": {
+    "id": "5d8f9fe9ef156f8b",
+    "type": "split",
+    "children": [
+      {
+        "id": "22a0c54ce7016014",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "689cb650e09bba5a",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Javascript/Inherited Notes/Underfined.md",
+                "mode": "preview",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "757761c5e673ef12",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Javascript/Inherited Notes/Underfined.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "0b80fb48711be057",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Javascript/Javascript Main Note.md",
+                "mode": "preview",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "6773879f3d8b7404",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Javascript/Javascript Main Note.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "9998001edffb3bd2",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Github/Git Commit Convention.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          }
+        ],
+        "currentTab": 4
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "fdfce8663d1709db",
+    "type": "split",
+    "children": [
+      {
+        "id": "d903301eaba8a9ea",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "742039e3e0c73a94",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "6e1cc28850316843",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "array.find",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "9b72aea3614dcd80",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
+          }
+        ],
+        "currentTab": 1
+      }
+    ],
+    "direction": "horizontal",
+    "width": 247.5
+  },
+  "right": {
+    "id": "9acc97001e24c784",
+    "type": "split",
+    "children": [
+      {
+        "id": "ae222da750367aff",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "9e9b2c6e6d6bfcf2",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Github/Git Commit Convention.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "c4b10afdc6ef4300",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Github/Git Commit Convention.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "b2bcfd5f52ebc6a7",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "9e8f0d1f84b1b29c",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Github/Git Commit Convention.md"
+              }
+            }
+          },
+          {
+            "id": "78829cbdc953f5e0",
+            "type": "leaf",
+            "state": {
+              "type": "calendar",
+              "state": {}
+            }
+          }
+        ],
+        "currentTab": 3
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "daily-notes:Open today's daily note": false,
+      "audio-recorder:Start/stop recording": false,
+      "markdown-importer:Open format converter": false,
+      "obsidian-importer:Open Importer": false,
+      "templater-obsidian:Templater": false
+    }
+  },
+  "active": "9998001edffb3bd2",
+  "lastOpenFiles": [
+    "Javascript/APIs/localStorage.md",
+    "Javascript/Javascript Main Note.md",
+    "Javascript/Inherited Notes/Function in JS.md",
+    "Javascript/Inherited Notes/📄 Data Types.md",
+    "Javascript/Inherited Notes/📋 DOM.md",
+    "Javascript/Inherited Notes/How to convert String to Number in Js.md",
+    "Javascript/Inherited Notes",
+    "Javascript/Inherited Notes/How to extract value from radio input?.md",
+    "Javascript/Inherited Notes/Underfined.md",
+    "Miscellaneous/How to add a new key or key-value pair to an object?.md",
+    "Miscellaneous/Destructuring in JavaScript.md",
+    "Miscellaneous/array.Map();.md",
+    "Miscellaneous/array.Filter();.md",
+    "Miscellaneous/Access properties in an object?.md",
+    "Javascript/attachments/Pasted image 20230905041335.png",
+    "Javascript/attachments",
+    "Executing Templates/Denote.md",
+    "Github/Github Cheatsheet.md",
+    "Executing Templates/Promote.md",
+    "Executing Templates/untitled folder",
+    "Executing Templates",
+    "Github/Git Commit Convention.md",
+    "VScode/VSCODE useful tips & shortcut.md",
+    "VScode/attachments/Pasted image 20230904043856.png",
+    "VScode/attachments/Pasted image 20230904043504.png",
+    "VScode/attachments",
+    "VScode",
+    "2023-09-03.md",
+    "attachments/Pasted image 20230903122730.png",
+    "attachments",
+    "Miscellaneous/Untitled.md",
+    "Github",
+    "Javascript/APIs",
+    "Untitled.canvas",
+    "Miscellaneous/Looping through items in an array.md",
+    "Miscellaneous/Untitled.png",
+    "Miscellaneous/Untitled 2.png",
+    "Miscellaneous/Untitled 1.png",
+    "Miscellaneous",
+    "Javascript f5f1ca43a2e24b3391f9127544c5a044/Untitled.png.md",
+    "2023-08-28.md",
+    "Javascript f5f1ca43a2e24b3391f9127544c5a044/Untitled 2.png.md"
+  ]
+}

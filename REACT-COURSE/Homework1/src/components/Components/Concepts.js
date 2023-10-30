@@ -5,7 +5,7 @@ import Container from "../UI/Container";
 const Concepts = (props) => {
   // Using dynamic placeholder
   return (
-    <Container>
+    <Container id="concepts">
       {props.conceptArray.map(function (item) {
         return (
           <ConceptItem

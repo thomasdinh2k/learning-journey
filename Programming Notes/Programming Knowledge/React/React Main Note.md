@@ -11,6 +11,12 @@ npm start
 https://create-react-app.dev/
 This website provide code & instructions needed to create a server for react project
 
+### Install using Vite
+```terminal
+npm create vite
+
+npm run dev -- --host //Expose host
+```
 # Components-Driven UI
 ## React Core Syntax & JSX
 ### Why using Components?
@@ -503,5 +509,49 @@ However, upon submitting, the browser send a request to the server by default. T
 ![[Pasted image 20231016111622.png | Prevent browser from re-loading and sending submit request]]
 ![[Pasted image 20231016114031.png]]
 
-[[Hook - Gắn vào Component]]
+[[Implement Double-click to Edit Text in React]]
+### Two-way binding
+
+>[!caution]+ Key concept (Working with form)
+>Two-way binding allow form to *gather user input* as well as *modify* it
+
+For example, normally, when user hit "Add Expense", it won't clear the input 
+![[Pasted image 20231026050929.png | Form field was not clear after user "Add Expense"]]
+
+But with **two-way binding**, we can use the concept to clear input after user hit `Add Expense`
+
+In the example, we will bind a `value` property with `enteredTitle` for the input
+![[Pasted image 20231026051458.png]]
+*This input don't just listen to changes, but also be able to be fed back the state to the input* -> We **change the state** -> The input value **will also be changed**
+![[Pasted image 20231026051703.png | After submit, the input for `title` is changed to "Submitted"]]
+![[Pasted image 20231026051734.png]]
+With **two-way binding**. Now we can clear the input after the form *is submitted*
+![[Pasted image 20231026051929.png | Clear the form post submit]]
+
+### Child-to-parent Component Communication
+We have learnt on how to pass the value from Parent to Child component but we hasn't learn the (buttom-up) approach yet
+
+
+![[Pasted image 20231026053357.png | Passing Data from Child to Parent concept]]
+In the example, we need to ultimately pass the `expenseData` to the `App.js`
+![[Pasted image 20231026054000.png]]
+We will pass `expenseData` (1) which we *gathered* in `ExpenseForm.js` component to the `NewExpense.js` (2) component as the first step. After that, we will try to reach the `App.js`(3) component. However, ***WE CAN'T SKIP COMPONENT IN BETWEEN***
+
+>[!idea] How to pass value to the parent component
+>We can use a `callback function`, the parent **defines** a function (within a `Component props`) and *passes* it down to the `Child component` as a **props**. The `Child component` then **call** this function with *the data it wanted to send* -> *The parent* will receive and process that data
+
+==Step 1: Define a props + call back function==
+![[Pasted image 20231026060647.png]]
+(1) - props
+(2) - A call back function which handle *retrieving data from child component*
+(3) - **Parameter** - 
+![[Pasted image 20231026061117.png]]
+(1) - `expenseData` which is an **key-value pair** object, we use the[[Function in JS#^24d21d | Spread Operator]] to append a new set of DATA which has new ID (2) to the old Array
+
+==Step 2: Use this function inside the Component== (Call a function)
+![[Pasted image 20231026062207.png]]
+===Communicate up to the `App.js` to actually append to the original *array*
+
+## Lifting State Up
+![[Pasted image 20231026071512.png]]
 

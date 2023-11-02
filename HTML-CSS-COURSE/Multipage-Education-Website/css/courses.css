@@ -1,0 +1,8 @@
+.course {
+    margin-top: 2rem;
+    margin-bottom: 0;
+}
+
+.courses__container {
+    row-gap: 2rem;
+}

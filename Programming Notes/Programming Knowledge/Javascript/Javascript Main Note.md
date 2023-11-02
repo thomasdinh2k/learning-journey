@@ -107,7 +107,8 @@ let testArray = [8,1, -3, -5].filter((value, index) => {
 ```
 
 array.Map();
-[[Iterate an Array and render a list of items in React]]
+[[Iterate an Array and render a list of items in React]] ^86cbea
+[[The use of ()=>()]]
 ```jsx
 console.log(testArray);
 

@@ -8,25 +8,61 @@
         "type": "tabs",
         "children": [
           {
-            "id": "285d4957d5d55d0b",
+            "id": "299c47ff41ffb7b5",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Programming Knowledge/Javascript/Mr. Cuong Course/React-Redux Oct-30th.md",
+                "file": "Programming Knowledge/Javascript/Mr. Cuong Course/Axios Service 2023-11-01.md",
                 "mode": "source",
                 "source": false
               }
             }
           },
           {
-            "id": "299c47ff41ffb7b5",
+            "id": "dcdeb5ff3a163d1d",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Programming Knowledge/HTML CSS/CSS main note.md",
+                "file": "Programming Knowledge/attachments/Iterate an Array and render a list of items in React.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "0e15791f41ae9d4b",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "The use of ()=>().md",
                 "mode": "preview",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "c5d4cca638f6bd5f",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Programming Knowledge/React/React Main Note.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "c49268828eaa7e4c",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Programming Knowledge/attachments/Iterate an Array and render a list of items in React.md",
+                "mode": "source",
                 "source": false
               }
             }
@@ -61,7 +97,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "map",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -82,8 +118,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "0d08f49b5847d439",
@@ -99,7 +134,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Programming Knowledge/HTML CSS/CSS main note.md",
+                "file": "Programming Knowledge/attachments/Iterate an Array and render a list of items in React.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -116,7 +151,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Programming Knowledge/HTML CSS/CSS main note.md",
+                "file": "Programming Knowledge/attachments/Iterate an Array and render a list of items in React.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -139,7 +174,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Programming Knowledge/HTML CSS/CSS main note.md"
+                "file": "Programming Knowledge/attachments/Iterate an Array and render a list of items in React.md"
               }
             }
           }
@@ -148,7 +183,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 200,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -160,13 +196,20 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "299c47ff41ffb7b5",
+  "active": "dcdeb5ff3a163d1d",
   "lastOpenFiles": [
+    "Programming Knowledge/Javascript/Mr. Cuong Course/Axios Service 2023-11-01.md",
+    "Programming Knowledge/attachments/Iterate an Array and render a list of items in React.md",
+    "The use of ()=>().md",
+    "Programming Knowledge/Javascript/Mr. Cuong Course/2023-09-18.md",
     "Programming Knowledge/React/React Main Note.md",
+    "Programming Knowledge/React/Hook - Gắn vào Component.md",
+    "Programming Knowledge/Javascript/Javascript Main Note.md",
     "Programming Knowledge/Javascript/Mr. Cuong Course/React-Redux Oct-30th.md",
+    "Pasted image 20231101192917.png",
+    "Programming Knowledge/HTML CSS/CSS main note.md",
     "Programming Knowledge/2023-09-03.md",
     "Programming Knowledge/Javascript/Inherited Notes/Function in JS.md",
-    "Programming Knowledge/Javascript/Javascript Main Note.md",
     "Programming Knowledge/Javascript/Mr. Cuong Course/2023-10-17 Cắt giao diện photoshop.md",
     "Programming Knowledge/HTML CSS/HTML main note.md",
     "Programming Knowledge/attachments/Array pop(); remove and return the last element from an array..md",

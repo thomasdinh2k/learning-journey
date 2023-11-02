@@ -78,10 +78,12 @@ Syntax
 ```js
 const newArray = array.map(callback(currentValue[, index[, array]])[, thisArg]);
 ```
+
+^b90b85
 - `array`: The original array you want to iterate over.
 - `callback`:*A function to execute on each element* of the array. It can take up to three arguments:
     - `currentValue`: The current element being processed in the array.
-    - `index` (optional): The index of the current element.
+    - `index` (optional): The index of the current element. ^6cf0ec
     - `array` (optional): The array that `map()` is being called upon.
 - `thisArg` (optional): An optional value to use as `this` when executing the `callback` function.
 

@@ -91,7 +91,7 @@ Dùng `UseEffect` khi nào?
 
 Khi học useEffect, cần học và nắm chắc các trường hợp
 1. `useEffect` chỉ có call-back function
-2. `useEffect` có array dependences rỗng
+2. `useEffect` có array dependences rỗng ^860aaa
 3. `useEffect` có cả call-back và dependences (khó nhất)
 
 ## UseEffect chỉ có call-back

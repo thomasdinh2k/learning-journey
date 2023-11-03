@@ -1,4 +1,5 @@
 {
-  "attachmentFolderPath": "attachments",
-  "alwaysUpdateLinks": true
+  "attachmentFolderPath": "Programming Knowledge/attachments",
+  "alwaysUpdateLinks": true,
+  "newFileLocation": "current"
 }

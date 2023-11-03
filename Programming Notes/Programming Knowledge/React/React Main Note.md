@@ -1,4 +1,4 @@
-![[Pasted image 20230911071026.png]]
+![[Pasted image 20230911071026.png | reload]]
 > React is all about ==Components== (Combination of HTML & CSS & a bit Js block of code)
 
 # Install React Project
@@ -554,4 +554,18 @@ We will pass `expenseData` (1) which we *gathered* in `ExpenseForm.js` component
 
 ## Lifting State Up
 ![[Pasted image 20231026071512.png]]
+
+### Derived (Computed) State
+
+Supposed we need to view which year has been hidden
+![[Pasted image 20231103095529.png|Exmaple Code]]
+
+Normally, we will need to create a whole another state just to control that `<p>`
+which is redundant
+
+![[Pasted image 20231103101158.png]]
+
+Here is a better way to do that, by *introducing* a new variable (**Computed** value)
+
+![[Pasted image 20231103101909.png | Using Derived value]]
 

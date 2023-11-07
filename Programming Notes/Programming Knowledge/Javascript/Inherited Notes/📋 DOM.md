@@ -1,1 +1,0 @@
-[[Inherited Notes/How to extract value from radio input?]]

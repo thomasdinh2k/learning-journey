@@ -1,1 +1,0 @@
-Array join(): convert an array of strings or values into a single string representation

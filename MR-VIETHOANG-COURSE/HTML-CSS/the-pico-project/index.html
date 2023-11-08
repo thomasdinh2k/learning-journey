@@ -22,29 +22,74 @@
   </head>
   <body>
     <div id="global-banner">
-        <a href="#"><img src="images/global-banner.png" /></a>
+      <a href="#"><img src="images/global-banner.png" /></a>
     </div>
 
-    <div id="header-top" >
-        <div class="container">
-            <div class="row">
-                <div id="header-top-left" class="col-lg-3 col-md-3 col-sm-12">
-                    <a href="#">
-                        <li><i class="fa fa-map-marker"></i>Hệ thống siêu thị</li>
-                    </a>
-                </div>
-                <div id="header-top-right" class="col-lg-9 col-md-9 col-sm-12">
-                   <a href="/tin-tuc"><i class="fa fa-newspaper-o"></i> Tin tức</a>
-                  	<a href="/tin-tuc/tuyen-dung"><i class="fa fa-user"></i> Tuyển dụng</a>
-                    <a href="http://einvoice.pico.vn/" target="_blank"><i class="fa fa-file-text-o"></i>Tra cứu hóa đơn VAT</a>
-                    <a href=""><i class="fa fa-question-circle"></i> Hỗ trợ</a>
-                    <a href="/lien-he"><i class="fa fa-headphones"></i> Liên hệ</a>
-                </div>
-            </div>
+    <div id="header-top">
+      <div class="container">
+        <div class="row">
+          <div id="header-top-left" class="col-lg-3 col-md-3 col-sm-12">
+            <a href="#">
+              <li><i class="fa fa-map-marker"></i>Hệ thống siêu thị</li>
+            </a>
+          </div>
+          <div id="header-top-right" class="col-lg-9 col-md-9 col-sm-12">
+            <a href="/tin-tuc"><i class="fa fa-newspaper-o"></i> Tin tức</a>
+            <a href="/tin-tuc/tuyen-dung"
+              ><i class="fa fa-user"></i> Tuyển dụng</a
+            >
+            <a href="http://einvoice.pico.vn/" target="_blank"
+              ><i class="fa fa-file-text-o"></i>Tra cứu hóa đơn VAT</a
+            >
+            <a href=""><i class="fa fa-question-circle"></i> Hỗ trợ</a>
+            <a href="/lien-he"><i class="fa fa-headphones"></i> Liên hệ</a>
+          </div>
         </div>
+      </div>
     </div>
-    <div class="header__main"></div>
-    <div class="header__bottom"></div>
+    <div id="header__main" class="container">
+      <div id="header__main-top" class="row">
+        <div id="header__main-top-left" class="col-2">
+          <img src="./images/logo.png" alt="pico-logo" />
+        </div>
+        <div id="header__main-top-center" class="col-7">
+          <div class="input-group mb-3">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Bạn tìm cái gì ..."
+            />
+            <button
+              class="btn-search fa-solid fa-magnifying-glass"
+              type="submit"
+              id="button-addon2"
+            ></button>
+          </div>
+        </div>
+        <div
+          id="header__main-top-right"
+          class="col-3 d-flex justify-content-between align-items-center"
+        >
+          <div class="order-tracking">
+            <a href="http://" target="_blank" rel="noopener noreferrer">
+              Theo dõi <br />
+              đơn hàng</a
+            >
+          </div>
+          <div class="icon-user">
+            <a href="http://">Đăng nhập</a>
+            <a href="http://">Đăng ký</a>
+          </div>
+          <a href="http://" target="_blank" rel="noopener noreferrer">
+            <i class="fa-solid fa-cart-shopping" style="color: #ee2e24"></i>
+            <span>0</span>
+          </a>
+        </div>
+      </div>
+
+      <div id="header__main-bottom"></div>
+    </div>
+    <div id="header__bottom"></div>
     <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: Bootstrap Bundle with Popper -->

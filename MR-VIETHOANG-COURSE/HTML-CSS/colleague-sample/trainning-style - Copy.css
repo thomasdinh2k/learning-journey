@@ -1,0 +1,111 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 13px;
+  color: #333;
+}
+/* pico-news  */
+#pico-news {
+  padding: 18px 0 15px 0;
+  margin-bottom: 30px;
+}
+#pico-news h3 a {
+  text-decoration: none;
+  color: black;
+  font-size: 24px;
+  font-weight: bold;
+}
+#pico-news h3 i {
+  display: inline-block;
+  width: 43px;
+  height: 43px;
+  line-height: 43px;
+  border-radius: 50%;
+  background-color: #ee2e24;
+  color: white;
+  font-size: 18px;
+  text-align: center;
+  margin-right: 12px;
+}
+#pico-news a:hover {
+  color: #0056b3;
+}
+#pico-news-main {
+  overflow: hidden;
+}
+#pico-news-main img {
+  border-radius: 5px;
+  max-width: 100%;
+  /* object-fit: cover; */
+  /* display: block; */
+}
+#pico-news-right img {
+  margin-bottom: 45px;
+}
+#pico-news-left img {
+  margin-bottom: 50px;
+}
+#pico-news-mid img {
+  margin-bottom: 10px;
+}
+.news-effect a {
+  position: relative;
+  display: block;
+  margin-bottom: 5px;
+}
+.news-effect a::before {
+  /* display: block; */
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 70%;
+  background: linear-gradient(0deg, #222, transparent);
+  bottom: 0;
+  left: 0;
+  border-radius: 5px;
+}
+
+.news-group {
+  position: absolute;
+  display: flex;
+  content: "";
+  bottom: 18px;
+  left: 10px;
+  color: #e9e9e9;
+  text-decoration: none;
+}
+.news-date {
+  display: block;
+  margin-right: 10px;
+  text-align: center;
+  border: 1px solid #e9e9e9;
+  border-radius: 5px;
+  padding: 5px;
+}
+.news-date b,
+.news-date span {
+  display: block;
+}
+.news-date b {
+  font-size: 16px;
+}
+.news-date span {
+  border-bottom: 1px dashed #e9e9e9;
+}
+
+#pico-news-main a:hover img{
+  transition: all 0.25s;
+  transform: scale(1.1);
+  border-radius: 5px;
+  /* overflow: hidden; */
+  /* object-fit:fill; */
+}
+#pico-news-main a:hover  + .news-group{
+  color: red !important;
+}
+/* end pico-news  */
+
+.wrapper{
+    overflow-wrap: unset;
+    overflow:hidden;
+    border-radius: 5px;
+}

@@ -1,8 +1,16 @@
-const TabButton = (props) => {
+const TabButton = ({ children, setActiveTab, activeTab }) => {
   return (
     <div>
       <li>
-        <button>{props.children}</button>
+        <button
+          className={children.toLowerCase() === activeTab && "active" }
+          onClick={() => {
+            setActiveTab(children.toLowerCase());
+            console.log(`activeTab is now set to ${children.toLowerCase()}`);
+          }}
+        >
+          {children}
+        </button>
       </li>
     </div>
   );

@@ -1,201 +1,374 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+	<head>
+		<!-- Required meta tags -->
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <!-- Bootstrap CSS -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
-      crossorigin="anonymous"
-    />
-    <script
-      src="https://kit.fontawesome.com/efe56c7eca.js"
-      crossorigin="anonymous"
-    ></script>
+		<!-- Bootstrap CSS -->
+		<link
+			href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+			rel="stylesheet"
+			integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+			crossorigin="anonymous"
+		/>
+		<script
+			src="https://kit.fontawesome.com/efe56c7eca.js"
+			crossorigin="anonymous"
+		></script>
 
-    <link rel="stylesheet" href="styles/styles.css" />
-    <title>PICO Project</title>
-  </head>
-  <body>
-    <header>
-      <div id="global-banner">
-        <a href="#"><img src="images/global-banner.png" /></a>
-      </div>
+		<link rel="stylesheet" href="styles/styles.css" />
+		<title>PICO Project</title>
+	</head>
+	<body>
+		<header>
+			<div id="global-banner">
+				<a href="#"><img src="images/global-banner.png" /></a>
+			</div>
 
-      <div id="header-top">
-        <div class="container">
-          <div class="row">
-            <div id="header-top-left" class="col-lg-3 col-md-3 col-sm-12">
-              <a href="#">
-                <li><i class="fa fa-map-marker"></i>Hệ thống siêu thị</li>
-              </a>
-            </div>
-            <div id="header-top-right" class="col-lg-9 col-md-9 col-sm-12">
-              <a href="/tin-tuc"><i class="fa fa-newspaper-o"></i> Tin tức</a>
-              <a href="/tin-tuc/tuyen-dung"
-                ><i class="fa fa-user"></i> Tuyển dụng</a
-              >
-              <a href="http://einvoice.pico.vn/" target="_blank"
-                ><i class="fa fa-file-text-o"></i>Tra cứu hóa đơn VAT</a
-              >
-              <a href=""><i class="fa fa-question-circle"></i> Hỗ trợ</a>
-              <a href="/lien-he"><i class="fa fa-headphones"></i> Liên hệ</a>
-            </div>
-          </div>
-        </div>
+			<div id="header-top">
+				<div class="container">
+					<div class="row">
+						<div id="header-top-left" class="col-lg-3 col-md-3 col-sm-12">
+							<a href="#">
+								<li><i class="fa fa-map-marker"></i>Hệ thống siêu thị</li>
+							</a>
+						</div>
+						<div id="header-top-right" class="col-lg-9 col-md-9 col-sm-12">
+							<a href="/tin-tuc"><i class="fa fa-newspaper-o"></i> Tin tức</a>
+							<a href="/tin-tuc/tuyen-dung"
+								><i class="fa fa-user"></i> Tuyển dụng</a
+							>
+							<a href="http://einvoice.pico.vn/" target="_blank"
+								><i class="fa fa-file-text-o"></i>Tra cứu hóa đơn VAT</a
+							>
+							<a href=""><i class="fa fa-question-circle"></i> Hỗ trợ</a>
+							<a href="/lien-he"><i class="fa fa-headphones"></i> Liên hệ</a>
+						</div>
+					</div>
+				</div>
 
-        <div class="container">
-          <div id="header__main">
-            <div id="header__main-top" class="row">
-              <div id="header__main-top-left" class="col-3 text-center">
-                <img src="./images/logo.png" alt="pico-logo" />
-              </div>
-              <div id="header__main-top-center" class="col-5">
-                <div class="input-group mb-3 header-seach">
-                  <input
-                    type="text"
-                    class="form-control text-search"
-                    placeholder="Bạn tìm cái gì ..."
-                  />
-                  <button
-                    class="btn-search fa-solid fa-magnifying-glass"
-                    type="submit"
-                    id="button-addon2"
-                  ></button>
-                </div>
-              </div>
-              <div
-                id="header__main-top-right"
-                class="col-4 d-flex justify-content-between align-items-center"
-              >
-                <div class="order-tracking">
-                  <a href="http://" target="_blank" rel="noopener noreferrer">
-                    Theo dõi <br />
-                    đơn hàng</a
-                  >
-                </div>
-                <div class="icon-user">
-                  <a href="http://">Đăng nhập</a>
-                  <a href="http://">Đăng ký</a>
-                </div>
-                <a href="http://" target="_blank" rel="noopener noreferrer">
-                  <i class="fa-solid fa-cart-shopping" style="color: #ee2e24">
-                    <span class="cart-quantity-counter">0</span>
-                  </i>
-                </a>
-              </div>
-            </div>
-          </div>
+				<div class="container">
+					<div id="header__main">
+						<div id="header__main-top" class="row">
+							<div id="header__main-top-left" class="col-3 text-center">
+								<img src="./images/logo.png" alt="pico-logo" />
+							</div>
+							<div id="header__main-top-center" class="col-5">
+								<div class="input-group mb-3 header-seach">
+									<input
+										type="text"
+										class="form-control text-search"
+										placeholder="Bạn tìm cái gì ..."
+									/>
+									<button
+										class="btn-search fa-solid fa-magnifying-glass"
+										type="submit"
+										id="button-addon2"
+									></button>
+								</div>
+							</div>
+							<div
+								id="header__main-top-right"
+								class="col-4 d-flex justify-content-between align-items-center"
+							>
+								<div class="order-tracking">
+									<a href="http://" target="_blank" rel="noopener noreferrer">
+										Theo dõi <br />
+										đơn hàng</a
+									>
+								</div>
+								<div class="icon-user">
+									<a href="http://">Đăng nhập</a>
+									<a href="http://">Đăng ký</a>
+								</div>
+								<a href="http://" target="_blank" rel="noopener noreferrer">
+									<i class="fa-solid fa-cart-shopping" style="color: #ee2e24">
+										<span class="cart-quantity-counter">0</span>
+									</i>
+								</a>
+							</div>
+						</div>
+					</div>
 
-          <div id="header__bottom" class="d-flex flex-wrap">
-            <div class="header__bottom-left text-uppercase fw-400 col-3">
-              <p class="title m-0">
-                <i class="fa fa-bars"></i>
-                danh mục sản phẩm
-              </p>
-              <div class="header-menu-list bg-white">
-                <!-- Group of Category -->
-                <ul class="list-group">
-                  <li class="list-group-item">
-                    <img src="./images/cat_icon_1.png" />
-                    <p>Tivi, Soundbar, Âm thanh, Máy chiếu</p>
-                    <i class="fa-solid fa-angle-right more-menu"></i>
-                  </li>
-                  <li class="list-group-item">
-                    <img src="./images/cat_icon_2.png" />
-                    <p>Điều hòa nhiệt độ, Tủ đông, tủ mát</p>
-                    <i class="fa-solid fa-angle-right more-menu"></i>
-                  </li>
-                  <li class="list-group-item">
-                    <img src="./images/cat_icon_3.png" />
-                    <p>Tủ lạnh, tủ nhật bản, tủ rượu</p>
-                    <i class="fa-solid fa-angle-right more-menu"></i>
-                  </li>
-                  <li class="list-group-item">
-                    <img src="./images/cat_icon_4.png" />
-                    <p>máy giặt, máy sấy, tủ chăm sóc quần áo</p>
-                    <i class="fa-solid fa-angle-right more-menu"></i>
-                  </li>
-                  <li class="list-group-item">
-                    <img src="./images/cat_icon_5.png" />
-                    <p>Đồ gia dụng, đồ bếp</p>
-                    <i class="fa-solid fa-angle-right more-menu"></i>
-                  </li>
-                  <li class="list-group-item">
-                    <img src="./images/cat_icon_6.png" />
-                    <p>Bếp điện tử, máy rửa bát, máy lọc không khi</p>
-                    <i class="fa-solid fa-angle-right more-menu"></i>
-                  </li>
-                  <li class="list-group-item">
-                    <img src="./images/cat_icon_7.png" />
-                    <p>Nồi cơm, lò vi sóng</p>
-                    <i class="fa-solid fa-angle-right more-menu"></i>
-                  </li>
-                  <li class="list-group-item">
-                    <img src="./images/cat_icon_8.png" />
-                    <p>Quạt mát, quạt hơi nước, xay ép</p>
-                    <i class="fa-solid fa-angle-right more-menu"></i>
-                  </li>
-                  <li class="list-group-item">
-                    <img src="./images/cat_icon_9.png" />
-                    <p>Điện thoại, máy tính bảng</p>
-                    <i class="fa-solid fa-angle-right more-menu"></i>
-                  </li>
-                  <li class="list-group-item">
-                    <img src="./images/cat_icon_10.png" />
-                    <p>Máy tính xách chân</p>
-                    <i class="fa-solid fa-angle-right more-menu"></i>
-                  </li>
-                  <li class="list-group-item">
-                    <img src="./images/cat_icon_11.png" />
-                    <p>máy tính để bàn, màn hình, máy in</p>
-                    <i class="fa-solid fa-angle-right more-menu"></i>
-                  </li>
-                  <li class="list-group-item">
-                    <img src="./images/cat_icon_12.png" />
-                    <p>phụ kiện công nghệ</p>
-                    <i class="fa-solid fa-angle-right more-menu"></i>
-                  </li>
-                </ul> <!-- End of Category-->
-              </div>
-            </div>
-            <div class="header__bottom-right font-300 col-9">
-              <a href="#" class="icon-deal">
-                <b>DEAL HOT</b>
-              </a>
-              <a href="#" class="icon-gift"> Khuyến mãi </a>
-              <a href="#" class="icon-box"> Sản phẩm đã xem </a>
-              <a href="#" class="icon-phone">
-                Gọi đặt mua
-                <i class="hotline-num">1900.6619 - 0904.881169</i>
-                (8h30 - 21h)
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </header>
-    <section class="homepage">
-      <div class="container">
-        <div class="home-banner-group">
-          <div class="home-banner-slider"></div>
-          <div class="home-banner-right"></div>
-        </div>
+					<div id="header__bottom" class="d-flex flex-wrap">
+						<div class="header__bottom-left text-uppercase fw-400 col-3">
+							<p class="title m-0">
+								<i class="fa fa-bars"></i>
+								danh mục sản phẩm
+							</p>
+							<!-- Submenu -->
+							<div class="header-menu-list bg-white">
+								<!-- Group of Category -->
+								<ul class="list-group dropdown-menu" role="menu">
+									<li class="list-group-item" data-submenu-id="item-1">
+										<!-- Item 1-->
+										<div class="menu-left">
+											<img src="./images/cat_icon_1.png" />
+											<a href="#">Tivi, Soundbar, Âm thanh, Máy chiếu</a>
+											<i class="fa-solid fa-angle-right more-menu"></i>
+										</div>
+										<div  class="menu-right" id="item-1">
+											<div class="sub-menu-item">
+												<a href="/tivi-nhom-157.html" class="cat-2"
+													>THƯƠNG HIỆU</a
+												>
+												<div class="cat-3-list">
+													<a href="/tivi-nhom-157.html?brand=51">TV LG</a>
+													<a href="/tivi-nhom-157.html?brand=80">TV Sony</a>
+													<a href="/tivi-nhom-157.html?brand=71">TV Samsung</a>
+													<a href="/tivi-nhom-157.html?brand=1146"
+														>TV Skyworth</a
+													>
+													<a href="/tivi-nhom-157.html?brand=114">TV TCL</a>
+													<a href="/tivi-nhom-157.html?brand=1212">TV Casper</a>
+												</div>
+											</div>
 
-        <div class="home-banner-under"></div>
-      </div>
-    </section>
-    <!-- Optional JavaScript; choose one of the two! -->
+											<div class="sub-menu-item">
+												<a href="/tivi-nhom-157.html" class="cat-2"
+													>LOẠI TIVI</a
+												>
+												<div class="cat-3-list">
+													<a href="/tivi-nhom-157.html?filter=4723">TV 8K</a>
+													<a href="/tivi-nhom-157.html?filter=3167">TV 4K</a>
+													<a href="/tivi-nhom-157.html?filter=3174"
+														>TV Full HD</a
+													>
+													<a href="/tivi-nhom-157.html?filter=3166">TV Oled</a>
+													<a href="/tivi-nhom-157.html?filter=4650">TV Qled</a>
+													<a href="/tivi-nhom-157.html?filter=4794"
+														>TV Neo Qled</a
+													>
+													<a href="/tivi-nhom-157.html?filter=4744"
+														>TV Nano Cell</a
+													>
+													<a href="/tivi-nhom-157.html?filter=4653"
+														>Life Style TV</a
+													>
+													<a href="/tivi-nhom-157.html?filter=3165"
+														>Smart TV - Internet TV</a
+													>
+												</div>
+											</div>
 
-    <!-- Option 1: Bootstrap Bundle with Popper -->
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-      crossorigin="anonymous"
-    ></script>
-  </body>
+											<div class="sub-menu-item">
+												<a href="/am-thanh-nhom-236.html" class="cat-2"
+													>LOA - ÂM THANH</a
+												>
+												<div class="cat-3-list">
+													<a href="/loa-soundbar-nhom-450.html">LOA SOUNDBAR</a>
+													<a href="/loa-keo-nhom-458.html">LOA KÉO</a>
+													<a href="/loa-bluetooth-28999-nhom-460.html"
+														>LOA BLUETOOTH</a
+													>
+													<a href="/loa-one-box-nhom-459.html">LOA ONEBOX</a>
+													<a href="">LOA SONY</a>
+													<a href="">LOA SAMSUNG</a>
+													<a href="">LOA LG</a>
+												</div>
+											</div>
+
+											<div class="sub-menu-item">
+												<a href="/tv-may-chieu-nhom-461.html" class="cat-2"
+													>MÁY CHIẾU</a
+												>
+												<div class="cat-3-list">
+													<a href="">SAMSUNG</a>
+													<a href="">SONY</a>
+													<a href="">LG</a>
+												</div>
+												<br />
+												<br />
+												<a href="/phu-kien-dien-tu-nhom-87.html" class="cat-2"
+													>PHỤ KIỆN ĐIỆN TỬ</a
+												>
+												<div class="cat-3-list">
+													<a href="/phu-kien-dien-tu-nhom-87.html?filter=2006"
+														>GIÁ TREO</a
+													>
+													<a href="">ĐIỀU KHIỂN TV</a>
+												</div>
+											</div>
+										</div>
+									</li>
+									<li class="list-group-item">
+										<div class="menu-left">
+											<img src="./images/cat_icon_2.png" />
+											<a href="#">Điều hòa nhiệt độ, Tủ đông, tủ mát</a>
+											<i class="fa-solid fa-angle-right more-menu"></i>
+										</div>
+									</li>
+									<li class="list-group-item">
+										<div class="menu-left">
+											<img src="./images/cat_icon_3.png" />
+											<a href="#">Tủ lạnh, tủ nhật bản, tủ rượu</a>
+											<i class="fa-solid fa-angle-right more-menu"></i>
+										</div>
+									</li>
+									<li class="list-group-item">
+										<div class="menu-left">
+											<img src="./images/cat_icon_4.png" />
+											<a href="#">máy giặt, máy sấy, tủ chăm sóc quần áo</a>
+											<i class="fa-solid fa-angle-right more-menu"></i>
+										</div>
+									</li>
+									<li class="list-group-item">
+										<div class="menu-left">
+											<img src="./images/cat_icon_5.png" />
+											<a href="#">Đồ gia dụng, đồ bếp</a>
+											<i class="fa-solid fa-angle-right more-menu"></i>
+										</div>
+									</li>
+									<li class="list-group-item">
+										<div class="menu-left">
+											<img src="./images/cat_icon_6.png" />
+											<a href="#"
+												>Bếp điện tử, máy rửa bát, máy lọc không khi</a
+											>
+											<i class="fa-solid fa-angle-right more-menu"></i>
+										</div>
+									</li>
+									<li class="list-group-item">
+										<div class="menu-left">
+											<img src="./images/cat_icon_7.png" />
+											<a href="#">Nồi cơm, lò vi sóng</a>
+											<i class="fa-solid fa-angle-right more-menu"></i>
+										</div>
+									</li>
+									<li class="list-group-item">
+										<div class="menu-left">
+											<img src="./images/cat_icon_8.png" />
+											<a href="#">Quạt mát, quạt hơi nước, xay ép</a>
+											<i class="fa-solid fa-angle-right more-menu"></i>
+										</div>
+									</li>
+									<li class="list-group-item">
+										<div class="menu-left">
+											<img src="./images/cat_icon_9.png" />
+											<a href="#">Điện thoại, máy tính bảng</a>
+											<i class="fa-solid fa-angle-right more-menu"></i>
+										</div>
+									</li>
+									<li class="list-group-item">
+										<div class="menu-left">
+											<img src="./images/cat_icon_10.png" />
+											<a href="#">Máy tính xách chân</a>
+											<i class="fa-solid fa-angle-right more-menu"></i>
+										</div>
+									</li>
+									<li class="list-group-item">
+										<div class="menu-left">
+											<img src="./images/cat_icon_11.png" />
+											<a href="#">máy tính để bàn, màn hình, máy in</a>
+											<i class="fa-solid fa-angle-right more-menu"></i>
+										</div>
+									</li>
+									<li class="list-group-item">
+										<div class="menu-left">
+											<img src="./images/cat_icon_12.png" />
+											<a href="#">phụ kiện công nghệ</a>
+											<i class="fa-solid fa-angle-right more-menu"></i>
+										</div>
+									</li>
+								</ul>
+								<!-- End of Category-->
+							</div>
+						</div>
+						<div class="header__bottom-right font-300 col-9">
+							<a href="#" class="icon-deal">
+								<b>DEAL HOT</b>
+							</a>
+							<a href="#" class="icon-gift"> Khuyến mãi </a>
+							<a href="#" class="icon-box"> Sản phẩm đã xem </a>
+							<a href="#" class="icon-phone">
+								Gọi đặt mua
+								<i class="hotline-num">1900.6619 - 0904.881169</i>
+								(8h30 - 21h)
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</header>
+		<section class="homepage">
+			<div class="container">
+				<div class="home-banner-group">
+					<div class="home-banner-slider"></div>
+					<div class="home-banner-right"></div>
+				</div>
+
+				<div class="home-banner-under"></div>
+			</div>
+		</section>
+		<!-- Optional JavaScript; choose one of the two! -->
+
+		<!-- Option 1: Bootstrap Bundle with Popper -->
+
+		<!-- Load Menu Aim jquery file-->
+		<script src="./jquery-1.9.1.min.js"></script>
+		<script src="./jquery-menu-aim.js"></script>
+		<script
+			src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+			integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+			crossorigin="anonymous"
+		></script>
+		<!--Menu Aim script-->
+		<script>
+			var $menu = $(".dropdown-menu");
+
+			$menu.menuAim({
+				activate: activateSubmenu,
+				deactivate: deactivateSubmenu,
+			});
+
+			function activateSubmenu(row) {
+				var $row = $(row),
+					submenuId = $row.data("submenuId"),
+					$submenu = $("#" + submenuId),
+					height = $menu.outerHeight(),
+					width = $menu.outerWidth();
+
+				// Debugging
+				console.log("Activate Submenu called");
+				console.log("Submenu ID:", submenuId);
+				console.log("$submenu:", $submenu);
+
+				// Show the submenu
+				$submenu.css({
+					display: "block",
+					top: -1,
+					left: width - 3, // main should overlay submenu
+					height: height - 4, // padding for main dropdown's arrow
+				});
+				// Keep the currently activated row's highlighted look
+				$row.find("a").addClass("maintainHover");
+			}
+
+			function deactivateSubmenu(row) {
+				var $row = $(row),
+					submenuId = $row.data("submenuId"),
+					$submenu = $("#" + submenuId);
+
+				// Hide the submenu and remove the row's highlighted look
+				$submenu.css("display", "none");
+				$row.find("a").removeClass("maintainHover");
+			}
+
+			// Bootstrap's dropdown menus immediately close on document click.
+			// Don't let this event close the menu if a submenu is being clicked.
+			// This event propagation control doesn't belong in the menu-aim plugin
+			// itself because the plugin is agnostic to bootstrap.
+			$(".dropdown-menu li").click(function (e) {
+				e.stopPropagation();
+			});
+
+			$(document).click(function () {
+				// Simply hide the submenu on any click. Again, this is just a hacked
+				// together menu/submenu structure to show the use of jQuery-menu-aim.
+				$(".popover").css("display", "none");
+				$("a.maintainHover").removeClass("maintainHover");
+			});
+		</script>
+	</body>
 </html>

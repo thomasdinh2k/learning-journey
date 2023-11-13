@@ -51,7 +51,7 @@ header{
 
 #global-banner {
   background-color: var(--color-banner-red);
-  height: auto;
+  height: 100px;
   width: 100%;
   text-align: center;
 }
@@ -340,8 +340,21 @@ header{
   white-space: nowrap;
   text-overflow: ellipsis; 
   overflow: hidden;
-  flex: 1
+  flex: 1;
+  transition: var(--transition);
 }
+
+#header-top .list-group-item > .menu-left a:hover {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--dark);
+
+}
+
+.list-group-item:hover {
+  background: #f5f5f5;
+}
+
 
 .list-group-item > .menu-left > img {
   width: 30px;

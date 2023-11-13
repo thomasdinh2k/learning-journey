@@ -4,5 +4,12 @@
 			"path": ".."
 		}
 	],
-	"settings": {}
+	"settings": {
+		"html-to-css-autocompletion.autocompletionFilesScope": "linked-files",
+		"html-to-css-autocompletion.folderNamesToBeIncluded": [
+			"style",
+			"styles",
+			"css"
+		]
+	}
 }

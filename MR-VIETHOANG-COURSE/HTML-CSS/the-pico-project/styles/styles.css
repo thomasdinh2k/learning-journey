@@ -43,6 +43,7 @@ body {
   font-size: 14px;
   background-color: var(--color-white);
   color: #222;
+  height: 3000px;
 }
 
 header{
@@ -214,10 +215,16 @@ header{
   margin-bottom: 0;
 }
 
-#header-top .credit-1 p, #header-top .credit-1 p a {
+#header-top .credit-1 p {
+  display: none;
+  transition: var(--transition);
+}
+
+#header-top .credit-1 p, #header-top .credit-1 p a{
   font-size: 9px;
   font-style: italic;
   margin-bottom: 0;
+  transition: var(--transition);
 }
 
 #header-top .credit-1 .hover{
@@ -428,10 +435,6 @@ header{
 
 }
 
-#header-top .header-menu-list .menu-right {
-  
-}
-
 #header-top .header-menu-list .cat-3-list a {
   font-weight: normal;
   display: block;
@@ -450,3 +453,37 @@ header{
 .dropdown-menu {
   padding: 0px;
 }
+
+/* === Slider === */
+.home__banner-group {
+  display: flex;
+  flex-wrap: wrap;
+  /* background: red; */
+}
+
+/* .home__banner-left {
+  width: 310px;
+} */
+
+.home__banner-slider {
+  width: 600px;
+  /* height: 416px; */
+  min-height: 387px;
+  margin: 11px 0 13px 317px;
+}
+
+.carousel-item img{
+  height: 404px;
+}
+/* === Banner Right === */
+.home__banner-right {
+  margin: 10px 0 0 8px;
+}
+
+.home__banner-right a img {
+  display: block;
+  margin-bottom: 20px;
+  width: 312px;
+  height: auto;
+}
+

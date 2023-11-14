@@ -5,6 +5,11 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 
+		<!-- Carousel CSS -->
+		<link rel="stylesheet" href="./assets/owl.carousel.css" />
+		<link rel="stylesheet" href="./assets/owl.theme.default.css" />
+
+		<script src="/node_modules/jquery/dist/jquery.js"></script>
 		<!-- Bootstrap CSS -->
 		<link
 			href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
@@ -1536,6 +1541,7 @@
 		</header>
 		<section class="homepage">
 			<div class="container">
+				<!-- TODO: Create Effect On Image Hover-->
 				<div class="home__banner-group">
 					<div class="home__banner-slider">
 						<div
@@ -1573,16 +1579,32 @@
 							</div>
 							<div class="carousel-inner">
 								<div class="carousel-item active">
-									<img src="https://file.pico.vn/media/banner/07_11-459c2489301feefb4dab5166be83a417.jpg" class="d-block w-100" alt="..." />
+									<img
+										src="https://file.pico.vn/media/banner/07_11-459c2489301feefb4dab5166be83a417.jpg"
+										class="d-block w-100"
+										alt="..."
+									/>
 								</div>
 								<div class="carousel-item">
-									<img src="https://file.pico.vn/media/banner/09_11-dcee77e2616593f7de04ffbc37bd11f0.jpg" class="d-block w-100" alt="..." />
+									<img
+										src="https://file.pico.vn/media/banner/09_11-dcee77e2616593f7de04ffbc37bd11f0.jpg"
+										class="d-block w-100"
+										alt="..."
+									/>
 								</div>
 								<div class="carousel-item">
-									<img src="https://file.pico.vn/media/banner/02_08-c4d012fc873135d28852e48e6a7627b5.jpg" class="d-block w-100" alt="..." />
+									<img
+										src="https://file.pico.vn/media/banner/02_08-c4d012fc873135d28852e48e6a7627b5.jpg"
+										class="d-block w-100"
+										alt="..."
+									/>
 								</div>
 								<div class="carousel-item">
-									<img src="https://file.pico.vn/media/banner/20_10-c8cf4b68c856436edd66975441217e1d.png" class="d-block w-100" alt="..." />
+									<img
+										src="https://file.pico.vn/media/banner/20_10-c8cf4b68c856436edd66975441217e1d.png"
+										class="d-block w-100"
+										alt="..."
+									/>
 								</div>
 							</div>
 							<button
@@ -1613,20 +1635,545 @@
 					</div>
 					<div class="home__banner-right">
 						<a href="http://" target="_blank" rel="noopener noreferrer">
-							<img src="https://file.pico.vn/media/banner/31_10-476d49ae321a5ef4ee45d0be36634eb5.png" alt="">
+							<img
+								src="https://file.pico.vn/media/banner/31_10-476d49ae321a5ef4ee45d0be36634eb5.png"
+								alt=""
+							/>
 						</a>
 						<a href="http://" target="_blank" rel="noopener noreferrer">
-							<img src="https://file.pico.vn/media/banner/31_10-46faa61528ff07d3a19e47d678667521.png" alt="">
+							<img
+								src="https://file.pico.vn/media/banner/31_10-46faa61528ff07d3a19e47d678667521.png"
+								alt=""
+							/>
 						</a>
 					</div>
 				</div>
 
-				<div class="home__banner-under"></div>
+				<div class="home__banner-under">
+					<img
+						src="https://file.pico.vn/media/banner/31_10-0ed3d1ddfcb234483e903c3f5267871e.png"
+						alt=""
+					/>
+					<img
+						src="https://file.pico.vn/media/banner/31_10-1e4c6c3b1f0ceb5a8f3be15591515a9b.png"
+						alt=""
+					/>
+					<img
+						src="https://file.pico.vn/media/banner/31_10-d1db28ff22a3f813246195b6034e8371.png"
+						alt=""
+					/>
+				</div>
+
+				<!-- Hot DEAL-->
+				<div class="hot-products__group">
+					<p class="title text-center m-0">Sản phẩm hot</p>
+					<div class="hot-products__holder">
+						<!-- Class: bg-white product-hot-holder position-relative-->
+						<div class="owl-carousel owl-theme custom-nav owl-loaded owl-drag">
+							<div class="owl-stage-outer">
+								<div
+									class="owl-stage"
+									style="
+										transform: translate3d(0px, 0px, 0px);
+										transition: all 0.25s ease 0s;
+										width: 2488px;
+									"
+								>
+									<div
+										class="owl-item active"
+										style="width: 240.8px; margin-right: 8px"
+									>
+										<div class="p-item" data-id="42859">
+											<a
+												href="/42859/may-giat-ln-electrolux-ewf9024p5wb-9-0kg-ultimatecare-500-mau-trang-nk-thai-lan.html"
+												class="p-img"
+											>
+												<img
+													src="https://file.pico.vn/media/product/250-373928_10050498-may-giat-electrolux-inverter-9kg-ewf9024p5wb-1.jpg"
+													alt="Máy Giặt Electrolux EWF9024P5WB 9.0kg"
+													class="fit-img"
+												/>
+
+												<span class="p-icon-left">
+													<i class="p-icon-hot"></i>
+
+													<span
+														class="js-icon-42859 d-flex flex-wrap justify-content-center w-100"
+													></span>
+												</span>
+
+												<i class="p-icon-offer"></i>
+											</a>
+
+											<div class="p-text">
+												<a
+													href="/42859/may-giat-ln-electrolux-ewf9024p5wb-9-0kg-ultimatecare-500-mau-trang-nk-thai-lan.html"
+													class="p-name"
+													>Máy Giặt Electrolux EWF9024P5WB 9.0kg</a
+												>
+
+												<div class="p-price-group">
+													<p class="m-0">
+														<span class="p-price"> 8.990.000<u>đ</u> </span>
+
+														<del class="p-old-price">12.190.000<u>đ</u></del>
+													</p>
+
+													<span class="p-discount">-27%</span>
+												</div>
+
+												<p class="p-offer-group">
+													*1 Bình siêu tốc BENNY BJ-18 1.8L (Áp dụng: 04/11/2023
+													- 30/11/2023)
+												</p>
+											</div>
+										</div>
+									</div>
+									<div
+										class="owl-item active"
+										style="width: 240.8px; margin-right: 8px"
+									>
+										<div class="p-item" data-id="43479">
+											<a
+												href="/43479/tu-lanh-lg-gnm312ps-315lit-2-cua-inverter-mau-bac-nk-indonesia.html"
+												class="p-img"
+											>
+												<img
+													src="https://file.pico.vn/media/product/250-380572_untitled-1.jpg"
+													alt="Tủ Lạnh LG GN-M312PS 315 Lít Inverter Màu Bạc"
+													class="fit-img"
+												/>
+
+												<span class="p-icon-left">
+													<i class="p-icon-hot"></i>
+
+													<span
+														class="js-icon-43479 d-flex flex-wrap justify-content-center w-100"
+													></span>
+												</span>
+
+												<i class="p-icon-offer"></i>
+											</a>
+
+											<div class="p-text">
+												<a
+													href="/43479/tu-lanh-lg-gnm312ps-315lit-2-cua-inverter-mau-bac-nk-indonesia.html"
+													class="p-name"
+													>Tủ Lạnh LG GN-M312PS 315 Lít Inverter Màu Bạc</a
+												>
+
+												<div class="p-price-group">
+													<p class="m-0">
+														<span class="p-price"> 8.990.000<u>đ</u> </span>
+
+														<del class="p-old-price">10.990.000<u>đ</u></del>
+													</p>
+
+													<span class="p-discount">-19%</span>
+												</div>
+
+												<p class="p-offer-group">
+													*1 Bình siêu tốc BENNY BJ-18 1.8L (Áp dụng: 01/11/2023
+													- 30/11/2023)
+												</p>
+											</div>
+										</div>
+									</div>
+									<div
+										class="owl-item active"
+										style="width: 240.8px; margin-right: 8px"
+									>
+										<div class="p-item" data-id="37486">
+											<a
+												href="/37486/loa-soundbar-sony-ht-s100f-c-sp1-2-0-kenh-bluetooth.html"
+												class="p-img"
+											>
+												<img
+													src="https://file.pico.vn/media/product/250-298110_hts100f.jpg"
+													alt="Loa Soundbar Sony HT-S100F//C SP1"
+													class="fit-img"
+												/>
+
+												<span class="p-icon-left">
+													<i class="p-icon-hot"></i>
+
+													<span
+														class="js-icon-37486 d-flex flex-wrap justify-content-center w-100"
+													></span>
+												</span>
+											</a>
+
+											<div class="p-text">
+												<a
+													href="/37486/loa-soundbar-sony-ht-s100f-c-sp1-2-0-kenh-bluetooth.html"
+													class="p-name"
+													>Loa Soundbar Sony HT-S100F//C SP1</a
+												>
+
+												<div class="p-price-group">
+													<p class="m-0">
+														<span class="p-price"> 2.490.000<u>đ</u> </span>
+
+														<del class="p-old-price">3.990.000<u>đ</u></del>
+													</p>
+
+													<span class="p-discount">-38%</span>
+												</div>
+
+												<p class="p-offer-group"></p>
+											</div>
+										</div>
+									</div>
+									<div
+										class="owl-item active"
+										style="width: 240.8px; margin-right: 8px"
+									>
+										<div class="p-item" data-id="40479">
+											<a
+												href="/40479/lo-vi-song-electrolux-emg23k38gb-23l-cs-800-1000w-co-nuong.html"
+												class="p-img"
+											>
+												<img
+													src="https://file.pico.vn/media/product/250-343591_lo-vi-song-electrolux-emg23k38gb-1-1-org.jpg"
+													alt="Lò Vi Sóng Electrolux EMG23K38GB 23L Có Nướng"
+													class="fit-img"
+												/>
+
+												<span class="p-icon-left">
+													<i class="p-icon-hot"></i>
+
+													<span
+														class="js-icon-40479 d-flex flex-wrap justify-content-center w-100"
+													></span>
+												</span>
+											</a>
+
+											<div class="p-text">
+												<a
+													href="/40479/lo-vi-song-electrolux-emg23k38gb-23l-cs-800-1000w-co-nuong.html"
+													class="p-name"
+													>Lò Vi Sóng Electrolux EMG23K38GB 23L Có Nướng</a
+												>
+
+												<div class="p-price-group">
+													<p class="m-0">
+														<span class="p-price"> 2.399.000<u>đ</u> </span>
+
+														<del class="p-old-price">2.999.000<u>đ</u></del>
+													</p>
+
+													<span class="p-discount">-21%</span>
+												</div>
+
+												<p class="p-offer-group"></p>
+											</div>
+										</div>
+									</div>
+									<div
+										class="owl-item active"
+										style="width: 240.8px; margin-right: 8px"
+									>
+										<div class="p-item" data-id="43401">
+											<a
+												href="/43401/tu-lanh-lg-side-by-side-gr-b257wb-649-lit-mau-den-inverter.html"
+												class="p-img"
+											>
+												<img
+													src="https://file.pico.vn/media/product/250-379506_untitled-1.jpg"
+													alt="Tủ Lạnh SBS Inverter LG GR-B257WB 649L Màu Đen"
+													class="fit-img"
+												/>
+
+												<span class="p-icon-left">
+													<i class="p-icon-hot"></i>
+
+													<span
+														class="js-icon-43401 d-flex flex-wrap justify-content-center w-100"
+													></span>
+												</span>
+											</a>
+
+											<div class="p-text">
+												<a
+													href="/43401/tu-lanh-lg-side-by-side-gr-b257wb-649-lit-mau-den-inverter.html"
+													class="p-name"
+													>Tủ Lạnh SBS Inverter LG GR-B257WB 649L Màu Đen</a
+												>
+
+												<div class="p-price-group">
+													<p class="m-0">
+														<span class="p-price"> 15.990.000<u>đ</u> </span>
+
+														<del class="p-old-price">25.490.000<u>đ</u></del>
+													</p>
+
+													<span class="p-discount">-38%</span>
+												</div>
+
+												<p class="p-offer-group"></p>
+											</div>
+										</div>
+									</div>
+									<div
+										class="owl-item"
+										style="width: 240.8px; margin-right: 8px"
+									>
+										<div class="p-item" data-id="43026">
+											<a
+												href="/43026/may-giat-ln-aqua-aqda1000gs-10kg-inverter-giat-hoi-nuoc-steam-mau-bac-nk-tq.html"
+												class="p-img"
+											>
+												<img
+													src="https://file.pico.vn/media/product/250-375683_aqua-inverter-10-kg-aqd-a1000g-s-1-org.jpg"
+													alt="Máy Giặt  Aqua AQD-A1000G S 10kg Inverter Màu Bạc"
+													class="fit-img"
+												/>
+
+												<span class="p-icon-left">
+													<i class="p-icon-hot"></i>
+
+													<span
+														class="js-icon-43026 d-flex flex-wrap justify-content-center w-100"
+													></span>
+												</span>
+											</a>
+
+											<div class="p-text">
+												<a
+													href="/43026/may-giat-ln-aqua-aqda1000gs-10kg-inverter-giat-hoi-nuoc-steam-mau-bac-nk-tq.html"
+													class="p-name"
+													>Máy Giặt Aqua AQD-A1000G S 10kg Inverter Màu Bạc</a
+												>
+
+												<div class="p-price-group">
+													<p class="m-0">
+														<span class="p-price"> 10.590.000<u>đ</u> </span>
+
+														<del class="p-old-price">10.890.000<u>đ</u></del>
+													</p>
+
+													<span class="p-discount">-3%</span>
+												</div>
+
+												<p class="p-offer-group"></p>
+											</div>
+										</div>
+									</div>
+									<div
+										class="owl-item"
+										style="width: 240.8px; margin-right: 8px"
+									>
+										<div class="p-item" data-id="42625">
+											<a
+												href="/42625/mtxt-dell-latitude-3520-i5-1135g7-4gb-256gb-ssd-15-6fhd-dos-1yr-70251594.html"
+												class="p-img"
+											>
+												<img
+													src="https://file.pico.vn/media/product/250-371709_370686peripheralslatoplatitude3520gallery3.jpg"
+													alt="Laptop Dell Latitude L3520-70251592 Core i5-1135G7"
+													class="fit-img"
+												/>
+
+												<span class="p-icon-left">
+													<i class="p-icon-hot"></i>
+
+													<span
+														class="js-icon-42625 d-flex flex-wrap justify-content-center w-100"
+													></span>
+												</span>
+
+												<i class="p-icon-offer"></i>
+											</a>
+
+											<div class="p-text">
+												<a
+													href="/42625/mtxt-dell-latitude-3520-i5-1135g7-4gb-256gb-ssd-15-6fhd-dos-1yr-70251594.html"
+													class="p-name"
+													>Laptop Dell Latitude L3520-70251592 Core i5-1135G7</a
+												>
+
+												<div class="p-price-group">
+													<p class="m-0">
+														<span class="p-price"> 15.499.000<u>đ</u> </span>
+
+														<del class="p-old-price">16.990.000<u>đ</u></del>
+													</p>
+
+													<span class="p-discount">-9%</span>
+												</div>
+
+												<p class="p-offer-group">
+													*1 Balo Dell Essential 15.6 inch - Backpack màu đen
+													0R7N3K / ES1533P (Áp dụng: 01/11/2023 - 30/11/2023); 1
+													Loa SoundbBar Genius USB-Powered Mini SoundBar (Áp
+													dụng: 01/11/2023 - 30/11/2023)
+												</p>
+											</div>
+										</div>
+									</div>
+									<div
+										class="owl-item"
+										style="width: 240.8px; margin-right: 8px"
+									>
+										<div class="p-item" data-id="43085">
+											<a
+												href="/43085/mtxt-hp-245-g8-r3-3250u-4gb-256gb-ssd-14hd-bac-win10h-1y-53y18pa.html"
+												class="p-img"
+											>
+												<img
+													src="https://file.pico.vn/media/product/250-376136_10050863-laptop-hp-245-g8-r3-3250u-53y18pa-1.jpg"
+													alt="Laptop HP 245 G8 53Y18PA  AMD Ryzen 3-3250U  "
+													class="fit-img"
+												/>
+
+												<span class="p-icon-left">
+													<i class="p-icon-hot"></i>
+
+													<span
+														class="js-icon-43085 d-flex flex-wrap justify-content-center w-100"
+													></span>
+												</span>
+
+												<i class="p-icon-offer"></i>
+											</a>
+
+											<div class="p-text">
+												<a
+													href="/43085/mtxt-hp-245-g8-r3-3250u-4gb-256gb-ssd-14hd-bac-win10h-1y-53y18pa.html"
+													class="p-name"
+													>Laptop HP 245 G8 53Y18PA AMD Ryzen 3-3250U
+												</a>
+
+												<div class="p-price-group">
+													<p class="m-0">
+														<span class="p-price"> 10.499.000<u>đ</u> </span>
+
+														<del class="p-old-price">11.599.000<u>đ</u></del>
+													</p>
+
+													<span class="p-discount">-10%</span>
+												</div>
+
+												<p class="p-offer-group">
+													*1 Loa SoundbBar Genius USB-Powered Mini SoundBar (Áp
+													dụng: 01/11/2023 - 30/11/2023)
+												</p>
+											</div>
+										</div>
+									</div>
+									<div
+										class="owl-item"
+										style="width: 240.8px; margin-right: 8px"
+									>
+										<div class="p-item" data-id="42782">
+											<a
+												href="/42782/may-giat-ld-casper-wt85n68bga-8-5kg-mau-xam-nk-thai-lan.html"
+												class="p-img"
+											>
+												<img
+													src="https://file.pico.vn/media/product/250-373047_10049593-may-giat-casper-8-5-kg-wt-85n68bga-1.jpg"
+													alt="Máy Giặt Lồng Đứng Casper WT85N68BGA 8.5kg"
+													class="fit-img"
+												/>
+
+												<span class="p-icon-left">
+													<i class="p-icon-hot"></i>
+
+													<span
+														class="js-icon-42782 d-flex flex-wrap justify-content-center w-100"
+													></span>
+												</span>
+
+												<i class="p-icon-offer"></i>
+											</a>
+
+											<div class="p-text">
+												<a
+													href="/42782/may-giat-ld-casper-wt85n68bga-8-5kg-mau-xam-nk-thai-lan.html"
+													class="p-name"
+													>Máy Giặt Lồng Đứng Casper WT85N68BGA 8.5kg</a
+												>
+
+												<div class="p-price-group">
+													<p class="m-0">
+														<span class="p-price"> 4.090.000<u>đ</u> </span>
+
+														<del class="p-old-price">25.990.000<u>đ</u></del>
+													</p>
+
+													<span class="p-discount">-85%</span>
+												</div>
+
+												<p class="p-offer-group">
+													*1 Bộ Bình KOMAX VB1801 ( 20308*1 - 20462*1) (Áp dụng:
+													01/11/2023 - 30/11/2023)
+												</p>
+											</div>
+										</div>
+									</div>
+									<div
+										class="owl-item"
+										style="width: 240.8px; margin-right: 8px"
+									>
+										<div class="p-item" data-id="41798">
+											<a
+												href="/41798/may-giat-ln-aqua-aqdd1050ew-10-5kg-inverter-dan-dong-truc-tiep-mau-trang.html"
+												class="p-img"
+											>
+												<img
+													src="https://file.pico.vn/media/product/250-362789_img7179.jpg"
+													alt="Máy Giặt Inverter Aqua AQDD1050EW 10.5kg  "
+													class="fit-img"
+												/>
+
+												<span class="p-icon-left">
+													<i class="p-icon-hot"></i>
+
+													<span
+														class="js-icon-41798 d-flex flex-wrap justify-content-center w-100"
+													></span>
+												</span>
+											</a>
+
+											<div class="p-text">
+												<a
+													href="/41798/may-giat-ln-aqua-aqdd1050ew-10-5kg-inverter-dan-dong-truc-tiep-mau-trang.html"
+													class="p-name"
+													>Máy Giặt Inverter Aqua AQDD1050EW 10.5kg
+												</a>
+
+												<div class="p-price-group">
+													<p class="m-0">
+														<span class="p-price"> 8.990.000<u>đ</u> </span>
+
+														<del class="p-old-price">12.890.000<u>đ</u></del>
+													</p>
+
+													<span class="p-discount">-31%</span>
+												</div>
+
+												<p class="p-offer-group"></p>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="owl-nav">
+								<button
+									type="button"
+									role="presentation"
+									class="owl-prev disabled"
+								>
+									<i class="icons arrow-left"></i></button
+								><button type="button" role="presentation" class="owl-next">
+									<i class="icons arrow-right"></i>
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
 		</section>
-		<!-- Optional JavaScript; choose one of the two! -->
-
-		<!-- Option 1: Bootstrap Bundle with Popper -->
 
 		<!-- Load Menu Aim jquery file-->
 		<script src="./jquery-1.9.1.min.js"></script>
@@ -1636,80 +2183,9 @@
 			integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
 			crossorigin="anonymous"
 		></script>
-		<!--Menu Aim script-->
-		<script>
-			var $menu = $(".dropdown-menu");
+		<!-- Owl Carousel-->
+		<script src="./assets/owl.carousel.js"></script>
 
-			$menu.menuAim({
-				activate: activateSubmenu,
-				deactivate: deactivateSubmenu,
-			});
-
-			function activateSubmenu(row) {
-				var $row = $(row),
-					submenuId = $row.data("submenuId"),
-					$submenu = $("#" + submenuId),
-					height = $menu.outerHeight(),
-					width = $menu.outerWidth();
-
-				// Debugging
-				console.log("Activate Submenu called");
-				console.log("Submenu ID:", submenuId);
-				console.log("$submenu:", $submenu);
-
-				// Show the submenu
-				$submenu.css({
-					display: "flex",
-					// top: 0, //-35
-					// left: width, // main should overlay submenu //left -310
-					// height: height, // padding for main dropdown's arrow
-				});
-				// Keep the currently activated row's highlighted look
-				$row.find("a").addClass("maintainHover");
-			}
-
-			function deactivateSubmenu(row) {
-				var $row = $(row),
-					submenuId = $row.data("submenuId"),
-					$submenu = $("#" + submenuId);
-
-				// Hide the submenu and remove the row's highlighted look
-				$submenu.css("display", "none");
-
-				$row.find("a").removeClass("maintainHover");
-			}
-
-			// Bootstrap's dropdown menus immediately close on document click.
-			// Don't let this event close the menu if a submenu is being clicked.
-			// This event propagation control doesn't belong in the menu-aim plugin
-			// itself because the plugin is agnostic to bootstrap.
-			$(".dropdown-menu li").click(function (e) {
-				e.stopPropagation();
-			});
-
-			$(document).click(function () {
-				// Simply hide the submenu on any click. Again, this is just a hacked
-				// together menu/submenu structure to show the use of jQuery-menu-aim.
-				$(".menu-right").css("display", "none");
-				$("a.maintainHover").removeClass("maintainHover");
-			});
-
-			$("#header-top .list-group-item").hover(
-				function () {
-					$("#header-top .credit-1 a").addClass("hover");
-					$("#header-top .credit-1 p").css("display", "block");
-				},
-				function () {
-					$("#header-top .credit-1 a").removeClass("hover");
-				}
-			);
-
-			$(".list-group").on("mouseleave", function () {
-				console.log("Mouse leaves detected");
-				$("a.maintainHover").removeClass("maintainHover");
-				$(".menu-right").css("display", "none");
-				// $('#header-top .credit-1 p').css("display", "none");
-			});
-		</script>
+		<script src="./script.js"></script>
 	</body>
 </html>

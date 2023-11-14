@@ -485,5 +485,21 @@ header{
   margin-bottom: 20px;
   width: 312px;
   height: auto;
+  cursor: pointer;
 }
 
+/* === Banner Under === */
+.home__banner-under{
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+/* === Hot Products === */
+.owl-carousel .owl-stage-outer{
+  position: relative;
+}
+
+.owl-carousel .owl-loaded {
+  display: block;
+}

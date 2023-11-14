@@ -208,8 +208,24 @@ header{
   right: -7px;
 }
 
-/* === Header Bottom === */
+/* === Credit === */
+.credit-1 {
+  width: 310px;
+  margin-bottom: 0;
+}
 
+#header-top .credit-1 p, #header-top .credit-1 p a {
+  font-size: 9px;
+  font-style: italic;
+  margin-bottom: 0;
+}
+
+#header-top .credit-1 .hover{
+  color:#007bff;
+}
+
+
+/* === Header Bottom === */
 
 .header__bottom-left {
   position: relative;

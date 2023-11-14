@@ -91,6 +91,14 @@
 						</div>
 					</div>
 
+					<!-- Credit -->
+					<div class="credit-1">
+						<p>
+							This menu uses <a href="https://vt.tiktok.com/ZSNFx3haR/" target="_blank">jQuery Menu-Aim</a> for precise
+							navigation between categories
+						</p>
+					</div>
+
 					<div id="header__bottom" class="d-flex flex-wrap">
 						<div class="header__bottom-left text-uppercase fw-400 col-3">
 							<p class="title m-0">
@@ -1584,6 +1592,7 @@
 
 				// Hide the submenu and remove the row's highlighted look
 				$submenu.css("display", "none");
+				
 				$row.find("a").removeClass("maintainHover");
 			}
 
@@ -1598,9 +1607,26 @@
 			$(document).click(function () {
 				// Simply hide the submenu on any click. Again, this is just a hacked
 				// together menu/submenu structure to show the use of jQuery-menu-aim.
-				$(".popover").css("display", "none");
+				$(".menu-right").css("display", "none");
 				$("a.maintainHover").removeClass("maintainHover");
 			});
+
+			
+
+			$("#header-top .list-group-item").hover(
+				function () {
+					$("#header-top .credit-1 a").addClass("hover");
+				},
+				function () {
+					$("#header-top .credit-1 a").removeClass("hover");
+				}
+			);
+
+			$(".list-group").on("mouseleave", function () {
+				console.log("Mouse leaves detected");
+				$("a.maintainHover").removeClass("maintainHover");
+				$(".menu-right").css("display", "none");
+			})
 		</script>
 	</body>
 </html>

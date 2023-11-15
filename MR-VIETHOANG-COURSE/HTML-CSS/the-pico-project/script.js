@@ -76,18 +76,20 @@ $(".list-group").on("mouseleave", function () {
 
 $(document).ready(function () {
 	$(".owl-carousel").owlCarousel({
-		loop: false,
 		margin: 8,
-		nav: true,
-		items: 5,
 		lazyLoad: true,
+		loop: false,
 		autoplay: true,
+		autoplayTimeout: 3000,
+		autoplaySpeed: 1000,
 		autoplayHoverPause: true,
 		dots: false,
+		nav: true,
 		navText: [
-			"<i class='fa-solid fa-circle-arrow-left'></i>",
+			"<i class='icons arrow-left'></i>",
 			"<i class='icons arrow-right'></i>",
 		],
+		items: 5,
 	});
     
 });

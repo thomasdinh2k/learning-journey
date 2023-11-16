@@ -407,6 +407,9 @@ header {
 	font-size: 14px !important;
 }
 
+
+
+
 /* === MENU RIGHT === */
 .menu-right {
 	background-color: var(--white);
@@ -467,18 +470,73 @@ header {
 .home__banner-group {
 	display: flex;
 	flex-wrap: wrap;
-	/* background: red; */
 }
 
-/* .home__banner-left {
-  width: 310px;
-} */
+.carousel-indicators {
+	z-index: 300;
+	bottom: -10px;
+}
+
+.carousel-inner {
+	z-index: 100;
+}
+
+
+#slider .carousel-indicators button {
+	width: 10px;
+	height: 10px;
+	border-radius: 100%;
+	background-color: #fff;
+	margin-right: 5px;
+	opacity: .85;
+}
+
+
+#slider .carousel-indicators button.active {
+		
+	width: 15px;
+	height: 15px;
+
+	margin-top: -2px;
+	border-radius: 100%;
+	opacity: 1;
+	background-color: var(--color-menu-red);
+}
 
 .home__banner-slider {
+	position: relative;
 	width: 600px;
 	/* height: 416px; */
 	min-height: 387px;
 	margin: 11px 0 13px 317px;
+}
+
+#slider {
+	overflow: hidden;
+	cursor: pointer;
+	transition: all 2s;
+}
+
+#slider button {
+	z-index: 300;
+}
+
+.overlay-effect::before{
+	position: absolute;
+	content: "";
+	background-color: rgba(0,0,0,0.17);
+	top: 92%;
+	width: 100%;
+	height: 100%;
+	z-index: 200;
+	overflow: hidden;
+	transition: all 0.5s;
+}
+
+#slider:hover .overlay-effect::before
+,.home__banner-right a:hover .overlay-effect::before{
+	background-color: rgba(0,0,0,0.65);
+	top:89%;
 }
 
 .carousel-item img {
@@ -496,6 +554,36 @@ header {
 	height: auto;
 	cursor: pointer;
 }
+
+/* == Banner Effect == */
+.banner-effect {
+	display: block;
+	position: relative;
+}
+
+.banner-effect::before {
+	position: absolute;
+	content: "";
+	background-color: red;
+	top: 0;
+	left: -20%;
+	width: 0%;
+	height: 100%;
+	transform: skewX(-30deg);
+}
+
+.banner-effect:hover::before{
+	width: 80%;
+	background-color: white;
+	transition: all 1s;
+	/* transition: var(--transition); */
+
+}
+
+.banner-effect a {
+	overflow: hidden;
+}
+
 
 /* === Banner Under === */
 .home__banner-under {
@@ -532,7 +620,7 @@ header {
 	height: 48px;
 	position: absolute;
 	top: 0px;
-	left: 420px;
+	left: 715px;
 	bottom: 0;
 }
 

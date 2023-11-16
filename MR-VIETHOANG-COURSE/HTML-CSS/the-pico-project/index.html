@@ -1541,12 +1541,11 @@
 		</header>
 		<section class="homepage">
 			<div class="container">
-				<!-- TODO: Create Effect On Image Hover-->
 				<div class="home__banner-group">
-					<div class="home__banner-slider">
+					<div id="slider" class="home__banner-slider">
 						<div
 							id="carouselExampleIndicators"
-							class="carousel slide"
+							class="carousel slide overlay-effect"
 							data-bs-ride="carousel"
 						>
 							<div class="carousel-indicators">
@@ -1576,37 +1575,123 @@
 									data-bs-slide-to="3"
 									aria-label="Slide 4"
 								></button>
+								<button
+									type="button"
+									data-bs-target="#carouselExampleIndicators"
+									data-bs-slide-to="4"
+									aria-label="Slide 5"
+								></button>
+								<button
+									type="button"
+									data-bs-target="#carouselExampleIndicators"
+									data-bs-slide-to="5"
+									aria-label="Slide 6"
+								></button>
+								<button
+									type="button"
+									data-bs-target="#carouselExampleIndicators"
+									data-bs-slide-to="6"
+									aria-label="Slide 7"
+								></button>
+
+								<button
+									type="button"
+									data-bs-target="#carouselExampleIndicators"
+									data-bs-slide-to="7"
+									aria-label="Slide 8"
+								></button>
+
+								<button
+									type="button"
+									data-bs-target="#carouselExampleIndicators"
+									data-bs-slide-to="8"
+									aria-label="Slide 9"
+								></button>
+
+								<button
+									type="button"
+									data-bs-target="#carouselExampleIndicators"
+									data-bs-slide-to="9"
+									aria-label="Slide 10"
+								></button>
 							</div>
-							<div class="carousel-inner">
-								<div class="carousel-item active">
-									<img
-										src="https://file.pico.vn/media/banner/07_11-459c2489301feefb4dab5166be83a417.jpg"
-										class="d-block w-100"
-										alt="..."
-									/>
+
+								<div class="carousel-inner">
+									<div class="carousel-item active">
+										<img
+											src="https://file.pico.vn/media/banner/07_11-459c2489301feefb4dab5166be83a417.jpg"
+											class="d-block w-100"
+											alt="..."
+										/>
+									</div>
+									<div class="carousel-item">
+										<img
+											src="https://file.pico.vn/media/banner/09_11-dcee77e2616593f7de04ffbc37bd11f0.jpg"
+											class="d-block w-100"
+											alt="..."
+										/>
+									</div>
+									<div class="carousel-item">
+										<img
+											src="https://file.pico.vn/media/banner/02_08-c4d012fc873135d28852e48e6a7627b5.jpg"
+											class="d-block w-100"
+											alt="..."
+										/>
+									</div>
+									<div class="carousel-item">
+										<img
+											src="https://file.pico.vn/media/banner/20_10-c8cf4b68c856436edd66975441217e1d.png"
+											class="d-block w-100"
+											alt="..."
+										/>
+									</div>
+									<div class="carousel-item">
+										<img
+											src="./images/slider/slider_1.jpg"
+											class="d-block w-100"
+											alt="..."
+										/>
+									</div>
+									<!-- <div class="carousel-item">
+										<img
+											src="./images/slider/slider_1.jpg"
+											class="d-block w-100"
+											alt="..."
+										/>
+									</div> -->
+
+									<div class="carousel-item">
+										<img
+											src="./images/slider/slider_2.png"
+											class="d-block w-100"
+											alt="..."
+										/>
+									</div>
+
+									<div class="carousel-item">
+										<img
+											src="./images/slider/slider_3.jpg"
+											class="d-block w-100"
+											alt="..."
+										/>
+									</div>
+
+									<div class="carousel-item">
+										<img
+											src="./images/slider/slider_4.jpg"
+											class="d-block w-100"
+											alt="..."
+										/>
+									</div>
+
+									<div class="carousel-item">
+										<img
+											src="./images/slider/slider_5.png"
+											class="d-block w-100"
+											alt="..."
+										/>
+									</div>
 								</div>
-								<div class="carousel-item">
-									<img
-										src="https://file.pico.vn/media/banner/09_11-dcee77e2616593f7de04ffbc37bd11f0.jpg"
-										class="d-block w-100"
-										alt="..."
-									/>
-								</div>
-								<div class="carousel-item">
-									<img
-										src="https://file.pico.vn/media/banner/02_08-c4d012fc873135d28852e48e6a7627b5.jpg"
-										class="d-block w-100"
-										alt="..."
-									/>
-								</div>
-								<div class="carousel-item">
-									<img
-										src="https://file.pico.vn/media/banner/20_10-c8cf4b68c856436edd66975441217e1d.png"
-										class="d-block w-100"
-										alt="..."
-									/>
-								</div>
-							</div>
 							<button
 								class="carousel-control-prev"
 								type="button"
@@ -1633,8 +1718,14 @@
 							</button>
 						</div>
 					</div>
+					<!-- TODO: Fix Effect On Image Hover-->
 					<div class="home__banner-right">
-						<a href="http://" target="_blank" rel="noopener noreferrer">
+						<a
+							href="http://"
+							target="_blank"
+							rel="noopener noreferrer"
+							class="banner-effect"
+						>
 							<img
 								src="https://file.pico.vn/media/banner/31_10-476d49ae321a5ef4ee45d0be36634eb5.png"
 								alt=""
@@ -1649,25 +1740,31 @@
 					</div>
 				</div>
 
-				<div class="home__banner-under">
-					<img
-						src="https://file.pico.vn/media/banner/31_10-0ed3d1ddfcb234483e903c3f5267871e.png"
-						alt=""
-					/>
-					<img
-						src="https://file.pico.vn/media/banner/31_10-1e4c6c3b1f0ceb5a8f3be15591515a9b.png"
-						alt=""
-					/>
-					<img
-						src="https://file.pico.vn/media/banner/31_10-d1db28ff22a3f813246195b6034e8371.png"
-						alt=""
-					/>
+				<div class="home__banner-under banner-effect">
+					<a>
+						<img
+							src="https://file.pico.vn/media/banner/31_10-0ed3d1ddfcb234483e903c3f5267871e.png"
+							alt=""
+						/>
+					</a>
+					<a>
+						<img
+							src="https://file.pico.vn/media/banner/31_10-1e4c6c3b1f0ceb5a8f3be15591515a9b.png"
+							alt=""
+						/>
+					</a>
+					<a>
+						<img
+							src="https://file.pico.vn/media/banner/31_10-d1db28ff22a3f813246195b6034e8371.png"
+							alt=""
+						/>
+					</a>
 				</div>
 
 				<!-- Hot DEAL-->
 				<div class="hot-products__group">
 					<p class="title text-left m-0">
-						<i>flash sale lễ độc thân</i>
+						<i>flash sale độc thân - hân hoan rinh quà</i>
 					</p>
 					<div class="hot-products__holder">
 						<!-- Class: bg-white product-hot-holder position-relative-->

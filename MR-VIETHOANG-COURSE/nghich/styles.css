@@ -1,0 +1,66 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+}
+
+.carousel{
+    width: 75%;
+    height: 500px;
+    margin: auto;
+    margin-top: 100px;
+    position: relative;
+
+    box-shadow: 0 0 3px grey;
+    /* justify-content: center;
+    align-items: center; */
+    
+}
+
+.slide {
+    background-color: aliceblue;
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+}
+
+.slide[data-active] {
+    opacity: 1;
+}
+
+.btn {
+    z-index: 2;
+    position: absolute;
+    color: orchid;
+    font-weight: bolder;
+    font-size: 4rem;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color:  rgba(0, 0, 0, .2);
+    cursor: pointer;
+}
+
+.btn:hover, .btn:focus {
+    color: white;
+    background-color:  rgba(0, 0, 0, .5);
+}
+
+.btn-previous {
+    left: 1rem;
+}
+.btn-next {
+    right: 1rem;
+}
+
+.slide {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bolder;
+    font-style: italic;
+    color: blue;
+    font-size: 50px;
+    scroll-behavior: smooth;
+}

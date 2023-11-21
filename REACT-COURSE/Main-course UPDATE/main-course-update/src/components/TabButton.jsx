@@ -3,8 +3,10 @@ const TabButton = ({ children, setActiveTab, activeTab }) => {
     <div>
       <li>
         <button
-          className={children.toLowerCase() === activeTab && "active" }
+          className={ activeTab === children.toLowerCase() ? "active" : ""}
+          
           onClick={() => {
+            
             setActiveTab(children.toLowerCase());
             console.log(`activeTab is now set to ${children.toLowerCase()}`);
           }}

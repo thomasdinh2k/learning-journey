@@ -78,14 +78,34 @@ main h2 {
 }
 
 #core-concepts li {
-  width: 10rem;
+  width: 13rem;
   text-align: center;
+  transition: all;
+  transition-delay: 0s;
+  transition-duration: 0.45s;
+  margin-top: 10px;
 }
 
 #core-concepts li img {
   height: 4rem;
   width: 6rem;
   object-fit: cover;
+}
+
+.img-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 120px;
+  transition: var(--transition);
+}
+
+.img-container img:first-child{
+  height: 70%;
+}
+
+.side-img {
+  object-fit: scale-down;
 }
 
 #core-concepts li h3 {
@@ -164,10 +184,15 @@ main h2 {
 
 
 .border-active {
+  margin-top: 0 !important;
+  padding: 10px;
   font-size: 1.5rem;
   box-shadow: 0px 0px 5px white;
   animation: rotateBorder 1s linear infinite;
-  padding: 2px;
+}
+
+#core-concepts li h3 {
+  font-size: 25px;
 }
 
 .fancy-wrapper::before {

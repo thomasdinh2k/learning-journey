@@ -78,7 +78,8 @@ main h2 {
 }
 
 #core-concepts li {
-  width: 13rem;
+  cursor: pointer;
+  width: 10rem;
   text-align: center;
   transition: all;
   transition-delay: 0s;
@@ -175,8 +176,6 @@ main h2 {
   position: relative;
   background: rgb(55,21,90);
   border-radius: 50px;
-  /* height: 75px;
-  width: 500px; */
   max-width: 100%;
   padding: 15px;
   overflow: hidden;
@@ -189,6 +188,7 @@ main h2 {
   font-size: 1.5rem;
   box-shadow: 0px 0px 5px white;
   animation: rotateBorder 1s linear infinite;
+  color: orange;
 }
 
 #core-concepts li h3 {

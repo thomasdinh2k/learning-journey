@@ -43,7 +43,7 @@ const Header = ({ activeTab }) => {
 				)}
 			</div>
 
-			<h1>React Essentials</h1>
+			<h1>React Essentials {activeTab ? `- ${activeTab.charAt(0).toUpperCase() + activeTab.slice(1)}` : ""}</h1>
 			<p>
 				{
 					reactDescription[

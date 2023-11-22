@@ -8,6 +8,7 @@ const Example = ({ activeTab, setActiveTab }) => {
 	return (
 		<Section title="Examples" id="examples">
 			<Tabs
+				// buttonsWrapper="menu"
 				// Handling multiple JSX slot
 				buttons={CORE_CONCEPTS.map((conceptItem) => {
 					return (

@@ -1,9 +1,10 @@
-const Tabs = ({ children, buttons, tabContent }) => {
+const Tabs = ({ children, buttons, tabContent, buttonsWrapper='menu' }) => {
+    const ButtonWrapper = buttonsWrapper;
     return(
         <>
-            <menu>
+            <ButtonWrapper>
                 {buttons}
-            </menu>
+            </ButtonWrapper>
 
             {tabContent}
         </>

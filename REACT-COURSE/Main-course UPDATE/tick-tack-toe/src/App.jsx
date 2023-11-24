@@ -1,12 +1,19 @@
-import './App.css'
+import "./App.css";
+import Player from "./components/Player";
 
 function App() {
-  return (
-    <>
-      <h1>Comming Soon...</h1>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut unde, deserunt sapiente magni impedit iure rem reiciendis libero velit est facilis laboriosam eaque, amet repellendus dolore molestiae recusandae optio sit quisquam dolorum sed? Laudantium iusto ad voluptatem voluptatibus mollitia veniam!</p>
-    </>
-  )
+	return (
+		<main>
+			<div id="game-container">
+				<ol id="players">
+					<Player playerName="Player 1" playerSymbol="X" />
+					<Player playerName="Player 2" playerSymbol="O" />
+				</ol>
+				GAME BOARD
+			</div>
+			LOG
+		</main>
+	);
 }
 
-export default App
+export default App;

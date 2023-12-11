@@ -58,3 +58,40 @@ console.log(filtered_cart)
 
 const totalAll = cart.reduce((total, item) => total + item.price, 0);
 console.log(totalAll);
+
+
+var a = 5
+var b;
+var c;
+var d = 2;
+
+console.log(a); // T
+a ++;
+console.log(a); // U
+
+b = a--;
+console.log(b); // V
+
+c = --a;
+console.log(c); // X
+
+c += 10;
+c -= a;
+console.log(c); // Y
+
+c /= d;
+console.log(c); // Z
+
+
+
+// var a = 10;
+
+// console.log(a++);
+// console.log(--a);
+// console.log(a += 5);
+// console.log(a -= 5);
+// console.log(a *= 5);
+// console.log(a/=5);
+
+
+

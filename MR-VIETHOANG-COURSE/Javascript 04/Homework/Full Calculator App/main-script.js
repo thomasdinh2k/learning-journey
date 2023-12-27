@@ -63,7 +63,7 @@ function handleSymbol(symbol) {
           previousOperator
         );
         equationDisplay = `${previousInput} ${previousOperator} ${buffer} = ${runningTotal}\n`;
-        screen.innerText = equationDisplay;
+        screen.innerText = "chịu";
         // Repeat Calculation
         previousInput = runningTotal;
         calculatingState = 2;

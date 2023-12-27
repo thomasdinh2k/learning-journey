@@ -35,7 +35,7 @@ function handleCalculator(operation) {
 
 function renderResult(operation) {
   const result = handleCalculator(operation);
-  document.querySelector(".result").placeholder = result;
+  document.querySelector(".result").value = "result";
 }
 
 document

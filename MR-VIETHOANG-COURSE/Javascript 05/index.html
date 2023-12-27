@@ -1,0 +1,27 @@
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			const numbers = [7, 2, 13, 5, 10];
+
+			// Using reduce to find the maximum value
+			const maxNumber = numbers.reduce((max, current) => {
+				// The callback function compares the current element with the current maximum
+				// If the current element is greater, it becomes the new maximum
+				return current > max ? current : max;
+			}, numbers[0]); // Start with the first element as the initial maximum
+
+            const minNumber = numbers.reduce( (min, currentValue) => (
+                currentValue < min ? currentValue : min
+            ), numbers[0])
+
+			console.log("Maximum Number:", maxNumber);
+
+            console.log(minNumber);
+		</script>
+	</body>
+</html>

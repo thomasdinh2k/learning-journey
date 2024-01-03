@@ -6,17 +6,8 @@ const initialGameBoard = [
 	[null, null, null],
 ];
 
-const GameBoard = () => {
+const GameBoard = ({ onSelectSquare, activePlayer }) => {
 	const [gameBoard, setGameBoard] = useState(initialGameBoard);
-	const [playerTurn, setPlayerTurn] = useState("X");
-
-	const switchTurn = () => {
-		if (playerTurn === "X") {
-			setPlayerTurn("O");
-		} else {
-			setPlayerTurn("X");
-		}
-	};
 
 	const decideWinner = () => {
 		// console.log("Deciding winner");
@@ -45,6 +36,7 @@ const GameBoard = () => {
 		});
 	};
 
+	// Function executes when user click on the squares
 	const handleSelectSquare = (rowIndex, colIndex) => {
 		console.log(`Row now: ${rowIndex}`);
 		console.log(`Col now: ${colIndex}`);
@@ -56,21 +48,13 @@ const GameBoard = () => {
 		; // Kỹ thuật clone hẳn cái Array ra để sửa, không sửa trực tiếp vào pointer nhằm tránh weird behavior
 
 		console.log(updatedGameBoard);
-		updatedGameBoard[rowIndex][colIndex] = '0';
+		updatedGameBoard[rowIndex][colIndex] = activePlayer;
 
 		setGameBoard(updatedGameBoard);
+		onSelectSquare();
 		return updatedGameBoard;
 
-
-		// console.log(updatedGameBoard[rowIndex][colIndex]);
-
-		// if (updatedGameBoard[rowIndex][colIndex] == null) {
-		// 	updatedGameBoard[rowIndex][colIndex] = playerTurn;
-		// 	console.log(updatedGameBoard);
-		// 	setGameBoard(updatedGameBoard);
-		// 	switchTurn();
-		// 	decideWinner();
-		// }
+		
 	};
 
 	return (
@@ -79,7 +63,7 @@ const GameBoard = () => {
 				{gameBoard.map((row, rowIndex) => {
 					return (
 						<li key={rowIndex}>
-							<ol>
+							<ol >
 								{row.map((playerSymbol, colIndex) => (
 									<li key={colIndex}>
 										<button
@@ -96,7 +80,7 @@ const GameBoard = () => {
 					);
 				})}
 			</ol>
-			<div>Next player turn: {playerTurn}</div>
+			<div>Current player turn: {activePlayer}</div>
 		</>
 	);
 };

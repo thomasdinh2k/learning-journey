@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const Player = ({ initialName, playerSymbol }) => {
+const Player = ({ initialName, playerSymbol, isPlayerActive }) => {
 	const [inputState, changeInputState] = useState(false);
 	const [firstTimeChange, setFirstTimeChange] = useState(true);
 	const [playerName, setPlayerName] = useState(initialName);
@@ -45,20 +45,12 @@ const Player = ({ initialName, playerSymbol }) => {
 		></input>
 	) : (<span className="player-name">{playerName}</span>);
 	return (
-		<li>
+		<li className={isPlayerActive === playerSymbol ? "active" : undefined}>
 			<span className="player">
 				{editablePlayerName}
 				<span className="player-symbol">{playerSymbol}</span>
 			</span>
 			<button onClick={handleEditClick}>{inputState ? "Save" : "Modify"}</button>
-			{/* {inputState ? (
-					<button onClick={updatePlayerName}>Save</button>
-				) : (
-					<>
-						<span className="player-name">{playerName}</span>
-						<button onClick={showPlayerNameInput}>Modify</button>
-					</>
-				)} */}
 		</li>
 	);
 };

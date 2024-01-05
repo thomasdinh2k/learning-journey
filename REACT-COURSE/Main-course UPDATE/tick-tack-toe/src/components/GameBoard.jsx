@@ -1,61 +1,45 @@
-import { useState } from "react";
-
 const initialGameBoard = [
 	[null, null, null],
 	[null, null, null],
 	[null, null, null],
 ];
 
-const GameBoard = ({ onSelectSquare, activePlayer }) => {
-	const [gameBoard, setGameBoard] = useState(initialGameBoard);
+const GameBoard = ({ onSelectSquare, gameTurns }) => {
+	let gameBoard = initialGameBoard;
 
-	const decideWinner = () => {
-		// console.log("Deciding winner");
-		// console.log(gameBoard[0][0], gameBoard[1][1], gameBoard[2][2]);
+	// Convert "gameTurns" update to the GameBoard array
+	for (const turn of gameTurns) {
+		// Object Destruct technique
+		const { square, player } = turn;
+		const { row, col } = square;
+		// With destructured variable, now update the game board
+		gameBoard[row][col] = player;
+		// console.log("current Gameboard", gameBoard);
+	}
 
-		// Winning Condition, diagonal
-
-		// switch (gameBoard) {
-		//     case gameBoard[0][0] === gameBoard [1][1] && gameBoard[0][0] === gameBoard[2][2]:
-		//         console.log("Found winner diagonal");
-		//     break;
-		// }
-
-		gameBoard.forEach((gameRow) => {
-			// Winning Condition, horizontal
-			if (
-				gameRow[0] === gameRow[2] &&
-				gameRow[0] === gameRow[1] &&
-				gameRow[0] !== null
-			) {
-				console.log(`Found Winner, which is ${gameRow[0]}`);
-				console.log(gameBoard);
-				console.log(gameRow);
-				return "X";
-			}
-		});
-	};
+	// const updatedTurns = [
+	// 	{ square: { row: rowIndex, col: colIndex }, player: currentPlayer },
+	// 	...prevTurns,
+	// ];
 
 	// Function executes when user click on the squares
-	const handleSelectSquare = (rowIndex, colIndex) => {
-		console.log(`Row now: ${rowIndex}`);
-		console.log(`Col now: ${colIndex}`);
+	// const handleSelectSquare = (rowIndex, colIndex) => {
+	// 	console.log(`Row now: ${rowIndex}`);
+	// 	console.log(`Col now: ${colIndex}`);
 
-		console.log(gameBoard);
+	// 	console.log(gameBoard);
 
-		const updatedGameBoard = [...gameBoard.map( nestedBoardArray =>  [...nestedBoardArray])]
-			
-		; // Kỹ thuật clone hẳn cái Array ra để sửa, không sửa trực tiếp vào pointer nhằm tránh weird behavior
+	// 	const updatedGameBoard = [
+	// 		...gameBoard.map((nestedBoardArray) => [...nestedBoardArray]),
+	// 	]; // Kỹ thuật clone hẳn cái Array ra để sửa, không sửa trực tiếp vào pointer nhằm tránh weird behavior
 
-		console.log(updatedGameBoard);
-		updatedGameBoard[rowIndex][colIndex] = activePlayer;
+	// 	console.log(updatedGameBoard);
+	// 	updatedGameBoard[rowIndex][colIndex] = activePlayer;
 
-		setGameBoard(updatedGameBoard);
-		onSelectSquare();
-		return updatedGameBoard;
-
-		
-	};
+	// 	setGameBoard(updatedGameBoard);
+	// 	onSelectSquare();
+	// 	return updatedGameBoard;
+	// };
 
 	return (
 		<>
@@ -63,14 +47,10 @@ const GameBoard = ({ onSelectSquare, activePlayer }) => {
 				{gameBoard.map((row, rowIndex) => {
 					return (
 						<li key={rowIndex}>
-							<ol >
+							<ol>
 								{row.map((playerSymbol, colIndex) => (
 									<li key={colIndex}>
-										<button
-											onClick={() => {
-												handleSelectSquare(rowIndex, colIndex);
-											}}
-										>
+										<button onClick={() => onSelectSquare(rowIndex, colIndex)}>
 											{playerSymbol}
 										</button>
 									</li>
@@ -80,7 +60,7 @@ const GameBoard = ({ onSelectSquare, activePlayer }) => {
 					);
 				})}
 			</ol>
-			<div>Current player turn: {activePlayer}</div>
+			{/* <div>Current player turn: {activePlayer}</div> */}
 		</>
 	);
 };

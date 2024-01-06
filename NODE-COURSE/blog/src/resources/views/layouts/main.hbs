@@ -6,17 +6,15 @@
 </head>
 <body>
     <div class="app">
-        <header>
-            <h1>This is the Header</h1>
-        </header>
         
+        {{>header}}
+
         <div class="container">
             {{{body}}}
         </div>
 
-        <footer>
-            <h2>This is the Footer</h2>
-        </footer>
+        {{>footer}}
+        
     </div>
 </body>
 </html>

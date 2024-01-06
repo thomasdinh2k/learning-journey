@@ -9,8 +9,8 @@ const port = 3000;
 const path = require('path');
 
 // handlebars - Template engine
-app.engine("handlebars", engine( {extname: '.hbs'} ));
-app.set("view engine", "handlebars");
+app.engine("hbs", engine( {extname: '.hbs'} ));
+app.set("view engine", "hbs");
 app.set("views", path.join(__dirname, 'resources/views'));
 
 // HTTP Logger

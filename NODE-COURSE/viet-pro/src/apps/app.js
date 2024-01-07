@@ -5,6 +5,11 @@ const express = require("express");
 const app = express();
 config = require("config");
 
+// Config views
+app.set("views", config.get("app.views_folder"));
+app.set("view engine", config.get("app.view_engine"));
+
+
 // Include the middleware to parse URL-encoded bodies
 app.use(express.urlencoded({ extended: true }));
 

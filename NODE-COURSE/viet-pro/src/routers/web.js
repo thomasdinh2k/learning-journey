@@ -34,7 +34,10 @@ backendRoute.forEach((routePath) => {
 });
 
 router.get("/", getHomepage);
-router.get("/test1/:id/:id2", TestController);
+router.get("/test1/:id/:id2", TestController.test_1);
+router.get("/testController", TestController.test)
+router.get("/test2", TestController.test_2);
+
 router.get("/form", formController.getForm);
 router.post("/action_form", formController.handleFormSubmission);
 

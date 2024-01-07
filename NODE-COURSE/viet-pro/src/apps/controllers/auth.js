@@ -1,5 +1,5 @@
 const login = (req, res) => {
-    res.send("admin/login");
+    res.render("admin/login")
 };
 
 const logout = (req, res) => {

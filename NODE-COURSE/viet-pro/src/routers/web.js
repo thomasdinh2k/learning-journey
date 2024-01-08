@@ -8,6 +8,9 @@ const TestController = require("../apps/controllers/TestController");
 const Auth = require("../apps/controllers/auth");
 const Admin = require("../apps/controllers/admin");
 const ProductController = require("../apps/controllers/productController");
+
+
+
 // Import Controllers or Handlers
 
 // Define Route Handlers
@@ -41,7 +44,11 @@ router.get("/test2", TestController.test_2);
 router.get("/form", formController.getForm);
 router.post("/action_form", formController.handleFormSubmission);
 
+// Authentication
 router.get("/admin/login", Auth.login);
+router.post("/admin/login", Auth.processLogin)
+
+
 router.get("/admin/logout", Auth.logout);
 router.get("/admin/dashboard", Admin);
 

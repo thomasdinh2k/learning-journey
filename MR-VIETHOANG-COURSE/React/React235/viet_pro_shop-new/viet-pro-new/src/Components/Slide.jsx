@@ -1,24 +1,42 @@
-import React from "react";
+import Thumbnail from "./Thumbnail";
 
-const Slide = () => {
-	
-    const [imageSrc, updateImageSrc] = React.useState("images/banner-1.jpg")
-    
-    const handleSwitchImg = num => {
-        updateImageSrc(`images/banner-${num}.jpg`)
-    }
-
-    return (
+const Slide = ({ imgIndex, updateImageSrc, handleSwitchImg, imageArray }) => {
+	return (
 		<>
 			<div id="slide">
 				<div id="slide-img">
-					<img src={imageSrc} />
+					<img src={imageArray[imgIndex]} />
 				</div>
 				<p id="slide-num">
-					<a href="#" onClick={ () => {handleSwitchImg(1)} }>1</a>
-					<a href="#" onClick={ () => {handleSwitchImg(2)} }>2</a>
-					<a href="#" onClick={ () => {handleSwitchImg(3)} }>3</a>
+					<a
+						className={imgIndex == 0 ? "text-active" : null}
+						href="#"
+						onClick={() => {
+							handleSwitchImg(0);
+						}}
+					>
+						1
+					</a>
+					<a
+						className={imgIndex == 1 ? "text-active" : null}
+						href="#"
+						onClick={() => {
+							handleSwitchImg(1);
+						}}
+					>
+						2
+					</a>
+					<a
+						className={imgIndex == 2 ? "text-active" : null}
+						href="#"
+						onClick={() => {
+							handleSwitchImg(2);
+						}}
+					>
+						3
+					</a>
 				</p>
+				<Thumbnail handleSwitchImg={handleSwitchImg} imageArray={imageArray} imgIndex={imgIndex} />
 			</div>
 		</>
 	);

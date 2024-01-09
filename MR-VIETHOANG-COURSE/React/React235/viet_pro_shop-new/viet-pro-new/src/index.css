@@ -67,3 +67,19 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+.thumbnail {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 5px;
+  width: 120px;
+}
+
+.active {
+  border: 2px solid red;
+}
+
+.text-active {
+  color: rgb(214, 12, 12) !important;
+  font-weight: 700 !important;
+}

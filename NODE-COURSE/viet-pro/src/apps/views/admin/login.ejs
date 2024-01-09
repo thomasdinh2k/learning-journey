@@ -30,7 +30,7 @@
 						
 
 						<% if (error) { %>
-							<div class="alert alert-danger"><strong>Lỗi đăng nhập: </strong><%= error%></div>
+							<div class="alert alert-danger"><strong>Lỗi đăng nhập: </strong><%= error%><br>Lưu ý: Bạn chỉ được phép đăng nhập sai tối đa 3 lần (<%= errorCount %>/3)</div>
 						<%}%>
 
 						<form role="form" method="post" action="/admin/login">

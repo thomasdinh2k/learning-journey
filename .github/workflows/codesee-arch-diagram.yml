@@ -21,5 +21,4 @@ jobs:
         with:
           codesee-token: ${{ secrets.CODESEE_ARCH_DIAG_API_TOKEN }}
           codesee-url: https://app.codesee.io
-      - name: todo-issue
-        uses: DerJuulsn/todo-issue@v1.1.4
+      

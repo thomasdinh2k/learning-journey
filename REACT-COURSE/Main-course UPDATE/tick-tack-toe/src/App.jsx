@@ -69,17 +69,8 @@ function App() {
 		// 	}
 		// ]
 		/**
-		 * @todo: Đẩy updatedTurns ra Component Log
-		 * @body: Đã sync được history có dạng
-		{
-		// 		"square": {
-		// 			"row": 0,
-		// 			"col": 1
-		// 		},
-		// 		"player": "O"
-		// 	},
-
-		 * 
+		 * TODO: Đẩy updatedTurns ra Component Log
+		 * Đã sync được history rồi, đẩy ra rồi xem
 		 */
 		// Debug
 	}

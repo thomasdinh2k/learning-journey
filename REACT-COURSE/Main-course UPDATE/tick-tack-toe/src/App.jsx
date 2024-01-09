@@ -68,11 +68,15 @@ function App() {
 		// 		"player": "X"
 		// 	}
 		// ]
+		
+		// Debug
+
+
+
 		/**
 		 * TODO: Đẩy updatedTurns ra Component Log
 		 * Đã sync được history rồi, đẩy ra rồi xem
 		 */
-		// Debug
 	}
 
 	return (

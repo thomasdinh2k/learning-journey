@@ -1,7 +1,7 @@
 const Log = () => {
     return(
         <>
-            
+            {/* TODO Đẻ ra log */}
         </>
     );
 }

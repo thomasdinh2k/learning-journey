@@ -1,0 +1,24 @@
+*{
+    margin:0;
+    padding:0;}
+    
+    body{
+    font-family:arial;
+    font-size:18px;}
+    
+    #slide{
+    width:600px;
+    height:400px;
+    margin: 50px auto;}
+    
+    #slide-img img{
+    border:5px solid #333;}
+    
+    #slide-num{
+    text-align:center;}
+    
+    #slide-num a{
+    font-weight:bold;
+    color:#333;
+    text-decoration:none;
+    letter-spacing:10px;}

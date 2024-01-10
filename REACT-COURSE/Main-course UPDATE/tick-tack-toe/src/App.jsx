@@ -7,6 +7,9 @@ import Log from "./components/Log";
 function App() {
 	const [gameTurns, setGameTurns] = useState([]);
 	const [activePlayer, setActivePlayer] = useState("X");
+	const [updatedTurns, setUpdateTurns] = useState([]);
+	
+	
 	function handleSelectSquare(rowIndex, colIndex) {
 		setActivePlayer((curActivePlayer) => (curActivePlayer === "X" ? "O" : "X"));
 		setGameTurns((prevTurns) => {
@@ -19,7 +22,8 @@ function App() {
 				{ square: { row: rowIndex, col: colIndex }, player: currentPlayer },
 				...prevTurns,
 			];
-			console.log("updatedTurns", updatedTurns);
+			// console.log("updatedTurns", updatedTurns);
+			setUpdateTurns(updatedTurns);
 			return updatedTurns;
 		});
 		

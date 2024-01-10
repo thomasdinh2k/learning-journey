@@ -1,10 +1,13 @@
-const Log = () => {
-    return(
-        <>
-            {/* TODO Đẻ ra log */}
-            <h1>Log Log Log</h1>
-        </>
-    );
-}
+const Log = ({ turns }) => {
+	return (
+		<ol id="log">
+			{turns.map((turn) => (
+				<li key={`${turn.square.row}...${turn.square.col}`}>
+					{turn.player} selected {turn.square.row}, {turn.square.col}
+				</li>))
+			}
+		</ol>
+	);
+};
 
 export default Log;

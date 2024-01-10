@@ -1,8 +1,8 @@
-const Log = () => {
+const Log = ({ updatedTurns }) => {
     return(
         <>
             {/* TODO Đẻ ra log */}
-            <h1>Log Log Log</h1>
+            
         </>
     );
 }

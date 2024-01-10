@@ -7,7 +7,6 @@ import Log from "./components/Log";
 function App() {
 	const [gameTurns, setGameTurns] = useState([]);
 	const [activePlayer, setActivePlayer] = useState("X");
-	// @todo test bot
 	function handleSelectSquare(rowIndex, colIndex) {
 		setActivePlayer((curActivePlayer) => (curActivePlayer === "X" ? "O" : "X"));
 		setGameTurns((prevTurns) => {
@@ -70,13 +69,6 @@ function App() {
 		// ]
 		
 		// Debug
-
-
-
-		/**
-		 * TODO: Đẩy updatedTurns ra Component Log
-		 * Đã sync được history rồi, đẩy ra rồi xem
-		 */
 	}
 
 	return (
@@ -96,8 +88,7 @@ function App() {
 				</ol>
 				<GameBoard onSelectSquare={handleSelectSquare} gameTurns={gameTurns} />
 			</div>
-			LOG
-			<Log />
+			<Log updatedTurns={updatedTurns}/>
 		</main>
 	);
 }

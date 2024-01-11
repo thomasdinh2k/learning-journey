@@ -4,18 +4,32 @@ import GameBoard from "./components/GameBoard";
 import Player from "./components/Player";
 import Log from "./components/Log";
 
+const turnDecider = (gameTurns) => {
+	let currentPlayer = "X";
+	
+	// prevTurns[0] là turn gần đây nhất được đưa vào State, giờ mình lấy ra để decide turn
+	if (gameTurns.length > 0 && gameTurns[0].player === "X") {
+		currentPlayer = "O";
+	} else {
+		currentPlayer = "X";
+	}
+
+	return currentPlayer;
+};
+
 function App() {
 	const [gameTurns, setGameTurns] = useState([]);
-	const [activePlayer, setActivePlayer] = useState("X");
-	// @todo test bot
+	let activePlayer = turnDecider(gameTurns);
+	
 	function handleSelectSquare(rowIndex, colIndex) {
-		setActivePlayer((curActivePlayer) => (curActivePlayer === "X" ? "O" : "X"));
 		setGameTurns((prevTurns) => {
-			let currentPlayer = "X";
+			// let currentPlayer = "X";
 
-			if (prevTurns.length > 0 && prevTurns[0].player === "X") {
-				currentPlayer = "O";
-			}
+			// if (prevTurns.length > 0 && prevTurns[0].player === "X") {
+			// 	currentPlayer = "O";
+			// }
+			const currentPlayer = turnDecider(prevTurns);
+
 			const updatedTurns = [
 				{ square: { row: rowIndex, col: colIndex }, player: currentPlayer },
 				...prevTurns,
@@ -23,7 +37,7 @@ function App() {
 			console.log("updatedTurns", updatedTurns);
 			return updatedTurns;
 		});
-		
+
 		// [
 		// 	{
 		// 		"square": {
@@ -68,10 +82,8 @@ function App() {
 		// 		"player": "X"
 		// 	}
 		// ]
-		
+
 		// Debug
-
-
 
 		/**
 		 * TODO: Đẩy updatedTurns ra Component Log
@@ -96,7 +108,7 @@ function App() {
 				</ol>
 				<GameBoard onSelectSquare={handleSelectSquare} gameTurns={gameTurns} />
 			</div>
-			<Log turns = {gameTurns} />
+			<Log turns={gameTurns} />
 		</main>
 	);
 }

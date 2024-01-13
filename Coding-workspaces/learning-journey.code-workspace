@@ -2,12 +2,13 @@
 	"folders": [
 		{
 			"path": "."
+		},
+		{
+			"path": ".."
 		}
 	],
 	"settings": {
 		"zenMode.hideLineNumbers": false,
-		"cSpell.words": [
-			"OPPO"
-		]
+		"cSpell.words": ["OPPO"]
 	}
 }

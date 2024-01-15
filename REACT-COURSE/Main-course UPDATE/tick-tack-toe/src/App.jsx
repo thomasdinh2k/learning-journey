@@ -61,6 +61,14 @@ function App() {
 		/**
 		 * TODO test 3
 		 */
+
+		/**
+		 * TODO: test 4
+		 */
+
+		/**
+		 * TODO test 5
+		 */
 	}
 
 	function handleSelectSquare(rowIndex, colIndex) {

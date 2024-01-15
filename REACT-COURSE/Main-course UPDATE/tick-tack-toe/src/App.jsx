@@ -47,7 +47,7 @@ function App() {
 		/**
 		 TODO So sánh data này với winning combinations [main-react]
 		 Chỉ cần so sánh được là tìm được ra điều kiện chiến thắng rồi
-		 OK?
+		 OK??
 		*/
 	}
 

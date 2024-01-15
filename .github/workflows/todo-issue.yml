@@ -8,7 +8,7 @@ on:
         required: false
         type: boolean
         description: Enable, if you want to import all TODOs. Runs on checked out branch! Only use if you're sure what you are doing.
-  push: {} # Trigger on any branch
+  push: 
 
 permissions:
   issues: write
@@ -26,6 +26,6 @@ jobs:
         uses: derjuulsn/todo-issue@main
         with:
           excludePattern: "^(node_modules/)"
-          keywords: ["TODO", "TODO:"]
+          keywords: "TODO:"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

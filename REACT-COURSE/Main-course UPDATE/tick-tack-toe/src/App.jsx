@@ -3,6 +3,7 @@ import "./App.css";
 import GameBoard from "./components/GameBoard";
 import Player from "./components/Player";
 import Log from "./components/Log";
+import { WINNING_COMBINATIONS } from "./assets/winning-combinations";
 
 const turnDecider = (gameTurns) => {
 	let currentPlayer = "X";

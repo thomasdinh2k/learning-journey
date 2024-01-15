@@ -45,35 +45,12 @@ function App() {
 		console.log("FINAL LOG PlayerY", yTurns);
 
 		/**
-		 TODO: So sánh data này với winning combinations [main-react]
+		 TODO So sánh data này với winning combinations [main-react]
 		 Chỉ cần so sánh được là tìm được ra điều kiện chiến thắng rồi
 		 OK??
 		*/
 
-		// TODO: So sanh DATA
-
-		// TODO: Test
-
-		/**
-		 * TODO Test 2
-		 */
-
-		/**
-		 * TODO test 3
-		 */
-
-		/**
-		 * TODO: test 4
-		 */
-
-		/**
-		 * TODO test 5
-		 */
-
-		/**
-		 * TODO: test 6
-		 */
-		console.log("Test");
+		
 	}
 
 	function handleSelectSquare(rowIndex, colIndex) {

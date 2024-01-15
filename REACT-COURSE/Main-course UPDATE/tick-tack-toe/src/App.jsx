@@ -7,7 +7,7 @@ import { WINNING_COMBINATIONS } from "./assets/winning-combinations";
 
 const turnDecider = (gameTurns) => {
 	let currentPlayer = "X";
-	console.log("gameTurns", gameTurns);
+	// console.log("gameTurns", gameTurns);
 
 
 	// prevTurns[0] là turn gần đây nhất được đưa vào State, giờ mình lấy ra để decide turn
@@ -26,7 +26,25 @@ function App() {
 	let activePlayer = turnDecider(gameTurns);
 	
 	function decideWinner(gameTurns) {
-		console.log("WinnerDATA", gameTurns);
+		// console.log("WinnerDATA", gameTurns);
+		const xTurns = []
+		const yTurns = []
+
+		gameTurns.forEach( turns => {
+			let player = turns.player
+			let playerMove = turns.square
+			
+			if (player == "X") {
+				xTurns.push(playerMove)
+			} else {
+				yTurns.push(playerMove)
+			}
+		});
+
+		console.log("FINAL LOG PlayerX", xTurns);
+		console.log("FINAL LOG PlayerY", yTurns);
+
+		// TODO: So sánh data này với winning combinations
 	}
 
 	function handleSelectSquare(rowIndex, colIndex) {
@@ -42,7 +60,7 @@ function App() {
 				{ square: { row: rowIndex, col: colIndex }, player: currentPlayer },
 				...prevTurns,
 			];
-			console.log("updatedTurns", updatedTurns);
+			// console.log("updatedTurns", updatedTurns);
 			
 			decideWinner(updatedTurns)
 			return updatedTurns;

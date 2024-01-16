@@ -37,46 +37,32 @@ function App() {
 			} else {
 				yTurns.push(playerMove);
 			}
+
+			/**
+			 * TODO Helper đã nhận ra điều kiện thắng nhưng khi đẩy sang function thì lại không return điều kiện thắng đấy về cho Winner. Xem lại điều kiện này
+			 */
+
+			// Test decide winner
+			if (winnerDecideHelper(xTurns, WINNING_COMBINATIONS) == true) {
+				console.log("Player X won");
+			} else if (winnerDecideHelper(yTurns, WINNING_COMBINATIONS) == true) {
+				console.log("Player Y won");
+			}
 		});
 
-		console.log("FINAL LOG PlayerX", xTurns);
-		console.log("FINAL LOG PlayerY", yTurns);
+		function countIndex(array) {
+			const tempCount = {}
 
-		/**
-		 TODO: So sánh data này với winning combinations [main-react]
-		 Chỉ cần so sánh được là tìm được ra điều kiện chiến thắng rồi
-		 OK??
-		*/
-
-		const testArray = [
-			{
-				row: 0,
-				col: 2,
-			},
-			{
-				row: 0,
-				col: 1,
-			},
-			{
-				row: 0,
-				col: 0,
-			},
-		];
-
-		// [
-		// 	{
-		// 		"row": 0,
-		// 		"column": 2
-		// 	},
-		// 	{
-		// 		"row": 1,
-		// 		"column": 1
-		// 	},
-		// 	{
-		// 		"row": 2,
-		// 		"column": 0
-		// 	}
-		// ]
+			array.forEach( arrayItem => {
+				tempCount[arrayItem] = (tempCount[arrayItem] ? tempCount[arrayItem] : 0) + 1
+			} )
+			
+			for (const num in tempCount) {
+				if (tempCount[num] === 3) {
+					return true;
+				}
+			}
+		}
 
 		function findCorrespondingArray(testElement, winningElement) {
 			return (
@@ -85,25 +71,92 @@ function App() {
 			);
 		}
 
-		WINNING_COMBINATIONS.forEach((winningCombination) => {
-			testArray.forEach((testElement) => {
-				winningCombination.forEach((winningElement) => {
-					if (findCorrespondingArray(testElement, winningElement)) {
-						console.log("Found a match!");
-					}
-				});
-			});
-		});
+		function winnerDecideHelper(testArray, WINNING_COMBINATIONS) {
+			let result = [];
+			testArray.forEach( element => {
+				WINNING_COMBINATIONS.forEach( (winning_combination, winning_combination_index) => {
+					winning_combination.forEach( (winningElement, winningElementIndex) => {
+						const match = findCorrespondingArray(element, winningElement);
+						if (match) {
+							console.log(`Found a match data at WINNING_COMBINATION[${winning_combination_index}][${winningElementIndex}]`);
+
+							result.push(`${winning_combination_index}`);
+						}
+					})
+				})
+
+				console.log("result", result);
+				if (countIndex(result)) {
+					console.log("PLAYER {} WIN");
+					return true;
+				}
+				
+			})
+		}
+		// console.log("FINAL LOG PlayerX", xTurns);
+		// console.log("FINAL LOG PlayerY", yTurns);
+
+		/**
+		 TODO: So sánh data này với winning combinations [main-react]
+		 Chỉ cần so sánh được là tìm được ra điều kiện chiến thắng rồi
+		 OK??
+		*/
+
+		// const testArray = [
+		// 	{
+		// 		row: 2,
+		// 		col: 2,
+		// 	},
+		// 	{
+		// 		row: 2,
+		// 		col: 1,
+		// 	},
+		// 	{
+		// 		row: 2,
+		// 		col: 0,
+		// 	},
+		// ]; // Trùng với winning_condition[2]
+
+		/**
+		 *  So sánh giữa array mẫu và winning_condition
+		 * - B1: So sánh element từ testArray và tìm ra index của element bên Winning_combinations
+		 * - B2: Nếu element match với winning thì xuất ra index của element của winning_combinations
+		 * - B3: Tiếp tục so sánh element từ testArray với winning_combination xem có trùng không? Nếu cả 3 trùng thì match
+		 * - B4: Return index của winnning_condition khi cả 3 cùng match
+		 */
+		
+
+		
+		
+
+		// console.log("TEST WIN", WINNING_COMBINATIONS[2]);
+		
+		
+
+
+
+		// WINNING_COMBINATIONS.forEach((winningCombination) => {
+		// 	let flag = 0;
+		// 	testArray.forEach((testElement) => { 
+		// 		winningCombination.forEach((winningElement, winIndex) => { // Array con của winning_combinations
+		// 			if (findCorrespondingArray(testElement, winningElement)) {
+		// 				// Found correct element
+		// 				console.log(`Found dup element at index ${winIndex}`);
+		// 				if(winningCombination.find(findCorrespondingArray()))
+		// 			} else {
+		// 				//
+		// 			}
+		// 		});
+				
+
+		// 	});
+		// });
 
 		// console.log(WINNING_COMBINATIONS.find( comb => {
 		// 	return testArray[0].row === comb.row  && testArray[0].col === comb.column
 		// }));
 
-		const compareArray = [
-			{ row: 0, column: 0 },
-			{ row: 0, column: 1 },
-			{ row: 0, column: 2 },
-		];
+		
 
 		// if (testArray === compareArray) {
 		// 	console.log("Yes it's correct");

@@ -9,7 +9,6 @@ const turnDecider = (gameTurns) => {
 	let currentPlayer = "X";
 	// console.log("gameTurns", gameTurns);
 
-
 	// prevTurns[0] là turn gần đây nhất được đưa vào State, giờ mình lấy ra để decide turn
 	if (gameTurns.length > 0 && gameTurns[0].player === "X") {
 		currentPlayer = "O";
@@ -20,24 +19,23 @@ const turnDecider = (gameTurns) => {
 	return currentPlayer;
 };
 
-
 function App() {
 	const [gameTurns, setGameTurns] = useState([]);
 	let activePlayer = turnDecider(gameTurns);
-	
+
 	function decideWinner(gameTurns) {
 		// console.log("WinnerDATA", gameTurns);
-		const xTurns = []
-		const yTurns = []
+		const xTurns = [];
+		const yTurns = [];
 
-		gameTurns.forEach( turns => {
-			let player = turns.player
-			let playerMove = turns.square
-			
+		gameTurns.forEach((turns) => {
+			let player = turns.player;
+			let playerMove = turns.square;
+
 			if (player == "X") {
-				xTurns.push(playerMove)
+				xTurns.push(playerMove);
 			} else {
-				yTurns.push(playerMove)
+				yTurns.push(playerMove);
 			}
 		});
 
@@ -50,7 +48,76 @@ function App() {
 		 OK??
 		*/
 
-		// TODO: So sanh DATA
+		const testArray = [
+			{
+				row: 0,
+				col: 2,
+			},
+			{
+				row: 0,
+				col: 1,
+			},
+			{
+				row: 0,
+				col: 0,
+			},
+		];
+
+		// [
+		// 	{
+		// 		"row": 0,
+		// 		"column": 2
+		// 	},
+		// 	{
+		// 		"row": 1,
+		// 		"column": 1
+		// 	},
+		// 	{
+		// 		"row": 2,
+		// 		"column": 0
+		// 	}
+		// ]
+
+		function findCorrespondingArray(testElement, winningElement) {
+			return (
+				testElement.col === winningElement.column &&
+				testElement.row === winningElement.row
+			);
+		}
+
+		WINNING_COMBINATIONS.forEach((winningCombination) => {
+			testArray.forEach((testElement) => {
+				winningCombination.forEach((winningElement) => {
+					if (findCorrespondingArray(testElement, winningElement)) {
+						console.log("Found a match!");
+					}
+				});
+			});
+		});
+
+		// console.log(WINNING_COMBINATIONS.find( comb => {
+		// 	return testArray[0].row === comb.row  && testArray[0].col === comb.column
+		// }));
+
+		const compareArray = [
+			{ row: 0, column: 0 },
+			{ row: 0, column: 1 },
+			{ row: 0, column: 2 },
+		];
+
+		// if (testArray === compareArray) {
+		// 	console.log("Yes it's correct");
+
+		// } else {
+		// 	console.log("No it's not");
+		// }
+
+		// WINNING_COMBINATIONS.forEach( comb => {
+		// 	if (comb === testArray) {
+		// 		console.log("Found a match", testArray);
+		// 	}
+		// 	console.log("Found nothing from Winning_combinations");
+		// })
 	}
 
 	function handleSelectSquare(rowIndex, colIndex) {
@@ -67,15 +134,12 @@ function App() {
 				...prevTurns,
 			];
 			// console.log("updatedTurns", updatedTurns);
-			
-			decideWinner(updatedTurns)
+
+			decideWinner(updatedTurns);
 			return updatedTurns;
 		});
-
-		
 	}
 
-	
 	return (
 		<main>
 			<div id="game-container">

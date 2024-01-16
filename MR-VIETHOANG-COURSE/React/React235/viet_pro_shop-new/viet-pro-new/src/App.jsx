@@ -4,6 +4,8 @@ import "../public/css/index.css";
 import "../public/css/bootstrap.css";
 import Home from "./Components/Multi-language/Home";
 import translateText from "./Components/Multi-language/GoogleTranslate";
+import Slide from "./Components/Slide";
+import ProductSlide from "./Components/ProductSlide";
 
 function App() {
 	const [inputText, setInputText] = useState("");
@@ -54,6 +56,9 @@ function App() {
 			<p>Your Translation: <strong>{renderedTranslation}</strong></p>
 			{/* Multi-language Exercise */}
 			<Home />
+
+
+			<ProductSlide/>
 		</>
 	);
 }

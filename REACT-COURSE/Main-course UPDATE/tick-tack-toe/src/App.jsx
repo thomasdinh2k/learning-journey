@@ -26,7 +26,7 @@ function App() {
 	function decideWinner(gameTurns) {
 		// console.log("WinnerDATA", gameTurns);
 		const xTurns = [];
-		const yTurns = [];
+		const oTurns = [];
 
 		gameTurns.forEach((turns) => {
 			let player = turns.player;
@@ -35,18 +35,18 @@ function App() {
 			if (player == "X") {
 				xTurns.push(playerMove);
 			} else {
-				yTurns.push(playerMove);
+				oTurns.push(playerMove);
 			}
 
 			/**
-			 * TODO Helper đã nhận ra điều kiện thắng nhưng khi đẩy sang function thì lại không return điều kiện thắng đấy về cho Winner. Xem lại điều kiện này
+			 * Helper đã nhận ra điều kiện thắng nhưng khi đẩy sang function thì lại không return điều kiện thắng đấy về cho Winner. Xem lại điều kiện này
 			 */
 
 			// Test decide winner
 			if (winnerDecideHelper(xTurns, WINNING_COMBINATIONS) == true) {
 				console.log("Player X won");
-			} else if (winnerDecideHelper(yTurns, WINNING_COMBINATIONS) == true) {
-				console.log("Player Y won");
+			} else if (winnerDecideHelper(oTurns, WINNING_COMBINATIONS) == true) {
+				console.log("Player O won");
 			}
 		});
 
@@ -78,20 +78,21 @@ function App() {
 					winning_combination.forEach( (winningElement, winningElementIndex) => {
 						const match = findCorrespondingArray(element, winningElement);
 						if (match) {
-							console.log(`Found a match data at WINNING_COMBINATION[${winning_combination_index}][${winningElementIndex}]`);
+							// console.log(`Found a match data at WINNING_COMBINATION[${winning_combination_index}][${winningElementIndex}]`);
 
 							result.push(`${winning_combination_index}`);
 						}
 					})
 				})
 
-				console.log("result", result);
-				if (countIndex(result)) {
-					console.log("PLAYER {} WIN");
-					return true;
-				}
 				
 			})
+			// console.log("current countIndex", countIndex(result));
+			// console.log("result", result);
+			if (countIndex(result)) {
+				// console.log("PLAYER {} WIN");
+				return true;
+			}
 		}
 		// console.log("FINAL LOG PlayerX", xTurns);
 		// console.log("FINAL LOG PlayerY", yTurns);

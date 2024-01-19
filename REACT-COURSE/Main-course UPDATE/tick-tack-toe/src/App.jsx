@@ -4,6 +4,7 @@ import GameBoard from "./components/GameBoard";
 import Player from "./components/Player";
 import Log from "./components/Log";
 import { WINNING_COMBINATIONS } from "./assets/winning-combinations";
+import GameOver from "./components/GameOverScreen";
 
 const initialGameBoard = [
 	[null, null, null],
@@ -45,20 +46,11 @@ function App() {
 				yTurns.push(playerMove);
 			}
 		});
-
-		console.log("FINAL LOG PlayerX", xTurns);
-		console.log("FINAL LOG PlayerY", yTurns);
-
-		/**
-		 TODO So sánh data này với winning combinations [main-react]
-		 Chỉ cần so sánh được là tìm được ra điều kiện chiến thắng rồi
-		 OK??
-		*/
 	}
 
 	// Convert "gameTurns" update to the GameBoard array
-	let gameBoard = initialGameBoard;
-
+	let gameBoard = [...initialGameBoard.map(innerArray => [...innerArray])]; // Making a deep copy every time
+	console.log("Current gameTurns", gameTurns);
 	for (const turn of gameTurns) {
 		// Object Destruct technique
 		const { square, player } = turn;
@@ -68,13 +60,15 @@ function App() {
 		// console.log("current Gameboard", gameBoard);
 	}
 
+	console.log("Current gameBoard is", gameBoard);
+
 	let winner = null;
 	
 	for (const combination of WINNING_COMBINATIONS) {
 		const firstSquareSymbol =
 			gameBoard[combination[0].row][combination[0].column];
 		const secondSquareSymbol =
-			gameBoard[combination[1].row][combination[2].column];
+			gameBoard[combination[1].row][combination[1].column];
 		const thirdSquareSymbol =
 			gameBoard[combination[2].row][combination[2].column];
 
@@ -87,9 +81,9 @@ function App() {
 		}
 	}
 
-	console.log("Current gameBoard is", gameBoard);
+	
 
-
+	const hasDraw = gameTurns.length === 9 && !winner
 
 	function handleSelectSquare(rowIndex, colIndex) {
 		setGameTurns((prevTurns) => {
@@ -98,6 +92,7 @@ function App() {
 			// if (prevTurns.length > 0 && prevTurns[0].player === "X") {
 			// 	currentPlayer = "O";
 			// }
+
 			const currentPlayer = turnDecider(prevTurns);
 
 			const updatedTurns = [
@@ -109,6 +104,11 @@ function App() {
 			decideWinner(updatedTurns);
 			return updatedTurns;
 		});
+	}
+
+	const handleRematch = () => {
+		gameBoard = initialGameBoard
+		setGameTurns([])
 	}
 
 	return (
@@ -126,10 +126,10 @@ function App() {
 						isPlayerActive={activePlayer}
 					/>
 				</ol>
-				{winner && <p> Player {winner} win! </p>}
+				{(winner || hasDraw) && <GameOver winner={winner} hasDraw={hasDraw} handleRematch={handleRematch}/>}
 				<GameBoard onSelectSquare={handleSelectSquare} board={gameBoard} />
 			</div>
-			{/* <Log turns={gameTurns} /> */}
+			<Log turns={gameTurns} />
 		</main>
 	);
 }

@@ -1,3 +1,5 @@
+package-lock.json
+package.json
 NODE-COURSE/viet-pro/package-lock.json
 NODE-COURSE/viet-pro/package.json
 .DS_Store
@@ -345,5 +347,7 @@ MR-VIETHOANG-COURSE/React/React235/mrviethoang-react-main/09 - React Router/Code
 MR-VIETHOANG-COURSE/React/React235/mrviethoang-react-main/10 - Axios/Code/reactjs
 Coding-workspaces/vietpro-nodejs.code-workspace
 
+NODE-COURSE/viet-pro/package-lock.json
+NODE-COURSE/viet-pro/package.json
 NODE-COURSE/viet-pro/package-lock.json
 NODE-COURSE/viet-pro/package.json

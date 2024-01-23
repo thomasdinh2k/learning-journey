@@ -4,8 +4,10 @@ import "../public/css/index.css";
 import "../public/css/bootstrap.css";
 import Home from "./Components/Multi-language/Home";
 import translateText from "./Components/Multi-language/GoogleTranslate";
-import Slide from "./Components/Slide";
-import ProductSlide from "./Components/ProductSlide";
+// import Slide from "./Components/Slide";
+// import ProductSlide from "./Components/ProductSlide";
+import CarArticle from "./Components/CarArticle/CarArticle";
+import Todo from "./Components/Todo/Todo";
 
 function App() {
 	const [inputText, setInputText] = useState("");
@@ -36,6 +38,8 @@ function App() {
 
 	return (
 		<>
+			<Todo/>
+			<CarArticle/>
 			<h1>Test Translation</h1>
 			<input
 				type="text"
@@ -56,9 +60,6 @@ function App() {
 			<p>Your Translation: <strong>{renderedTranslation}</strong></p>
 			{/* Multi-language Exercise */}
 			<Home />
-
-
-			<ProductSlide/>
 		</>
 	);
 }

@@ -28,6 +28,18 @@ const turnDecider = (gameTurns) => {
 function App() {
 	const [gameTurns, setGameTurns] = useState([]);
 	let activePlayer = turnDecider(gameTurns);
+	const [playerInfo, setPlayerInfo] = useState( {'X': "Player 1", 'O': "Player 2"} )
+
+	const handlePlayerNameChange = (symbol, newName) => {
+		setPlayerInfo( prevState => {
+			return { 
+				...prevState,
+					[symbol]: newName
+			}
+		})
+	}
+
+	// console.log("Current Player INFO", playerInfo);
 
 	function decideWinner(gameTurns) {
 		// console.log("WinnerDATA", gameTurns);
@@ -77,7 +89,7 @@ function App() {
 			firstSquareSymbol === secondSquareSymbol &&
 			firstSquareSymbol === thirdSquareSymbol
 		) {
-			winner = firstSquareSymbol;
+			winner = playerInfo[firstSquareSymbol];
 		}
 	}
 
@@ -119,17 +131,19 @@ function App() {
 						initialName="Player 1"
 						playerSymbol="X"
 						isPlayerActive={activePlayer}
+						handlePlayerNameChange={handlePlayerNameChange}
 					/>
 					<Player
 						initialName="Player 2"
 						playerSymbol="O"
 						isPlayerActive={activePlayer}
+						handlePlayerNameChange={handlePlayerNameChange}
 					/>
 				</ol>
 				{(winner || hasDraw) && <GameOver winner={winner} hasDraw={hasDraw} handleRematch={handleRematch}/>}
 				<GameBoard onSelectSquare={handleSelectSquare} board={gameBoard} />
 			</div>
-			<Log turns={gameTurns} />
+			<Log turns={gameTurns} playerInfo={playerInfo} />
 		</main>
 	);
 }

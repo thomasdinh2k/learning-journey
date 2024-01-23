@@ -8,7 +8,7 @@ const GameOver = ( { winner, handleRematch }) => {
              
              
              */}
-            { winner && <p>{winner} has won!</p>}
+            { winner && <p>{winner.toUpperCase()} has won!</p>}
             {!winner && <p>It&#39;s a draw</p>}
             
             <p>

@@ -1,12 +1,13 @@
 import { useState } from "react";
 
-const Player = ({ initialName, playerSymbol, isPlayerActive }) => {
+const Player = ({ initialName, playerSymbol, isPlayerActive, handlePlayerNameChange }) => {
 	const [inputState, changeInputState] = useState(false);
 
 	const [playerName, setPlayerName] = useState(initialName);
 
 	function handleEditClick() {
 		changeInputState(!inputState);
+		handlePlayerNameChange(playerSymbol, playerName)
 	}
 
 	function handleNameChange(event) {

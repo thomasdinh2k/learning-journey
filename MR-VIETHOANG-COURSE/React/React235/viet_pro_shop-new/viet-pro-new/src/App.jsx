@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 
+
+import "../public/css/randomNumber.css"
 import "../public/css/index.css";
 import "../public/css/bootstrap.css";
 import Home from "./Components/Multi-language/Home";
@@ -8,6 +10,7 @@ import translateText from "./Components/Multi-language/GoogleTranslate";
 // import ProductSlide from "./Components/ProductSlide";
 import CarArticle from "./Components/CarArticle/CarArticle";
 import Todo from "./Components/Todo/Todo";
+import RandomNumber from "./Components/RandomNumber/RandomNumber";
 
 function App() {
 	const [inputText, setInputText] = useState("");
@@ -22,22 +25,11 @@ function App() {
 			updateRenderedTranslation(translatedText);
 		}
 	};
-	// const imageArray = [
-	// 	"images/banner-1.jpg",
-	// 	"images/banner-2.jpg",
-	// 	"images/banner-3.jpg",
-	// ];
-
-	// // const [imageSrc, updateImageSrc] = React.useState("images/banner-1.jpg");
-
-	// const [imgIndex, updateImgIndex] = useState(0);
-
-	// const handleSwitchImg = (num) => {
-	// 	updateImgIndex(num);
-	// };
+	
 
 	return (
 		<>
+			<RandomNumber/>
 			<Todo/>
 			<CarArticle/>
 			<h1>Test Translation</h1>

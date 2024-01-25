@@ -1,0 +1,14 @@
+.random-number {
+    margin: auto;
+    width: 15%;
+    height: auto;
+    background: #eae6df;
+    padding: 0px;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+.random-number h3{
+    font-size: 50px !important;
+    font-weight: bold;
+    color: red;
+}

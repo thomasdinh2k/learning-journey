@@ -10,6 +10,8 @@ const reducer = (state = initState, action) => {
             return {...state, num: Math.round(Math.random() * 10)}
         case "GET_RESET":
             return {...state, num: 0}
+        case "GET_LOVE":
+            return {...state, num: action.payload.data}
 		default:
 			return state; // Trả giá trị ban đầu
 	}

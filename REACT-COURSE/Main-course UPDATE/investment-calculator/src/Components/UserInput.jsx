@@ -16,34 +16,41 @@ const UserInput = () => {
 	};
 
 	const [valueObject, setValueObject] = useState(initial_value);
+	const [annualData, setAnnualData] = useState([]);
 
 	function setValueHelper(value, valueType) {
 		setValueObject((prevState) => {
-			return {
+			const updateValueObject = {
 				...prevState,
-				[valueType]: value,
+				[valueType]: Number(value),
 			};
+			
+			const newAnnualData = calculateInvestmentResults({
+				initialInvestment: updateValueObject.initialInvestment,
+				annualInvestment: updateValueObject.annualInvestment,
+				expectedReturn: updateValueObject.expectedReturn,
+				duration: updateValueObject.duration,
+			});
+			
+			setAnnualData(
+				newAnnualData
+			);
+			return updateValueObject;
 		});
 	}
 
 	function inputHandler(event, type) {
 		switch (type) {
 			case "initial_investment":
-				console.log("initial_investment", event.target.value);
 				setValueHelper(event.target.value, "initialInvestment");
-
 				break;
 			case "annual_investment":
-				console.log("initial_investment", event.target.value);
-
 				setValueHelper(event.target.value, "annualInvestment");
 				break;
 			case "expected_return":
-				console.log("expected_return", event.target.value);
 				setValueHelper(event.target.value, "expectedReturn");
 				break;
 			case "duration":
-				console.log("duration", event.target.value);
 				setValueHelper(event.target.value, "duration");
 				break;
 			default:
@@ -52,6 +59,16 @@ const UserInput = () => {
 	}
 
 	console.log("Check State Test", valueObject);
+	console.log(annualData);
+
+	// setAnnualData(
+	// 	calculateInvestmentResults({
+	// 		initialInvestment: 5,
+	// 		annualInvestment: 6,
+	// 		expectedReturn: 7,
+	// 		duration: 8,
+	// 	})
+	// );
 	return (
 		<section id="user-input">
 			<div className="input-group">
@@ -91,6 +108,7 @@ const UserInput = () => {
 					></input>
 				</p>
 			</div>
+			
 		</section>
 	);
 };

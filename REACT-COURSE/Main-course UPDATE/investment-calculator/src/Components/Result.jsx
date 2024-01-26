@@ -1,3 +1,11 @@
+
+/**
+ * TODO Render returned value to table below
+ * 
+ * The value is already processed, now just need to re-format and render
+ * 
+ */
+
 const Result = () => {
     return(
         <section>

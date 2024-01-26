@@ -1,41 +1,57 @@
+import { useState } from "react";
+import { calculateInvestmentResults, formatter } from "../util/investment";
+
 const UserInput = () => {
 	/**
-	 * TODO Thu thập giá trị của người dùng và đặt biến cho từng ô
+	 * Thu thập giá trị của người dùng và đặt biến cho từng ô
 	 *
 	 * Sau đó nghiên cứu cách đưa vào hàm tính toán (được export ra từ ./util)
 	 */
 
-	let test_value = {
-		initial_investment: 0,
-		expected_return: 0,
-		annual_investment: 0,
+	let initial_value = {
+		initialInvestment: 0,
+		expectedReturn: 0,
+		annualInvestment: 0,
 		duration: 0,
 	};
+
+	const [valueObject, setValueObject] = useState(initial_value);
+
+	function setValueHelper(value, valueType) {
+		setValueObject((prevState) => {
+			return {
+				...prevState,
+				[valueType]: value,
+			};
+		});
+	}
 
 	function inputHandler(event, type) {
 		switch (type) {
 			case "initial_investment":
 				console.log("initial_investment", event.target.value);
-				test_value = { ...test_value, initial_investment: event.target.value };
+				setValueHelper(event.target.value, "initialInvestment");
+
 				break;
 			case "annual_investment":
 				console.log("initial_investment", event.target.value);
-				test_value = { ...test_value, annual_investment: event.target.value };
+
+				setValueHelper(event.target.value, "annualInvestment");
 				break;
 			case "expected_return":
 				console.log("expected_return", event.target.value);
-				test_value = { ...test_value, expected_return: event.target.value };
+				setValueHelper(event.target.value, "expectedReturn");
 				break;
 			case "duration":
 				console.log("duration", event.target.value);
-				test_value = { ...test_value, duration: event.target.value };
+				setValueHelper(event.target.value, "duration");
 				break;
 			default:
 				break;
 		}
-		console.log(test_value);
 	}
 
+	console.log("Check State Test", valueObject);
 	return (
 		<section id="user-input">
 			<div className="input-group">

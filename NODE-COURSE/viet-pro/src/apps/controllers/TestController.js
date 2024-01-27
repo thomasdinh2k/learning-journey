@@ -1,9 +1,14 @@
 const categoryModel = require("../models/category");
 const productModel = require("../models/product");
+const userModel = require("../models/user")
 
-const test_1 = (req, res) => {
-	res.send(`<h1>${req.params.id} and ${req.params.id2}</h1>`);
-	console.log(req);
+const test_1 = async (req, res) => {
+	
+	// const products = await productModel.find();
+	const users = await userModel.find();
+	
+	console.log(users);
+	
 };
 
 const test_2 = (req, res) => {
@@ -13,8 +18,8 @@ const test_2 = (req, res) => {
 };
 
 const getProductData = (req, res) => {
-	productModel.find({ brand: "Apple" }).exec()
-		.then( productDataOutput => console.log(productDataOutput) )
+	// productModel.find({ brand: "Apple" }).exec()
+	// 	.then( productDataOutput => console.log(productDataOutput) )
 }
 
 module.exports = { test_1, test_2, getProductData };

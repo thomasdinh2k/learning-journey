@@ -1,12 +1,39 @@
+const userModel = require("../models/user")
+
+// const testGETuser = async (req, res) => {
+// 	const users = await userModel.find();
+
+// 	console.log(users);
+// }
+
 const login = (req, res) => {
 	res.render("admin/login", { error: null });
 };
 
-const processLogin = (req, res) => {
+
+const processLogin = async (req, res) => {
+	
 	const staticAuth = { email: "vietpro.edu.vn@gmail.com", password: "123456" };
 	const { email: defaultEmail, password: defaultPassword } = staticAuth;
 	const { email: userEmail, password: userPassword } = req.body;
+	
+	const users = await userModel.find()
+	
+	
+	// console.log("users is: ", users);
 
+	/**
+	 * TODO Authentication not working
+	 * userEmail and userPassword was not proper extract from the database, need to have a look on it
+	 * 
+	 */
+
+	const users_pst = await userModel.find( 
+		{email: userEmail},
+		{password: userPassword}
+	)
+
+	console.log(users_pst);
 	// Initialize errorCount in session if doesn't exist
 	if (req.session.errorCount === undefined) {
 		req.session.errorCount = 0;

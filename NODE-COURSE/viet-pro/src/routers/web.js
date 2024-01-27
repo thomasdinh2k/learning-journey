@@ -9,8 +9,6 @@ const Auth = require("../apps/controllers/auth");
 const Admin = require("../apps/controllers/admin");
 const ProductController = require("../apps/controllers/productController");
 
-
-
 // Import Controllers or Handlers
 
 // Define Route Handlers
@@ -37,17 +35,17 @@ backendRoute.forEach((routePath) => {
 });
 
 router.get("/", getHomepage);
-router.get("/test1/:id/:id2", TestController.test_1);
-router.get("/testController", TestController.test)
+router.get("/test_1", TestController.test_1);
 router.get("/test2", TestController.test_2);
+
+router.get("/products", TestController.getProductData);
 
 router.get("/form", formController.getForm);
 router.post("/action_form", formController.handleFormSubmission);
 
 // Authentication
 router.get("/admin/login", Auth.login);
-router.post("/admin/login", Auth.processLogin)
-
+router.post("/admin/login", Auth.processLogin);
 
 router.get("/admin/logout", Auth.logout);
 router.get("/admin/dashboard", Admin);

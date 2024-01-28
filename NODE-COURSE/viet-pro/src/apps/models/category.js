@@ -1,33 +1,24 @@
-const mongoose = require ('../../common/database')();
+const mongoose = require("../../common/database")();
 
 const categorySchema = new mongoose.Schema(
-    {
-        description: {
-            type: String,
-            required: false,
-            default: "NO DESCRIPTION",
-        },
-        
-        title: {
-            type: String,
-            required: false,
-            default: "NO DESCRIPTION",
-            
-        },
-        
-        slug: {
-            type: String,
-            required: false,
-            default: "NO DESCRIPTION",
-
-        }
-    },
-    {
-        timestamps: true,
-        collection: "Categories"
-    }
+	{
+		title: {
+			type: String,
+			required: true,
+		},
+		slug: {
+			type: String,
+			required: true,
+		},
+		description: {
+			type: String,
+			default: null,
+		},
+	},
+	{
+		timestamps: true,
+	}
 );
 
-const categoryModel = mongoose.model("Categories", categorySchema, "Categories")
-
-module.exports = categoryModel;
+const CategoryModel = mongoose.model("Category", categorySchema, "categories");
+module.exports = CategoryModel;

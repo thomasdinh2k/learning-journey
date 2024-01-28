@@ -1,25 +1,26 @@
+// Gọi file kết nối tới MongoDB
 const mongoose = require("../../common/database")();
 
-const userSchema = new mongoose.Schema(
-	{
-		name: {
-			type: String,
-		},
-		email: {
-			type: String,
-			unique: true,
-		},
-		password: {
-			type: String,
-		},
-		role: {
-			type: String,
-			default: "user",
-		},
+// Sử dụng Schema để mô tả collection user
+const userSchema = mongoose.Schema({
+	full_name: {
+		type: String,
+		default: null,
 	},
-	{ timestamps: true, collection: "Users" }
-);
-
-const userModel = mongoose.model("Users", userSchema);
-
-module.exports = userModel;
+	email: {
+		type: String,
+		unique: true,
+	},
+	password: {
+		type: String,
+		default: null,
+	},
+	role: {
+		type: String,
+		enum: ["member", "admin"],
+		default: "member",
+	},
+});
+// Biến User Schema thành Model
+const UserModel = mongoose.model("users", userSchema, "users");
+module.exports = UserModel;

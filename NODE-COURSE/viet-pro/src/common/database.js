@@ -2,6 +2,6 @@ const mongoose = require("mongoose");
 
 
 module.exports = () => {
-    mongoose.connect("mongodb://localhost/vp_shop_project");
+    mongoose.connect("mongodb://localhost/vietpro_project_official");
     return mongoose
 };

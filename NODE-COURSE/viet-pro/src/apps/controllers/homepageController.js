@@ -1,12 +1,6 @@
 const backendRoute = [
-	"form",
-	"/admin/login",
-	"/admin/logout",
-	"/admin/dashboard",
-	"/admin/products",
-	"/admin/products/create",
-	"/admin/products/edit",
-	"/admin/products/delete",
+	"admin/login"
+    
 ];
 
 let backEndRouteHTML = "";

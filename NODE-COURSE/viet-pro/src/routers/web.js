@@ -18,10 +18,10 @@ const backendRoute = [
 	// "/admin/login",
 	// "/admin/logout",
 	// "/admin/dashboard",
-	"/admin/products",
-	"/admin/products/create",
-	"/admin/products/edit",
-	"/admin/products/delete",
+	// "/admin/products",
+	// "/admin/products/create",
+	// "/admin/products/edit",
+	// "/admin/products/delete",
 ];
 
 function createRoute(routePath) {
@@ -51,6 +51,11 @@ router.get("/admin/logout", Auth.logout);
 router.get("/admin/dashboard", Admin);
 
 router.get("/admin", Admin);
+
+// Admin - product
 router.get("/admin/products/index", ProductController.index);
+router.get("/admin/products/add", ProductController.create);
+router.get("/admin/products/edit", ProductController.edit);
+
 // Export
 module.exports = router;

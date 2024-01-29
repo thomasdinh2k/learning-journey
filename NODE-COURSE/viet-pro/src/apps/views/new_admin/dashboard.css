@@ -11,6 +11,7 @@
 	--light-danger: #fecdd3;
 	--warning: #fbc02d;
 	--light-warning: #fff2c6;
+	--dark-warning: #e9a909;
 	--success: #388e3c;
 	--light-success: #bbf7d0;
 }
@@ -71,12 +72,13 @@ body {
 }
 
 .sidebar .logo {
-	font-size: 24px;
+	font-size: 19px;
+	text-transform: uppercase;
 	font-weight: 700;
 	height: 56px;
 	display: flex;
 	align-items: center;
-	color: var(--primary);
+	color: #e9a909;
 	z-index: 500;
 	padding-bottom: 20px;
 	box-sizing: content-box;
@@ -84,6 +86,24 @@ body {
 
 .sidebar .logo .logo-name span {
 	color: var(--dark);
+}
+
+.logo-name {
+	margin-bottom: 0px;
+}
+
+.logo-wrapper {
+	display: flex;
+	flex-direction: column;
+}
+
+.logo-description {
+	font-size: 10px;
+	color: var(--dark);
+	font-family: Arial, Helvetica, sans-serif;
+	letter-spacing: 2.7px;
+	margin-left: 2px;
+	margin-top: 0;
 }
 
 .sidebar .logo .bx {
@@ -150,14 +170,18 @@ body {
 }
 
 .sidebar .side-menu li.active a {
-	color: var(--success);
+	color: var(--dark-warning);
 }
 
 .sidebar.close .side-menu li a {
 	width: calc(48px - (4px * 2));
-	transition: all 0.3s ease;
+	transition: all 1.3s ease;
 }
 
+.hide {
+	color: var(--dark-grey) !important;
+	cursor: not-allowed;
+}
 /* Side-bar close */
 
 .sidebar .side-menu li a .bx {
@@ -212,7 +236,7 @@ body {
 	color: var(--dark);
 }
 
-.content nav .bx .bx-menu {
+.content nav .bx.bx-menu {
 	cursor: pointer;
 	color: var(--dark);
 }
@@ -225,11 +249,11 @@ body {
 
 .content nav form .form-input {
 	display: flex;
-	align-self: center;
+	align-items: center;
 	height: 36px;
 }
 
-.content nav .form-input input {
+.content nav form .form-input input {
 	flex-grow: 1;
 	padding: 0 16px;
 	height: 100%;
@@ -247,9 +271,9 @@ body {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	background: var(--primary);
+	background: var(--dark-warning);
 	color: var(--light);
-	font-style: 18px;
+	font-size: 18px;
 	border: none;
 	outline: none;
 	border-radius: 0 36px 36px 0;
@@ -302,7 +326,7 @@ body {
 	left: 2px;
 	bottom: 2px;
 	width: calc(25px - 4px);
-	background: var(--primary);
+	background: var(--dark-warning);
 	border-radius: 50%;
 	transition: all 0.3s ease;
 }
@@ -316,7 +340,7 @@ body {
 .content main {
 	width: 100%;
 	padding: 36px 24px;
-	max-height: calc(100vh - 56vh);
+	max-height: calc(100vh - 56px);
 }
 
 .content main .header {
@@ -478,16 +502,16 @@ body {
 
 .content main .bottom-data .orders table tr td:first-child {
 	display: flex;
-    align-items: center;
-    grid-gap: 12px;
-    padding-left: 6px;
+	align-items: center;
+	grid-gap: 12px;
+	padding-left: 6px;
 }
 
 .content main .bottom-data .orders table td img {
 	width: 36px;
 	height: 36px;
 	border-radius: 50%;
-    object-fit: cover;
+	object-fit: cover;
 }
 
 .content main .bottom-data .orders table tbody tr {
@@ -522,46 +546,46 @@ body {
 /* Remiders */
 
 .content main .bottom-data .reminders {
-    flex-grow: 1;
-    flex-basis: 300px;
+	flex-grow: 1;
+	flex-basis: 300px;
 }
 
-.content main .bottom-data .reminders .task-list{
-    width: 100%;
+.content main .bottom-data .reminders .task-list {
+	width: 100%;
 }
 
 .content main .bottom-data .reminders .task-list li {
-    width: 100%;
-    margin-bottom: 16px;
-    background: var(--grey);
-    padding: 14px 10px;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+	width: 100%;
+	margin-bottom: 16px;
+	background: var(--grey);
+	padding: 14px 10px;
+	border-radius: 10px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
 }
 
-.content main .bottom-data .reminders .task-list li .task-title{
-    display: flex;
-    align-items: center;
+.content main .bottom-data .reminders .task-list li .task-title {
+	display: flex;
+	align-items: center;
 }
 
-.content main .bottom-data .reminders .task-list li .task-title p{
-    margin-left: 6px;
+.content main .bottom-data .reminders .task-list li .task-title p {
+	margin-left: 6px;
 }
 
-.content main .bottom-data .reminders .task-list li .bx{
-    cursor: pointer;
+.content main .bottom-data .reminders .task-list li .bx {
+	cursor: pointer;
 }
 
-.content main .bottom-data .reminders .task-list li.completed{
-    border-left: 10px solid var(--success);
+.content main .bottom-data .reminders .task-list li.completed {
+	border-left: 10px solid var(--success);
 }
-.content main .bottom-data .reminders .task-list li.not-completed{
-    border-left: 10px solid var(--danger);
+.content main .bottom-data .reminders .task-list li.not-completed {
+	border-left: 10px solid var(--danger);
 }
-.content main .bottom-data .reminders .task-list li:last-child{
-    margin-bottom: 0;
+.content main .bottom-data .reminders .task-list li:last-child {
+	margin-bottom: 0;
 }
 
 .content main .bottom-data .reminders {

@@ -15,27 +15,46 @@
 		<div class="sidebar">
 			<a href="#" class="logo">
 				<i class="bx bx-code-alt"></i>
-				<div class="logo-name"><span>Shop</span>Tung</div>
+				<div class="logo-wrapper">
+					<div class="logo-name">
+						tungpro
+						<span>Shop</span>
+					</div>
+					<p class="logo-description">Bán rẻ lương tâm</p>
+				</div>
 			</a>
 
 			<ul class="side-menu">
-				<li>
+				<li class="active">
 					<a href="#"><i class="bx bxs-dashboard"></i>Dashboard</a>
 				</li>
 				<li>
-					<a href="#"><i class="bx bx-store-alt"></i>Shop</a>
-				</li>
-				<li class="active">
-					<a href="#"><i class="bx bx-analyse"></i>Analytics</a>
-				</li>
-				<li>
-					<a href="#"><i class="bx bx-message-square-dots"></i>Tickets</a>
+					<a href="#" class="hide"
+						><i class="bx bx-group"></i>Quản lý thành viên</a
+					>
 				</li>
 				<li>
-					<a href="#"><i class="bx bx-group"></i>Users</a>
+					<a href="#" class="hide"
+						><i class="bx bx-store-alt"></i>Quản lý danh mục</a
+					>
 				</li>
 				<li>
-					<a href="#"><i class="bx bx-cog"></i>Settings</a>
+					<a href="#" class="hide"
+						><i class="bx bx-store-alt"></i>Quản lý sản phẩm</a
+					>
+				</li>
+				<li>
+					<a href="#" class="hide"
+						><i class="bx bx-message-square-dots"></i>Quản lý bình luận</a
+					>
+				</li>
+				<li class="">
+					<a href="#" class="hide"
+						><i class="bx bx-analyse"></i>Quản lý quảng cáo</a
+					>
+				</li>
+				<li>
+					<a href="#" class="hide"><i class="bx bx-cog"></i>Cấu hình</a>
 				</li>
 			</ul>
 
@@ -43,7 +62,7 @@
 				<li>
 					<a href="#" class="logout">
 						<i class="bx bx-log-out-circle"></i>
-						Logout
+						Đăng xuất
 					</a>
 				</li>
 			</ul>
@@ -57,7 +76,12 @@
 				<i class="bx bx-menu"></i>
 				<form action="#">
 					<div class="form-input">
-						<input type="search" name="" id="" placeholder="Search..." />
+						<input
+							type="search"
+							name=""
+							id=""
+							placeholder="Tìm kiếm (chức năng chưa hoàn thành) ..."
+						/>
 						<button class="search-btn" type="submit">
 							<i class="bx bx-search"></i>
 						</button>
@@ -70,7 +94,7 @@
 					<span class="count">12</span>
 				</a>
 				<a href="#" class="profile">
-					<img src="" alt="" />
+					<img src="./images/user_profile.png" alt="" />
 				</a>
 			</nav>
 			<!-- End of Nav Bar-->
@@ -80,9 +104,9 @@
 					<div class="left">
 						<h1>Dashboard</h1>
 						<ul class="breadcrumb">
-							<li><a href="#"> Analytics </a></li>
+							<li><a href="#" class="hide"> Dashboard </a></li>
 							/
-							<li><a href="#" class="active">Shop</a></li>
+							<li><a href="#" class="active">Main Dashboard</a></li>
 						</ul>
 					</div>
 					<a href="#" class="report">
@@ -127,7 +151,7 @@
 					<div class="orders">
 						<div class="header">
 							<i class="bx bx-receipt"></i>
-							<h3>Recent Orders</h3>
+							<h3>Đơn hàng gần đây</h3>
 							<i class="bx bx-filter"></i>
 							<i class="bx bx-search"></i>
 						</div>
@@ -142,24 +166,24 @@
 							<tbody>
 								<tr>
 									<td>
-										<img src="images/profile-1.jpg" />
-										<p>John Doe</p>
+										<img src="images/iphone.webp" />
+										<p>iPhone 15 Pro Max</p>
 									</td>
 									<td>14-08-2023</td>
 									<td><span class="status completed">Completed</span></td>
 								</tr>
 								<tr>
 									<td>
-										<img src="images/profile-1.jpg" />
-										<p>John Doe</p>
+										<img src="images/iphone.webp" />
+										<p>iPhone 15 Pro Max</p>
 									</td>
 									<td>14-08-2023</td>
 									<td><span class="status pending">Pending</span></td>
 								</tr>
 								<tr>
 									<td>
-										<img src="images/profile-1.jpg" />
-										<p>John Doe</p>
+										<img src="images/iphone.webp" />
+										<p>iPhone 15 Pro Max</p>
 									</td>
 									<td>14-08-2023</td>
 									<td><span class="status process">Processing</span></td>
@@ -172,29 +196,30 @@
 					<div class="reminders">
 						<div class="header">
 							<i class="bx bx-note"></i>
-							<h3>Remiders</h3>
+							<h3>Trạng thái hệ thống</h3>
 							<i class="bx bx-filter"></i>
 							<i class="bx bx-plus"></i>
 						</div>
 						<ul class="task-list">
-							<li class="completed">
+							<li class="not-completed">
 								<div class="task-title">
-									<i class="bx bx-check-circle"></i>
-									<p>Start Our Meeting</p>
-								</div>
-								<i class="bx bx-dots-vertical-rounded"></i>
-							</li>
-							<li class="completed">
-								<div class="task-title">
-									<i class="bx bx-check-circle"></i>
-									<p>Analyse Our Site</p>
+									<!-- <i class="bx bx-check-circle"></i> -->
+									<i class="bx bx-x-circle"></i>
+									<p>Router Dashboard</p>
 								</div>
 								<i class="bx bx-dots-vertical-rounded"></i>
 							</li>
 							<li class="not-completed">
 								<div class="task-title">
 									<i class="bx bx-x-circle"></i>
-									<p>Play Football</p>
+									<p>Giải nén Database và tạo Model</p>
+								</div>
+								<i class="bx bx-dots-vertical-rounded"></i>
+							</li>
+							<li class="completed">
+								<div class="task-title">
+									<i class="bx bx-check-circle"></i>
+									<p>Bốc phét và tán gái</p>
 								</div>
 								<i class="bx bx-dots-vertical-rounded"></i>
 							</li>
@@ -205,6 +230,8 @@
 				</div>
 			</main>
 		</div>
+
+		
 
 		<script src="dashboard.js"></script>
 	</body>

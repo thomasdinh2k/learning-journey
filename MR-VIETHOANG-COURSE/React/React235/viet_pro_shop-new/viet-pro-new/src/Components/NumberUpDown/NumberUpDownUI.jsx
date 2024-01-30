@@ -1,13 +1,13 @@
-import Down from "./Down";
-import Up from "./Up";
+import DownRed from "./DownRed";
+import UpBlue from "./UpBlue";
 
 const NumberUpDownUI = () => {
 	return (
 		<>
 			<div className="container">
 				<div className="row justify-content-center">
-					<Up/>
-					<Down/>
+					<UpBlue />
+					<DownRed />
 				</div>
 			</div>
 		</>

@@ -1,15 +1,22 @@
 const InitStateRed = {
-	num: 10,
+	num: 9,
+	is_playing: false,
 };
 
 const reducerRed = (state = InitStateRed, action) => {
 	switch (action.type) {
-		case "Value_increase":
-			return { ...state, num: state.num++ };
 		case "Value_decrease":
-			return { ...state, num: state.num-- };
-		case "Reset":
+			return { ...state, num: state.num - 1 };
+		case "ResetR":
 			return { ...state, num: 0 };
+
+		case "PlayR":
+			return { ...state, is_playing: true };
+
+		case "StopR":
+			return { ...state, is_playing: false };
+		case "Decrement":
+			return { ...state, num: state.num + 1 - 2 };
 		default:
 			return state;
 	}

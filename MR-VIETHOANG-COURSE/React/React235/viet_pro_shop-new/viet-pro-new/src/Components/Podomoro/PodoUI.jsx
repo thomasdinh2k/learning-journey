@@ -10,7 +10,7 @@ const PodoUI = () => {
     return (
 		<div>
 			<h1 className="main-heading">Pomodoro clock</h1>
-			<h3>by Thomas Dinh</h3>
+			<h3>learn how to use UseEffect & Redux State</h3>
 			
             <Clock/>
 

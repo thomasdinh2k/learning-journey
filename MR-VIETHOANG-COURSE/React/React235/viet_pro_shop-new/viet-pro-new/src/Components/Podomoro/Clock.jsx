@@ -2,38 +2,42 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 
 const Clock = () => {
+	const {time_minute, time_second, is_playing} = useSelector( (store) => store )
+
 	const dispatch = useDispatch();
-    
-    // const timeInSecond = useSelector (
-    //     (store) => {
-    //         return store.podoReducer.time_in_second
-    //     }
-    // )
-    
-    const { time_in_second, is_running } = useSelector(
-        (store) => {
-            return store.podoReducer
-        }
-    )
 
-    useEffect(() => {
-        let timer;
-        if (is_running && time_in_second > 0) {
-            timer = setInterval(() => {
-                dispatch({ type: "DECREMENT_TIMER" });
-            }, 1000);
-        } else if (time_in_second === 0) {
-            dispatch({ type: "GET_STOP_CLOCK" });
-        }
+	useEffect(() => {
+		const intervalID = setInterval(() => {
+			if (is_playing) {
+				
+                if (time_minute > 0) {
+                    if(time_second > 0) {
+                        dispatch({type: "second_decrement"})
+                    } else {
+                        dispatch({type: "reset_second"})
+                        dispatch({type: "minute_decrement"})
+                    }
+                } else if (time_minute == 0) {
+                    if (time_second > 0) {
+                        dispatch({type: "second_decrement"})
+                    } else {
+                        dispatch({type: "Stop"})
+                    }
+                }
+			}
+		}, 1000);
 
-        return () => clearInterval(timer);
-    }, [is_running, time_in_second, dispatch]);
+		return () => {
+			clearInterval(intervalID);
+		};
+	}, [is_playing, time_minute, time_second, dispatch]);
 
-
-    return (
+	return (
 		<main>
 			<div className="pomodoro">
-				<h1 className="pomodoro__time"> {time_in_second} </h1>
+				<h1 className="pomodoro__time">
+					{time_minute}:{time_second <10 ? `0${time_second}` : time_second}
+				</h1>
 			</div>
 		</main>
 	);

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { calculateInvestmentResults, formatter } from "../util/investment";
 
-const UserInput = () => {
+const UserInput = ( { annualData, setAnnualData }) => {
 	/**
 	 * Thu thập giá trị của người dùng và đặt biến cho từng ô
 	 *
@@ -16,7 +16,7 @@ const UserInput = () => {
 	};
 
 	const [valueObject, setValueObject] = useState(initial_value);
-	const [annualData, setAnnualData] = useState([]);
+	
 
 	function setValueHelper(value, valueType) {
 		setValueObject((prevState) => {
@@ -24,17 +24,29 @@ const UserInput = () => {
 				...prevState,
 				[valueType]: Number(value),
 			};
-			
-			const newAnnualData = calculateInvestmentResults({
+
+			// let newAnnualData = calculateInvestmentResults({
+			// 	initialInvestment: 10000,
+			// 	annualInvestment: 300,
+			// 	expectedReturn: 5.5,
+			// 	duration: 12,
+			// });
+			let newAnnualData = calculateInvestmentResults({
 				initialInvestment: updateValueObject.initialInvestment,
 				annualInvestment: updateValueObject.annualInvestment,
 				expectedReturn: updateValueObject.expectedReturn,
 				duration: updateValueObject.duration,
 			});
+
+			// // Adding more information
+			// newAnnualData = {
+			// 	...newAnnualData,
+			// 	initialInvestment: updateValueObject.initialInvestment
+			// }
+
+			setAnnualData(newAnnualData);
 			
-			setAnnualData(
-				newAnnualData
-			);
+			
 			return updateValueObject;
 		});
 	}
@@ -58,8 +70,8 @@ const UserInput = () => {
 		}
 	}
 
-	console.log("Check State Test", valueObject);
-	console.log(annualData);
+	console.log("Check Input Test", valueObject);
+	console.log("Check data output", annualData);
 
 	// setAnnualData(
 	// 	calculateInvestmentResults({
@@ -108,7 +120,6 @@ const UserInput = () => {
 					></input>
 				</p>
 			</div>
-			
 		</section>
 	);
 };

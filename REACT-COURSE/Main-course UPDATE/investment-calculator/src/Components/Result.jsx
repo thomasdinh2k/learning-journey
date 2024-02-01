@@ -6,7 +6,43 @@
  * 
  */
 
-const Result = () => {
+import ResultRow from "./ResultRow";
+import React from "react";
+
+
+
+const Result = ( { annualData }) => {
+    // Derive and calculate extra data
+    const calculatedAnnualData = annualData.map( (dataRow, index, array) => {
+        console.log("dataRow", dataRow);
+        console.log("index", index);
+
+        let thisYearInterest = dataRow.interest
+        let lastYearInterest = index > 0 ? array[index - 1].interest : 0
+
+        let thisYearVEOY = dataRow.valueEndOfYear
+        
+        let sum_of_interest_till_year = 0;
+        array.slice(0, index).map( a => {
+            console.log(a.interest);
+
+            sum_of_interest_till_year += a.interest;
+        })
+        
+        const total_interest = thisYearInterest + sum_of_interest_till_year
+        
+        const invested_capital = thisYearVEOY - total_interest;
+
+        return {
+            ...dataRow, 
+            total_interest: total_interest,
+            invested_capital: invested_capital
+        }
+    });
+    
+    // console.log("Added Calculated Data", calculatedAnnualData);
+
+    
     return(
         <section>
             <table id="result">
@@ -21,55 +57,21 @@ const Result = () => {
                 </thead>
 
                 <tbody>
-                    <tr>
-                        <th>1</th>
-                        <th>$10.850</th>
-                        <th>$550</th>
-                        <th>$550</th>
-                        <th>$10.300</th>
-                    </tr>
-                    <tr>
-                        <th>2</th>
-                        <th>$10.850</th>
-                        <th>$550</th>
-                        <th>$550</th>
-                        <th>$10.300</th>
-                    </tr>
-                    <tr>
-                        <th>3</th>
-                        <th>$10.850</th>
-                        <th>$550</th>
-                        <th>$550</th>
-                        <th>$10.300</th>
-                    </tr>
-                    <tr>
-                        <th>4</th>
-                        <th>$10.850</th>
-                        <th>$550</th>
-                        <th>$550</th>
-                        <th>$10.300</th>
-                    </tr>
-                    <tr>
-                        <th>5</th>
-                        <th>$10.850</th>
-                        <th>$550</th>
-                        <th>$550</th>
-                        <th>$10.300</th>
-                    </tr>
-                    <tr>
-                        <th>6</th>
-                        <th>$10.850</th>
-                        <th>$550</th>
-                        <th>$550</th>
-                        <th>$10.300</th>
-                    </tr>
-                    <tr>
-                        <th>7</th>
-                        <th>$10.850</th>
-                        <th>$550</th>
-                        <th>$550</th>
-                        <th>$10.300</th>
-                    </tr>
+                    
+                    {calculatedAnnualData.map( yearData => (
+                        <ResultRow
+                            key={yearData.year}
+                            year = {yearData.year}
+                            interest = {yearData.interest}
+                            valueEndOfYear = {yearData.valueEndOfYear}
+                            annualInvestment = {yearData.annualInvestment}
+                            total_interest = {yearData.total_interest}
+                            invested_capital = {yearData.invested_capital}
+                        />
+                    ))}
+
+
+                    
                 </tbody>
                 
             </table>

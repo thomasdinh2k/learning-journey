@@ -1,0 +1,145 @@
+.thumbnail-container {
+    margin-bottom: 12px;
+    position: relative;
+}
+
+.video-thumbnail {
+    width: 100%;
+}
+
+.video-information > .video-title { 
+    font-weight: 500;
+    font-size: 15px;
+    margin-top: 0;
+    line-height: 20px;
+    margin-bottom: 5px;
+}
+
+.video-time {
+    position: absolute;
+    bottom: 8px;
+    right: 5px;
+    font-size: 12px;
+    font-weight: 500;
+    color: white;
+    background-color: black;
+    padding-left: 4px;
+    padding-right: 4px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    border-radius: 2px;
+}
+
+
+.info-container {
+    display: grid;
+    grid-template-columns: 50px 1fr;
+}
+
+.channel-logo > img, .channel-logo-container > img {
+    width: 36px;
+    border-radius: 50px;
+}
+
+
+
+.channel-name, .view-count, .pop-up-channel-stats {
+    font-size: 13px;
+    color: rgb(96,96,96);
+}
+
+.channel-name {
+    margin-bottom: 4px;
+}
+
+.video-grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 16px;
+    row-gap: 40px;
+}
+
+@media (max-width: 750px) {
+    .video-grid{
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (min-width: 751px) and (max-width: 1400px) {
+    .video-grid {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+@media (min-width: 1400px){
+    .video-grid {
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    }
+}
+
+
+
+.channel-logo-container {
+    display: inline-block;
+    position: relative;
+}
+
+.channel-logo-container:hover .channel-info-popup{
+    opacity: 1;
+    transition: opacity 0.2s;
+}
+
+.channel-info-popup{
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    vertical-align: center;
+    align-items: center;
+    background-color: white;
+    padding: 12px 23px;
+    border-radius: 6px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    bottom: -89px;
+    right: -230px;
+    z-index: 300;
+    opacity: 0;
+}
+
+.pop-up-right{
+    margin-left: 8px ;
+    display: flex;
+    flex-direction: column;
+    vertical-align: center;
+}
+
+.channel-info-popup > .pop-up-left > img {
+    width: 60px;
+    border-radius: 30px;
+    object-fit: cover;
+}
+
+.pop-up-channel-name {
+    font-size: 20px;
+    font-family: Roboto;
+    font-weight: 600;
+    margin-bottom: 3.5px;
+    margin-left: -1px;
+}
+
+.pop-up-right > button {
+    cursor: pointer;
+    background-color: black;
+    color: white;
+    font-size: 13px;
+    padding: 4px 4px;
+    margin-top: 6px;
+    width: 90px;
+    border-radius: 30px;
+    margin-left: -2px;
+    border: none;
+}
+
+.pop-up-right > button:hover{
+    background-color: brown;
+    
+}

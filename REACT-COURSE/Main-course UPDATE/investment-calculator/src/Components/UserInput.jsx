@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { calculateInvestmentResults, formatter } from "../util/investment";
 
-const UserInput = ( { annualData, setAnnualData }) => {
+const UserInput = ( { annualData, setAnnualData, setIsValid }) => {
 	/**
 	 * Thu thập giá trị của người dùng và đặt biến cho từng ô
 	 *
@@ -52,35 +52,30 @@ const UserInput = ( { annualData, setAnnualData }) => {
 	}
 
 	function inputHandler(event, type) {
+		let value = event.target.value;
 		switch (type) {
 			case "initial_investment":
-				setValueHelper(event.target.value, "initialInvestment");
+				setValueHelper(value, "initialInvestment");
 				break;
 			case "annual_investment":
-				setValueHelper(event.target.value, "annualInvestment");
+				setValueHelper(value, "annualInvestment");
 				break;
 			case "expected_return":
-				setValueHelper(event.target.value, "expectedReturn");
+				setValueHelper(value, "expectedReturn");
 				break;
 			case "duration":
-				setValueHelper(event.target.value, "duration");
+				if (value > 0 && value < 50) {
+					setValueHelper(value, "duration");
+				} else {
+					setIsValid("Duration must be positive and lower than 50")
+				}
 				break;
 			default:
 				break;
 		}
 	}
 
-	console.log("Check Input Test", valueObject);
-	console.log("Check data output", annualData);
-
-	// setAnnualData(
-	// 	calculateInvestmentResults({
-	// 		initialInvestment: 5,
-	// 		annualInvestment: 6,
-	// 		expectedReturn: 7,
-	// 		duration: 8,
-	// 	})
-	// );
+	
 	return (
 		<section id="user-input">
 			<div className="input-group">
@@ -114,6 +109,7 @@ const UserInput = ( { annualData, setAnnualData }) => {
 				<p>
 					<label>DURATION</label>
 					<input
+						max="5"
 						type="number"
 						onChange={(event) => inputHandler(event, "duration")}
 						required

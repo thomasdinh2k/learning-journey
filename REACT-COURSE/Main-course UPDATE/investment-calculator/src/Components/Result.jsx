@@ -14,13 +14,9 @@ import React from "react";
 const Result = ( { annualData }) => {
     // Derive and calculate extra data
     const calculatedAnnualData = annualData.map( (dataRow, index, array) => {
-        console.log("dataRow", dataRow);
-        console.log("index", index);
-
-        let thisYearInterest = dataRow.interest
-        let lastYearInterest = index > 0 ? array[index - 1].interest : 0
-
-        let thisYearVEOY = dataRow.valueEndOfYear
+        
+        let { interest: thisYearInterest, valueEndOfYear: thisYearVEOY } = dataRow;
+        
         
         let sum_of_interest_till_year = 0;
         array.slice(0, index).map( a => {

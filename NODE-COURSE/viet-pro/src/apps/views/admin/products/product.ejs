@@ -35,6 +35,8 @@ include("../layout/header.ejs") %> <%- include("../layout/sidebar.ejs") %>
 							<li class="page-item">
 								<a class="page-link" href="/admin/products/index/?page=<%=currentPage-1%>">&laquo;</a>
 							</li>
+							<%} else {%>
+								<li class="page-item"><a class="page-item" href="#" style="pointer-events: none; color: black; background-color: rgb(209, 209, 209)">&laquo;</a></li>
 							<%}%>
 
 							<% for (let page of pages) {%>
@@ -51,7 +53,9 @@ include("../layout/header.ejs") %> <%- include("../layout/sidebar.ejs") %>
 							<li class="page-item">
 								<a class="page-link" href="/admin/products/index/?page=<%=currentPage+1%>">&raquo;</a>
 							</li>
-							<% } %>
+							<% } else { %>
+								<li class="page-item"><a class="page-item" href="#" style="pointer-events: none; color: black; background-color: rgb(209, 209, 209)">&raquo;</a></li>
+							<%} %>
 						</ul>
 					</nav>
 				</div>
@@ -80,13 +84,13 @@ include("../layout/header.ejs") %> <%- include("../layout/sidebar.ejs") %>
 						<tbody>
 							<% for(let product of products){ %>
 							<tr>
-								<td style=""> <%= %> </td>
+								<td style=""> <%= product.sequentialId %> </td>
 								<td style=""> <%= product.name %></td>
 								<td style=""> <%= Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(product.price); %></td>
 								<td style="text-align: center">
-									<img width="130" height="180" src="img/download.jpeg" />
+									<img width="130" height="180" src="img/<%= product.thumbnail %>" />
 								</td>
-								<td><span class="label label-<%= product.is_stock ? "success" : "warning" %>"> <%= product.is_stock ? "Còn" : "Hết rồi (kho cũng hết, đừng hỏi)"  %></span></td>
+								<td><span class="label label-<%= product.is_stock ? "success" : "warning" %>"> <%= product.is_stock ? "Còn hàng" : "Hết hàng"  %></span></td>
 								<td> <%= product.cat_id.title %> </td>
 								<td class="form-group">
 									<a href="product-edit.html" class="btn btn-primary"
@@ -98,6 +102,27 @@ include("../layout/header.ejs") %> <%- include("../layout/sidebar.ejs") %>
 								</td>
 							</tr>
 							<% }%>
+
+							<!-- <% products.map( (product, index) => { %>
+								<tr>
+								<td style=""> <%= index + 1 %> </td>
+								<td style=""> <%= product.name %></td>
+								<td style=""> <%= Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(product.price); %></td>
+								<td style="text-align: center">
+									<img width="130" height="180" src="img/download.jpeg" />
+								</td>
+								<td><span class="label label-<%= product.is_stock ? "success" : "warning" %>"> <%= product.is_stock ? "Còn hàng" : "Hết hàng"  %></span></td>
+								<td> <%= product.cat_id.title %> </td>
+								<td class="form-group">
+									<a href="product-edit.html" class="btn btn-primary"
+										><i class="glyphicon glyphicon-pencil"></i
+									></a>
+									<a href="product-edit.html" class="btn btn-danger"
+										><i class="glyphicon glyphicon-remove"></i
+									></a>
+								</td>
+							</tr>
+							<%} ) %> -->
 							
 						</tbody>
 					</table>

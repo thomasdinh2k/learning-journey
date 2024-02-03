@@ -20,7 +20,7 @@ const index = async (req, res) => {
 	const products = await ProductModel
 		.find()
 		.populate({path: "cat_id"})
-		.sort( {_id: -1} )
+		.sort( {sequentialId: 1} )
 		.skip(skip)
 		.limit( limit )
 
@@ -34,11 +34,11 @@ const index = async (req, res) => {
 	// console.log(products);
 	res.render("admin/products/product", { 
 	
-		products: products,
+		products,
 		pages: pagination(currentPage, limit, totalRows),
 		currentPage: currentPage,
 		totalPageNum
-		
+
 	})
 };
 

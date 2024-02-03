@@ -1,17 +1,18 @@
-module.exports = (page, limit, totalRow) => {
+module.exports = (currentPage, limit, totalRow) => {
     
     const totalPages = Math.ceil(totalRow / limit);
     
     let pages= [];
     const delta = 2;
-    const left = page - delta;
-    const right = page + delta;
+    const left = currentPage - delta;
+    const right = currentPage + delta;
 
-    for (let i = 1; i <= totalRow ; i ++ ) {
+    for (let i = 1; i <= totalPages ; i ++ ) {
         if (
-            i === 1 || 
+            i === 1 ||
+            
             i === totalPages || 
-            i === page ||
+            i === currentPage ||
             (i >= left ) && (i <= right)
         ) {
             pages.push(i);

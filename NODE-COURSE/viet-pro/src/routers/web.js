@@ -5,8 +5,8 @@ const homepageController = require("../apps/controllers/homepageController");
 const formController = require("../apps/controllers/formController");
 const getHomepage = require("../apps/controllers/homepageController");
 const TestController = require("../apps/controllers/TestController");
-const Auth = require("../apps/controllers/auth");
-const Admin = require("../apps/controllers/admin");
+const Auth = require("../apps/controllers/authController");
+const Dashboard = require("../apps/controllers/dashboardController");
 const ProductController = require("../apps/controllers/productController");
 
 // Import Controllers or Handlers
@@ -48,9 +48,11 @@ router.get("/admin/login", Auth.login);
 router.post("/admin/login", Auth.processLogin);
 
 router.get("/admin/logout", Auth.logout);
-router.get("/admin/dashboard", Admin);
 
-router.get("/admin", Admin);
+// Dashboard
+router.get("/admin/dashboard", Dashboard.dashboard);
+
+router.get("/admin", Dashboard.testAnnounce);
 router.get("/admin/products/index", ProductController.index);
 // Export
 module.exports = router;

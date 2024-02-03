@@ -25,16 +25,16 @@
 
 			<main>
 				<!-- Header -->
-				<%- include("../new_admin/layout/header.ejs", 
-				{title: "Trang chủ quản trị",
-				breadcrumb: ["Admin", "Main dashboard"]}) %>
+
+				<%- include("../new_admin/layout/header.ejs", { title: "Trang chủ quản trị", breadcrumb: ["admin", "dashboard"]}) %>
+
 				<!-- End of Header -->
 				<!-- Insights -->
 				<ul class="insights">
 					<li>
 						<i class="bx bx-calendar-check"></i>
 						<span class="info">
-							<h3>0</h3>
+							<h3><%= product_quantity%></h3>
 							<p>Sản phẩm</p>
 						</span>
 					</li>

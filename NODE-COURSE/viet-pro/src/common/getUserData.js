@@ -4,8 +4,8 @@ async function getUserData(param = "") {
 	return await userModel.find(param);
 }
 
-async function getUserAmount() {
-	const data = await getUserData();
+async function getUserAmount(param = "") {
+	const data = await getUserData(param);
 	return data.length;
 }
 

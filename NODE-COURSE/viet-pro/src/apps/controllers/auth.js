@@ -1,4 +1,3 @@
-const userModel = require("../models/user");
 const getProductData = require("../../common/getProductData");
 const getUserData = require("../../common/getUserData");
 
@@ -12,10 +11,17 @@ const processLogin = async (req, res) => {
 	const { email: defaultEmail, password: defaultPassword } = staticAuth;
 	const { email: userEmail, password: userPassword } = req.body;
 
-	const users = await userModel.find({
+	// const users = await userModel.find({
+	// 	email: userEmail,
+	// 	password: userPassword,
+	// });
+
+	const users = await getUserData.getUserData({
 		email: userEmail,
 		password: userPassword,
 	});
+
+
 
 	console.log("Matching user is: ", users[0]);
 	// console.log("Matching user LENGTH: ", users.length);

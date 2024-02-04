@@ -1,4 +1,5 @@
-const userModel = require("../../apps/models/user")
+const userModel = require("../../apps/models/user");
+const { getCommentDataQuantity } = require("../../common/getCommentData");
 const getProductData = require("../../common/getProductData");
 const getUserData = require("../../common/getUserData");
 
@@ -17,6 +18,8 @@ const processLogin = async (req, res) => {
 		password: userPassword,
 	});
 
+	const commentQuantity = await getCommentDataQuantity()
+	const userQuantity = await getUserData.getUserAmount()
 
 
 	console.log("Matching user is: ", users[0]);
@@ -34,7 +37,10 @@ const processLogin = async (req, res) => {
 
 		res.render("admin/dashboard", { 
 			productQuantity: productDataQuantity,
-			userName: users[0].full_name });
+			userName: users[0].full_name,
+			commentQuantity,
+			userQuantity
+		 });
 	} else {
 		/**
 		 * TODO Fix this to match the new database

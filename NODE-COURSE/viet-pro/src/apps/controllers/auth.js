@@ -1,10 +1,6 @@
 const userModel = require("../models/user");
-
-// const testGETuser = async (req, res) => {
-// 	const users = await userModel.find();
-
-// 	console.log(users);
-// }
+const getProductData = require("../../common/getProductData");
+const getUserData = require("../../common/getUserData");
 
 const login = (req, res) => {
 	res.render("admin/login", { error: null });
@@ -21,8 +17,9 @@ const processLogin = async (req, res) => {
 		password: userPassword,
 	});
 
-	console.log("Matching user is: ", users);
-	console.log("Matching user LENGTH: ", users.length);
+	console.log("Matching user is: ", users[0]);
+	// console.log("Matching user LENGTH: ", users.length);
+	// console.log("Matching user name: ", users[0].full_name);
 
 	// Initialize errorCount in session if doesn't exist
 	if (req.session.errorCount === undefined) {
@@ -31,9 +28,12 @@ const processLogin = async (req, res) => {
 
 	if (users.length > 0) {
 		req.session.errorCount = 0; // Reset errorCount if Login success
-		res.render("admin/admin");
-	} else {
+		const productDataQuantity = await getProductData.getProductDataQuantity();
 
+		res.render("admin/dashboard", { 
+			productQuantity: productDataQuantity,
+			userName: users[0].full_name });
+	} else {
 		/**
 		 * TODO Fix this to match the new database
 		 * With User document, this need to display differently if it finds a matching email

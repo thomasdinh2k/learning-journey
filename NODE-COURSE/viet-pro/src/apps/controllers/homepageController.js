@@ -26,9 +26,10 @@ const getHomepage = (req, res) => {
     <title>Homepage</title>
 </head>
 <body>
-    <h1>Hello Express</h1>
+    <h1>Node JS Learning Project</h1>
     <h3>What's you gonna do?</h3>
-    ${backEndRouteHTML}
+    <button onClick="location.href='#'">ACCESS BUYER SITE</button>
+    <button onClick="location.href='/admin/login'">ACCESS PAGE ADMIN SITE</button>
 </body>
 </html>`);
 }

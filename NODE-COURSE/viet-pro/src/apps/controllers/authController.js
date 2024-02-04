@@ -7,7 +7,7 @@ const userModel = require("../models/user");
 // }
 
 const login = (req, res) => {
-	res.render("admin/login", { error: null });
+	res.render("new_admin/login", { error: null });
 };
 
 const processLogin = async (req, res) => {
@@ -21,6 +21,9 @@ const processLogin = async (req, res) => {
 		password: userPassword,
 	});
 
+
+	console.log("userEmail", userEmail);
+	console.log("userPassword", userPassword);
 	console.log("Matching user is: ", users);
 	console.log("Matching user LENGTH: ", users.length);
 
@@ -49,14 +52,14 @@ const processLogin = async (req, res) => {
 		req.session.errorCount++;
 		if (userEmail == defaultEmail) {
 			// Keep Email the same
-			res.render("admin/login", {
+			res.render("new_admin/login", {
 				error: "Mật khẩu không đúng, vui lòng thử lại",
 				userEmail,
 				userPassword,
 				errorCount: req.session.errorCount,
 			});
 		} else {
-			res.render("admin/login", {
+			res.render("new_admin/login", {
 				error: `Không tìm thấy tài khoản dưới email: [ ${userEmail} ] `,
 				errorCount: req.session.errorCount,
 			});

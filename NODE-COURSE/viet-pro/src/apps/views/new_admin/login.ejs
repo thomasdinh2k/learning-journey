@@ -5,7 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <link rel="stylesheet" href="login.css">
+    <!-- <base href="/static/new_admin/"/>
+    <link rel="stylesheet" href="css/login.css"> -->
+
+    
+    <base href="/static/new_admin/" />
+	<link rel="stylesheet" href="css/login.css" />
+
     <title>Modern Login Page</title>
 </head>
 
@@ -29,12 +35,26 @@
             </form>
         </div>
         <div class="form-container sign-in">
-            <form>
+            <form role="form" method="post" action="/admin/login">
                 <h1>Đăng nhập quản trị</h1>
                 
                 <span>Sử dụng cặp tài khoản & mật khẩu để đăng nhập</span>
-                <input type="email" placeholder="Email">
-                <input type="password" placeholder="Password">
+                <% if (error) { %>
+                    <span style="color: red; font-weight: 600;">Lưu ý: <%= error %></span>
+                <% } %>
+                
+                <input 
+                    type="email" 
+                    placeholder="E-mail"
+                    name="email"
+                    autofocus
+                >
+                <input 
+                    type="password" 
+                    placeholder="Password"
+                    name="password"
+                    required
+                >
                 <a href="#">Bạn quên mật khẩu? Chưa lấy lại được đâu</a>
                 <button>Đăng nhập</button>
             </form>
@@ -49,7 +69,7 @@
                 <div class="toggle-panel toggle-right">
                     <h1>NodeJS chào bạn</h1>
                     <p>Dưới đây là những việc bạn có thể làm</p>
-                    <button class="hidden" id="register">Sign Up</button>
+                    <button class="hidden" id="register">...</button>
                 </div>
             </div>
         </div>

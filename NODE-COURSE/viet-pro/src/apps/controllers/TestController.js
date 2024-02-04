@@ -1,39 +1,17 @@
-const categoryModel = require("../models/category");
-const productModel = require("../models/product");
-const userModel = require("../models/user");
-
-const test_1 = async (req, res) => {
-	// res.send(" Muốn test sản phẩm thì gõ /products ")
-
-	// 	 {
-	//     _id: new ObjectId('5fa3a9b19c0628354039fd6d'),
-	//     email: 'nguyenvana@gmail.com',
-	//     password: '123456',
-	//     role: 'member',
-	//     full_name: 'Nguyễn Văn A'
-	//   },
-
-	const userData = await userModel.find({
-		email: "nguyenvana@gmail.com",
-		password: "123456",
-	});
-
-	console.log(userData);
-	res.send(userData);
+const test_1 = (req, res) => {
+	
+	
+	req.session.Email = "abc@gmail.com";
+	res.send(req.session.Email)
+	console.log("saved");
 };
 
 const test_2 = (req, res) => {
-	categoryModel
-		.find({})
-		.exec()
-		.then((test_Data_output) => console.log(test_Data_output));
+	console.log("session", req.session);
+	console.log(req.session.Email);
+	if (req.session.email) {
+		console.log(req.session.Email);
+	}
 };
 
-const getProductData = (req, res) => {
-	const products = productModel.find();
-
-	console.log(products);
-	// res.send(products);
-};
-
-module.exports = { test_1, test_2, getProductData };
+module.exports = { test_1, test_2 };

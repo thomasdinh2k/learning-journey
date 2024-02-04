@@ -19,20 +19,16 @@ app.use("/static", express.static(config.get("app.static_folder")));
 
 // ==== Thử dùng Section ==== //
 const session = require("express-session");
-app.use(session({
-    resave: false,
-    saveUninitialized: false,
-    secret: 'my own key',
-    cookie: { maxAge: 60000}
-}));
-// Set section
-app.get('/set_session', (req,res) => {
-    // Set an Object to session
-    req.session.User = {
-        website
-    }
-})
 
+app.set("trust proxy", 1); // trust first proxy
+app.use(
+	session({
+		secret: "keyboard cat",
+		resave: true,
+		saveUninitialized: false,
+		cookie: { secure: false },
+	})
+);
 
 
 // Cấu hình router;

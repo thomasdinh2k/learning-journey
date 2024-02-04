@@ -1,11 +1,11 @@
 const userModel = require("../apps/models/user");
 
-async function getUserData(param = "") {
-	return await userModel.find(param);
+async function getUserData( query = {}) {
+	return await userModel.find(query);
 }
 
-async function getUserAmount(param = "") {
-	const data = await getUserData(param);
+async function getUserAmount( query = {}) {
+	const data = await getUserData(query);
 	return data.length;
 }
 

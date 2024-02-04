@@ -1,11 +1,11 @@
 const ProductModel = require("../apps/models/product");
 
-async function getProductData(param = "") {
-	return await ProductModel.find(param);
+async function getProductData(query = {}) {
+	return await ProductModel.find(query);
 }
 
-async function getProductDataQuantity(param = "") {
-	const data = await getProductData(param);
+async function getProductDataQuantity(query = {}) {
+	const data = await getProductData(query);
 	return data.length;
 }
 

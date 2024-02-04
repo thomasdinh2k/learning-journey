@@ -36,9 +36,7 @@ backendRoute.forEach((routePath) => {
 
 router.get("/", getHomepage);
 router.get("/test_1", TestController.test_1);
-router.get("/test2", TestController.test_2);
-
-router.get("/products", TestController.getProductData);
+router.get("/test_2", TestController.test_2);
 
 router.get("/form", formController.getForm);
 router.post("/action_form", formController.handleFormSubmission);

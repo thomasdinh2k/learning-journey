@@ -63,7 +63,16 @@ toggler.addEventListener("change", function () {
 
 // User-dropdown
 let subMenu = document.getElementById("sub-menu");
+let box = document.querySelector(".profile");
 
 function toggleMenu() {
 	subMenu.classList.toggle("open-menu")
 }
+
+// Close the dropdown if the user clicks outside of it
+document.onclick = function (e) {
+	if (!box.contains(e.target)) {
+		console.log("Outside-clicked");
+		subMenu.classList.remove("open-menu");
+	}
+};

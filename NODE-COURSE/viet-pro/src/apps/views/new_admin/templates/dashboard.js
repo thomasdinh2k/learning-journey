@@ -60,3 +60,10 @@ toggler.addEventListener("change", function () {
 		document.body.classList.remove("dark");
 	}
 });
+
+// User-dropdown
+let subMenu = document.getElementById("sub-menu");
+
+function toggleMenu() {
+	subMenu.classList.toggle("open-menu")
+}

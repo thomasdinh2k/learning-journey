@@ -93,9 +93,53 @@
 					<i class="bx bx-bell"></i>
 					<span class="count">12</span>
 				</a>
-				<a href="#" class="profile">
+				<a href="#" class="profile" onclick="toggleMenu()">
 					<img src="./images/user_profile.png" alt="" />
 				</a>
+
+				<!--
+					TODO Đưa đoạn này vào code chính và tìm cách chèn code javascript vào server node để chạy cái này + dark-mode converter
+				-->
+
+				<div class="sub-menu-wrap open-menu" id="sub-menu">
+					<div class="sub-menu">
+						<div class="user-info">
+							<img src="./images/user_profile.png" alt="" />
+							<h3>Đinh Nguyễn Sơn Tùng</h3>
+						</div>
+						<hr />
+						<a
+							href="http://"
+							class="sub-menu-links"
+							target="_blank"
+							rel="noopener noreferrer"
+						>
+							<img src="./images/drop-down/profile.png" />
+							<p>Sửa thông tin cá nhân</p>
+							<span>></span>
+						</a>
+						<a
+							href="http://"
+							class="sub-menu-links"
+							target="_blank"
+							rel="noopener noreferrer"
+						>
+							<img src="./images/drop-down/help.png" />
+							<p>Hỗ trợ</p>
+							<span>></span>
+						</a>
+						<a
+							href="http://"
+							class="sub-menu-links"
+							target="_blank"
+							rel="noopener noreferrer"
+						>
+							<img src="./images/drop-down/logout.png" />
+							<p>Thoát ra</p>
+							<span>></span>
+						</a>
+					</div>
+				</div>
 			</nav>
 			<!-- End of Nav Bar-->
 
@@ -230,8 +274,6 @@
 				</div>
 			</main>
 		</div>
-
-		
 
 		<script src="dashboard.js"></script>
 	</body>

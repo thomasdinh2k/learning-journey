@@ -20,7 +20,9 @@
 		<!-- Main Content -->
 		<div class="content">
 			<!--Nav bar-->
-			<%- include("../new_admin/layout/navbar.ejs") %>
+
+			<%- include("../new_admin/layout/navbar.ejs", {userName: userCredential}) %>
+
 			<!-- End of Nav Bar-->
 
 			<main>

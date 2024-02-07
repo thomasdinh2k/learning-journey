@@ -34,7 +34,7 @@ backendRoute.forEach((routePath) => {
 	createRoute(routePath);
 });
 
-router.get("/", getHomepage);
+// router.get("/", getHomepage);
 router.get("/test_1", TestController.test_1);
 router.get("/test2", TestController.test_2);
 
@@ -44,8 +44,8 @@ router.get("/form", formController.getForm);
 router.post("/action_form", formController.handleFormSubmission);
 
 // Authentication
-router.get("/admin/login", Auth.login);
-router.post("/admin/login", Auth.processLogin);
+router.get("/", Auth.login);
+router.post("/", Auth.processLogin);
 
 router.get("/admin/logout", Auth.logout);
 

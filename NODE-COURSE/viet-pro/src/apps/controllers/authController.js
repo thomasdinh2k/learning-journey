@@ -1,10 +1,6 @@
+const { getUserData } = require("../../common/getUserData");
 const userModel = require("../models/user");
 
-// const testGETuser = async (req, res) => {
-// 	const users = await userModel.find();
-
-// 	console.log(users);
-// }
 
 const login = (req, res) => {
 	res.render("new_admin/login", { error: null });
@@ -21,6 +17,7 @@ const processLogin = async (req, res) => {
 		password: userPassword,
 	});
 
+	const userWithoutPassword = await getUserData({email: userEmail});
 
 	console.log("userEmail", userEmail);
 	console.log("userPassword", userPassword);
@@ -34,7 +31,16 @@ const processLogin = async (req, res) => {
 
 	if (users.length > 0) {
 		req.session.errorCount = 0; // Reset errorCount if Login success
-		res.render("admin/admin");
+		
+		// Try to use 'Session' to store data
+		console.log("USER CREDENTIAL", users[0]);
+		
+		req.session.userCredential = users[0];
+		// res.render("new_admin/dashboard", {
+		// 	product_quantity: "99+", 
+		// });
+
+		res.redirect("/admin/dashboard");
 	} else {
 
 		/**
@@ -43,14 +49,14 @@ const processLogin = async (req, res) => {
 		 */
 		if (req.session.errorCount >= 3) {
 			console.log("Test direct to login failed page");
-			res.render("admin/login_failed", {
+			res.render("new_admin/login", {
 				errorCount: req.session.errorCount,
 				error: "Đã quá số lần thử đăng nhập, vui lòng liên hệ quản trị viên",
 			});
 		}
 
 		req.session.errorCount++;
-		if (userEmail == defaultEmail) {
+		if (userWithoutPassword.length > 0) {
 			// Keep Email the same
 			res.render("new_admin/login", {
 				error: "Mật khẩu không đúng, vui lòng thử lại",
@@ -68,7 +74,7 @@ const processLogin = async (req, res) => {
 };
 
 const logout = (req, res) => {
-	res.send("admin/logout");
+	res.send("/");
 };
 
 module.exports = {

@@ -20,7 +20,7 @@ app.use("/static", express.static(config.get("app.static_folder")));
 const session = require("express-session");
 app.use(
 	session({
-		resave: false,
+		resave: true,
 		saveUninitialized: false,
 		secret: "my own key",
 		cookie: { maxAge: 60000 },

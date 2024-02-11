@@ -5,14 +5,6 @@ const dashboard = async (req, res) => {
 
 	const userCredential = req.session.userCredential
 
-	// let userCredential = {
-	// 	_id: "5fa434bfceb043cc721e41d4",
-	// 	email: "nguyenvanf@gmail.com",
-	// 	password: "123456",
-	// 	role: "member",
-	// 	full_name: "Nguyễn Văn F",
-	// };
-
 	res.render("new_admin/dashboard", {
 		product_quantity: products.length,
 		userCredential,

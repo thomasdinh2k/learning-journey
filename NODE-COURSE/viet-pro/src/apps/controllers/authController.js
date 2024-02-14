@@ -3,7 +3,7 @@ const userModel = require("../models/user");
 
 
 const login = (req, res) => {
-	res.render("new_admin/login", { error: null });
+	res.render("new_admin/Components/login", { error: null });
 };
 
 const processLogin = async (req, res) => {
@@ -36,10 +36,6 @@ const processLogin = async (req, res) => {
 		console.log("USER CREDENTIAL", users[0]);
 		
 		req.session.userCredential = users[0];
-		// res.render("new_admin/dashboard", {
-		// 	product_quantity: "99+", 
-		// });
-
 		res.redirect("/admin/dashboard");
 	} else {
 
@@ -49,7 +45,7 @@ const processLogin = async (req, res) => {
 		 */
 		if (req.session.errorCount >= 3) {
 			console.log("Test direct to login failed page");
-			res.render("new_admin/login", {
+			res.render("new_admin/Components/login", {
 				errorCount: req.session.errorCount,
 				error: "Đã quá số lần thử đăng nhập, vui lòng liên hệ quản trị viên",
 			});
@@ -58,14 +54,14 @@ const processLogin = async (req, res) => {
 		req.session.errorCount++;
 		if (userWithoutPassword.length > 0) {
 			// Keep Email the same
-			res.render("new_admin/login", {
+			res.render("new_admin/Components/login", {
 				error: "Mật khẩu không đúng, vui lòng thử lại",
 				userEmail,
 				userPassword,
 				errorCount: req.session.errorCount,
 			});
 		} else {
-			res.render("new_admin/login", {
+			res.render("new_admin/Components/login", {
 				error: `Không tìm thấy tài khoản dưới email: [ ${userEmail} ] `,
 				errorCount: req.session.errorCount,
 			});

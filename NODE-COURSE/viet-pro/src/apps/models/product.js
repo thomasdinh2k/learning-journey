@@ -51,6 +51,9 @@ const productSchema = new mongoose.Schema(
 			type: Boolean,
 			default: true,
 		},
+		sequentialId: {
+			type: Number,
+		}
 	},
 	{
 		timestamps: true,

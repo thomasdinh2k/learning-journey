@@ -6,7 +6,7 @@
 				type="search"
 				name=""
 				id=""
-				placeholder=" Xin chào bé <%= userCredential['full_name'] %>"
+				placeholder=" Xin chào bé <%= userCredential ? userCredential['full_name'] : "Guest" %>"
 			/>
 			<button class="search-btn" type="submit">
 				<i class="bx bx-search"></i>
@@ -26,7 +26,7 @@
 		<div class="sub-menu">
 			<div class="user-info">
 				<img src="img/user_profile.png" alt="" />
-				<h3><%= userCredential['full_name'] %></h3>
+				<h3><%= userCredential ? userCredential['full_name'] : "Guest" %></h3>
 			</div>
 			<hr />
 			<a

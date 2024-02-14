@@ -792,6 +792,10 @@ body {
 	padding: 12px 15px;
 }
 
+.styled-table td {
+	height: 155px;
+}
+
 .styled-table tbody tr {
 	border-bottom: thin solid #dddddd;
 }
@@ -819,9 +823,9 @@ body {
 .button,
 .links,
 .link {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 .pagination {
@@ -829,11 +833,12 @@ body {
 }
 
 .pagination {
-	padding: 20px;
+	padding: 20px 20px;
+	padding-bottom: 0px !important;
 	border-radius: 8px;
 	column-gap: 12px;
-	background: #fff;
-	box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+	/* background: #fff; */
+	/* box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1); */
 }
 .button {
 	border: none;
@@ -870,4 +875,11 @@ body {
 .link.active {
 	color: #fff;
 	background: #009879;
+}
+
+.panel-body {
+	background-color: #ffffffb8;
+	border-radius: 20px;
+	padding: 20px;
+	margin: 20px;
 }

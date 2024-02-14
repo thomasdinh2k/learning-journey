@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link
+			href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+			rel="stylesheet"
+		/>
+		<base href="/static/" />
+		<link rel="stylesheet" href="new_admin/css/dashboard.css" />
+
+		<title>Main Dashboard</title>
+	</head>
+	<body>
+		<!-- Sidebar -->
+		<%- include("../../layout/sidebar.ejs") %>
+		<!-- End of Sidebar -->
+
+		<!-- Main Content -->
+		<div class="content">
+			<!--Nav bar-->
+
+			<%- include("../../layout/navbar.ejs", {userName: userCredential})%>
+
+			<!-- End of Nav Bar-->
+
+			<main>
+				<!-- Header -->
+
+				<%- include("../../layout/header.ejs", { title: "Quản lý sản phẩm", breadcrumb: ["admin", "all_products"]}) %>
+			</main>
+			<!-- End of Header -->
+			<!-- Page Content -->
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="panel panel-default">
+						<div class="panel-body">
+							<table
+								data-toolbar="#toolbar"
+								data-toggle="table"
+								class="styled-table"
+							>
+								<thead>
+									<tr class="active-row">
+										<th data-field="id" data-sortable="true">ID</th>
+										<th data-field="name" data-sortable="true">Tên sản phẩm</th>
+										<th data-field="price" data-sortable="true">Giá</th>
+										<th>Ảnh sản phẩm</th>
+										<th>Trạng thái</th>
+										<th>Danh mục</th>
+										<th>Hành động</th>
+									</tr>
+								</thead>
+								<tbody>
+									<!-- Product Row --!>
+
+									<% for (let product of productData) { %>
+										<%- include("./product_row.ejs", { data: product }) %>
+
+
+
+
+
+									<% } %>
+
+								</tbody>
+							</table>
+
+							<div class="pagination">
+								<button class="button" id="startBtn" disabled>
+									<i class="bx bx-chevrons-left"></i>
+								</button>
+								<button class="button prevNext" id="prev" disabled>
+									<i class="bx bx-chevron-left"></i>
+								</button>
+								<div class="links">
+									<a href="#" class="link active">1</a>
+									<a href="#" class="link">2</a>
+									<a href="#" class="link">3</a>
+									<a href="#" class="link">4</a>
+									<a href="#" class="link">5</a>
+								</div>
+								<button class="button prevNext" id="next">
+									<i class="bx bx-chevron-right"></i>
+								</button>
+								<button class="button" id="endBtn">
+									<i class="bx bx-chevrons-right"></i>
+								</button>
+							</div>
+							<!-- Page navigation -->
+
+							<!-- <ul class="paginations">
+							<li class="active"><span>1</span></li>
+							<li class=""><a href="#">2</a></li>
+							<li class=""><a href="#">3</a></li>
+							<li class=""><a href="#">4</a></li>
+						</ul> -->
+						</div>
+						<!-- <div class="panel-footer">
+							<nav aria-label="Page navigation example">
+								<ul class="pagination">
+									<li class="page-item">
+										<a class="page-link" href="#">&laquo;</a>
+									</li>
+									<li class="page-item"><a class="page-link" href="#">1</a></li>
+									<li class="page-item"><a class="page-link" href="#">2</a></li>
+									<li class="page-item"><a class="page-link" href="#">3</a></li>
+									<li class="page-item">
+										<a class="page-link" href="#">&raquo;</a>
+									</li>
+								</ul>
+							</nav>
+						</div> -->
+					</div>
+				</div>
+			</div>
+			<!-- End of page content-->
+		</div>
+
+		<script src="js/dashboard.js"></script>
+	</body>
+</html>

@@ -6,7 +6,7 @@ const formController = require("../apps/controllers/formController");
 const getHomepage = require("../apps/controllers/homepageController");
 const TestController = require("../apps/controllers/TestController");
 const Auth = require("../apps/controllers/authController");
-const Dashboard = require("../apps/controllers/dashboardController");
+const DashboardController = require("../apps/controllers/dashboardController");
 const ProductController = require("../apps/controllers/productController");
 
 // Import Controllers or Handlers
@@ -18,7 +18,7 @@ const backendRoute = [
 	// "/admin/login",
 	// "/admin/logout",
 	// "/admin/dashboard",
-	"/admin/products",
+	// "/admin/products",
 	"/admin/products/create",
 	"/admin/products/edit",
 	"/admin/products/delete",
@@ -50,9 +50,11 @@ router.post("/", Auth.processLogin);
 router.get("/admin/logout", Auth.logout);
 
 // Dashboard
-router.get("/admin/dashboard", Dashboard.dashboard);
+router.get("/admin/dashboard", DashboardController.dashboard);
 
-router.get("/admin", Dashboard.testAnnounce);
-router.get("/admin/products/index", ProductController.index);
+// Product Display
+router.get("/admin/products", ProductController.productDisplay);
+
+
 // Export
 module.exports = router;

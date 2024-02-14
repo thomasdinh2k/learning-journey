@@ -21,7 +21,7 @@ const session = require("express-session");
 app.use(
 	session({
 		resave: true,
-		saveUninitialized: false,
+		saveUninitialized: true,
 		secret: "my own key",
 		cookie: { maxAge: 60000 },
 	})
@@ -32,6 +32,14 @@ app.get("/set_session", (req, res) => {
 	// Set an Object to session
 	req.session.User = {
 		website,
+	};
+
+	req.session.userCredential = {
+		_id: "5fa434bfceb043cc721e41d4",
+		email: "nguyenvanf@gmail.com",
+		password: "123456",
+		role: "member",
+		full_name: "Nguyễn Văn F",
 	};
 });
 
@@ -45,3 +53,25 @@ const router = require("../routers/web");
 app.use(router);
 
 module.exports = { app };
+
+// {
+//     _id: new ObjectId('5f8a18ccceec600f67dcb3de'),
+//     thumbnail: 'products/OPPO-A3s–16GB-Red.png',
+//     description: 'Biết bàn tủ kim hết độc chín đánh thích. Bàn đồng là đã tủ lầu bàn cái bơi bốn. Tủ em khâu mướn nhà. Đồng mua giết đánh mười.\n' +
+//       ' \rCon quê biển làm xuồng tôi thì ghét xuồng lầu. Đá nhà núi viết gió xuồng. May ghế bơi lầu gió xanh viết bảy thích tàu. Vẽ con độc hàng vàng thương hương. Đá máy giày may bạn bảy đồng không dép mây.\n' +
+//       ' \rMáy xe dép biết độc con phá tô khâu. Mười chìm nón anh mượn chìm là ngọt thuyền biết. Vàng ác xuồng tám đỏ ờ.',
+//     price: 22244123,
+//     cat_id: new ObjectId('5f8a0b89dd21e25249b62964'),
+//     status: 'Máy Mới 100%',
+//     featured: false,
+//     promotion: 'Dán Màn Hình 4D',
+//     warranty: '12 Tháng',
+//     accessories: 'Hộp, sách, sạc, cáp, tai nghe',
+//     is_stock: false,
+//     name: 'OPPO A3s–16GB Red',
+//     slug: 'oppo-a3s16gb-red',
+//     createdAt: 2020-10-16T22:03:56.943Z,
+//     updatedAt: 2020-10-16T22:03:56.943Z,
+//     __v: 0,
+//     sequentialId: 73
+//   },

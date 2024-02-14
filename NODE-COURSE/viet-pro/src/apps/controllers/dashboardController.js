@@ -5,7 +5,7 @@ const dashboard = async (req, res) => {
 
 	const userCredential = req.session.userCredential
 
-	res.render("new_admin/dashboard", {
+	res.render("new_admin/Components/dashboard", {
 		product_quantity: products.length,
 		userCredential,
 	});

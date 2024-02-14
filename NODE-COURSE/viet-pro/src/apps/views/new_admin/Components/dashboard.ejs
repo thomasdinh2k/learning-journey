@@ -14,21 +14,21 @@
 	</head>
 	<body>
 		<!-- Sidebar -->
-		<%- include("../new_admin/layout/sidebar.ejs") %>
+		<%- include("../layout/sidebar.ejs") %>
 		<!-- End of Sidebar -->
 
 		<!-- Main Content -->
 		<div class="content">
 			<!--Nav bar-->
 
-			<%- include("../new_admin/layout/navbar.ejs", {userName: userCredential}) %>
+			<%- include("../layout/navbar.ejs", {userName: userCredential}) %>
 
 			<!-- End of Nav Bar-->
 
 			<main>
 				<!-- Header -->
 
-				<%- include("../new_admin/layout/header.ejs", { title: "Trang chủ quản trị", breadcrumb: ["admin", "dashboard"]}) %>
+				<%- include("../layout/header.ejs", { title: "Trang chủ quản trị", breadcrumb: ["admin", "dashboard"]}) %>
 
 				<!-- End of Header -->
 				<!-- Insights -->
@@ -144,6 +144,8 @@
 					</div>
 
 					<!-- End of Reminders-->
+
+					<!-- <%- include("../layout/sidebar.ejs") %> -->
 				</div>
 			</main>
 		</div>

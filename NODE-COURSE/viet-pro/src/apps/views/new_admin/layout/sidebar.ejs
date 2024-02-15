@@ -11,7 +11,7 @@
 			</a>
 
 			<ul class="side-menu">
-				<li class="active">
+				<li class=" <%= currentPage === "dashboard" && "active" %>  ">
 					<a href="/admin/dashboard"><i class="bx bxs-dashboard"></i>Dashboard</a>
 				</li>
 				<li>
@@ -24,7 +24,7 @@
 						><i class="bx bx-store-alt"></i>Quản lý danh mục</a
 					>
 				</li>
-				<li>
+				<li class="<%= currentPage === "products" && "active" %>">
 					<a href="/admin/products" class=""
 						><i class="bx bx-store-alt"></i>Quản lý sản phẩm</a
 					>

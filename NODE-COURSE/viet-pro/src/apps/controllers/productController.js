@@ -1,19 +1,32 @@
-const { getProductData } = require("../../common/getProductData")
+const { getProductData } = require("../../common/getProductData");
 
 const productDisplay = async (req, res) => {
-    const userCredential = req.session.userCredential;
+	// Session
+	const userCredential = req.session.userCredential;
 
-    const data = await getProductData();
+	// Extract query parameter
+	const { page, limit, category } = req.query;
 
-    console.log("Product_feed", data);
+	// Calculate Pagination
+	const pageNumber = parseInt(page, 10) || 1;
+	const productPerPage = parseInt(limit, 10) || 5;
+	const skip = pageNumber * productPerPage - productPerPage;
 
-    console.log("get_user-credential", userCredential);
-    res.render("new_admin/Components/product/product_display", {userCredential, productData: data});
-}
+	const test = { pageNumber, productPerPage, skip, category };
+	console.log("query test", test);
 
+	// Query data
+	const data = await getProductData({ limit: limit, skip: skip });
+	console.log("Product_feed", data.length);
+
+	res.render("new_admin/Components/product/product_display", {
+		userCredential,
+		productData: data,
+	});
+};
 
 const index = (req, res) => {
-    res.send("OK")
+	res.send("OK");
 };
 const create = (req, res) => {};
 const edit = (req, res) => {};
@@ -24,4 +37,12 @@ const ProductController = async (req, res) => {
 	res.send("ProductController");
 };
 
-module.exports = { productDisplay,ProductController, create, index, edit, update, del };
+module.exports = {
+	productDisplay,
+	ProductController,
+	create,
+	index,
+	edit,
+	update,
+	del,
+};

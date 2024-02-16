@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
-  
+
   <link rel="stylesheet" href="/static/new_admin/css/dashboard.css" />
 
   <title>Main Dashboard</title>
@@ -48,49 +48,60 @@
                 </tr>
               </thead>
               <tbody>
-                <!-- Product Row --!>
-
-									<% for (let product of productData) { %>
-										<%- include("./product_row.ejs", { data: product }) %>
 
 
+                <% for (let product of productData) { %>
+                <%- include("./product_row.ejs", { data: product }) %>
 
 
 
-									<% } %>
 
-								</tbody>
-							</table>
 
-							<div class="pagination">
-								<button class="button" id="startBtn" disabled>
-									<i class="bx bx-chevrons-left"></i>
-								</button>
-								<button class="button prevNext" id="prev" disabled>
-									<i class="bx bx-chevron-left"></i>
-								</button>
-								<div class="links">
-									<a href="?page=1" class="link active">1</a>
+                <% } %>
+
+              </tbody>
+            </table>
+
+            <div class="pagination">
+              <button class="button" id="startBtn" onclick="location.href='?page=1'" <% if (currentPage == 1) { %> disabled <% } %>>
+                <i class="bx bx-chevrons-left"></i>
+              </button>
+              <button class="button prevNext" id="prev" onclick="location.href='?page=<%= currentPage - 1%>'" <% if (currentPage <= 1) { %>
+               disabled
+              <% } %>>
+                <i class="bx bx-chevron-left"></i>
+              </button>
+              <div class="links">
+
+                <% pageList.forEach(element => { %>
+                <a href="?page=<%= element %>" class="link <%= currentPage == element ? "active" : '' %>"><%= element %></a>
+                <% }) %>
+                <!-- <p>CurrentPage: <%=currentPage%> </p> -->
+                <!-- <a href="?page=1" class="link active">1</a>
 									<a href="?page=2" class="link">2</a>
 									<a href="?page=3" class="link">3</a>
 									<a href="?page=4" class="link">4</a>
-									<a href="?page=5" class="link">5</a>
-								</div>
-								<button class="button prevNext" id="next">
-									<i class="bx bx-chevron-right"></i>
-								</button>
-								<button class="button" id="endBtn">
-									<i class="bx bx-chevrons-right"></i>
-								</button>
-							</div>
-							
+									<a href="?page=5" class="link">5</a> -->
+              </div>
+              <button class="button prevNext" id="next" onclick="location.href='?page=<%= currentPage + 1 %>'" <% if (currentPage == pageList.slice(-1)) { %>
+               disabled
+              <% } %>>
+                <i class="bx bx-chevron-right"></i>
+              </button>
+              <button class="button" id="endBtn" onclick="location.href='?page=<%= pageList.slice(-1) %>'" <% if (currentPage == pageList.slice(-1)) { %>
+                disabled
+               <% } %>>
+                <i class="bx bx-chevrons-right"></i>
+              </button>
+            </div>
+
+          </div>
         </div>
       </div>
+      <!-- End of page content-->
     </div>
-    <!-- End of page content-->
-  </div>
 
-  <script src="js/dashboard.js"></script>
+    <script src="js/dashboard.js"></script>
 </body>
 
 </html>

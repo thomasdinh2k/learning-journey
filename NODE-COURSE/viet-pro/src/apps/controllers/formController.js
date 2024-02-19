@@ -24,7 +24,7 @@ const getForm = (req, res) => {
 };
 
 const handleFormSubmission = (req, res) => {
-	const content = req.body.text;
+	const content             = req.body.text;
 
 	res.send(`Data <b>${content}</b> submitted successfully`);
 };

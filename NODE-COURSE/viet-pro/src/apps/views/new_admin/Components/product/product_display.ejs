@@ -1,15 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
-
-  <link rel="stylesheet" href="/static/new_admin/css/dashboard.css" />
-
-  <title>Main Dashboard</title>
-</head>
+<%- include("../../layout/HTMLhead.ejs", {currentPage: ""}) %>
 
 <body>
   <!-- Sidebar -->
@@ -26,21 +15,28 @@
 
     <main>
       <!-- Header -->
-
+      <% if (currentPage == 1) { %>
       <%- include("../../layout/header.ejs", { title: "Quản lý sản phẩm", breadcrumb: ["admin", "all_products"]}) %>
+      <% } else { %>
+
+      <%- include("../../layout/header.ejs", { title: `Quản lý sản phẩm - Trang ${currentPage}`, breadcrumb: ["admin", `all_products_page_${currentPage}`] }) %>
+
+      <%}%>
     </main>
     <!-- End of Header -->
     <!-- Page Content -->
     <div class="row">
       <div class="col-lg-12">
-        <a href="#" class="add-btn">
-          <!-- <i class="bx bx-cloud-download"></i> -->
-          <i class='bx bx-plus-medical'></i>
-          <span>Thêm sản phẩm mới</span>
-        </a>
+        
         <div class="panel panel-default">
           <div class="panel-body">
 
+            <div class="buttons-container">
+              <button class="btn btn-add">
+                <i class='bx bxs-add-to-queue' ></i>Thêm sản phẩm
+              </button>
+              <button class="btn btn-export"><i class='bx bxs-select-multiple' ></i> Chọn tất cả</button>
+            </div>
 
             <table data-toolbar="#toolbar" data-toggle="table" class="styled-table">
               <thead>
@@ -58,51 +54,52 @@
 
 
                 <% for (let product of productData) { %>
-                <%- include("./product_row.ejs", { data: product }) %>
+      <%- include("./product_row.ejs", { data: product }) %>
 
 
 
 
 
-                <% } %>
+      <% } %>
 
-              </tbody>
-            </table>
+      </tbody>
+      </table>
 
-            <div class="pagination">
-              <button class="button" id="startBtn" onclick="location.href='?page=1'" <% if (currentPage == 1) { %> disabled <% } %>>
-                <i class="bx bx-chevrons-left"></i>
-              </button>
-              <button class="button prevNext" id="prev" onclick="location.href='?page=<%= currentPage - 1%>'" <% if (currentPage <= 1) { %> disabled <% } %>>
-                <i class="bx bx-chevron-left"></i>
-              </button>
-              <div class="links">
+      <div class="pagination">
+        <button class="button" id="startBtn" onclick="location.href='?page=1'" <% if (currentPage == 1) { %> disabled <% } %>>
+          <i class="bx bx-chevrons-left"></i>
+        </button>
+        <button class="button prevNext" id="prev" onclick="location.href='?page=<%= currentPage - 1%>'" <% if (currentPage <= 1) { %> disabled <% } %>>
+          <i class="bx bx-chevron-left"></i>
+        </button>
+        <div class="links">
 
-                <% pageList.forEach(element => { %>
-                <a href="?page=<%= element %>" class="link <%= currentPage == element ? "active" : '' %>"><%= element %></a>
-                <% }) %>
-                <!-- <p>CurrentPage: <%=currentPage%> </p> -->
-                <!-- <a href="?page=1" class="link active">1</a>
+          <% pageList.forEach(element => { %>
+          <a href="?page=<%= element %>" class="link <%= currentPage == element ? "active" : '' %>"><%= element %></a>
+          <% }) %>
+          <input type="number" class="page-input" placeholder="Page number">
+          <!-- <p>CurrentPage: <%=currentPage%> </p> -->
+          <!-- <a href="?page=1" class="link active">1</a>
 									<a href="?page=2" class="link">2</a>
 									<a href="?page=3" class="link">3</a>
 									<a href="?page=4" class="link">4</a>
 									<a href="?page=5" class="link">5</a> -->
-              </div>
-              <button class="button prevNext" id="next" onclick="location.href='?page=<%= currentPage + 1 %>'" <% if (currentPage == pageList.slice(-1)) { %> disabled <% } %>>
-                <i class="bx bx-chevron-right"></i>
-              </button>
-              <button class="button" id="endBtn" onclick="location.href='?page=<%= pageList.slice(-1) %>'" <% if (currentPage == pageList.slice(-1)) { %> disabled <% } %>>
-                <i class="bx bx-chevrons-right"></i>
-              </button>
-            </div>
-
-          </div>
         </div>
+        <button class="button prevNext" id="next" onclick="location.href='?page=<%= currentPage + 1 %>'" <% if (currentPage == pageList.slice(-1)) { %> disabled <% } %>>
+          <i class="bx bx-chevron-right"></i>
+        </button>
+        <button class="button" id="endBtn" onclick="location.href='?page=<%= pageList.slice(-1) %>'" <% if (currentPage == pageList.slice(-1)) { %> disabled <% } %>>
+          <i class="bx bx-chevrons-right"></i>
+        </button>
       </div>
-      <!-- End of page content-->
-    </div>
 
-    <script src="js/dashboard.js"></script>
+  </div>
+  </div>
+  </div>
+  <!-- End of page content-->
+  </div>
+  <%- include("../../layout/HTMLfoot.ejs") %>
+  <!-- <script src="js/dashboard.js"></script>
 </body>
 
-</html>
+</html> -->

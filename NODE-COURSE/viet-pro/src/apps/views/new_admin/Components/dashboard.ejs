@@ -1,155 +1,143 @@
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link
-			href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
-			rel="stylesheet"
-		/>
-		<base href="/static/new_admin/" />
-		<link rel="stylesheet" href="css/dashboard.css" />
-
-		<title>Main Dashboard</title>
-	</head>
+	<%- include("../layout/HTMLhead.ejs", {currentPage: "Trang chủ quản trị"}) %>
 	<body>
-		<!-- Sidebar -->
-		<%- include("../layout/sidebar.ejs", {currentPage: "dashboard"}) %>
-		<!-- End of Sidebar -->
+	  <!-- Sidebar -->
+	  <%- include("../layout/sidebar.ejs", {currentPage: "dashboard"}) %>
+	  <!-- End of Sidebar -->
 
-		<!-- Main Content -->
-		<div class="content">
-			<!--Nav bar-->
+	  <!-- Main Content -->
+	  <div class="content">
+	    <!--Nav bar-->
 
-			<%- include("../layout/navbar.ejs", {userName: userCredential}) %>
+	    <%- include("../layout/navbar.ejs", {userName: userCredential}) %>
 
-			<!-- End of Nav Bar-->
+	    <!-- End of Nav Bar-->
 
-			<main>
-				<!-- Header -->
+	    <main>
+	      <!-- Header -->
 
-				<%- include("../layout/header.ejs", { title: "Trang chủ quản trị", breadcrumb: ["admin", "dashboard"]}) %>
+	      <%- include("../layout/header.ejs", { title: "Trang chủ quản trị", breadcrumb: ["admin", "dashboard"]}) %>
 
-				<!-- End of Header -->
-				<!-- Insights -->
-				<ul class="insights">
-					<li>
-						<i class="bx bx-cart-add"></i>
-						<span class="info">
-							<h3><%= product_quantity%></h3>
-							<p>Sản phẩm</p>
-						</span>
-					</li>
-					<li>
-						<i class="bx bx-chat"></i>
-						<span class="info">
-							<h3>0</h3>
-							<p>Bình luận</p>
-						</span>
-					</li>
-					<li>
-						<i class="bx bx-user"></i>
-						<span class="info">
-							<h3>0</h3>
-							<p>Thành viên</p>
-						</span>
-					</li>
-					<li>
-						<i class="bx bx-purchase-tag"></i>
-						<span class="info">
-							<h3>0</h3>
-							<p>Quảng cáo</p>
-						</span>
-					</li>
-				</ul>
-				<!-- End of Insights -->
+	      <!-- End of Header -->
+	      <!-- Insights -->
+	      <ul class="insights">
+	        <li>
+	          <i class="bx bx-cart-add"></i>
+	          <span class="info">
+	            <h3><%= product_quantity%></h3>
+	            <p>Sản phẩm</p>
+	          </span>
+	        </li>
+	        <li>
+	          <i class="bx bx-chat"></i>
+	          <span class="info">
+	            <h3>0</h3>
+	            <p>Bình luận</p>
+	          </span>
+	        </li>
+	        <li>
+	          <i class="bx bx-user"></i>
+	          <span class="info">
+	            <h3>0</h3>
+	            <p>Thành viên</p>
+	          </span>
+	        </li>
+	        <li>
+	          <i class="bx bx-purchase-tag"></i>
+	          <span class="info">
+	            <h3>0</h3>
+	            <p>Quảng cáo</p>
+	          </span>
+	        </li>
+	      </ul>
+	      <!-- End of Insights -->
 
-				<div class="bottom-data">
-					<div class="orders">
-						<div class="header">
-							<i class="bx bx-receipt"></i>
-							<h3>Đơn hàng gần đây</h3>
-							<i class="bx bx-filter"></i>
-							<i class="bx bx-search"></i>
-						</div>
-						<table>
-							<thead>
-								<tr>
-									<th>User</th>
-									<th>Order Date</th>
-									<th>Status</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td>
-										<img src="img/iphone.webp" />
-										<p>iPhone 15 Pro Max</p>
-									</td>
-									<td>14-08-2023</td>
-									<td><span class="status completed">Completed</span></td>
-								</tr>
-								<tr>
-									<td>
-										<img src="img/iphone.webp" />
-										<p>iPhone 15 Pro Max</p>
-									</td>
-									<td>14-08-2023</td>
-									<td><span class="status pending">Pending</span></td>
-								</tr>
-								<tr>
-									<td>
-										<img src="img/iphone.webp" />
-										<p>iPhone 15 Pro Max</p>
-									</td>
-									<td>14-08-2023</td>
-									<td><span class="status process">Processing</span></td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
+	      <div class="bottom-data">
+	        <div class="orders">
+	          <div class="header">
+	            <i class="bx bx-receipt"></i>
+	            <h3>Đơn hàng gần đây</h3>
+	            <i class="bx bx-filter"></i>
+	            <i class="bx bx-search"></i>
+	          </div>
+	          <table>
+	            <thead>
+	              <tr>
+	                <th>User</th>
+	                <th>Order Date</th>
+	                <th>Status</th>
+	              </tr>
+	            </thead>
+	            <tbody>
+	              <tr>
+	                <td>
+	                  <img src="img/iphone.webp" />
+	                  <p>iPhone 15 Pro Max</p>
+	                </td>
+	                <td>14-08-2023</td>
+	                <td><span class="status completed">Completed</span></td>
+	              </tr>
+	              <tr>
+	                <td>
+	                  <img src="img/iphone.webp" />
+	                  <p>iPhone 15 Pro Max</p>
+	                </td>
+	                <td>14-08-2023</td>
+	                <td><span class="status pending">Pending</span></td>
+	              </tr>
+	              <tr>
+	                <td>
+	                  <img src="img/iphone.webp" />
+	                  <p>iPhone 15 Pro Max</p>
+	                </td>
+	                <td>14-08-2023</td>
+	                <td><span class="status process">Processing</span></td>
+	              </tr>
+	            </tbody>
+	          </table>
+	        </div>
 
-					<!-- Reminders -->
-					<div class="reminders">
-						<div class="header">
-							<i class="bx bx-note"></i>
-							<h3>Trạng thái hệ thống</h3>
-							<i class="bx bx-filter"></i>
-							<i class="bx bx-plus"></i>
-						</div>
-						<ul class="task-list">
-							<li class="not-completed">
-								<div class="task-title">
-									<!-- <i class="bx bx-check-circle"></i> -->
-									<i class="bx bx-x-circle"></i>
-									<p>Router Dashboard</p>
-								</div>
-								<i class="bx bx-dots-vertical-rounded"></i>
-							</li>
-							<li class="not-completed">
-								<div class="task-title">
-									<i class="bx bx-x-circle"></i>
-									<p>Giải nén Database và tạo Model</p>
-								</div>
-								<i class="bx bx-dots-vertical-rounded"></i>
-							</li>
-							<li class="completed">
-								<div class="task-title">
-									<i class="bx bx-check-circle"></i>
-									<p>Bốc phét và tán gái</p>
-								</div>
-								<i class="bx bx-dots-vertical-rounded"></i>
-							</li>
-						</ul>
-					</div>
+	        <!-- Reminders -->
+	        <div class="reminders">
+	          <div class="header">
+	            <i class="bx bx-note"></i>
+	            <h3>Trạng thái hệ thống</h3>
+	            <i class="bx bx-filter"></i>
+	            <i class="bx bx-plus"></i>
+	          </div>
+	          <ul class="task-list">
+	            <li class="not-completed">
+	              <div class="task-title">
+	                <!-- <i class="bx bx-check-circle"></i> -->
+	                <i class="bx bx-x-circle"></i>
+	                <p>Router Dashboard</p>
+	              </div>
+	              <i class="bx bx-dots-vertical-rounded"></i>
+	            </li>
+	            <li class="not-completed">
+	              <div class="task-title">
+	                <i class="bx bx-x-circle"></i>
+	                <p>Giải nén Database và tạo Model</p>
+	              </div>
+	              <i class="bx bx-dots-vertical-rounded"></i>
+	            </li>
+	            <li class="completed">
+	              <div class="task-title">
+	                <i class="bx bx-check-circle"></i>
+	                <p>Bốc phét và tán gái</p>
+	              </div>
+	              <i class="bx bx-dots-vertical-rounded"></i>
+	            </li>
+	          </ul>
+	        </div>
 
-					<!-- End of Reminders-->
+	        <!-- End of Reminders-->
 
-					
-				</div>
-			</main>
-		</div>
 
-		<script src="js/dashboard.js"></script>
+	      </div>
+	    </main>
+	  </div>
+	<%- include("../layout/HTMLfoot.ejs") %>  
+	  <!-- <script src="js/dashboard.js"></script>
 	</body>
-</html>
+
+	</html> -->

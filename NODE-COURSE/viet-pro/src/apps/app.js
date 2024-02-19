@@ -15,6 +15,11 @@ app.use(express.urlencoded({ extended: true }));
 // Serve static file from 'public' directory (Cấu hình đường dẫn tĩnh)
 app.use("/static", express.static(config.get("app.static_folder")));
 // app.use("/static", express.static(`${__dirname}/../public`));
+// app.use(express.static(path.join(__dirname, "public")));
+// app.use(express.static(__dirname + "./public/"));
+
+// const path = require("path");
+// app.use("/static", express.static(path.join(__dirname, "public")));
 
 // ==== Thử dùng Section ==== //
 const session = require("express-session");

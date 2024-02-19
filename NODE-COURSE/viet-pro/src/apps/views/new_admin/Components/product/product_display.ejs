@@ -77,18 +77,19 @@
           <% pageList.forEach(element => { %>
           <a href="?page=<%= element %>" class="link <%= currentPage == element ? "active" : '' %>"><%= element %></a>
           <% }) %>
-          <input type="number" class="page-input" placeholder="Page number">
-          <!-- <p>CurrentPage: <%=currentPage%> </p> -->
-          <!-- <a href="?page=1" class="link active">1</a>
-									<a href="?page=2" class="link">2</a>
-									<a href="?page=3" class="link">3</a>
-									<a href="?page=4" class="link">4</a>
-									<a href="?page=5" class="link">5</a> -->
+
+          <div class="pop-up" id="pop-up">
+            Press <span>"Enter"</span> to go!
+          </div>
+          <input type="number" class="page-input" placeholder=".../<%= totalPageNum %>" id="pageInput" onChange="goToPage()">
+
         </div>
-        <button class="button prevNext" id="next" onclick="location.href='?page=<%= currentPage + 1 %>'" <% if (currentPage == pageList.slice(-1)) { %> disabled <% } %>>
+
+
+        <button class="button prevNext" id="next" onclick="location.href='?page=<%= currentPage + 1 %>'" <% if (currentPage == totalPageNum) { %> disabled <% } %>>
           <i class="bx bx-chevron-right"></i>
         </button>
-        <button class="button" id="endBtn" onclick="location.href='?page=<%= pageList.slice(-1) %>'" <% if (currentPage == pageList.slice(-1)) { %> disabled <% } %>>
+        <button class="button" id="endBtn" onclick="location.href='?page=<%= totalPageNum %>'" <% if (currentPage == totalPageNum) { %> disabled <% } %>>
           <i class="bx bx-chevrons-right"></i>
         </button>
       </div>

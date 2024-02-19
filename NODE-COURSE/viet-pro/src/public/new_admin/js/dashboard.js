@@ -66,7 +66,7 @@ let subMenu = document.getElementById("sub-menu");
 let box = document.querySelector(".profile");
 
 function toggleMenu() {
-	subMenu.classList.toggle("open-menu")
+	subMenu.classList.toggle("open-menu");
 }
 
 // Close the dropdown if the user clicks outside of it
@@ -76,3 +76,24 @@ document.onclick = function (e) {
 		subMenu.classList.remove("open-menu");
 	}
 };
+
+// Go to Page number #Pagination
+
+document.getElementById("pageInput").addEventListener("focus", function () {
+	document.getElementById("pop-up").style.display = "block"; // Show the popup
+});
+
+document.getElementById("pageInput").addEventListener("blur", function () {
+	document.getElementById("pop-up").style.display = "none"; // Show the popup
+});
+
+function goToPage() {
+	const input = document.getElementById("pageInput");
+	const pageNumber = input.value; // Get the user input
+
+	console.log(pageNumber);
+
+	if (pageNumber) {
+		window.location.href = `/admin/products?page=${pageNumber}`;
+	}
+}

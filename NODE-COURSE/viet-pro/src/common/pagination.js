@@ -30,5 +30,5 @@ module.exports = (TotalRow, limit, currentPage) => {
 
 	console.log("test_list_param", testPageListParam);
 
-	return finalPageList;
+	return testPageListParam;
 };

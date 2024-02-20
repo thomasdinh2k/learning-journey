@@ -1,8 +1,14 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 const DownRed = () => {
 	const dispatch = useDispatch();
+
+	function handleModifyValue(event) {
+		let value = event.target.value;
+		console.log(value);
+		dispatch({ type: "Modify_value", payload: Number(value) });
+	}
 
 	function handleButton(type) {
 		switch (type) {
@@ -38,7 +44,7 @@ const DownRed = () => {
 	// });
 
 	const { num: numberRed, is_playing } = useSelector(
-		(store) => store.reducerRed
+		(store) => store.downReducer
 	);
 
 	useEffect(() => {
@@ -64,8 +70,7 @@ const DownRed = () => {
 						className={`btn btn-${is_playing ? "warning" : "light"}`}
 						onClick={() => {
 							handleButton("play");
-						}}
-					>
+						}}>
 						{is_playing ? "Stop ■" : "Play ▼"}
 					</button>
 
@@ -74,8 +79,7 @@ const DownRed = () => {
 						className="btn btn-dark"
 						onClick={() => {
 							handleButton("down");
-						}}
-					>
+						}}>
 						Down
 					</button>
 					<button
@@ -83,10 +87,13 @@ const DownRed = () => {
 						className="btn btn-dark"
 						onClick={() => {
 							handleButton("reset");
-						}}
-					>
+						}}>
 						Reset
 					</button>
+					<input
+						type="number"
+						placeholder="0"
+						onChange={(event) => handleModifyValue(event)}></input>
 				</div>
 			</div>
 		</>

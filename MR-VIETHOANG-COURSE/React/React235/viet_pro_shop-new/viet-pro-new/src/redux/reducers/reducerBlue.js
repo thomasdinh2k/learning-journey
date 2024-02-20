@@ -1,28 +1,34 @@
-const InitStateBlue = {
-	num: 6,
+import { createSlice } from "@reduxjs/toolkit";
+
+const initialState = {
+	num: 0,
 	is_playing: false,
 };
 
-const reducerBlue = (state = InitStateBlue, action) => {
-	switch (action.type) {
-		case "Value_increase":
-			return { ...state, num: state.num + 1 };
+/* Tạo Reducer, không dùng luôn, mà dùng qua trung gian
+=> Cần export ra để dùng lại */
 
-		case "Reset":
-			return { ...state, num: 0 };
+export const upReducer = createSlice({
+	// prefix-action keys (Gọi là -prefix vì sau đó mình cần nối vào các action key tạo thành Reducer hoàn chỉnh)
+	name: "upReducer",
+	initialState,
+	reducers: {
+		up: (state, action /* Giá trị thường dùng*/) => {
+			/* Redux tool-kit cho phép sửa thẳng vào Object
+			Bản chất của Object là immutable
+			Nên giờ chỉ cần modify thẳng, không cần return
+			*/
 
-		case "Increment":
-			return { ...state, num: state.num + 1 };
+			state.num += 1;
+		},
 
-		case "Play":
-			return { ...state, is_playing: true };
+		reset: (state, action) => {
+			/* Param thừa được truyền từ dispatch luôn luôn có tên là payload */
+			state.num = 0;
+		},
+	},
+});
 
-        case "Stop":
-            return {...state, is_playing: false};
-            
-		default:
-			return state;
-	}
-};
+export const { up, reset } = upReducer.actions;
 
-export default reducerBlue;
+export default upReducer.reducer; /* .reducer ở đây là của Slice(), không phải là chọc từ Object  */

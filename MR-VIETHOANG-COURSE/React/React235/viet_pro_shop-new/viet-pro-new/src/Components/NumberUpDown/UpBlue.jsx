@@ -1,19 +1,22 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { up } from "../../redux/reducers/reducerBlue";
+
+// import {up, reset}
 
 const UpBlue = () => {
 	const dispatch = useDispatch();
 
+	// const [is_playing, set_is_playing] = useState(false);
+
 	const { num: numberBlue, is_playing } = useSelector(
-		(store) => store.reducerBlue
+		(state) => state.upReducer
 	);
 
 	function handleButton(type) {
 		switch (type) {
 			case "up":
-				dispatch({
-					type: "Value_increase",
-				});	
+				dispatch(up());
 				break;
 			case "down":
 				dispatch({
@@ -22,7 +25,7 @@ const UpBlue = () => {
 				break;
 			case "reset":
 				dispatch({
-					type: "Reset",
+					type: "upReducer/reset",
 				});
 				break;
 			case "play":
@@ -36,19 +39,6 @@ const UpBlue = () => {
 				break;
 		}
 	}
-
-	// useEffect(
-	// 	setInterval(() => {
-	// 		dispatch({ type: "Increment" });
-	// 	}, 1000),
-	// 	[]
-	// );
-
-	// useEffect(() => {
-	// 	setInterval(() => {
-	// 		dispatch({ type: "Increment" });
-	// 	}, 1000);
-	// }, []);
 
 	useEffect(() => {
 		if (is_playing) {
@@ -73,8 +63,7 @@ const UpBlue = () => {
 						onClick={() => {
 							handleButton("play");
 						}}
-						className={`btn ${is_playing ? "btn-warning" : "btn-light"}`}
-					>
+						className={`btn ${is_playing ? "btn-warning" : "btn-light"}`}>
 						{is_playing ? "Stop ■" : "Play ▲"}
 					</button>
 
@@ -83,8 +72,7 @@ const UpBlue = () => {
 						className="btn btn-dark"
 						onClick={() => {
 							handleButton("up");
-						}}
-					>
+						}}>
 						Up
 					</button>
 
@@ -93,8 +81,7 @@ const UpBlue = () => {
 						className="btn btn-dark"
 						onClick={() => {
 							handleButton("reset");
-						}}
-					>
+						}}>
 						Reset
 					</button>
 				</div>

@@ -24,7 +24,7 @@ export const upReducer = createSlice({
 
 		reset: (state, action) => {
 			/* Param thừa được truyền từ dispatch luôn luôn có tên là payload */
-			state.num = 0;
+			state.num = action.payload;
 		},
 	},
 });

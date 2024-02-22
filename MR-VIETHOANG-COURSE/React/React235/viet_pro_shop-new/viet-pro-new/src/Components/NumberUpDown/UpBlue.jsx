@@ -1,6 +1,7 @@
+import { createAction } from "@reduxjs/toolkit";
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { up } from "../../redux/reducers/reducerBlue";
+// import { up, upReducer } from "../../redux/reducers/reducerBlue";
 
 // import {up, reset}
 
@@ -13,10 +14,13 @@ const UpBlue = () => {
 		(state) => state.upReducer
 	);
 
+	const numberUp = createAction("upReducer/up");
+
 	function handleButton(type) {
 		switch (type) {
 			case "up":
-				dispatch(up());
+				// dispatch( {type: "upReducer/up"} );
+				dispatch(numberUp());
 				break;
 			case "down":
 				dispatch({

@@ -9,6 +9,7 @@ import translateText from "./Components/Multi-language/GoogleTranslate";
 import CarArticle from "./Components/CarArticle/CarArticle";
 import Todo from "./Components/Todo/Todo";
 import NumberUpDownUI from "./Components/NumberUpDown/NumberUpDownUI";
+import TestRouter from "./Components/TestRouter/TestRouter";
 
 function App() {
 	const [inputText, setInputText] = useState("");
@@ -26,8 +27,8 @@ function App() {
 
 	return (
 		<>
+			<TestRouter/>
 			<NumberUpDownUI />
-
 			<Todo />
 			<CarArticle />
 			<h1>Test Translation</h1>

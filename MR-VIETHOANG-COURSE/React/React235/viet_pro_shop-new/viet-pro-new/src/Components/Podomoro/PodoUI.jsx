@@ -5,16 +5,16 @@ import Clock from "./Clock";
 
 
 const PodoUI = () => {
-    
+    const [ isPlaying, setIsPlaying ] = useState(false);
 
     return (
 		<div>
 			<h1 className="main-heading">Pomodoro clock</h1>
 			<h3>learn how to use UseEffect & Redux State</h3>
 			
-            <Clock/>
+            <Clock isPlaying={isPlaying} setIsPlaying={setIsPlaying}/>
 
-			<Buttons/>
+			<Buttons isPlaying={isPlaying} setIsPlaying={setIsPlaying}/>
 		</div>
 	);
 };

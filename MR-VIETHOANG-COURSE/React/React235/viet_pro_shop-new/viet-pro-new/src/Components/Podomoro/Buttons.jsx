@@ -1,30 +1,44 @@
 import { useDispatch, useSelector } from "react-redux";
+import {
+	setAmountMins,
+	setAmountSec,
+	
+} from "../../redux/PodoReducer";
 
-const Buttons = () => {
+const Buttons = ( {isPlaying, setIsPlaying }) => {
 	const dispatch = useDispatch();
 
-	const {time_minute, is_playing} = useSelector((store) => store);
-
+	const { minute: time_minute, second: time_second } = useSelector((store) => store);
 
 	const handleButton = (type) => {
 		switch (type) {
 			case "Play":
-				dispatch({ type: "Play" });
+				setIsPlaying(true);
+
+				if(time_minute == 0 && time_second == 0) {
+					setAmountMins(45);
+					setIsPlaying(true)
+				}
+
 				break;
 			case "Stop":
-				dispatch({ type: "Stop" });
+				setIsPlaying(false);
 				break;
 			case "Reset":
-				dispatch({ type: "Reset" });
+				setIsPlaying(false);
+				dispatch(setAmountMins(45));
+				dispatch(setAmountSec(0));
 				break;
 			case "Add_5":
-				dispatch({ type: "Add_5" });
+				dispatch(setAmountMins(time_minute + 5));
 				break;
 			case "Minus_5":
 				if (time_minute > 5) {
-					dispatch({ type: "Minus_5" });
+					dispatch(setAmountMins(time_minute - 5));
 				} else {
-					dispatch({ type: "Minus_to_0" });
+					setIsPlaying(false);
+					dispatch(setAmountMins(0));
+					dispatch(setAmountSec(0));
 				}
 				break;
 
@@ -36,21 +50,19 @@ const Buttons = () => {
 	return (
 		<div className="modes">
 			<button
-				className={`start mode get-started ${is_playing && "active-play"}`}
-				onClick={() => handleButton("Play")}
-			>
+				className={`start mode get-started ${isPlaying && "active-play"}`}
+				onClick={() => handleButton("Play")}>
 				Start
 			</button>
 			<button
-				className={`start mode get-started ${!is_playing && "active-pause"}`}
-				onClick={() => handleButton("Stop")}
-			>
+				className={`start mode get-started ${!isPlaying && "active-pause"}`}
+				onClick={() => handleButton("Stop")}>
 				Pause
 			</button>
-			<button className="start mode" onClick={() => handleButton("Add_5")}>
+			<button className="" onClick={() => handleButton("Add_5")}>
 				+ 5m
 			</button>
-			<button className="start mode" onClick={() => handleButton("Minus_5")}>
+			<button className="" onClick={() => handleButton("Minus_5")}>
 				- 5m
 			</button>
 			<button className="stop mode" onClick={() => handleButton("Reset")}>

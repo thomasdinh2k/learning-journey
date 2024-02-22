@@ -1,27 +1,32 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 
-const Clock = () => {
-	const {time_minute, time_second, is_playing} = useSelector( (store) => store )
+import { minDecrement, secondDecrement, setAmountMins, setAmountSec } from "../../redux/PodoReducer";
+
+const Clock = ( {isPlaying, setIsPlaying} ) => {
+	const {minute: time_minute, second:time_second, } = useSelector( (store) => store )
 
 	const dispatch = useDispatch();
 
+	
+	
+	
 	useEffect(() => {
 		const intervalID = setInterval(() => {
-			if (is_playing) {
+			if (isPlaying) {
 				
                 if (time_minute > 0) {
                     if(time_second > 0) {
-                        dispatch({type: "second_decrement"})
+                        dispatch(secondDecrement())
                     } else {
-                        dispatch({type: "reset_second"})
-                        dispatch({type: "minute_decrement"})
+                        dispatch(setAmountSec(59))
+                        dispatch(minDecrement())
                     }
                 } else if (time_minute == 0) {
                     if (time_second > 0) {
                         dispatch({type: "second_decrement"})
                     } else {
-                        dispatch({type: "Stop"})
+                        setIsPlaying(false);
                     }
                 }
 			}
@@ -30,7 +35,7 @@ const Clock = () => {
 		return () => {
 			clearInterval(intervalID);
 		};
-	}, [is_playing, time_minute, time_second, dispatch]);
+	}, [isPlaying, setIsPlaying, time_minute, time_second, dispatch]);
 
 	return (
 		<main>

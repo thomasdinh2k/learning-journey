@@ -22,6 +22,14 @@ export const upReducer = createSlice({
 			state.num += 1;
 		},
 
+		play: (state, action) => {
+			state.is_playing = true;
+		},
+		
+		stop: (state, action) => {
+			state.is_playing = false;
+		},
+
 		reset: (state, action) => {
 			/* Param thừa được truyền từ dispatch luôn luôn có tên là payload */
 			state.num = action.payload;
@@ -29,6 +37,6 @@ export const upReducer = createSlice({
 	},
 });
 
-export const { up, reset } = upReducer.actions;
+export const { up, reset, play, stop } = upReducer.actions;
 
 export default upReducer.reducer; /* .reducer ở đây là của Slice(), không phải là chọc từ Object  */

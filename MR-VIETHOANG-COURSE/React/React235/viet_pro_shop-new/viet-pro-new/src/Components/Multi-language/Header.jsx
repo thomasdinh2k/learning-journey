@@ -12,11 +12,11 @@ const Header = ( {setLanguageState} ) => {
 				</h1>
 				<div id="lang">
 					<a href="#" onClick={() => handleBtnClick("vie")}>
-						<img src="./images/vi.png" alt /> <span>việt nam</span>
+						<img src="./images/vi.png" alt="" /> <span>việt nam</span>
 					</a>
 					|
 					<a href="#" onClick={() => handleBtnClick("eng")}>
-						<img src="./images/en.png" alt /> <span>anh</span>
+						<img src="./images/en.png" alt="" /> <span>anh</span>
 					</a>
 				</div>
 			</div>

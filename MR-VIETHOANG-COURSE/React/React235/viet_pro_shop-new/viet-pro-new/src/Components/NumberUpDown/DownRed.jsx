@@ -1,38 +1,31 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { down, reset } from "../../redux/reducers/reducerRed";
 
 const DownRed = () => {
 	const dispatch = useDispatch();
+	const [is_playing, setIs_playing] = useState(false)
+	const numberRed = useSelector( (state) => state.downReducer)
+	const [dataValue, setDataValue] = useState(numberRed)
+
 
 	function handleModifyValue(event) {
-		let value = event.target.value;
-		console.log(value);
-		dispatch({ type: "Modify_value", payload: Number(value) });
+		setDataValue(Number(event.target.value));
 	}
+
 
 	function handleButton(type) {
 		switch (type) {
 			case "up":
-				dispatch({
-					type: "Value_increase",
-				});
 				break;
 			case "down":
-				dispatch({
-					type: "Value_decrease",
-				});
+				dispatch(down());
 				break;
 			case "reset":
-				dispatch({
-					type: "ResetR",
-				});
+				dispatch(reset(dataValue));
 				break;
 			case "play":
-				if (is_playing) {
-					dispatch({ type: "StopR" });
-				} else {
-					dispatch({ type: "PlayR" });
-				}
+				setIs_playing(!is_playing);
 				break;
 			default:
 				break;
@@ -43,14 +36,12 @@ const DownRed = () => {
 	// 	return store.reducerRed.num;
 	// });
 
-	const { num: numberRed, is_playing } = useSelector(
-		(store) => store.downReducer
-	);
+	
 
 	useEffect(() => {
 		if (is_playing) {
 			const intervalId = setInterval(() => {
-				dispatch({ type: "Decrement" });
+				dispatch( down() );
 			}, 500);
 
 			return () => {
@@ -92,7 +83,7 @@ const DownRed = () => {
 					</button>
 					<input
 						type="number"
-						placeholder="0"
+						placeholder={dataValue}
 						onChange={(event) => handleModifyValue(event)}></input>
 				</div>
 			</div>

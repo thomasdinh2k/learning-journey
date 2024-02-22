@@ -1,14 +1,13 @@
 import { createAction } from "@reduxjs/toolkit";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { play, stop, up } from "../../redux/reducers/reducerBlue";
 // import { up, upReducer } from "../../redux/reducers/reducerBlue";
 
 // import {up, reset}
 
 const UpBlue = () => {
 	const dispatch = useDispatch();
-
-	// const [is_playing, set_is_playing] = useState(false);
 
 	const { num: numberBlue, is_playing } = useSelector(
 		(state) => state.upReducer
@@ -33,10 +32,10 @@ const UpBlue = () => {
 				});
 				break;
 			case "play":
-				if (is_playing) {
-					dispatch({ type: "Stop" });
+				if (!is_playing) {
+					dispatch(play());
 				} else {
-					dispatch({ type: "Play" });
+					dispatch(stop());
 				}
 				break;
 			default:
@@ -47,7 +46,7 @@ const UpBlue = () => {
 	useEffect(() => {
 		if (is_playing) {
 			const intervalID = setInterval(() => {
-				dispatch({ type: "Increment" });
+				dispatch(up());
 			}, 500);
 
 			return () => {

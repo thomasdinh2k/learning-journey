@@ -1,36 +1,10 @@
 import { useState } from "react";
-import { styled } from "styled-components";
+import styled from "styled-components";
+
+import CombinedInput from "./styledComponents/Input";
+import Button from "./styledComponents/Button";
 
 const ControlContainer = styled.div``;
-
-const Label = styled.label`
-	display: block;
-	margin-bottom: 0.5rem;
-	font-size: 0.75rem;
-	font-weight: ${ ({$invalid}) => ($invalid ? "700" : "")};
-	letter-spacing: 0.1em;
-	text-transform: uppercase;
-	color: ${(props) => (props.invalid ? "#f87171" : "#ffffff")};
-`;
-
-const Input = styled.input`
-	width: 100%;
-	padding: 0.75rem 1rem;
-	line-height: 1.5;
-	/* background-color: #d1d5db; */
-	border: 1px solid transparent;
-	border-radius: 0.25rem;
-	box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
-	
-	border-color: #f73f3f;
-	background-color: ${(props) => (props.invalid ? "#ef4444": "white")};
-	color: ${ props =>  props.invalid ? "yellow" : ""}
-	
-	// Thử thêm conditional value mới, tương tự như Label
-	/* color: #374151; */
-
-
-`;
 
 export default function AuthInputs() {
 	const [enteredEmail, setEnteredEmail] = useState("");
@@ -46,6 +20,7 @@ export default function AuthInputs() {
 	}
 
 	function handleLogin() {
+		console.log("Init Login...");
 		setSubmitted(true);
 	}
 
@@ -55,32 +30,31 @@ export default function AuthInputs() {
 	return (
 		<div id="auth-inputs">
 			<ControlContainer>
-				<p>
-					<Label $invalid={emailNotValid}>Email</Label>
-					<Input
-						invalid={emailNotValid}
-						type="email"
-						onChange={(event) => handleInputChange("email", event.target.value)}
-					/>
-				</p>
-				<p>
-					<Label $invalid={passwordNotValid}>Password</Label>
-					<Input
-						invalid={passwordNotValid}
-						type="password"
-						onChange={(event) =>
-							handleInputChange("password", event.target.value)
-						}
-					/>
-				</p>
+				<CombinedInput
+					type="email"
+					invalid={emailNotValid}
+					onChange={(event) => handleInputChange("email", event.target.value)}
+				/>
+
+				<CombinedInput
+					type="Password"
+					invalid={passwordNotValid}
+					onChange={(event) =>
+						handleInputChange("password", event.target.value)
+					}
+				/>
 			</ControlContainer>
 			<div className="actions">
-				<button type="button" className="text-button">
+				<Button
+					type="button"
+					
+					variant="text-button">
 					Create a new account
-				</button>
-				<button className="button" onClick={handleLogin}>
+				</Button>
+				
+				<Button onClick={handleLogin}>
 					Sign In
-				</button>
+				</Button>
 			</div>
 		</div>
 	);

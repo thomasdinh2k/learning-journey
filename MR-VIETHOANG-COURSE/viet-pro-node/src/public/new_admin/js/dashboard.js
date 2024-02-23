@@ -98,12 +98,17 @@ document.onclick = function (e) {
 const pageInput = document.getElementById("pageInput");
 const popup = document.getElementById("pop-up");
 
-if (pageInput && popup) {
+if (pageInput) {
 	pageInput.addEventListener("focus", function () {
-		pageInput.style.display = "block";
+		console.log("pageInput is being focus");
+		
+		popup.style.display = "block";
+		
+		
 	});
-
-	popup.addEventListener("blur", function () {
+	
+	pageInput.addEventListener("blur", function () {
+		console.log("pageInput is NOT being focus");
 		popup.style.display = "none";
 	});
 }

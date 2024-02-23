@@ -1,3 +1,19 @@
+// Display Time
+function displayTime() {
+	document.getElementById("time").textContent = new Date().toLocaleTimeString();
+	document.getElementById("date").textContent = new Date(
+		"Mar 25 2015"
+	).toLocaleDateString("vi", {
+		weekday: "long",
+		day: "numeric",
+		month: "2-digit",
+		year: "numeric",
+	});
+}
+
+// Call displayTime every second to update the time
+setInterval(displayTime, 1000);
+
 const sideLinks = document.querySelectorAll(
 	".sidebar .side-menu li a:not(.logout)"
 );
@@ -79,19 +95,24 @@ document.onclick = function (e) {
 
 // Go to Page number #Pagination
 
-document.getElementById("pageInput").addEventListener("focus", function () {
-	document.getElementById("pop-up").style.display = "block"; // Show the popup
-});
+const pageInput = document.getElementById("pageInput");
+const popup = document.getElementById("pop-up");
 
-document.getElementById("pageInput").addEventListener("blur", function () {
-	document.getElementById("pop-up").style.display = "none"; // Show the popup
-});
+if (pageInput && popup) {
+	pageInput.addEventListener("focus", function () {
+		pageInput.style.display = "block";
+	});
+
+	popup.addEventListener("blur", function () {
+		popup.style.display = "none";
+	});
+}
 
 function goToPage() {
-	const input = document.getElementById("pageInput");
-	const pageNumber = input.value; // Get the user input
-
-	console.log(pageNumber);
+	if (pageInput) {
+		const input = document.getElementById("pageInput");
+		const pageNumber = input.value; // Get the user input
+	}
 
 	if (pageNumber) {
 		window.location.href = `/admin/products?page=${pageNumber}`;

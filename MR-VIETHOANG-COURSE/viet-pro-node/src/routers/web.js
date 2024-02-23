@@ -19,7 +19,7 @@ const backendRoute = [
 	// "/admin/logout",
 	// "/admin/dashboard",
 	// "/admin/products",
-	"/admin/products/create",
+	// "/admin/products/create",
 	"/admin/products/edit",
 	"/admin/products/delete",
 ];
@@ -52,9 +52,9 @@ router.get("/admin/logout", Auth.logout);
 // Dashboard
 router.get("/admin/dashboard", DashboardController.dashboard);
 
-// Product Display
+// Product Tasks
 router.get("/admin/products", ProductController.productDisplay);
-
+router.get("/admin/products/create", ProductController.create)
 
 // Export
 module.exports = router;

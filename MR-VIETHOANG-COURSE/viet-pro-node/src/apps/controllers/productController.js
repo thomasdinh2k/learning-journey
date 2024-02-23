@@ -22,7 +22,7 @@ const productDisplay = async (req, res) => {
 
 	// Test new algorithm
 	const totalRow = await getProductAmount({});
-	const { totalPageNum, finalPageList:pageList } = pagination(
+	const { totalPageNum, finalPageList: pageList } = pagination(
 		totalRow,
 		limit,
 		pageNumber
@@ -38,14 +38,21 @@ const productDisplay = async (req, res) => {
 		productData: data,
 		pageList,
 		currentPage: pageNumber,
-		totalPageNum
+		totalPageNum,
 	});
 };
 
 const index = (req, res) => {
 	res.send("OK");
 };
-const create = (req, res) => {};
+const create = (req, res) => {
+	// Session
+	const userCredential = req.session.userCredential;
+
+	res.render("new_admin/Components/product/product_create", {
+		userCredential,
+	});
+};
 const edit = (req, res) => {};
 const update = (req, res) => {};
 const del = (req, res) => {};

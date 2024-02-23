@@ -956,7 +956,8 @@ a.report {
 }
 
 .btn-export {
-	background-color: #07a853;
+	background-color: #07a853 !important;
+	color: var(--light) !important;
 }
 
 .btn-export:hover {
@@ -990,4 +991,89 @@ a.report {
 
 .page-input:focus {
 	border: 2px solid var(--dark-warning);
+}
+
+/* Add Product */
+
+.add-product .panel-body {
+	display: flex;
+	flex-direction: column;
+	background-color: #ffffffb8;
+	/* justify-content: flex-end; */
+	border-radius: 20px;
+	padding: 20px;
+	margin: 20px;
+	flex: 1;
+}
+
+.add-product .form-header h2 {
+	margin: 0;
+	padding-bottom: 20px;
+}
+
+.add-product .form-group {
+	/* background-color: red; */
+	margin-bottom: 20px;
+}
+
+.add-product .form-group label {
+	display: block;
+	margin-bottom: 5px;
+}
+
+.add-product .form-group input {
+	width: 100%;
+	padding: 10px;
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	box-sizing: border-box;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+	color: #999;
+}
+
+/* Add some hover and focus styles for inputs and textareas */
+.form-group input:hover,
+.form-group textarea:hover,
+.form-group input:focus,
+.form-group textarea:focus {
+	border-color: #bbb;
+}
+
+.add-product .panel_two_column {
+	display: flex;
+	flex-wrap: nowrap;
+	gap: 20px;
+}
+
+/* .row { 
+	display: flex;
+	flex-wrap: nowrap;
+} */
+
+/* You can add media queries for responsive behavior */
+@media (max-width: 768px) {
+	.panel_two_column {
+		flex-direction: column;
+	}
+}
+
+.add-product .btn {
+	padding: 10px 20px; /* Adjust the padding to control the size */
+	font-size: 1rem; /* Sets the font size */
+	font-weight: 500; /* Adjusts the weight of the font */
+	color: var(--dark);
+	background-color: var(--light-primary); /* Use primary color variable */
+	border: none; /* Removes the border */
+	border-radius: 5px; /* Rounds the corners */
+	cursor: pointer; /* Changes cursor to pointer to indicate it's clickable */
+	transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+	margin-right: 10px; /* Adds spacing between buttons */
+}
+
+.btn-layout {
+	display: flex;
+	
 }

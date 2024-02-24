@@ -1,10 +1,7 @@
 import { useState } from "react";
-import styled from "styled-components";
 
 import CombinedInput from "./styledComponents/Input";
 import Button from "./styledComponents/Button";
-
-const ControlContainer = styled.div``;
 
 export default function AuthInputs() {
 	const [enteredEmail, setEnteredEmail] = useState("");
@@ -28,8 +25,8 @@ export default function AuthInputs() {
 	const passwordNotValid = submitted && enteredPassword.trim().length < 6;
 
 	return (
-		<div id="auth-inputs">
-			<ControlContainer>
+		<div id="auth-inputs" className="w-full max-w-sm p-8 rounded shadow-md bg-gradient-to-b from-stone-700 to-stone-800 mx-auto">    
+			<div className="flex flex-col gap-2 mb-6">
 				<CombinedInput
 					type="email"
 					invalid={emailNotValid}
@@ -43,11 +40,11 @@ export default function AuthInputs() {
 						handleInputChange("password", event.target.value)
 					}
 				/>
-			</ControlContainer>
-			<div className="actions">
+			</div>
+			<div className="flex justify-end gap-4">
 				<Button
 					type="button"
-					
+					className="text-amber-400 hover:text-amber-600"
 					variant="text-button">
 					Create a new account
 				</Button>

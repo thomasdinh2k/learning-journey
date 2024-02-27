@@ -10,6 +10,8 @@ import CarArticle from "./Components/CarArticle/CarArticle";
 import Todo from "./Components/Todo/Todo";
 import NumberUpDownUI from "./Components/NumberUpDown/NumberUpDownUI";
 import TestRouter from "./Components/TestRouter/TestRouter";
+import UseAxios from "./Components/UseAxios/useAxios";
+
 
 function App() {
 	const [inputText, setInputText] = useState("");
@@ -27,6 +29,7 @@ function App() {
 
 	return (
 		<>
+			<UseAxios/>
 			<TestRouter/>
 			<NumberUpDownUI />
 			<Todo />

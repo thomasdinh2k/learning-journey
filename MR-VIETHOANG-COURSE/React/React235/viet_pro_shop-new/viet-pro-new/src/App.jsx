@@ -1,3 +1,5 @@
+import "./index.css";
+
 import { useState } from "react";
 import "../public/css/randomNumber.css";
 import "../public/css/index.css";
@@ -11,7 +13,6 @@ import Todo from "./Components/Todo/Todo";
 import NumberUpDownUI from "./Components/NumberUpDown/NumberUpDownUI";
 import TestRouter from "./Components/TestRouter/TestRouter";
 import UseAxios from "./Components/UseAxios/useAxios";
-
 
 function App() {
 	const [inputText, setInputText] = useState("");
@@ -29,8 +30,9 @@ function App() {
 
 	return (
 		<>
-			<UseAxios/>
-			<TestRouter/>
+			
+			<UseAxios />
+			<TestRouter />
 			<NumberUpDownUI />
 			<Todo />
 			<CarArticle />

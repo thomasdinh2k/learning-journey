@@ -12,7 +12,7 @@ import CarArticle from "./Components/CarArticle/CarArticle";
 import Todo from "./Components/Todo/Todo";
 import NumberUpDownUI from "./Components/NumberUpDown/NumberUpDownUI";
 import TestRouter from "./Components/TestRouter/TestRouter";
-import MemberList from "./Components/UseAxios/MemberList";
+import MemberList from "./Components/UseAxios/MemberList2";
 
 function App() {
 	const [inputText, setInputText] = useState("");

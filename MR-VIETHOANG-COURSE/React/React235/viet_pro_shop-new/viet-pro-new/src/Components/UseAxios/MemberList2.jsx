@@ -4,24 +4,24 @@ import { fetchDataIn } from "../../redux/reducers/reducerMemberList";
 import { useSelector, useDispatch } from "react-redux";
 
 const MemberList = () => {
-	const dispatch = useDispatch()
 
+	const [data, setData] = useState([])
+	
 	useEffect(() => {
-		const fetchData = async () => {
-			try {
-				const respond = await axios.get("https://reqres.in/api/users");
-				// setData(respond.data.data);
-				dispatch(fetchDataIn(respond.data.data))
+		const Http = axios.create({
+			baseURL: "https://reqres.in/api/users"
+		});
 
-			} catch (error) {
-				console.log("There was an error", error);
-			}
-		};
+		// Add new user
+		Http.post("/users", {
+			"first_name": "Gay",
+			"last_name": "Lord"
+		}).then( data => console.log(data.data))
 
-		fetchData();
+		Http.get("/users", {}).then(data => setData(data.data.data));
+
 	}, []);
 
-	const data = useSelector( state => state.memberListReducer)
 
 	return (
 		<>

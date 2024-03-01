@@ -1,6 +1,9 @@
 const productModel = require("../models/product");
 
 const dashboard = async (req, res) => {
+	
+	
+	
 	const products = await productModel.find({});
 
 	const userCredential = req.session.userCredential

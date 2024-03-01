@@ -1,73 +1,54 @@
 <nav>
-	<i class="bx bx-menu"></i>
-	<form action="#">
-		<div class="form-input">
-			<input
-				type="search"
-				name=""
-				id=""
-				placeholder=" Xin chào bé <%= userCredential ? userCredential['full_name'] : "Guest" %>"
-			/>
-			<button class="search-btn" type="submit">
-				<i class="bx bx-search"></i>
-			</button>
-		</div>
-		
-	</form>
+  <i class="bx bx-menu"></i>
+  <form action="#">
+    <div class="form-input">
+      <input type="search" name="" id="" placeholder=" Xin chào bé <%= userCredential ? userCredential['full_name'] : "Guest" %>" />
+      <button class="search-btn" type="submit">
+        <i class="bx bx-search"></i>
+      </button>
+    </div>
 
-	<!-- Display Time -->
-	<%- include("../Components/clock.ejs") %>
+  </form>
+
+  <!-- Display Time -->
+  <%- include("../Components/clock.ejs") %>
 
 
-	<input type="checkbox" id="theme-toggle" hidden />
-	<label for="theme-toggle" class="theme-toggle"></label>
-	<a href="#" class="notif">
-		<i class="bx bx-bell"></i>
-		<span class="count">12</span>
-	</a>
-	<div class="profile" onclick="toggleMenu()">
-		<img src="img/user_profile.png" alt="" />
-	</div>
-	
-	
-	<div class="sub-menu-wrap" id="sub-menu">
-		<div class="sub-menu">
-			<div class="user-info">
-				<img src="img/user_profile.png" alt="" />
-				<h3><%= userCredential ? userCredential['full_name'] : "Guest" %></h3>
-			</div>
-			<hr />
-			<a
-				href="http://"
-				class="sub-menu-links"
-				target="_blank"
-				rel="noopener noreferrer"
-			>
-				<img src="img/drop-down/profile.png" />
-				<p>Sửa thông tin cá nhân</p>
-				<span>></span>
-			</a>
-			<a
-				href="http://"
-				class="sub-menu-links"
-				target="_blank"
-				rel="noopener noreferrer"
-			>
-				<img src="img/drop-down/help.png" />
-				<p>Hỗ trợ</p>
-				<span>></span>
-			</a>
-			<a
-				href="/"
-				class="sub-menu-links"
-			
-			>
-				<img src="img/drop-down/logout.png" />
-				<p>Thoát ra</p>
-				<span>></span>
-			</a>
-		</div>
-	</div>
+  <input type="checkbox" id="theme-toggle" hidden />
+  <label for="theme-toggle" class="theme-toggle"></label>
+  <a href="#" class="notif">
+    <i class="bx bx-bell"></i>
+    <span class="count">12</span>
+  </a>
+  <div class="profile" onclick="toggleMenu()">
+    <img src="img/user_profile.png" alt="" />
+  </div>
 
-	
+
+  <div class="sub-menu-wrap" id="sub-menu">
+    <div class="sub-menu">
+      <div class="user-info">
+        <img src="img/user_profile.png" alt="" />
+        <h3><%= userCredential ? userCredential['full_name'] : "Guest" %></h3>
+      </div>
+      <hr />
+      <a href="http://" class="sub-menu-links" target="_blank" rel="noopener noreferrer">
+        <img src="img/drop-down/profile.png" />
+        <p>Sửa thông tin cá nhân</p>
+        <span>></span>
+      </a>
+      <a href="http://" class="sub-menu-links" target="_blank" rel="noopener noreferrer">
+        <img src="img/drop-down/help.png" />
+        <p>Hỗ trợ</p>
+        <span>></span>
+      </a>
+      <a href="/logout" class="sub-menu-links">
+        <img src="img/drop-down/logout.png" />
+        <p>Thoát ra</p>
+        <span>></span>
+      </a>
+    </div>
+  </div>
+
+
 </nav>

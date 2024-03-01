@@ -9,6 +9,8 @@ const Auth = require("../apps/controllers/authController");
 const DashboardController = require("../apps/controllers/dashboardController");
 const ProductController = require("../apps/controllers/productController");
 
+const {ensureAuthenticated, checkAlreadyAuthenticated} = require("../apps/middlewares/auth")
+
 // Import Controllers or Handlers
 
 // Define Route Handlers
@@ -44,16 +46,16 @@ router.get("/form", formController.getForm);
 router.post("/action_form", formController.handleFormSubmission);
 
 // Authentication
-router.get("/", Auth.login);
+router.get("/", checkAlreadyAuthenticated ,Auth.login);
 router.post("/", Auth.processLogin);
 
-router.get("/admin/logout", Auth.logout);
+router.get("/logout", Auth.logout);
 
 // Dashboard
-router.get("/admin/dashboard", DashboardController.dashboard);
+router.get("/admin/dashboard", ensureAuthenticated, DashboardController.dashboard);
 
 // Product Tasks
-router.get("/admin/products", ProductController.productDisplay);
+router.get("/admin/products", ensureAuthenticated, ProductController.productDisplay);
 router.get("/admin/products/create", ProductController.create)
 
 // Export

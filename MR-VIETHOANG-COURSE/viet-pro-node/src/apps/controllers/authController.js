@@ -1,9 +1,9 @@
 const { getUserData } = require("../../common/getUserData");
 const userModel = require("../models/user");
 
-
 const login = (req, res) => {
-	res.render("new_admin/Components/login", { error: null });
+	const errorMessage = req.session.error_code;
+	res.render("new_admin/Components/login", { error: errorMessage });
 };
 
 const processLogin = async (req, res) => {
@@ -17,7 +17,7 @@ const processLogin = async (req, res) => {
 		password: userPassword,
 	});
 
-	const userWithoutPassword = await getUserData({email: userEmail});
+	const userWithoutPassword = await getUserData({ email: userEmail });
 
 	console.log("userEmail", userEmail);
 	console.log("userPassword", userPassword);
@@ -31,14 +31,13 @@ const processLogin = async (req, res) => {
 
 	if (users.length > 0) {
 		req.session.errorCount = 0; // Reset errorCount if Login success
-		
+
 		// Try to use 'Session' to store data
 		console.log("USER CREDENTIAL", users[0]);
-		
+
 		req.session.userCredential = users[0];
 		res.redirect("/admin/dashboard");
 	} else {
-
 		/**
 		 * TODO Fix this to match the new database
 		 * With User document, this need to display differently if it finds a matching email
@@ -54,15 +53,17 @@ const processLogin = async (req, res) => {
 		req.session.errorCount++;
 		if (userWithoutPassword.length > 0) {
 			// Keep Email the same
+			req.session.error_code = "Mật khẩu không đúng, vui lòng thử lại";
 			res.render("new_admin/Components/login", {
-				error: "Mật khẩu không đúng, vui lòng thử lại",
+				error: req.session.error_code,
 				userEmail,
 				userPassword,
 				errorCount: req.session.errorCount,
 			});
 		} else {
+			req.session.error_code = `Không tìm thấy tài khoản dưới email: [ ${userEmail} ] `;
 			res.render("new_admin/Components/login", {
-				error: `Không tìm thấy tài khoản dưới email: [ ${userEmail} ] `,
+				error: req.session.error_code,
 				errorCount: req.session.errorCount,
 			});
 		}
@@ -70,7 +71,9 @@ const processLogin = async (req, res) => {
 };
 
 const logout = (req, res) => {
-	res.send("/");
+	console.log("init_logout");
+	req.session.destroy();
+	res.redirect("/")
 };
 
 module.exports = {

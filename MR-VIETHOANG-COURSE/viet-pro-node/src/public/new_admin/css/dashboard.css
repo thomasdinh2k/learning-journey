@@ -1119,12 +1119,6 @@ a.report {
 	flex-wrap: nowrap;
 } */
 
-/* You can add media queries for responsive behavior */
-@media (max-width: 768px) {
-	.panel_two_column {
-		flex-direction: column;
-	}
-}
 
 .add-product .btn {
 	padding: 10px 20px; /* Adjust the padding to control the size */
@@ -1141,5 +1135,17 @@ a.report {
 
 .btn-layout {
 	display: flex;
-	
+}
+
+/* You can add media queries for responsive behavior */
+@media (max-width: 768px) {
+	.panel_two_column {
+		flex-direction: column;
+	}
+	#time, #date {
+		font-size: 10px;
+	}
+	#date {
+		display: none;
+	}
 }

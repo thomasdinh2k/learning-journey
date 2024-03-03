@@ -18,7 +18,6 @@ const test_1 = async (req, res) => {
 		password: "123456",
 	});
 
-	console.log(userData);
 	res.send(userData);
 };
 
@@ -32,7 +31,6 @@ const test_2 = (req, res) => {
 const getProductData = (req, res) => {
 	const products = productModel.find();
 
-	console.log(products);
 	// res.send(products);
 };
 

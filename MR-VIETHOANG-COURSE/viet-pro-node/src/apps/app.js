@@ -28,7 +28,7 @@ app.use(
 		resave: true,
 		saveUninitialized: true,
 		secret: "my own key",
-		cookie: { maxAge: 60000 },
+		// cookie: { maxAge: 60000 },
 	})
 );
 

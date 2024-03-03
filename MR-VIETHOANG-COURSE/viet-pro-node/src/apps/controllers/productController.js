@@ -1,10 +1,15 @@
+var slug = require("slug");
+var path = require("path");
+var fs = require("fs");
+
 const pagination = require("../../common/pagination");
 
 const {
 	getProductData,
 	getProductAmount,
 } = require("../../common/getProductData");
-
+const CategoryModel = require("../models/category");
+const ProductModel = require("../models/product");
 const productDisplay = async (req, res) => {
 	// Session
 	const userCredential = req.session.userCredential;
@@ -18,7 +23,7 @@ const productDisplay = async (req, res) => {
 	const skip = pageNumber * productPerPage - productPerPage;
 
 	const test = { pageNumber, productPerPage, skip, category };
-	console.log("query test", test);
+	// console.log("query test", test);
 
 	// Test new algorithm
 	const totalRow = await getProductAmount({});
@@ -27,7 +32,7 @@ const productDisplay = async (req, res) => {
 		limit,
 		pageNumber
 	);
-	console.log("Test New Algorithm Result", pageList);
+	// console.log("Test New Algorithm Result", pageList);
 
 	// Query data
 	const data = await getProductData({ limit: limit, skip: skip });
@@ -45,14 +50,68 @@ const productDisplay = async (req, res) => {
 const index = (req, res) => {
 	res.send("OK");
 };
-const create = (req, res) => {
+
+const create = async (req, res) => {
 	// Session
 	const userCredential = req.session.userCredential;
 
+	const categories = await CategoryModel.find().sort({ _id: 1 });
+
 	res.render("new_admin/Components/product/product_create", {
 		userCredential,
+		categories,
 	});
 };
+
+const store = async (req, res) => {
+	const { body, file } = req;
+
+	// console.log(file);
+	// console.log(body);
+
+	// TODO: Đẩy toàn bộ file từ temp sang public/upload
+
+	// Nhận thông tin từ form rồi đưa vào Database (ProductModel.save()). Save xong thì chuyển hướng
+	const product = {
+		name: body.name,
+		price: body.price,
+		status: body.status,
+		cat_id: body.cat_id,
+		features: body.featured == "yes" ? true : false,
+		is_stock: body.is_stock,
+		promotion: body.promotion,
+		description: body.description,
+		accessory: body.accessory,
+		slug: slug(body.name),
+	};
+
+	if (file) {
+		const thumbnail = `products/${file.originalname}`;
+		fs.renameSync(file.path, path.resolve("src/public/images", thumbnail));
+		product["thumbnail"] = thumbnail;
+		new ProductModel(product).save();
+		res.redirect("/admin/products");
+	}
+
+	console.log(product);
+
+	// new ProductModel(product).save();
+
+	// 	{
+	//   fieldname: 'thumbnail',
+	//   originalname: 'NH-8.jpg',
+	//   encoding: '7bit',
+	//   mimetype: 'image/jpeg',
+
+	//   filename: 'c130b040b5caca160569d94cd7d339b1',
+
+	//   path: '/Users/thomas/coding/learning-journey/MR-VIETHOANG-COURSE/viet-pro-node/src/tmp/c130b040b5caca160569d94cd7d339b1',
+	// /Users/thomas/coding/learning-journey/MR-VIETHOANG-COURSE/viet-pro-node/src/tmp/2a147a9d30ac9eed00dfb1e95b087d7b
+
+	//   size: 5469776
+	// }
+};
+
 const edit = (req, res) => {};
 const update = (req, res) => {};
 const del = (req, res) => {};
@@ -68,5 +127,6 @@ module.exports = {
 	index,
 	edit,
 	update,
+	store,
 	del,
 };

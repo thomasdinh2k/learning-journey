@@ -9,7 +9,9 @@ const Auth = require("../apps/controllers/authController");
 const DashboardController = require("../apps/controllers/dashboardController");
 const ProductController = require("../apps/controllers/productController");
 
+// Import Middlewares
 const {ensureAuthenticated, checkAlreadyAuthenticated} = require("../apps/middlewares/auth")
+const uploadMiddleware = require("../apps/middlewares/upload");
 
 // Import Controllers or Handlers
 
@@ -57,6 +59,7 @@ router.get("/admin/dashboard", ensureAuthenticated, DashboardController.dashboar
 // Product Tasks
 router.get("/admin/products", ensureAuthenticated, ProductController.productDisplay);
 router.get("/admin/products/create", ProductController.create)
+router.post("/admin/products/store",uploadMiddleware.single('thumbnail') , ProductController.store)
 
 // Export
 module.exports = router;

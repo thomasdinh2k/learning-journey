@@ -19,10 +19,10 @@ const processLogin = async (req, res) => {
 
 	const userWithoutPassword = await getUserData({ email: userEmail });
 
-	console.log("userEmail", userEmail);
-	console.log("userPassword", userPassword);
-	console.log("Matching user is: ", users);
-	console.log("Matching user LENGTH: ", users.length);
+	// console.log("userEmail", userEmail);
+	// console.log("userPassword", userPassword);
+	// console.log("Matching user is: ", users);
+	// console.log("Matching user LENGTH: ", users.length);
 
 	// Initialize errorCount in session if doesn't exist
 	if (req.session.errorCount === undefined) {

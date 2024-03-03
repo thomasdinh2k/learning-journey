@@ -4,9 +4,6 @@ module.exports = {
 		static_folder: `${__dirname}/../src/public`,
 		views_folder: `${__dirname}/../src/apps/views`,
 		view_engine: `ejs`,
+		tmp: `${__dirname}/../src/tmp/`
 	},
 };
-
-// for (let i = 0; i <= 10; i++) {
-// 	<h5>Đây là vòng lặp thứ</h5>
-// }

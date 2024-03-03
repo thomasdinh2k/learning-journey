@@ -258,8 +258,6 @@ body {
 	top: 0;
 	left: 0;
 	z-index: 1000;
-
-	
 }
 
 .content nav::before {
@@ -382,8 +380,6 @@ body {
 	width: 100%;
 	padding: 20px 24px;
 	max-height: calc(100vh - 56px);
-	
-	
 }
 
 .content main .header {
@@ -1022,6 +1018,15 @@ a.report {
 	background-color: #1e7e34;
 }
 
+.inline-btn-container {
+	display: flex;
+	flex-direction: row;
+}
+
+.inline-btn-container a {
+	width: 50px;
+}
+
 .btn-import {
 	background-color: #17a2b8;
 }
@@ -1057,7 +1062,7 @@ a.report {
 
 .page-input:focus {
 	border: 2px solid var(--dark-warning);
-	}
+}
 
 /* Add Product */
 
@@ -1119,7 +1124,6 @@ a.report {
 	flex-wrap: nowrap;
 } */
 
-
 .add-product .btn {
 	padding: 10px 20px; /* Adjust the padding to control the size */
 	font-size: 1rem; /* Sets the font size */
@@ -1142,7 +1146,8 @@ a.report {
 	.panel_two_column {
 		flex-direction: column;
 	}
-	#time, #date {
+	#time,
+	#date {
 		font-size: 10px;
 	}
 	#date {

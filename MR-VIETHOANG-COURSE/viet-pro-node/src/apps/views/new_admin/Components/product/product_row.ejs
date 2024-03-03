@@ -9,8 +9,17 @@
                               <td> <%= data.is_stock ? "Còn hàng" : "Tạm hết hàng" %></td>
                               <td>Chưa phân loại</td>
                               <td class="form-group">
-                                <a href="product-edit.html" class="btn btn-primary"><i class="glyphicon glyphicon-pencil"></i></a>
-                                <a href="product-edit.html" class="btn btn-danger"><i class="glyphicon glyphicon-remove"></i></a>
+                                <div class="inline-btn-container">
+                                  <a href="product-edit.html" class="btn btn-export">
+                                    Sửa
+                                  </a>
+                                  <a href="product-edit.html" class="btn btn-delete">
+                                    Xóa
+                                  </a>
+                                  <a href="product-edit.html" class="btn btn-import">
+                                    Xuất
+                                  </a>
+                                </div>
                               </td>
                             </tr>
                             <tr>

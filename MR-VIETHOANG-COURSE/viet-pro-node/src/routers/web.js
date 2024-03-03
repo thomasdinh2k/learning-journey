@@ -58,5 +58,9 @@ router.get("/admin/dashboard", ensureAuthenticated, DashboardController.dashboar
 router.get("/admin/products", ensureAuthenticated, ProductController.productDisplay);
 router.get("/admin/products/create", ProductController.create)
 
+router.post("/admin/products/create", (req, res) => {
+	console.log(req.body);
+})
+
 // Export
 module.exports = router;

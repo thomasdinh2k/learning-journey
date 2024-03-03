@@ -4,7 +4,6 @@ module.exports = (TotalRow, limit, currentPage) => {
 	// Page đầu = 0, page cuối = tổng số page, currentPage tự truyền xuống
 
 	const test_input = { TotalRow, limit, currentPage };
-	console.log("test_input", test_input);
 
 	const totalPageNum = Math.ceil(TotalRow / limit);
 
@@ -24,11 +23,6 @@ module.exports = (TotalRow, limit, currentPage) => {
 		}
 	}
 
-	// finalPageList.splice(1, 0, "...");
-
 	let testPageListParam = { totalPageNum, finalPageList };
-
-	console.log("test_list_param", testPageListParam);
-
 	return testPageListParam;
 };

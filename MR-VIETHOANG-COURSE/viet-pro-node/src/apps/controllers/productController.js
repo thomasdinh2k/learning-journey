@@ -18,7 +18,6 @@ const productDisplay = async (req, res) => {
 	const skip = pageNumber * productPerPage - productPerPage;
 
 	const test = { pageNumber, productPerPage, skip, category };
-	console.log("query test", test);
 
 	// Test new algorithm
 	const totalRow = await getProductAmount({});
@@ -27,7 +26,7 @@ const productDisplay = async (req, res) => {
 		limit,
 		pageNumber
 	);
-	console.log("Test New Algorithm Result", pageList);
+	// console.log("Test New Algorithm Result", pageList);
 
 	// Query data
 	const data = await getProductData({ limit: limit, skip: skip });

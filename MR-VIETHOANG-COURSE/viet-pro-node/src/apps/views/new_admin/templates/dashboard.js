@@ -72,7 +72,6 @@ function toggleMenu() {
 // Close the dropdown if the user clicks outside of it
 document.onclick = function (e) {
 	if (!box.contains(e.target)) {
-		console.log("Outside-clicked");
 		subMenu.classList.remove("open-menu");
 	}
 };

@@ -18,15 +18,10 @@ const test_1 = async (req, res) => {
 		password: "123456",
 	});
 
-	console.log(userData);
 	res.send(userData);
 };
 
 const test_2 = (req, res) => {
-	categoryModel
-		.find({})
-		.exec()
-		.then((test_Data_output) => console.log(test_Data_output));
 };
 
 const getProductData = (req, res) => {

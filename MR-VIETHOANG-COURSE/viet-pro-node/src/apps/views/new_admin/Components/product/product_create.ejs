@@ -25,6 +25,7 @@
       <div class="add-product">
           <div class="panel panel-default">
             <div class="panel_two_column">
+              <!-- <form role="form" method="post" enctype="multipart/form-data"> -->
               <form role="form" method="post" enctype="multipart/form-data">
                 
                 <div class="panel-body">
@@ -79,6 +80,7 @@
 
                     <input  name="thumbnail" type="file">
                     <br>
+                    
                   </div>
                   <div class="form-group">
                     <label>Danh mục</label>
@@ -93,8 +95,8 @@
                   <div class="form-group">
                     <label>Trạng thái</label>
                     <select name="is_stock" class="form-control">
-                      <option value=1 selected>Còn hàng</option>
-                      <option value=0>Hết hàng</option>
+                      <option value="Yes" selected>Còn hàng</option>
+                      <option value="No">Hết hàng</option>
                     </select>
                   </div>
 
@@ -102,7 +104,7 @@
                     <label>Sản phẩm nổi bật</label>
                     <div class="">
                       
-                        <input name="featured" type="checkbox" value="No">
+                        <input name="featured" type="checkbox" value="on">
                       
                     </div>
                   </div>

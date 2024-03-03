@@ -22,7 +22,8 @@ async function getProductData(incomingQuery = {}) {
 		return await productModel
 			.find(queryConditions)
 			.limit(finalParam.limit)
-			.skip(finalParam.skip);
+			.skip(finalParam.skip)
+			.sort({_id: -1})
 	}
 }
 

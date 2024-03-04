@@ -93,7 +93,7 @@ const store = async (req, res) => {
 		res.redirect("/admin/products");
 	}
 
-	console.log(product);
+	// console.log(product);
 
 	// new ProductModel(product).save();
 
@@ -112,7 +112,54 @@ const store = async (req, res) => {
 	// }
 };
 
-const edit = (req, res) => {};
+const edit = async (req, res) => {
+	// Session
+	const userCredential = req.session.userCredential;
+	const categories = await CategoryModel.find().sort({ _id: 1 });
+
+	const { id } = req.params;
+	const product = await ProductModel.findById(id);
+
+	res.render("new_admin/Components/product/product_edit", {
+		userCredential,
+		categories,
+		product,
+	});
+};
+
+const storeEdit = async (req, res) => {
+	const { body, file } = req;
+
+	const id = req.params.id;
+	// console.log(file);
+	// console.log(body);
+
+	const product = {
+		name: body.name,
+		price: body.price,
+		status: body.status,
+		cat_id: body.cat_id,
+		features: body.featured == "yes" ? true : false,
+		is_stock: body.is_stock,
+		promotion: body.promotion,
+		description: body.description,
+		accessory: body.accessory,
+		slug: slug(body.name),
+	};
+
+	if (file) {
+		const thumbnail = `products/${file.originalname}`;
+		fs.renameSync(file.path, path.resolve("src/public/images", thumbnail));
+		product["thumbnail"] = thumbnail;
+		// new ProductModel(product).updateOne();
+	}
+
+	await ProductModel.updateOne({ _id: id }, { $set: product });
+	console.log("DONE WITH UPDATE");
+	res.redirect("/admin/products");
+	// console.log("product", product);
+};
+
 const update = (req, res) => {};
 const del = (req, res) => {};
 
@@ -129,4 +176,5 @@ module.exports = {
 	update,
 	store,
 	del,
+	storeEdit,
 };

@@ -56,13 +56,8 @@
 
 
                 <% for (let product of productData) { %>
-      <%- include("./product_row.ejs", { data: product }) %>
-
-
-
-
-
-      <% } %>
+                  <%- include("./product_row.ejs", { data: product }) %>
+                <% } %>
 
       </tbody>
       </table>

@@ -24,7 +24,7 @@ const backendRoute = [
 	// "/admin/dashboard",
 	// "/admin/products",
 	// "/admin/products/create",
-	"/admin/products/edit",
+	// "/admin/products/edit",
 	"/admin/products/delete",
 ];
 
@@ -59,7 +59,10 @@ router.get("/admin/dashboard", ensureAuthenticated, DashboardController.dashboar
 // Product Tasks
 router.get("/admin/products", ensureAuthenticated, ProductController.productDisplay);
 router.get("/admin/products/create", ProductController.create)
+
+router.get("/admin/products/edit/:id", ProductController.edit)
 router.post("/admin/products/store",uploadMiddleware.single('thumbnail') , ProductController.store)
+router.post("/admin/products/update/:id", uploadMiddleware.single("thumbnail"), ProductController.storeEdit)
 
 // Export
 module.exports = router;

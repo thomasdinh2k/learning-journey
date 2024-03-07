@@ -9,6 +9,8 @@ NODE-COURSE/viet-pro/package.json
 .idea/vcs.xml
 .idea/workspace.xml
 .vscode
+Template/
+template/
 
 # Created by https://www.toptal.com/developers/gitignore/api/reactnative,react
 # Edit at https://www.toptal.com/developers/gitignore?templates=reactnative,react
@@ -343,11 +345,9 @@ REACT-COURSE/node_modules/.cache/default-development/index.pack
 REACT-COURSE/node_modules/.cache/default-development/index.pack.old
 MR-VIETHOANG-COURSE/React/React235/mrviethoang-react-main/09 - React Router/Code/reactjs
 MR-VIETHOANG-COURSE/React/React235/mrviethoang-react-main/10 - Axios/Code/reactjs
-Coding-workspaces/vietpro-nodejs.code-workspace
+Coding-workspaces/
 
 NODE-COURSE/viet-pro/package-lock.json
 NODE-COURSE/viet-pro/package.json
-MR-VIETHOANG-COURSE/React/React235/viet_pro_shop-new/viet-pro-new/src/assets/test-project-46108-224e15ef504c.json
-
 package-lock.json
 package.json

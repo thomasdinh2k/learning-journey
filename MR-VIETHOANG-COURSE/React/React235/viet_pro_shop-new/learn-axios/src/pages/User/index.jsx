@@ -47,7 +47,7 @@ const User = () => {
 			<tbody>
 				{data.map((item) => (
 					<tr>
-						<td>{item.name}</td>
+						<td>{item.name}</td> 
 						<td>{item.username}</td>
 						<td>{item.email}</td>
 					</tr>

@@ -11,6 +11,7 @@ import "../public/css/index.css";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Post from "./pages/Post";
+import FilterableProductTable from "./pages/Test";
 
 function App() {
 	return (
@@ -21,6 +22,7 @@ function App() {
 			<Routes>
 				<Route path="/" element={<User />} />
 				<Route path="/posts" element={<Post />} />
+				<Route path="/test" element={<FilterableProductTable/>}/>
 			</Routes>
 		</BrowserRouter>
 	);

@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom";
 
 const Menu = () => {
-	
-    
-    
-    return (
+	return (
 		<div id="menu">
 			<ul>
+				<Link to="/test">
+					<a href="#">Test</a>
+				</Link>
 				<Link to="/">
 					<a href="#">view users</a>
 				</Link>

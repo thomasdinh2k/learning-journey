@@ -1,15 +1,12 @@
 {
 	"folders": [
 		{
-			"name": "learning-journey",
-			"path": ".."
+			"path": "../MR-VIETHOANG-COURSE/React/React235"
 		}
 	],
 	"settings": {
 		"zenMode.hideLineNumbers": false,
-		"cSpell.words": [
-			"OPPO"
-		],
+		"cSpell.words": ["OPPO"],
 		"git.ignoreLimitWarning": true
 	}
 }

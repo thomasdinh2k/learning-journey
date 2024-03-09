@@ -9,9 +9,18 @@ const Auth = require("../apps/controllers/authController");
 const DashboardController = require("../apps/controllers/dashboardController");
 const ProductController = require("../apps/controllers/productController");
 
+
 // Import Middlewares
 const {ensureAuthenticated, checkAlreadyAuthenticated} = require("../apps/middlewares/auth")
 const uploadMiddleware = require("../apps/middlewares/upload");
+const {
+	home,
+	category,
+	product,
+	search,
+	cart,
+	success
+} = require("../apps/controllers/siteController");
 
 // Import Controllers or Handlers
 
@@ -63,6 +72,17 @@ router.get("/admin/products/create", ProductController.create)
 router.get("/admin/products/edit/:id", ProductController.edit)
 router.post("/admin/products/store",uploadMiddleware.single('thumbnail') , ProductController.store)
 router.post("/admin/products/update/:id", uploadMiddleware.single("thumbnail"), ProductController.storeEdit)
+
+// Main Site
+router.get("/home", home)
+router.get("/category", category)
+
+router.get("/product", product)
+router.get('/product/:id', product)
+
+router.get("/search", search)
+router.get("/cart", cart)
+router.get("/success", success)
 
 // Export
 module.exports = router;

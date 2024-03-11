@@ -19,10 +19,6 @@ const processLogin = async (req, res) => {
 
 	const userWithoutPassword = await getUserData({ email: userEmail });
 
-	// console.log("userEmail", userEmail);
-	// console.log("userPassword", userPassword);
-	// console.log("Matching user is: ", users);
-	// console.log("Matching user LENGTH: ", users.length);
 
 	// Initialize errorCount in session if doesn't exist
 	if (req.session.errorCount === undefined) {
@@ -32,8 +28,6 @@ const processLogin = async (req, res) => {
 	if (users.length > 0) {
 		req.session.errorCount = 0; // Reset errorCount if Login success
 
-		// Try to use 'Session' to store data
-		console.log("USER CREDENTIAL", users[0]);
 
 		req.session.userCredential = users[0];
 		res.redirect("/admin/dashboard");
@@ -43,7 +37,6 @@ const processLogin = async (req, res) => {
 		 * With User document, this need to display differently if it finds a matching email
 		 */
 		if (req.session.errorCount >= 3) {
-			console.log("Test direct to login failed page");
 			res.render("new_admin/Components/login", {
 				errorCount: req.session.errorCount,
 				error: "Đã quá số lần thử đăng nhập, vui lòng liên hệ quản trị viên",
@@ -71,7 +64,6 @@ const processLogin = async (req, res) => {
 };
 
 const logout = (req, res) => {
-	console.log("init_logout");
 	req.session.destroy();
 	res.redirect("/")
 };

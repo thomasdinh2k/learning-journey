@@ -49,7 +49,6 @@ app.get("/set_session", (req, res) => {
 });
 
 app.post("/test_login", (req, res) => {
-	console.log("Hello");
 	res.send(200);
 });
 

@@ -100,7 +100,6 @@ const popup = document.getElementById("pop-up");
 
 if (pageInput) {
 	pageInput.addEventListener("focus", function () {
-		console.log("pageInput is being focus");
 		
 		popup.style.display = "block";
 		
@@ -108,7 +107,6 @@ if (pageInput) {
 	});
 	
 	pageInput.addEventListener("blur", function () {
-		console.log("pageInput is NOT being focus");
 		popup.style.display = "none";
 	});
 }

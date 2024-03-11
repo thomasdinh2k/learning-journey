@@ -1,6 +1,9 @@
 const express = require("express");
 const app = express();
 const router = express.Router();
+
+const path = require("path");
+
 const homepageController = require("../apps/controllers/homepageController");
 const formController = require("../apps/controllers/formController");
 const getHomepage = require("../apps/controllers/homepageController");
@@ -23,6 +26,11 @@ const {
 } = require("../apps/controllers/siteController");
 
 // Import Controllers or Handlers
+const {
+	ensureAuthenticated,
+	checkAlreadyAuthenticated,
+} = require("../apps/middlewares/auth");
+const upload = require("../apps/middlewares/create");
 
 // Define Route Handlers
 
@@ -50,6 +58,9 @@ backendRoute.forEach((routePath) => {
 // router.get("/", getHomepage);
 router.get("/test_1", TestController.test_1);
 router.get("/test2", TestController.test_2);
+router.get("/test3", (req, res) => {
+	res.send(`Current path is ${path.join(__filename)}`);
+});
 
 router.get("/products", TestController.getProductData);
 
@@ -57,17 +68,31 @@ router.get("/form", formController.getForm);
 router.post("/action_form", formController.handleFormSubmission);
 
 // Authentication
-router.get("/", checkAlreadyAuthenticated ,Auth.login);
+router.get("/", checkAlreadyAuthenticated, Auth.login);
 router.post("/", Auth.processLogin);
 
 router.get("/logout", Auth.logout);
 
 // Dashboard
-router.get("/admin/dashboard", ensureAuthenticated, DashboardController.dashboard);
+router.get(
+	"/admin/dashboard",
+	ensureAuthenticated,
+	DashboardController.dashboard
+);
 
 // Product Tasks
-router.get("/admin/products", ensureAuthenticated, ProductController.productDisplay);
-router.get("/admin/products/create", ProductController.create)
+router.get(
+	"/admin/products",
+	ensureAuthenticated,
+	ProductController.productDisplay
+);
+router.get("/admin/products/create", ProductController.create_page);
+
+router.post(
+	"/admin/products/create",
+	upload.single("thumbnail"),
+	ProductController.storeNewProduct
+);
 
 router.get("/admin/products/edit/:id", ProductController.edit)
 router.post("/admin/products/store",uploadMiddleware.single('thumbnail') , ProductController.store)

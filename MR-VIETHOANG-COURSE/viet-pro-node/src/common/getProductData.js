@@ -23,7 +23,7 @@ async function getProductData(incomingQuery = {}) {
 			.find(queryConditions)
 			.limit(finalParam.limit)
 			.skip(finalParam.skip)
-			.sort({_id:-1})
+			.sort({_id: -1})
 	}
 }
 

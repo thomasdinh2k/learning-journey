@@ -3,6 +3,9 @@ var path = require("path");
 var fs = require("fs");
 
 const pagination = require("../../common/pagination");
+const fs = require("fs");
+const path = require("path");
+const productModel = require("../models/product");
 
 const {
 	getProductData,
@@ -32,6 +35,7 @@ const productDisplay = async (req, res) => {
 		limit,
 		pageNumber
 	);
+	// console.log("Test New Algorithm Result", pageList);
 	// console.log("Test New Algorithm Result", pageList);
 
 	// Query data
@@ -170,7 +174,8 @@ const ProductController = async (req, res) => {
 module.exports = {
 	productDisplay,
 	ProductController,
-	create,
+	create_page,
+	storeNewProduct,
 	index,
 	edit,
 	update,

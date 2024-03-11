@@ -75,9 +75,9 @@ router.post("/admin/products/update/:id", uploadMiddleware.single("thumbnail"), 
 
 // Main Site
 router.get("/home", home)
-router.get("/category", category)
+router.get("/category/:id", category)
 
-router.get("/product", product)
+// router.get("/product", product)
 router.get('/product/:id', product)
 
 router.get("/search", search)

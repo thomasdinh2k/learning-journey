@@ -9,7 +9,7 @@ const Home = () => {
 
 	return (
 		<>
-			<caption>Current Language: {languageState} </caption>
+			<h2>Current Language: {languageState} </h2>
 			<div id="wrapper">
 				<Header setLanguageState={setLanguageState} />
 				{languageState == "vie" ? <BodyVIE/> : <BodyENG/>}

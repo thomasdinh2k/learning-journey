@@ -1,0 +1,35 @@
+*{
+    margin:0;
+    padding:0;}
+    
+    body{
+    font-family:arial;
+    font-size:14px;
+    color:#333;
+    height: 1000px;}
+
+    #body{
+        margin-top: 80px;
+    }
+
+    #body h4{
+        font-size: 18px;
+    }
+
+    #body h4 a{
+        color: #333;
+    }
+
+    #page-404{
+        font-size: 36px;
+        color: #999;
+        text-align: center;
+    }
+    
+    #footer{
+        color:#fff;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    
+    

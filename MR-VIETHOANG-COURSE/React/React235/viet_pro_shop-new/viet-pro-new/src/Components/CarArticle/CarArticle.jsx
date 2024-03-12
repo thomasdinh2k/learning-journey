@@ -17,7 +17,7 @@ const CarArticle = () => {
 	return (
 		<div id="main">
 			<div className="content-item">
-				<img className={loadState && "filtered"}
+				<img className={loadState ? "filtered" : ''}
 				
 				src="../../public/images/banner-1.jpg" />
 				<Title loadState={loadState}/>

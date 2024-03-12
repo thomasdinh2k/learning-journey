@@ -9,8 +9,7 @@ NODE-COURSE/viet-pro/package.json
 .idea/vcs.xml
 .idea/workspace.xml
 .vscode
-Template/
-template/
+
 
 # Created by https://www.toptal.com/developers/gitignore/api/reactnative,react
 # Edit at https://www.toptal.com/developers/gitignore?templates=reactnative,react

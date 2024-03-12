@@ -1,6 +1,5 @@
 import { useState } from "react";
 import "./App.css";
-import "../public/css/bootstrap.css"
 import Header from "./shared/components/Layout/Header";
 import Footer from "./shared/components/Layout/Footer";
 import Menu from "./shared/components/Layout/Menu";
@@ -14,6 +13,7 @@ import NotFound from "./pages/NotFound";
 import ProductDetail from "./pages/ProductDetails";
 import Search from "./pages/Search";
 import Success from "./pages/Success";
+import "../public/css/bootstrap.css"
 
 function App() {
 	return (
@@ -42,7 +42,6 @@ function App() {
 									<Route path="/Success" element={<Success title="Success"/>} />
 
 								</Routes>
-								<Home/>
 							</div>
 							<Sidebar/>
 						</div>

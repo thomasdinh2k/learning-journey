@@ -1,14 +1,16 @@
 import { Link } from "react-router-dom";
+const assetPath = import.meta.env.VITE_APP_ASSET_PATH;
 
 const Header = () => {
 	return (
 		<div id="header">
+			<small style={{color: "white"}}>Running this application in <b style={{color: "blueviolet"}}>{process.env.NODE_ENV}</b></small>
 			<div className="container">
 				<div className="row">
 					<div id="logo" className="col-lg-3 col-md-3 col-sm-12">
 						<h1>
 							<Link to="/">
-								<img className="img-fluid" src="images/logo.png" />
+								<img className="img-fluid" src={`${assetPath}images/logo.png`} />
 							</Link>
 						</h1>
 					</div>

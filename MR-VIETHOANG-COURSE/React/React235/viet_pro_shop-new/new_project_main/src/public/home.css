@@ -83,6 +83,11 @@ body{
 	color:#333;
 	text-decoration:none;
 	font-weight:bold;}
+
+a:hover {
+	text-decoration: none !important;
+	color: white;
+}
 .product-item span{
 	font-weight:bold;
 	color:#EB1F27;}

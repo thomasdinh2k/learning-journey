@@ -2,7 +2,7 @@ import { useState } from "react";
 import "./App.css";
 import Header from "./shared/components/Layout/Header";
 import Footer from "./shared/components/Layout/Footer";
-import Menu from "./shared/components/Layout/Menu";
+import Menu from "./shared/components/Layout/Menu/Menu";
 import Slider from "./shared/components/Layout/Slider";
 import Home from "./pages/Home";
 import Sidebar from "./shared/components/Layout/Sidebar";
@@ -13,7 +13,7 @@ import NotFound from "./pages/NotFound";
 import ProductDetail from "./pages/ProductDetails";
 import Search from "./pages/Search";
 import Success from "./pages/Success";
-import "../public/css/bootstrap.css"
+// import "../public/css/bootstrap.css"
 
 function App() {
 	return (
@@ -35,9 +35,9 @@ function App() {
 									
 									<Route path="/" element={<Home title="Home"/>} />
 									<Route path="/Cart" element={<Cart title="Cart"/>} />
-									<Route path="/Category" element={<Category title="Category"/>} />
+									<Route path="/categories/:catName/:catId" element={<Category title="Category"/>} />
 									<Route path="/*" element={<NotFound />} />
-									<Route path="/ProductDetail" element={<ProductDetail title="Product Detail"/>} />
+									<Route path="/product-detail/:productId" element={<ProductDetail title="Product Detail"/>} />
 									<Route path="/Search" element={<Search title="Search"/>} />
 									<Route path="/Success" element={<Success title="Success"/>} />
 

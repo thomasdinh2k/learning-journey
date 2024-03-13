@@ -35,6 +35,8 @@ const Home = ({ title }) => {
 					{featuredProductList.map((product) => {
 						return (
 							<ProductItem
+								productId={product._id}
+								key={product._id}
 								name={product.name}
 								price={product.price}
 								image={getImage(product.image)}
@@ -51,15 +53,15 @@ const Home = ({ title }) => {
 					{latestProductList.map((product) => {
 						return (
 							<ProductItem
+								productId={product._id}
+								key={product._id}
 								name={product.name}
 								price={product.price}
 								image={getImage(product.image)}
 							/>
 						);
 					})}
-					
 				</div>
-				
 			</div>
 			{/*	End Latest Product	*/}
 		</>

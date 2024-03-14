@@ -1,13 +1,112 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
-</html>
+        <!doctype html>
+        <html lang="en">
+
+        <head>
+          <meta charset="UTF-8" />
+          <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+          <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+          <!-- Google fonts -->
+          <link rel="preconnect" href="https://fonts.googleapis.com">
+          <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+          <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700&family=Bellefair&family=Barlow:wght@400;700&display=swap" rel="stylesheet">
+
+          <link rel="stylesheet" href="./src/index.css">
+          <title>Vite + React</title>
+
+
+        </head>
+
+        <body>
+
+          <div class="flex" style="justify-content: flex-end;">
+            <h1 class="text-accent ff-sans-normal" style="font-family: var(--ff-sans-normal);">Design System</h1>
+          </div>
+
+          <section id="colors" class="text-white">
+            <h2 class="numbered-title"><span>01</span> colors</h2>
+
+            <div class="flex">
+              <div style="flex-grow: 1;">
+                <div style="padding: 3rem 1rem 1rem; border: 1px solid white">
+                  #0B0D17
+                </div>
+                <p><span class="text-accent ff-sans-normal" style="margin-right: 40px;">RGB</span> 11, 13, 23</p>
+                <p><span class="text-accent ff-sans-normal" style="margin-right: 40px;">HSL</span> 230°, 35%, 7%</p>
+              </div>
+              <div style="flex-grow: 1;">
+                <div class="bg-accent text-dark" style="padding: 3rem 1rem 1rem; border: 1px solid white">
+                  #0B0D17
+                </div>
+                <p><span class="text-accent ff-sans-normal" style="margin-right: 40px;">RGB</span>11, 13, 23</p>
+                <p><span class="text-accent ff-sans-normal" style="margin-right: 40px;">HSL</span>230°, 35%, 7%</p>
+              </div>
+              <div style="flex-grow: 1;">
+                <div class="bg-white text-dark" style="padding: 3rem 1rem 1rem; border: 1px solid white">
+                  #0B0D17
+                </div>
+                <p><span class="text-accent ff-sans-normal" style="margin-right: 40px;">RGB</span>11, 13, 23</p>
+                <p><span class="text-accent ff-sans-normal" style="margin-right: 40px;">HSL</span>230°, 35%, 7%</p>
+              </div>
+            </div>
+
+          </section>
+
+          <!-- Typography Section -->
+          <section id="typography" class="text-white" style="margin: 4rem 0">
+            <h2 class="numbered-title"><span>02</span> typography</h2>
+
+            <div class="flex">
+              <div class="flow" style="flex-basis: 100%; padding: 1em;">
+                <div id="heading-1">
+                  <p class="text-accent ff-sans-normal">Heading 1 - Bellefair Regular - 150px</p>
+                  <p class="fs-900 ff-serif uppercase">earth</p>
+                </div>
+                <div id="heading-2">
+                  <p class="text-accent ff-sans-normal">Heading 2 - Bellefair Regular - 100px</p>
+                  <p class="fs-800 ff-serif uppercase">venus</p>
+                </div>
+                <div id="heading-3">
+                  <p class="text-accent ff-sans-normal">Heading 3 - Bellefair Regular - 56px</p>
+                  <p class="fs-700 ff-serif uppercase">jupiter & saturn</p>
+                </div>
+                <div id="heading-4">
+                  <p class="text-accent ff-sans-normal">Heading 4 - Bellefair Regular - 32px</p>
+                  <p class="fs-600 ff-serif uppercase">URANUS, NEPTUNE, & PLUTO</p>
+                </div>
+                <div id="heading-5">
+                  <p class="text-accent ff-sans-normal">Heading 5 - Barlow Condensed Regular - 28px - 4.75 Character Space</p>
+                  <p class="ff-sans-cond fs-500 uppercase text-accent letter-spacing-1">so, do you want to travel to space</p>
+                </div>
+              </div>
+
+              <div class="flow" style="flex-basis: 100%; --flow-space: 4rem">
+                <div id="sub-head-1">
+                  <p class="text-accent">Subheading 1 - Bellefair Regular - 28px</p>
+                  <p class="ff-serif fs-500 uppercase">384,400 km</p>
+                </div>
+                <div id="sub-head-2">
+                  <p class="text-accent ">Subheading 2 - Barlow Condensed Regular - 14px</p>
+                  <p class="ff-sans-cond fs-200 uppercase letter-spacing-3">avg. distance</p>
+                </div>
+                <div id="nav-text">
+                  <p class="text-accent ">Nav Text - Barlow Condensed Regular - 16px - 2.7 Character Space</p>
+                  <p class="ff-sans-cond fs-300 letter-spacing-2 ">EUROPA</p>
+                </div>
+                <div id="body-text">
+                  <p class="text-accent" style="color: rgb(149, 145, 145);">Body Text</p>
+                  <p class="ff-sans-normal">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Phasellus hendrerit. Pellentesque aliquet nibh nec urna. In nisi neque, aliquet vel, dapibus id, mattis vel, nisi. Sed pretium, ligula sollicitudin laoreet viverra, tortor libero sodales leo, eget blandit nunc tortor eu nibh. Nullam mollis. Ut justo. Suspendisse potenti.Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Phasellus hendrerit. Pellentesque aliquet nibh nec urna. In nisi neque, aliquet vel, dapibus id, mattis vel, nisi. Sed pretium, ligula sollicitudin laoreet viverra, tortor libero sodales leo, eget blandit nunc tortor eu nibh. Nullam mollis. Ut justo. Suspendisse potenti.Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Phasellus hendrerit. Pellentesque aliquet nibh nec urna. In nisi neque, aliquet vel, dapibus id, mattis vel, nisi.</p>
+                </div>
+              </div>
+            </div>
+
+          </section>
+
+
+
+
+          <!-- <div id="root"></div> -->
+          <script type="module" src="/src/main.jsx"></script>
+        </body>
+
+        </html>

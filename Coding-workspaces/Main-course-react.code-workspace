@@ -1,13 +1,11 @@
 {
 	"folders": [
 		{
-			"path": ".."
+			"path": "../REACT-COURSE/project-management-app"
 		}
 	],
 	"settings": {
 		"zenMode.hideLineNumbers": false,
-		"cSpell.words": [
-			"OPPO"
-		]
+		"cSpell.words": ["OPPO"]
 	}
 }

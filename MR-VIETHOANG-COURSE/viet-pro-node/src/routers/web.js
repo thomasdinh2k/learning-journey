@@ -9,9 +9,11 @@ const Auth = require("../apps/controllers/authController");
 const DashboardController = require("../apps/controllers/dashboardController");
 const ProductController = require("../apps/controllers/productController");
 
-
 // Import Middlewares
-const {ensureAuthenticated, checkAlreadyAuthenticated} = require("../apps/middlewares/auth")
+const {
+	ensureAuthenticated,
+	checkAlreadyAuthenticated,
+} = require("../apps/middlewares/auth");
 const uploadMiddleware = require("../apps/middlewares/upload");
 const {
 	home,
@@ -19,7 +21,7 @@ const {
 	product,
 	search,
 	cart,
-	success
+	success,
 } = require("../apps/controllers/siteController");
 
 // Import Controllers or Handlers
@@ -57,32 +59,50 @@ router.get("/form", formController.getForm);
 router.post("/action_form", formController.handleFormSubmission);
 
 // Authentication
-router.get("/", checkAlreadyAuthenticated ,Auth.login);
+router.get("/", checkAlreadyAuthenticated, Auth.login);
 router.post("/", Auth.processLogin);
 
 router.get("/logout", Auth.logout);
 
 // Dashboard
-router.get("/admin/dashboard", ensureAuthenticated, DashboardController.dashboard);
+router.get(
+	"/admin/dashboard",
+	ensureAuthenticated,
+	DashboardController.dashboard
+);
 
 // Product Tasks
-router.get("/admin/products", ensureAuthenticated, ProductController.productDisplay);
-router.get("/admin/products/create", ProductController.create)
+router.get(
+	"/admin/products",
+	ensureAuthenticated,
+	ProductController.productDisplay
+);
+router.get("/admin/products/create", ProductController.create);
 
-router.get("/admin/products/edit/:id", ProductController.edit)
-router.post("/admin/products/store",uploadMiddleware.single('thumbnail') , ProductController.store)
-router.post("/admin/products/update/:id", uploadMiddleware.single("thumbnail"), ProductController.storeEdit)
+router.get("/admin/products/edit/:id", ProductController.edit);
+router.post(
+	"/admin/products/store",
+	uploadMiddleware.single("thumbnail"),
+	ProductController.store
+);
+router.post(
+	"/admin/products/update/:id",
+	uploadMiddleware.single("thumbnail"),
+	ProductController.storeEdit
+);
+
+router.get("/admin/products/delete/:id", ProductController.del);
 
 // Main Site
-router.get("/home", home)
-router.get("/category/:id", category)
+router.get("/home", home);
+router.get("/category/:id", category);
 
 // router.get("/product", product)
-router.get('/product/:id', product)
+router.get("/product/:id", product);
 
-router.get("/search", search)
-router.get("/cart", cart)
-router.get("/success", success)
+router.get("/search", search);
+router.get("/cart", cart);
+router.get("/success", success);
 
 // Export
 module.exports = router;

@@ -13,9 +13,9 @@
                                   <a href="/admin/products/edit/<%=data._id%>" class="btn btn-export">
                                     Sửa
                                   </a>
-                                  <a href="product-edit.html" class="btn btn-delete">
+                                  <button onclick={openDialog(this)} class="btn btn-delete" data-product-id="<%= data._id %>" data-product-name="<%= data.name %>">
                                     Xóa
-                                  </a>
+                                  </button>
                                   <a href="product-edit.html" class="btn btn-import">
                                     Xuất
                                   </a>

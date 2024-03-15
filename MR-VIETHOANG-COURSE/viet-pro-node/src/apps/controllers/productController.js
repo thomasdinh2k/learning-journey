@@ -161,7 +161,15 @@ const storeEdit = async (req, res) => {
 };
 
 const update = (req, res) => {};
-const del = (req, res) => {};
+const del = async (req, res) => {
+	const id = req.params.id;
+
+	console.log("Obtained ID for deletion", id);
+
+	await ProductModel.deleteOne({ _id: id });
+	console.log("DONE WITH DELETION");
+	res.redirect("/admin/products");
+};
 
 const ProductController = async (req, res) => {
 	res.send("ProductController");

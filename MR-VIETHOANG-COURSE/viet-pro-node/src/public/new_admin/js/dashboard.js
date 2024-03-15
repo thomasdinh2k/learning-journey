@@ -123,3 +123,26 @@ function goToPage() {
 		window.location.href = `/admin/products?page=${pageNumber}`;
 	}
 }
+
+// Dialog
+
+var dialog = document.getElementById("deleteDialog");
+
+function openDialog(button) {
+    var productName = button.getAttribute("data-product-name");
+    var productId = button.getAttribute('data-product-id');
+    document.getElementById('productName').textContent = productName;
+	document.getElementById('productId').textContent = `( ${productId} )`;
+    dialog.style.display = "flex";
+}
+
+// Function to close the dialog
+function closeDialog() {
+    dialog.style.display = "none";
+}
+
+// Function to confirm deletion (simplified version, adjust as needed)
+function confirmDeletion() {
+    var productId = document.querySelector('[data-product-id]').getAttribute('data-product-id');
+    window.location.href = `/admin/products/delete/${productId}`;
+}

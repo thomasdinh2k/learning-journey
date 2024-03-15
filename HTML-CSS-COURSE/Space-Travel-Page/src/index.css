@@ -158,8 +158,8 @@ h6 {
 }
 
 .flow > *:where(:not(:first-child)) {
-    margin-top: var(--flow-space, 1rem);
-    outline: 1px solid red;
+	margin-top: var(--flow-space, 1rem);
+	outline: 1px solid red;
 }
 
 .container {
@@ -274,7 +274,42 @@ section {
 }
 
 .numbered-title span {
-	margin-right: 0.25em;
+	margin-right: 0.5em;
 	font-weight: 700;
 	color: hsl(var(--clr-white) / 0.25);
+}
+
+/* === === === === === === ==   */
+/* Interactive Components 		*/
+/* === === === === === === ==   */
+
+.large-button {
+	display: grid; /* Đưa element vào khuôn */
+	position: relative;
+	padding: 2em; /* Padding: x2 khoảng cách font*/
+	aspect-ratio: 1;
+	place-items: center; /* Short-hand align-items and justify-items*/
+	border-radius: 50%;
+	text-decoration: none;
+
+	z-index: 1;
+}
+
+.large-button::after {
+	content: ""; /* pseudo nào cũng có cái này */
+	position: absolute;
+	background-color: hsl(var(--clr-white) / 0.15);
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+	opacity: 0;
+	z-index: -1; /* Đưa vòng hào quang all the way back . Tuy nhiên, phần tử cha phải có z-index = 1*/
+
+	transition: opacity 500ms linear, transform 650ms ease-in-out;
+}
+
+.large-button:hover::after,
+.large-button:focus::after {
+	opacity: 1;
+	transform: scale(1.5);
 }

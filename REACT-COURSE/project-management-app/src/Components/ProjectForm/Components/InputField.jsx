@@ -1,4 +1,9 @@
-const Input = ({ label, input, ...props }) => {
+import { forwardRef } from "react";
+
+// const Input = ({ label, textarea, ...props }) => {
+const Input = forwardRef( ({ label, textarea, ...restProps}, ref) => {
+
+	// Manual Destruct Props
 	var inputClasses = `w-full p-1 border-b-2 rounded-sm border-stone-300 bg-stone-200 text-stone-600 focus:outline-none focus:border-stone-600`;
 
 	return (
@@ -6,13 +11,13 @@ const Input = ({ label, input, ...props }) => {
 			<label className="text-sm font-bold uppercase text-stone-500">
 				{label}
 			</label>
-			{input ? (
-				<input {...props} className={inputClasses} />
+			{textarea ? (
+				<textarea ref={ref} className={inputClasses} {...restProps} />
 			) : (
-				<textarea className={inputClasses} {...props} />
+				<input ref={ref} {...restProps} className={inputClasses} />
 			)}
 		</p>
 	);
-};
+});
 
 export default Input;

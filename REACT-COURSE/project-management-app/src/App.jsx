@@ -12,7 +12,7 @@ function App() {
 		projects: [],
 	});
 
-	console.log("selectedProjectID", projectState.selectedProjectId);
+	console.log("Current projectState", projectState);
 
 	function handleCreateProject() {
 		setProjectState((prevState) => {
@@ -21,14 +21,14 @@ function App() {
 				selectedProjectId: null,
 			};
 		});
-
-		console.log("Button Clicked");
 	}
 
 	let content;
 
 	if (projectState.selectedProjectId === null) {
-		content = <ProjectForm />;
+		content = 
+		<ProjectForm 
+			setProjectState={setProjectState}/>;
 	} else if (projectState.selectedProjectId === undefined) {
 		content = <NoProject handleCreateProject={handleCreateProject} />;
 	} else {

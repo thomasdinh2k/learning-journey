@@ -24,11 +24,16 @@ const ProjectForm = ( {setProjectState} ) => {
 			deadline: enteredDeadline.current.value
 		}
 
+		// TODO Validate User Input
+
 		setProjectState( prevState => (
-			{...prevState, 
+			{...prevState,
+				selectedProjectId: dataID,
 				projects: [...prevState.projects, data]
 			}
 		))
+
+		
 	}
 
 	return (

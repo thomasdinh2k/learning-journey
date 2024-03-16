@@ -9,7 +9,20 @@ import Input from "./Components/ProjectForm/Components/InputField";
 function App() {
 	const [projectState, setProjectState] = useState({
 		selectedProjectId: undefined,
-		projects: [],
+		projects: [
+			{	// Data mẫu
+				"id": "16.03.2024-taskID.0jd76t0sn",
+				"title": "Dự án búp măng non",
+				"description": "dành cho trẻ con",
+				"deadline": "2024-03-06"
+			},
+			{	// Data mẫu
+				"id": "16.03.2024-taskID.0jd76t0sn",
+				"title": "Dự án bông hồng nhỏ",
+				"description": "Dành cho người lớn",
+				"deadline": "2024-03-06"
+			}
+		],
 	});
 
 	console.log("Current projectState", projectState);
@@ -32,17 +45,19 @@ function App() {
 	} else if (projectState.selectedProjectId === undefined) {
 		content = <NoProject handleCreateProject={handleCreateProject} />;
 	} else {
-		//
+		content = <TaskDisplay/>
 	}
 
 	return (
 		<main className="h-screen my-8 flex gap-8">
-			<SideBar handleCreateProject={handleCreateProject} />
+			<SideBar
+				projectList = {projectState.projects} 
+				handleCreateProject={handleCreateProject} />
 
 			{/* <NoProject handleCreateProject={handleCreateProject}/> */}
 			{content}
 
-			<TaskDisplay />
+			
 		</main>
 	);
 }

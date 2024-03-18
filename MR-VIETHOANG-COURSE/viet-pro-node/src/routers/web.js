@@ -104,5 +104,18 @@ router.get("/search", search);
 router.get("/cart", cart);
 router.get("/success", success);
 
+// Search
+router.post("/search", (req, res) => {
+
+	const search = req.body.search
+
+	// You can now use name and email for further processing
+	console.log(`Search for ${search}`);
+
+	// Redirect the user or send a response
+	res.send("Form submitted successfully!");
+
+})
+
 // Export
 module.exports = router;

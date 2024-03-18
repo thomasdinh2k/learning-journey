@@ -6,8 +6,8 @@
         <h1><a href="/home"><img class="img-fluid" src="/static/site/images/logo.png"></a></h1>
       </div>
       <div id="search" class="col-lg-5 col-md-5 col-sm-12">
-        <form class="form-inline">
-          <input class="form-control mt-3" type="search" placeholder="Tìm kiếm" aria-label="Search">
+        <form  role="form" method="post" action="/search"   class="form-inline">
+          <input class="form-control mt-3" type="search" name="search" placeholder="Tìm kiếm" aria-label="Search">
           <button class="btn btn-danger mt-3" type="submit">Tìm kiếm</button>
         </form>
       </div>

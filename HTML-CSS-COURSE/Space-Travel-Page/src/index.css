@@ -315,6 +315,7 @@ section {
 }
 
 .primary-navigation {
+	--underline-gap: 2rem;
 	--gap: 4rem;
 	list-style: none;
 	padding: 0;
@@ -332,5 +333,6 @@ section {
 }
 
 .underline-indicators > * {
-	background: red;
+	padding: var(--underline-gap, 1rem) 0;
+	border-bottom: .2rem solid hsl(var(--clr-white) / 0);
 }

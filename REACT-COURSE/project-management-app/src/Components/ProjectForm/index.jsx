@@ -71,9 +71,9 @@ const ProjectForm = ({ setProjectState }) => {
 					</li>
 				</menu>
 				<div>
-					<Input label="Tiêu đề" ref={enteredTitle} />
+					<Input label="Tiêu đề" ref={enteredTitle} placeholder="Dự án..." />
 					<Input label="Chú thích" ref={enteredDesc} textarea />
-					<Input label="Deadline" type="date" ref={enteredDeadline} />
+					<Input label="Deadline" type="date"  ref={enteredDeadline} />
 				</div>
 			</div>
 		</>

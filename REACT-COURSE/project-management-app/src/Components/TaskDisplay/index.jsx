@@ -41,7 +41,7 @@ const TaskDisplay = ({ projectState, handleDeleteProject }) => {
 			<header className="pb-4 mb-4 border-b-2 border-stone-300">
 				<div className="flex items-center justify-between">
 					<h1 className="text-3xl font-bold text-stone-600 mb-2">
-						{currentProject.title} <EnglishSpan>project</EnglishSpan>
+						{currentProject.title} <EnglishSpan>project: {currentProject.id}</EnglishSpan>
 					</h1>
 					<Button
 						onClick={() => {
@@ -56,7 +56,7 @@ const TaskDisplay = ({ projectState, handleDeleteProject }) => {
 					<p>{line}</p>
 				))}
 			</header>
-			<TodoList />
+			<TodoList todoList={currentProject.tasks} />
 		</div>
 	);
 };

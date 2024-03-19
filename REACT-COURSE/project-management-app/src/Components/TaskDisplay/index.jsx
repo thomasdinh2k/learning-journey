@@ -1,4 +1,5 @@
 import Button from "../SharedComponents/Button";
+import EnglishSpan from "../SharedComponents/EnglishSpan";
 import TodoList from "./Components/ProjectsTodoList";
 
 const TaskDisplay = ({ projectState, handleDeleteProject }) => {
@@ -40,7 +41,7 @@ const TaskDisplay = ({ projectState, handleDeleteProject }) => {
 			<header className="pb-4 mb-4 border-b-2 border-stone-300">
 				<div className="flex items-center justify-between">
 					<h1 className="text-3xl font-bold text-stone-600 mb-2">
-						{currentProject.title}
+						{currentProject.title} <EnglishSpan>project</EnglishSpan>
 					</h1>
 					<Button
 						onClick={() => {

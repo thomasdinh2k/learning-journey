@@ -10,27 +10,68 @@ function App() {
 		selectedProjectId: undefined,
 		projects: [
 			{
-				// Data mẫu
-				id: "16.03.2024-taskID.0jd76t0snbmn",
-				title: "Dự án búp măng non",
-				description: "dành cho trẻ con\n\nTrẻ con\nnhé",
-				deadline: "2024-03-06",
+			  id: "16.03.2024-taskID.0jd76t0snbmn",
+			  title: "Dự án búp măng non",
+			  description: "",
+			  deadline: "2024-03-06",
+			  tasks: [
+				{ id: "task1", title: "Tìm hiểu đối tượng", done: true },
+				{ id: "task2", title: "Lập kế hoạch chi tiết", done: false },
+				{ id: "task3", title: "Thuê giáo viên", done: false },
+				{ id: "task4", title: "Chuẩn bị tài liệu", done: true },
+				{ id: "task5", title: "Quảng cáo dự án", done: false }
+			  ]
 			},
 			{
-				// Data mẫu
-				id: "16.03.2024-taskID.0jd76t0bhn",
-				title: "Dự án bông hồng nhỏ",
-				description: "Dành cho người lớn",
-				deadline: "2024-03-06",
+			  id: "17.03.2024-taskID.1gh56u9klpqr",
+			  title: "Dự án xây dựng mới",
+			  description: "dự án xây dựng khu vui chơi\n\nPhải hoàn thành trước hạn",
+			  deadline: "2024-04-01",
+			  tasks: [
+				{ id: "task1", title: "Khảo sát mặt bằng", done: false },
+				{ id: "task2", title: "Thiết kế sơ bộ", done: true },
+				{ id: "task3", title: "Phê duyệt ngân sách", done: false },
+				{ id: "task4", title: "Chọn nhà thầu", done: false },
+				{ id: "task5", title: "Giám sát thi công", done: false }
+			  ]
 			},
 			{
-				// Data mẫu
-				id: "16.03.2024-taskID.2",
-				title: "Dự án hoa thiên vỹ",
-				description: "Dành cho người cụ già",
-				deadline: "2024-03-06",
+			  id: "18.03.2024-taskID.2ij78v9wmnxz",
+			  title: "Dự án phần mềm",
+			  description: "phát triển ứng dụng di động\n\nỨng dụng cho iOS và Android",
+			  deadline: "2024-05-15",
+			  tasks: [
+				{ id: "task1", title: "Nghiên cứu thị trường", done: true },
+				{ id: "task2", title: "Thiết kế giao diện người dùng", done: true },
+				{ id: "task3", title: "Lập trình giao diện", done: false },
+				{ id: "task4", title: "Phát triển API", done: false },
+				{ id: "task5", title: "Kiểm thử tích hợp", done: false }
+			  ]
 			},
-		],
+			{
+			  id: "19.03.2024-taskID.3kl89w0zmxnc",
+			  title: "Dự án nghiên cứu",
+			  description: "nghiên cứu khoa học\n\nLiên quan đến biến đổi khí hậu",
+			  deadline: "2024-06-20",
+			  tasks: [
+				{ id: "task1", title: "Thu thập dữ liệu hiện trạng", done: false },
+				{ id: "task2", title: "Phân tích mẫu", done: true },
+				{ id: "task3", title: "Soạn thảo báo cáo sơ bộ", done: false },
+				{ id: "task4", title: "Trình bày kết quả tại hội nghị", done: false },
+				{ id: "task5", title: "Xuất bản kết quả", done: false }
+			  ]
+			},
+			{
+			  id: "19.03.2024-taskID.3kl89w0zmxnc2",
+			  title: "Dự án ngồi không",
+			  description: "Không làm gì cả",
+			  deadline: "2024-06-20",
+			  tasks: [
+				
+			  ]
+			}
+		  ]
+		  
 	});
 
 	const handleCreateProject = () => {
@@ -78,7 +119,6 @@ function App() {
 				handleCreateProject={handleCreateProject}
 			/>
 
-			{/* <NoProject handleCreateProject={handleCreateProject}/> */}
 			{content}
 		</main>
 	);

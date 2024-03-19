@@ -26,10 +26,24 @@ function getCategories(config) {
     return Http.get("/categories", config)
 }
 
+
+//thaygiaoquocdan.vn:3000/api/v1/products/614717c9271a0400ee8ec9ea/comments
+function getProductComments(id, config) {
+    return Http.get(`/products/${id}/comments`, config)
+}
+
+
+const createCommentProduct = (id, data, config) => {
+	return Http.post(`/products/${id}/comments`, data, config);
+};
+
+
 export  {
     getProducts,
     getProductsByCategory,
     getImage,
     getCategories,
-    getProductDescription
+    getProductDescription,
+    getProductComments,
+    createCommentProduct
 }

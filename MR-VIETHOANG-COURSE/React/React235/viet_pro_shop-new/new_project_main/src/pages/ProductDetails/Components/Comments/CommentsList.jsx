@@ -1,87 +1,46 @@
+import { useEffect } from "react";
+import { useState } from "react";
+import { getProductComments } from "../../../../services/Api";
+import { useParams } from "react-router-dom";
+import convertTimeStamp from "../../../../shared/utils/index.js"
+
 const CommentList = () => {
+	const routeParam = useParams();
+	const [productComment, setProductComment] = useState([]);
+
+	var productId = routeParam.productId;
+
+	useEffect(() => {
+		getProductComments(productId, {
+			params: {limit: 4, sort: { createdAt: -1 }}
+		}).then((req) =>
+			setProductComment(req.data.data.docs)
+		);
+	}, []);
+
 	return (
 		<div id="comments-list" className="row">
 			<div className="col-lg-12 col-md-12 col-sm-12">
-				<div className="comment-item">
-					<ul>
-						<li>
-							<b>Nguyễn Văn A</b>
-						</li>
-						<li>2018-01-03 20:40:10</li>
-						<li>
-							<p>
-								Kiểu dáng đẹp, cảm ứng rất nhạy, cầm trên tay cảm giác không bị
-								cấn. Chụp ảnh tương đối nét, chơi game rất phê. Nếu giá mềm một
-								chút thì sẽ bán khá chạy. Một sản phẩm tốt mà mọi người có thể
-								cân nhắc.
-							</p>
-						</li>
-					</ul>
-				</div>
-				<div className="comment-item">
-					<ul>
-						<li>
-							<b>Nguyễn Văn A</b>
-						</li>
-						<li>2018-01-03 20:40:10</li>
-						<li>
-							<p>
-								Kiểu dáng đẹp, cảm ứng rất nhạy, cầm trên tay cảm giác không bị
-								cấn. Chụp ảnh tương đối nét, chơi game rất phê. Nếu giá mềm một
-								chút thì sẽ bán khá chạy. Một sản phẩm tốt mà mọi người có thể
-								cân nhắc.
-							</p>
-						</li>
-					</ul>
-				</div>
-				<div className="comment-item">
-					<ul>
-						<li>
-							<b>Nguyễn Văn A</b>
-						</li>
-						<li>2018-01-03 20:40:10</li>
-						<li>
-							<p>
-								Kiểu dáng đẹp, cảm ứng rất nhạy, cầm trên tay cảm giác không bị
-								cấn. Chụp ảnh tương đối nét, chơi game rất phê. Nếu giá mềm một
-								chút thì sẽ bán khá chạy. Một sản phẩm tốt mà mọi người có thể
-								cân nhắc.
-							</p>
-						</li>
-					</ul>
-				</div>
-				<div className="comment-item">
-					<ul>
-						<li>
-							<b>Nguyễn Văn A</b>
-						</li>
-						<li>2018-01-03 20:40:10</li>
-						<li>
-							<p>
-								Kiểu dáng đẹp, cảm ứng rất nhạy, cầm trên tay cảm giác không bị
-								cấn. Chụp ảnh tương đối nét, chơi game rất phê. Nếu giá mềm một
-								chút thì sẽ bán khá chạy. Một sản phẩm tốt mà mọi người có thể
-								cân nhắc.
-							</p>
-						</li>
-					</ul>
-				</div>
-				<div className="comment-item">
-					<ul>
-						<li>
-							<b>Nguyễn Văn A</b>
-						</li>
-						<li>2018-01-03 20:40:10</li>
-						<li>
-							<p>
-								Kiểu dáng đẹp, cảm ứng rất nhạy, cầm trên tay cảm giác không bị
-								cấn. Chụp ảnh tương đối nét, chơi game rất phê. Nếu giá mềm một
-								chút thì sẽ bán khá chạy. Một sản phẩm tốt mà mọi người có thể
-								cân nhắc.
-							</p>
-						</li>
-					</ul>
-				</div>
+				
+			{productComment.map((comment) => (
+					<div className="comment-item" key={comment._id}>
+						<ul>
+							<li>
+								<b>{comment.name}</b>
+							</li>
+							<li>{comment.email}</li>
+							<li>{convertTimeStamp(comment.createdAt)}</li>
+							<li>
+								<p>
+									{comment.content}
+								</p>
+							</li>
+						</ul>
+					</div>
+			))}
+
+				
+				
 			</div>
 		</div>
 	);

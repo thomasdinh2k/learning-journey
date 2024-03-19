@@ -1,5 +1,5 @@
 import noProjectImage from "../../assets/no-projects.png";
-import AddProject from "../SharedComponents/AddProjectBtn";
+import Button from "../SharedComponents/Button";
 
 const NoProject = ( {handleCreateProject} ) => {
 	return (
@@ -14,7 +14,7 @@ const NoProject = ( {handleCreateProject} ) => {
 			</h2>
 			<p className="text-stone-400 mb-4">Chọn dự án hoặc tạo dự án mới</p>
 			<p>
-				<AddProject onClick={handleCreateProject}>Tạo dự án đầu tiên</AddProject>
+				<Button onClick={handleCreateProject}>Tạo dự án đầu tiên</Button>
 			</p>
 		</div>
 	);

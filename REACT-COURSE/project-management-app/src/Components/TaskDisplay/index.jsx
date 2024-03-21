@@ -3,9 +3,12 @@ import Button from "../SharedComponents/Button";
 import EnglishSpan from "../SharedComponents/EnglishSpan";
 import TodoList from "./Components/Todos/TodoList";
 
-const TaskDisplay = ({ projectState, handleDeleteProject }) => {
-	
-
+const TaskDisplay = ({
+	projectState,
+	handleDeleteProject,
+	handleCreateTodo,
+	handleDeleteTodo,
+}) => {
 	const { selectedProjectId: currentSelectedProject, projects: projectList } =
 		projectState;
 
@@ -13,7 +16,7 @@ const TaskDisplay = ({ projectState, handleDeleteProject }) => {
 		(project) => project.id === currentSelectedProject
 	);
 
-	console.log(projectState.projects);
+	console.log(currentProject);
 
 	return (
 		<div className="w-[35rem] mt-16">
@@ -33,10 +36,15 @@ const TaskDisplay = ({ projectState, handleDeleteProject }) => {
 				<p>Deadline: {currentProject.deadline}</p>
 				<p>Description:</p>
 				{currentProject.description.split("\n").map((line) => (
-					<p>{line}</p>
+					<p key={line}>{line}</p>
 				))}
 			</header>
-			<TodoList todoList={currentProject.tasks} />
+			<TodoList
+				todoList={currentProject.tasks}
+				handleCreateTodo={handleCreateTodo}
+				selectedProjectId={currentSelectedProject}
+				handleDeleteTodo={handleDeleteTodo}
+			/>
 		</div>
 	);
 };

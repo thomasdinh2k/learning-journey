@@ -13,6 +13,7 @@ const SideBar = ({handleCreateProject, projectList, setProjectState, currentProj
                 {projectList.map( project => (
                     
                     <ProjectItems
+                        key={project.id}
                         title={project.title}
                         id={project.id}
                         setProjectState={setProjectState}

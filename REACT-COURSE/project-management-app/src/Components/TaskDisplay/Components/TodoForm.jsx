@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Button from "../../SharedComponents/Button";
 
-const TodoForm = () => {
+const TodoForm = ({handleCreateTodo, selectedProjectId}) => {
 	const [enteredTodo, setEnteredTodo] = useState(null);
 
 	const handleInputChange = (event) => {
@@ -9,8 +9,9 @@ const TodoForm = () => {
 	};
 
 	const handleClick = () => {
-		alert(`You have added ${enteredTodo}`);
+		handleCreateTodo( selectedProjectId, enteredTodo)
 		setEnteredTodo("");
+
 	};
 
 	return (

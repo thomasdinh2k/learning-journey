@@ -17,6 +17,7 @@ const ProjectForm = ({ setProjectState }) => {
 			title: enteredTitle.current.value,
 			description: enteredDesc.current.value,
 			deadline: enteredDeadline.current.value,
+			tasks: []
 		};
 
 		// Validate User Input

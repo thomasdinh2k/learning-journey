@@ -95,6 +95,14 @@ function App() {
 		});
 	};
 
+	const handleCreateTodo = (projectId) => {
+		alert("handleCreateTodo TRIGGED!");
+	}
+
+	const handleDeleteTodo = (projectId, taskId) => {
+		
+	};
+
 	let content;
 
 	if (projectState.selectedProjectId === null) {

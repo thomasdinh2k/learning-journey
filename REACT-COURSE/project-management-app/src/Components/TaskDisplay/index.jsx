@@ -1,31 +1,10 @@
+import { useState } from "react";
 import Button from "../SharedComponents/Button";
 import EnglishSpan from "../SharedComponents/EnglishSpan";
 import TodoList from "./Components/Todos/TodoList";
 
 const TaskDisplay = ({ projectState, handleDeleteProject }) => {
-	// projects: [
-	//     {
-	//         // Data mẫu
-	//         id: "16.03.2024-taskID.0jd76t0snbmn",
-	//         title: "Dự án búp măng non",
-	//         description: "dành cho trẻ con",
-	//         deadline: "2024-03-06",
-	//     },
-	//     {
-	//         // Data mẫu
-	//         id: "16.03.2024-taskID.0jd76t0bhn",
-	//         title: "Dự án bông hồng nhỏ",
-	//         description: "Dành cho người lớn",
-	//         deadline: "2024-03-06",
-	//     },
-	//     {
-	//         // Data mẫu
-	//         id: "16.03.2024-taskID.2",
-	//         title: "Dự án hoa thiên vỹ",
-	//         description: "Dành cho người cụ già",
-	//         deadline: "2024-03-06",
-	//     },
-	// ],
+	
 
 	const { selectedProjectId: currentSelectedProject, projects: projectList } =
 		projectState;

@@ -10,6 +10,7 @@ const {
 } = require("../../common/getProductData");
 const CategoryModel = require("../models/category");
 const ProductModel = require("../models/product");
+
 const productDisplay = async (req, res) => {
 	// Session
 	const userCredential = req.session.userCredential;
@@ -155,9 +156,33 @@ const storeEdit = async (req, res) => {
 	}
 
 	await ProductModel.updateOne({ _id: id }, { $set: product });
-	console.log("DONE WITH UPDATE");
 	res.redirect("/admin/products");
 	// console.log("product", product);
+};
+
+const storeSearch = async (req, res) => {
+	// Sessions
+	const category_list = req.session.category_list;
+
+	const keyword = req.body.search || "";
+
+	let filter = {};
+
+	if (keyword && keyword.trim() != "") {
+		filter.$text = { $search: keyword, $diacriticSensitive: false };
+	}
+
+	// Finding products
+
+	const product_list = await ProductModel.find(filter);
+
+	res.render("site/search", {
+		title: "Search",
+		keyword,
+		product_list,
+		categories: category_list,
+		category_name: "",
+	});
 };
 
 const update = (req, res) => {};
@@ -185,4 +210,5 @@ module.exports = {
 	store,
 	del,
 	storeEdit,
+	storeSearch,
 };

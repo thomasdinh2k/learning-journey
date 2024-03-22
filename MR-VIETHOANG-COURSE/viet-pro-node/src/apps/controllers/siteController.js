@@ -4,7 +4,6 @@ const ProductModel = require("../models/product");
 const home = async (req, res) => {
 	const category_list = await CategoryModel.find({});
 
-	console.log(category_list[0]._id);
 	req.session.category_list = category_list;
 
 	const featured_product_list = await ProductModel.find({

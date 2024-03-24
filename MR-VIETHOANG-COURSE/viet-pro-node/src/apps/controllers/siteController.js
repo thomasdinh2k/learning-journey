@@ -110,8 +110,36 @@ const addToCart = async (req, res) => {
 		});
 	}
 
-	
 	req.session.cart = cartArray;
+	res.redirect("back");
+};
+
+const updateCart = (req, res) => {
+	var { products } = req.body;
+	console.log(products);
+
+	var cartArray = res.locals.cart;
+
+	// 	"products": {
+	//     "123": { "qty": 2 },
+	//     "456": { "qty": 3 }
+	//   }
+	let newArray = cartArray.map((item) => {
+		item.qty = Number(products[item.id]["qty"]);
+		return item;
+	});
+
+	req.session.cart = newArray;
+	res.redirect("back");
+};
+
+const delCartItem = (req, res) => {
+	const { id } = req.params;
+
+	req.session.cart = req.session.cart.filter(
+		(product_item) => product_item.id != id
+	);
+
 	res.redirect("back");
 };
 
@@ -123,4 +151,6 @@ module.exports = {
 	cart,
 	success,
 	addToCart,
+	updateCart,
+	delCartItem,
 };

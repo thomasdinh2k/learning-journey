@@ -30,6 +30,8 @@ const {
 	cart,
 	success,
 	addToCart,
+	updateCart,
+	delCartItem
 } = require("../apps/controllers/siteController");
 
 // Import Controllers or Handlers
@@ -97,7 +99,10 @@ router.get("/success", success);
 
 // TODO B2 Tạo router dạng POST để nhận thông tin form (add-to-cart)
 router.post("/add-to-cart", addToCart)
+router.post("/update-cart", updateCart)
 // TODO B3 Nhập thông tin từ form, từ ID ra object sản phẩm, check sản phẩm trong cart, nếu chưa có thì push array mới vào
+
+router.get("/delete-cart-item-:id", delCartItem);
 
 // Search
 router.post("/search", ProductController.storeSearch)

@@ -2,10 +2,6 @@ const CategoryModel = require("../models/category");
 const ProductModel = require("../models/product");
 
 const home = async (req, res) => {
-	const category_list = await CategoryModel.find({});
-
-	req.session.category_list = category_list;
-
 	const featured_product_list = await ProductModel.find({
 		featured: true,
 		is_stock: true,
@@ -24,10 +20,10 @@ const home = async (req, res) => {
 		title: "Home",
 		featured_product_list,
 		new_product_list,
-		category_list,
-		category_name: ""
+		category_name: "",
 	});
 };
+
 const category = async (req, res) => {
 	var id = req.params["id"];
 	var category_list = req.session.category_list;
@@ -61,7 +57,7 @@ const product = async (req, res) => {
 		_id: id,
 	});
 
-	console.log("Found an Item", product_item[0]);
+	// console.log("Found an Item", product_item[0]);
 
 	res.render("site/product", {
 		title: "Product",
@@ -74,7 +70,7 @@ const search = (req, res) => {
 	res.render("site/search", { title: "Search" });
 };
 const cart = (req, res) => {
-	res.render("site/cart", { title: "Cart" });
+	res.render("site/cart", { title: "Cart", category_name: "cart" });
 };
 const success = (req, res) => {
 	res.render("site/success", { title: "Success" });
@@ -86,6 +82,39 @@ const getFeatureProduct = async (req, res) => {
 	}).sort({ _id: -1 });
 };
 
+const addToCart = async (req, res) => {
+	var cartArray = req.session.cart;
+	const { id, qty } = req.body;
+
+	// Check for dup product, if so, raise qty
+	let isProductExists = false;
+
+	cartArray.map((item) => {
+		if (id == item.id) {
+			item.qty += parseInt(qty, 10);
+			isProductExists = true;
+		}
+
+		return item;
+	});
+
+	// Base on isProductExists, if the Product is not there, we'll push new one in
+	if (!isProductExists) {
+		const product = await ProductModel.findById(id);
+		cartArray.push({
+			id,
+			name: product.name,
+			price: product.price,
+			img: product.thumbnail,
+			qty: parseInt(qty),
+		});
+	}
+
+	
+	req.session.cart = cartArray;
+	res.redirect("back");
+};
+
 module.exports = {
 	home,
 	category,
@@ -93,4 +122,5 @@ module.exports = {
 	search,
 	cart,
 	success,
+	addToCart,
 };

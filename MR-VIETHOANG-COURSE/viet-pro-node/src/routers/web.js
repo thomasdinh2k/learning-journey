@@ -14,6 +14,13 @@ const {
 	ensureAuthenticated,
 	checkAlreadyAuthenticated,
 } = require("../apps/middlewares/auth");
+
+// const {
+// 	handleCheckCart
+// } = require("../apps/middlewares/cart")
+
+// app.use(handleCheckCart)
+
 const uploadMiddleware = require("../apps/middlewares/upload");
 const {
 	home,
@@ -22,32 +29,13 @@ const {
 	search,
 	cart,
 	success,
+	addToCart,
 } = require("../apps/controllers/siteController");
 
 // Import Controllers or Handlers
 
 // Define Route Handlers
 
-const backendRoute = [
-	"form",
-	// "/admin/login",
-	// "/admin/logout",
-	// "/admin/dashboard",
-	// "/admin/products",
-	// "/admin/products/create",
-	// "/admin/products/edit",
-	"/admin/products/delete",
-];
-
-function createRoute(routePath) {
-	router.get(routePath, (req, res) => {
-		res.send(`This is the route to <b>${routePath}</b>`);
-	});
-}
-
-backendRoute.forEach((routePath) => {
-	createRoute(routePath);
-});
 
 // router.get("/", getHomepage);
 router.get("/test_1", TestController.test_1);
@@ -101,8 +89,15 @@ router.get("/category/:id", category);
 router.get("/product/:id", product);
 
 router.get("/search", search);
-router.get("/cart", cart);
+router.get("/checkout", cart);
 router.get("/success", success);
+
+
+// TODO B1 Tạo middleware cart để khởi tạo giỏ hàng
+
+// TODO B2 Tạo router dạng POST để nhận thông tin form (add-to-cart)
+router.post("/add-to-cart", addToCart)
+// TODO B3 Nhập thông tin từ form, từ ID ra object sản phẩm, check sản phẩm trong cart, nếu chưa có thì push array mới vào
 
 // Search
 router.post("/search", ProductController.storeSearch)

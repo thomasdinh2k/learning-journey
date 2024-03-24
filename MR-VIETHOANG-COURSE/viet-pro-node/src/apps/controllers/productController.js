@@ -162,8 +162,6 @@ const storeEdit = async (req, res) => {
 
 const storeSearch = async (req, res) => {
 	// Sessions
-	const category_list = req.session.category_list;
-
 	const keyword = req.body.search || "";
 
 	let filter = {};
@@ -180,7 +178,6 @@ const storeSearch = async (req, res) => {
 		title: "Search",
 		keyword,
 		product_list,
-		categories: category_list,
 		category_name: "",
 	});
 };

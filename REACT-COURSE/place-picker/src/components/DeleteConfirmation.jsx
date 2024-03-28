@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { forwardRef, useEffect, useState } from "react"
 
 export default function DeleteConfirmation({
 	onConfirm,

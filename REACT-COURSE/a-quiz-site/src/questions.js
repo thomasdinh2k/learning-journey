@@ -19,36 +19,36 @@ export default [
 			"Tự động hóa quá trình testing.",
 		],
 	},
-	// {
-	// 	id: "q3",
-	// 	text: "Component trong React có thể được mô tả như thế nào?",
-	// 	answers: [
-	// 		"Là các khối xây dựng độc lập cho giao diện người dùng.",
-	// 		"Là một cơ sở dữ liệu nhỏ.",
-	// 		"Là các đoạn mã CSS định dạng trang web.",
-	// 		"Là các dịch vụ web API.",
-	// 	],
-	// },
-	// {
-	// 	id: "q4",
-	// 	text: "Props trong React được sử dụng để làm gì?",
-	// 	answers: [
-	// 		"Truyền dữ liệu từ component cha xuống component con.",
-	// 		"Lưu trữ dữ liệu tạm thời.",
-	// 		"Tạo các biến toàn cục.",
-	// 		"Định tuyến các trang web.",
-	// 	],
-	// },
-	// {
-	// 	id: "q5",
-	// 	text: "State trong React đề cập đến điều gì?",
-	// 	answers: [
-	// 		"Trạng thái dữ liệu nội bộ của một component.",
-	// 		"Tình trạng mạng internet.",
-	// 		"Số lượng component trong một ứng dụng.",
-	// 		"Phiên bản của thư viện React.",
-	// 	],
-	// },
+	{
+		id: "q3",
+		text: "Component trong React có thể được mô tả như thế nào?",
+		answers: [
+			"Là các khối xây dựng độc lập cho giao diện người dùng.",
+			"Là một cơ sở dữ liệu nhỏ.",
+			"Là các đoạn mã CSS định dạng trang web.",
+			"Là các dịch vụ web API.",
+		],
+	},
+	{
+		id: "q4",
+		text: "Props trong React được sử dụng để làm gì?",
+		answers: [
+			"Truyền dữ liệu từ component cha xuống component con.",
+			"Lưu trữ dữ liệu tạm thời.",
+			"Tạo các biến toàn cục.",
+			"Định tuyến các trang web.",
+		],
+	},
+	{
+		id: "q5",
+		text: "State trong React đề cập đến điều gì?",
+		answers: [
+			"Trạng thái dữ liệu nội bộ của một component.",
+			"Tình trạng mạng internet.",
+			"Số lượng component trong một ứng dụng.",
+			"Phiên bản của thư viện React.",
+		],
+	},
 	// {
 	// 	id: "q6",
 	// 	text: "Hook trong React.js được sử dụng như thế nào?",

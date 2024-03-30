@@ -6,17 +6,47 @@ import QuestionTimer from "./QuestionTimer.jsx"
 const Quiz = () => {
 	const [playerAnswers, setPlayerAnswers] = useState([])
 
-	let Timer = 7 * 1000
+	const [answerStatus, setAnswerStatus] = useState("")
+
+	let Timer = 15 * 1000
 
 	// const [timeIsUp, setTimeIsUp] = useState(false)
 	const [remainingTime, setRemainingTime] = useState(Timer)
-	let currentQuestionIndex = playerAnswers.length
+	let currentQuestionIndex =
+		answerStatus == "" ? playerAnswers.length : playerAnswers.length - 1
 
-	const handleSelectAnswer = useCallback((current_question, answer) => {
-		setPlayerAnswers(prev_ans => {
-			return [...prev_ans, { id: current_question, answer }]
-		})
-	}, [])
+	const handleSelectAnswer = useCallback(
+		(current_question, answer) => {
+			console.log("A")
+			// TODO: Highlight with .selected for 1 second
+			setAnswerStatus("user_selected")
+
+			// Move on to the next question
+			setPlayerAnswers(prev_ans => {
+				return [...prev_ans, { id: current_question, answer }]
+			})
+
+			const timeOutID = setTimeout(() => {
+				console.log("B")
+
+				if (answer == DUMMY_QUESTIONS[currentQuestionIndex].answers[0]) {
+					// Correct answer
+					console.log("Correct Answer")
+					setAnswerStatus("correct")
+				} else {
+					setAnswerStatus("wrong")
+				}
+
+				setTimeout(() => {
+					console.log("C")
+					setAnswerStatus("")
+				}, 2000)
+			}, 1000)
+
+			// return () => {clearInterval(intervalID)}
+		},
+		[currentQuestionIndex]
+	)
 
 	const quizIsCompleted = playerAnswers.length === DUMMY_QUESTIONS.length
 
@@ -41,16 +71,8 @@ const Quiz = () => {
 	// 	}
 	// }, [remainingTime, currentQuestionIndex])
 
-	// if (quizIsCompleted) {
-	// 	return (
-	// 		<div id="summary">
-	// 			<img src={trophyIcon} alt="trophy-icon" />
-	// 			<h2>{quizIsCompleted ? "Quiz Completed!" : "Your time is up!"}</h2>
-	// 		</div>
-	// 	)
-	// }
 	const handleSkipQuestion = useCallback(() => {
-		handleSelectAnswer(null)
+		handleSelectAnswer(currentQuestionIndex, "NO_ANS")
 		setRemainingTime(Timer)
 	}, [handleSelectAnswer])
 
@@ -62,8 +84,14 @@ const Quiz = () => {
 		[currentQuestionIndex]
 	)
 
-	// if (remainingTime === 0) {
-	// }
+	if (quizIsCompleted) {
+		return (
+			<div id="summary">
+				<img src={trophyIcon} alt="trophy-icon" />
+				<h2>{quizIsCompleted ? "Quiz Completed!" : "Your time is up!"}</h2>
+			</div>
+		)
+	}
 
 	return (
 		<div id="quiz">
@@ -81,15 +109,35 @@ const Quiz = () => {
 				<h2>{DUMMY_QUESTIONS[currentQuestionIndex].text}</h2>
 
 				<ul id="answers">
-					{randomAnswerSet.map((answer, aIndex) => (
-						<li key={aIndex} className="answer">
-							<button
-								onClick={() => handleSelectAnswer(currentQuestionIndex, answer)}
-							>
-								{answer}
-							</button>
-						</li>
-					))}
+					{randomAnswerSet.map((answer, aIndex) => {
+						let btnClass = ""
+
+						let isSelected =
+							playerAnswers[playerAnswers.length - 1]?.answer === answer
+
+						if (isSelected) {
+							btnClass = "selected"
+						}
+
+						if (
+							isSelected &&
+							(answerStatus == "correct" || answerStatus == "wrong")
+						) {
+							btnClass = answerStatus
+						}
+						return (
+							<li key={aIndex} className="answer">
+								<button
+									onClick={() =>
+										handleSelectAnswer(currentQuestionIndex, answer)
+									}
+									className={btnClass}
+								>
+									{answer}
+								</button>
+							</li>
+						)
+					})}
 				</ul>
 			</div>
 		</div>

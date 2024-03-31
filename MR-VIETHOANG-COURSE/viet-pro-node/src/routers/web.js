@@ -31,7 +31,8 @@ const {
 	success,
 	addToCart,
 	updateCart,
-	delCartItem
+	delCartItem,
+	order
 } = require("../apps/controllers/siteController");
 
 // Import Controllers or Handlers
@@ -103,6 +104,9 @@ router.post("/update-cart", updateCart)
 // TODO B3 Nhập thông tin từ form, từ ID ra object sản phẩm, check sản phẩm trong cart, nếu chưa có thì push array mới vào
 
 router.get("/delete-cart-item-:id", delCartItem);
+
+// ORDER
+router.post("/order", order)
 
 // Search
 router.post("/search", ProductController.storeSearch)

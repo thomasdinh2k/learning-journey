@@ -2,11 +2,10 @@ import { useRef } from "react"
 
 const AnswerSet = ({
 	currentAnswerSet,
-	playerAnswers,
+
 	onAnswer,
 	answerStatus,
 	userSelectAnswer,
-    currentQuestionIndex
 }) => {
 	const randomAnswerSet = useRef()
 
@@ -15,8 +14,6 @@ const AnswerSet = ({
 			0.5 - Math.random()
 		})
 	}
-
-    
 
 	// const randomAnswerSet = [...currentAnswerSet].sort(() => 0.5 - Math.random())
 
@@ -28,7 +25,7 @@ const AnswerSet = ({
 
 					let isSelected = userSelectAnswer === answer
 
-					if (isSelected) {
+					if (isSelected && answerStatus == "answered") {
 						btnClass = "selected"
 					}
 
@@ -40,9 +37,10 @@ const AnswerSet = ({
 					}
 					return (
 						<li key={aIndex} className="answer">
-							<button
-								onClick={() => onAnswer(currentQuestionIndex, answer)}
+							<button 
+								onClick={() => onAnswer(answer)} 
 								className={btnClass}
+								disabled={answerStatus !== ""}
 							>
 								{answer}
 							</button>

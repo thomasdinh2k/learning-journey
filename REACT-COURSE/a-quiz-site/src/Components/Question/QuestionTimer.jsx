@@ -1,22 +1,26 @@
-import { useEffect } from "react"
+import { useEffect, useState, useCallback } from "react"
 
-const QuestionTimer = ({
-	timeout,
-	onTimeOut,
-	remainingTime,
-	setRemainingTime,
-}) => {
+const QuestionTimer = ({ timeout, handleSelectAnswer, answerStatus }) => {
+	const [remainingTime, setRemainingTime] = useState(timeout)
+
+	const handleTimeOut = useCallback(() => {
+		handleSelectAnswer("NO_ANS")
+		setRemainingTime(timeout)
+	}, [handleSelectAnswer])
+
 	useEffect(() => {
-		console.log("SETTING TIME OUT")
+		// console.log("SETTING TIME OUT")
+
 		const timeOutID = setTimeout(() => {
-			onTimeOut()
+			console.log("Trigger time out - new question")
+			handleTimeOut()
 		}, timeout)
 
 		return () => clearTimeout(timeOutID)
-	}, [timeout, onTimeOut])
+	}, [timeout, handleTimeOut])
 
 	useEffect(() => {
-		console.log("SETTING INTERVAL")
+		// console.log("SETTING INTERVAL")
 		const intervalID = setInterval(() => {
 			// if (remainingTime <= 100) {
 			//     setRemainingTime(timeout)
@@ -30,13 +34,25 @@ const QuestionTimer = ({
 		}
 	}, [])
 
-	return <progress id="question-time" max={timeout} value={remainingTime} />
+	console.log("Current answer status", answerStatus)
+
+	return (
+
+		<progress
+		id="question-time"
+		max={timeout}
+		value={ answerStatus == '' ? remainingTime : timeout }
+		className={answerStatus}
+		/>
+
+	)
+	
 }
 
 /*
- TODO: As an user pick an answer:
+ As an user pick an answer:
  - First: Highlight that selected answer
- 
+
  + After a second
     - Display Green if it's correct
     - Display Red if incorrect

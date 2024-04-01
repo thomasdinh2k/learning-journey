@@ -3,14 +3,9 @@ import AnswerSet from "./AnswerSet"
 import { useCallback, useState } from "react"
 import DUMMY_QUESTION from "../../questions"
 
-const Question = ({
-	currentIndex,
-	onSelectAnswer,
+const Question = ({ currentIndex, onSelectAnswer }) => {
+	let Timer = 5 * 1000
 
-	Timer,
-	remainingTime,
-	setRemainingTime,
-}) => {
 	const [answer, setAnswer] = useState({
 		selectedAnswer: "",
 		isCorrect: null,
@@ -22,28 +17,17 @@ const Question = ({
 			isCorrect: null,
 		})
 
-		console.log("A")
-
 		setTimeout(() => {
 			setAnswer(prevState => ({
 				...prevState,
 				isCorrect: DUMMY_QUESTION[currentIndex].answers[0] == answer,
 			}))
 
-			console.log("B")
-
 			setTimeout(() => {
-				console.log("C")
-
 				onSelectAnswer(answer, currentIndex)
 			}, 2000)
 		}, 1000)
 	}
-
-	const handleSkipQuestion = useCallback(() => {
-		handleSelectAnswer(currentIndex, "NO_ANS")
-		setRemainingTime(Timer)
-	}, [handleSelectAnswer])
 
 	let answerStatus = ""
 
@@ -56,10 +40,10 @@ const Question = ({
 	return (
 		<div id="question">
 			<QuestionTimer
+			
 				timeout={Timer}
-				remainingTime={remainingTime}
-				setRemainingTime={setRemainingTime}
-				onTimeOut={handleSkipQuestion}
+				handleSelectAnswer={handleSelectAnswer}
+				answerStatus={answerStatus}
 			/>
 
 			<h2>{DUMMY_QUESTION[currentIndex].text}</h2>

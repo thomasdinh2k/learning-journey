@@ -8,12 +8,9 @@ import Question from "./Question/Index.jsx"
 const Quiz = () => {
 	const [playerAnswers, setPlayerAnswers] = useState([])
 
-	let Timer = 15 * 1000
-
-	const [remainingTime, setRemainingTime] = useState(Timer)
 	let currentQuestionIndex = playerAnswers.length
 
-	const handleSelectAnswer = useCallback((answer) => {
+	const handleSelectAnswer = useCallback(answer => {
 		// Move on to the next question
 		setPlayerAnswers(prev_ans => {
 			return [...prev_ans, answer]
@@ -33,15 +30,11 @@ const Quiz = () => {
 	return (
 		<div id="quiz">
 			<h1> Câu hỏi số: {currentQuestionIndex + 1}</h1>
-			<p>Time left: {remainingTime}</p>
 
 			<Question
 				key={currentQuestionIndex}
 				currentIndex={currentQuestionIndex}
 				onSelectAnswer={handleSelectAnswer}
-				Timer={Timer}
-				remainingTime={remainingTime}
-				setRemainingTime={setRemainingTime}
 				currentQuestionIndex={currentQuestionIndex}
 			/>
 		</div>

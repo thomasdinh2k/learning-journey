@@ -1,9 +1,7 @@
-import { useCallback, useState, useMemo } from "react"
+import { useCallback, useState } from "react"
 import DUMMY_QUESTIONS from "../questions.js"
-import trophyIcon from "../assets/quiz-complete.png"
-import QuestionTimer from "./Question/QuestionTimer.jsx"
-import AnswerSet from "./Question/AnswerSet.jsx"
 import Question from "./Question/Index.jsx"
+import Summary from "./Summary/Index.jsx"
 
 const Quiz = () => {
 	const [playerAnswers, setPlayerAnswers] = useState([])
@@ -21,10 +19,7 @@ const Quiz = () => {
 
 	if (quizIsCompleted) {
 		return (
-			<div id="summary">
-				<img src={trophyIcon} alt="trophy-icon" />
-				<h2>{quizIsCompleted ? "Quiz Completed!" : "Your time is up!"}</h2>
-			</div>
+			<Summary answerSheet={playerAnswers}/>
 		)
 	}
 	return (

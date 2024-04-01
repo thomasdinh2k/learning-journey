@@ -300,6 +300,7 @@ header h1 {
 
 #summary .user-answer.wrong {
 	color: #730b4b;
+  text-decoration: line-through;
 }
 
 #summary .user-answer.skipped {

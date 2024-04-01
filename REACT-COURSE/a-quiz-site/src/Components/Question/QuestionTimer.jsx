@@ -34,7 +34,7 @@ const QuestionTimer = ({ timeout, handleSelectAnswer, answerStatus }) => {
 		}
 	}, [])
 
-	console.log("Current answer status", answerStatus)
+	// console.log("Current answer status", answerStatus)
 
 	return (
 

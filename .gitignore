@@ -351,6 +351,8 @@ NODE-COURSE/viet-pro/package-lock.json
 NODE-COURSE/viet-pro/package.json
 NODE-COURSE/viet-pro/package-lock.json
 NODE-COURSE/viet-pro/package.json
-.code-workspace
 REACT-COURSE/pratice-fetching-data/backend/data/
-REACT-COURSE/pratice-fetching-data/.eslintrc.json
+.code-workspace
+# .eslintrc.json
+# eslint.config.js
+*eslint*

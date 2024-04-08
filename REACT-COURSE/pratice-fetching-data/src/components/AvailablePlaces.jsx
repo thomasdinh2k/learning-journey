@@ -4,59 +4,39 @@ import { useState } from "react"
 import ShowError from "./ShowError.jsx"
 import { sortPlacesByDistance } from "../loc.js"
 import { fetchAvailablePlaces } from "../http.js"
+import { useFetch } from "../hooks/useFetch.js"
 
 export default function AvailablePlaces({ onSelectPlace }) {
-	const [availablePlaces, setAvailablePlaces] = useState([])
-	const [isFetching, setIsFetching] = useState(false)
-	const [error, setError] = useState()
 
-	useEffect(() => {
-		const fetchData = async () => {
-			setIsFetching(true)
-			try {
-				const places = await fetchAvailablePlaces()
+	// useEffect(() => {
+	// 	const fetchData = async () => {
+	// 		setIsFetching(true)
+	// 		try {
+	// 			const places = await fetchAvailablePlaces()
 
-				// console.log("places", places)
+	// 			const sortedPlaces = sortPlacesByDistance(
+	// 				places,
+	// 				105.7636772771315,
+	// 				21.048042322165895
+	// 			)
 
-				// navigator.geolocation.getCurrentPosition(position => {
-				// 	console.log(position)
+	// 			setAvailablePlaces(sortedPlaces)
+	// 		} catch (error) {
+	// 			setError({ message: error.message || "Could not fetch the data" })
+	// 		}
+	// 		setIsFetching(false)
+	// 	}
 
-				// 	// const position = {
-        //   // coords: GeolocationCoordinates
-				// 	// accuracy: 35
-				// 	// altitude: 0
-				// 	// altitudeAccuracy: null
-				// 	// heading: null
-				// 	// latitude: 21.048042322165895
-				// 	// longitude: 105.7636772771315
-				// 	// speed: null}
+	// 	fetchData()
+	// }, [])
 
-				// 	const sortedPlaces = sortPlacesByDistance(
-				// 		places,
-				// 		position.coords.latitude,
-				// 		position.coords.longitude,
-				// 		setIsFetching(false)
-				// 	)
+	const {
+		isFetching,
+		error,
+		data,
+	} = useFetch(fetchAvailablePlaces, [])
 
-        // setAvailablePlaces(sortedPlaces)
-				// })
-        
-        const sortedPlaces = sortPlacesByDistance(
-          places,
-          105.7636772771315,
-          21.048042322165895
-        )
-        
-        setAvailablePlaces(sortedPlaces)
-
-			} catch (error) {
-				setError({ message: error.message || "Could not fetch the data" })
-				setIsFetching(false)
-			}
-		}
-
-		fetchData()
-	}, [])
+	const availablePlaces = sortPlacesByDistance(data);
 
 	if (error) {
 		return <ShowError title="An Error occurred!" message={error.message} />

@@ -6,12 +6,26 @@ export default function Login() {
 		password: "",
 	})
 
+	const [didEdit, setDidEdit] = useState({ // State monitoring whether a box's focus is lost
+		email: false,
+		password: false,
+		test: false
+	})
+
+	const handleInputBlur = (identifier) => {
+		setDidEdit( prevEdit => ({
+			...prevEdit,
+			[identifier]: true
+		}))
+	};
 	const handleSubmission = (identifier, event) => {
 		setInputValue(prevState => ({
 			...prevState,
 			[identifier]: event.target.value,
 		}))
 	}
+
+	const emailIsInvalid = !inputValue.email.includes("@") && inputValue.email.length > 4;
 
   console.log("inputValue", inputValue);
 
@@ -27,7 +41,10 @@ export default function Login() {
 						type="email"
 						name="email"
 						onChange={event => handleSubmission("email", event)}
+						// onBlur={}
 					/>
+
+					<div className="control-error">{emailIsInvalid && (<p>Valid Email will need a "@" sign</p>)}</div>
 				</div>
 
 				<div className="control no-margin">

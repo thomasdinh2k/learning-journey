@@ -7,7 +7,7 @@ export default function Signup() {
         var enteredEmail = formData.get('email'); // useful for getting one field
 
         var acquisitionChannel = formData.getAll('acquisition'); // Return an Array of Checked Elements
-        
+         
         var data = Object.fromEntries(formData.entries()); // getting all inputs and return an Object
         data.acquisition = acquisitionChannel; // merge Array of Checked Element back to the "data" Object
 
